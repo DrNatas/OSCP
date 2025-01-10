@@ -3893,6 +3893,7 @@ msf6 > use post/windows/gather_enum_applications             // Windows Gather I
 msf6 > use exploit/windows/local/payload_inject              // This module will inject a payload into memory of a process.
 msf6 > use exploit/multi/script/web_delievery                // This module quickly fires up a web server that serves a payload.
 msf6 > use post/multi/gather/peass                           // Multi PEASS launcher
+msf6 > use post/multi/recon/local_exploit_suggester          // Multi Recon Local Exploit Suggester
 ```
 
 ##### Metasploit through Proxychains
