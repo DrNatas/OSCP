@@ -3820,6 +3820,7 @@ msf6 > encoder                     // using module encoder
 msf6 > nop                         // using module nop
 msf6 > show sessions               // displays all current sessions
 msf6 > sessions -i 1               // switch to session 1
+msf6 > sessions -i -1              // use last last known session
 msf6 > sessions -u <ID>            // upgrading shell to meterpreter
 msf6 > sessions -k <ID>            // kill specific session
 msf6 > sessions -K                 // kill all sessions
@@ -3887,9 +3888,11 @@ meterpreter > portfwd add -l <LPORT> -p <RPORT> -r 127.0.0.1    // port forwardi
 ##### Metasploit Modules ####
 
 ```c
-GOCOW=true msfconsole                                       // Always get the cow!
-msf6> use exploit/windows/local/payload_inject              // This module will inject a payload into memory of a process.
-msf6> use post/windows/gather_enum_applications             // Windows Gather Installed Application Enumeration
+GOCOW=true msfconsole                                        // Always get the cow!
+msf6 > use post/windows/gather_enum_applications             // Windows Gather Installed Application Enumeration
+msf6 > use exploit/windows/local/payload_inject              // This module will inject a payload into memory of a process.
+msf6 > use exploit/multi/script/web_delievery                // This module quickly fires up a web server that serves a payload.
+msf6 > use post/multi/gather/peass                           // Multi PEASS launcher
 ```
 
 ##### Metasploit through Proxychains
