@@ -3884,6 +3884,14 @@ meterpreter > execute -f calc.exe                             // starts a progra
 meterpreter > portfwd add -l <LPORT> -p <RPORT> -r 127.0.0.1    // port forwarding
 ```
 
+##### Metasploit Modules ####
+
+```c
+GOCOW=true msfconsole                                       // Always get the cow!
+msf6> use exploit/windows/local/payload_inject              // This module will inject a payload into memory of a process.
+msf6> use post/windows/gather_enum_applications             // Windows Gather Installed Application Enumeration
+```
+
 ##### Metasploit through Proxychains
 
 ```c
