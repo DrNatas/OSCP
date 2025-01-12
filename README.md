@@ -233,6 +233,7 @@ Thank you for reading.
 | Wfuzz | https://github.com/xmendez/wfuzz |
 | WhatWeb | https://github.com/urbanadventurer/WhatWeb |
 | WPScan | https://github.com/wpscanteam/wpscan |
+| feroxbuster | https://github.com/epi052/feroxbuster |
 
 ### Database Assessment
 
@@ -1525,6 +1526,31 @@ export HTTP_PROXY=http://localhost:8080
 export HTTPS_PROXY=https://localhost:8080
 ```
 
+#### feroxbuster
+
+**Feroxbuster** is a powerful, fast, and simple tool for enumerating hidden directories and files on web servers. Below are some commonly used options along with example commands.
+
+- **`-t <threads>`**  Sets the number of concurrent threads (`--threads`). For faster scans, you can increase this number (e.g., `-t 100`).
+
+- **`-r`**  Enables recursive scanning (`--recursive`). Feroxbuster will scan any discovered directory for additional directories and files, using the same wordlist.
+
+- **`--filter-status 403`**  Excludes all results with a 403 (Forbidden) status code, helping you focus on potentially accessible resources.
+
+```c
+-u http://thetoppers.htb: This option specifies the target URL. The -u flag is short for --url. Here, the target is http://thetoppers.htb, which is the website you are scanning for hidden directories and files.
+-w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt: This option specifies the wordlist to be used for brute-forcing directory and file names. The -w flag stands for --wordlist. 
+    The file path /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt points to the wordlist from the Seclists collection, which contains commonly used directory and file names.
+-t 100: This option sets the number of concurrent threads to use during the scan. The -t flag stands for --threads. In this case, Feroxbuster will run with 100 concurrent threads, which increases the speed of the scan by making multiple requests simultaneously.
+-r: This option enables recursive scanning. The -r flag stands for --recursive. When Feroxbuster finds a directory, it will recursively scan that directory for more directories and files using the same wordlist.
+--filter-status 403: This option tells Feroxbuster to exclude any results with a 403 HTTP status code from the output. This way, you won't see any directories or files that return a 403 response, which typically indicates that access to those resources is forbidden.
+```
+
+```c
+ feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.<RHOST>" -t 100
+ feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -r –filter-status 403                // For direcotry findings --filter-status 403 exclude any 403 HTTP status code from output.
+```
+
+
 #### cadaver
 
 ```c
@@ -1690,7 +1716,7 @@ ffuf -w /opt/seclists/Discovery/Web-Content/directory-list-1.0.txt -u http://<RH
 ```c
 -e    // extended mode that renders the full url
 -k    // skip ssl certificate validation
--r    // follow cedirects
+-r    // follow redirects
 -s    // status codes
 -b    // exclude status codes
 -k            // ignore certificates
