@@ -79,6 +79,7 @@ Thank you for reading.
   		- [cadaver](#cadaver)
 		- [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
 		- [ffuf](#ffuf)
+        - [feroxbuster](#feroxbuster)
 		- [Gobuster](#gobuster)
 		- [GitTools](#gittools)
 		- [Local File Inclusion (LFI)](#local-file-inclusion-lfi)
