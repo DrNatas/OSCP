@@ -1535,16 +1535,22 @@ export HTTPS_PROXY=https://localhost:8080
 
 - **`-r`**  Enables recursive scanning (`--recursive`). Feroxbuster will scan any discovered directory for additional directories and files, using the same wordlist.
 
-- **`--filter-status 403`**  Excludes all results with a 403 (Forbidden) status code, helping you focus on potentially accessible resources.
+- `--filter-status 403`  Excludes all results with a 403 (Forbidden) status code, helping you focus on potentially accessible resources.
 
-```c
--u http://thetoppers.htb: This option specifies the target URL. The -u flag is short for --url. Here, the target is http://thetoppers.htb, which is the website you are scanning for hidden directories and files.
--w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt: This option specifies the wordlist to be used for brute-forcing directory and file names. The -w flag stands for --wordlist. 
-    The file path /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt points to the wordlist from the Seclists collection, which contains commonly used directory and file names.
--t 100: This option sets the number of concurrent threads to use during the scan. The -t flag stands for --threads. In this case, Feroxbuster will run with 100 concurrent threads, which increases the speed of the scan by making multiple requests simultaneously.
--r: This option enables recursive scanning. The -r flag stands for --recursive. When Feroxbuster finds a directory, it will recursively scan that directory for more directories and files using the same wordlist.
---filter-status 403: This option tells Feroxbuster to exclude any results with a 403 HTTP status code from the output. This way, you won't see any directories or files that return a 403 response, which typically indicates that access to those resources is forbidden.
-```
+- `-u http://thetoppers.htb`: This option specifies the target URL. The -u flag is short for --url. Here, the target is http://thetoppers.htb, which is the website you are scanning for hidden directories and files.
+
+- **`-w`** /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt: This option specifies the wordlist to be used for brute-forcing directory and file names. The -w flag stands for 
+
+- **`--wordlist`**  The file path /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt points to the wordlist from the Seclists collection, which contains commonly used directory and file names.
+
+
+- **`-t 100`**: This option sets the number of concurrent threads to use during the scan. The -t flag stands for --threads. In this case, Feroxbuster will run with 100 concurrent threads, which increases the speed of the scan by making multiple requests simultaneously.
+
+- **`-r`**: This option enables recursive scanning. The -r flag stands for --recursive. When Feroxbuster finds a directory, it will recursively scan that directory for more directories and files using the same wordlist.
+
+- **`--filter-status 403`**: This option tells Feroxbuster to exclude any results with a 403 HTTP status code from the output. This way, you won't see any directories or files that return a 403 response, which typically indicates that access to those resources is forbidden.
+
+
 
 ```c
  feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.<RHOST>" -t 100
