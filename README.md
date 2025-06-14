@@ -6441,7 +6441,7 @@ pwncat-cs -lp <LPORT>
 ```c
 rpcclient -U "" <RHOST>
 rpcclient -U 'username%password' dc01.infiltrator.htb -c <COMMAND>
-rpcclient -U "DOMAIN\\username%password" <target-ip> -c "enumdomusers" | grep 'user_name:' | cut -d ':' -f2 | tr -d ' '
+rpcclient -U "DOMAIN\\username%password" <target-ip> -c "enumdomusers" | grep 'user:' | cut -d '[' -f2 | cut -d ']' -f1
 ```
 
 ```c
