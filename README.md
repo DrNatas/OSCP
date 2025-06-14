@@ -4567,6 +4567,7 @@ bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -n
 > https://github.com/CravateRouge/bloodyAD/wiki/Access-Control
 
 ```c
+faketime 'now + 7 hours' bloodhound-python -u <USERNAME> -p <PASSWORD> -d <DOMAIN> -dc <DOMAIN> -c all --disable-autogc
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type user                       // Get all users of the domain
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type computer                   // Get all computers of the domain
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type container                  // Get all containers of the domain
