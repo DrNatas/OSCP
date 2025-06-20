@@ -78,7 +78,7 @@ Thank you for reading.
 		- [Burp Suite](#burp-suite)
   		- [cadaver](#cadaver)
 		- [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
-		- [ffuf](#ffuf)
+		- [fuss faster You fool (ffuf) ](#ffuf)
         - [feroxbuster](#feroxbuster)
 		- [Gobuster](#gobuster)
 		- [GitTools](#gittools)
