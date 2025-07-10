@@ -4593,7 +4593,7 @@ bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -n
 ### 🎟️ Kerberos Ticket Authentication (TGT in ccache)
 
 ```bash
-KRB5CCNAME=ryan.naylor.ccache faketime 'now + 8 hours' bloodhound-python -k -u ryan.naylor -d voleur.htb -c All -ns 10.10.11.76 --disable-autogc
+KRB5CCNAME=user.name.ccache faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc
 ```
 
 * `-k`: Use Kerberos auth from current ticket cache
