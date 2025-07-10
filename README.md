@@ -4551,14 +4551,69 @@ docker run -itd -p 7687:7687 -p 7474:7474 --env NEO4J_AUTH=neo4j/<PASSWORD> -v $
 ALTER USER neo4j SET PASSWORD '<PASSWORD>'
 ```
 
-#### BloodHound Python
+Here’s a clean, OSCP-ready markdown version of your **BloodHound-python** notes, with added context for clarity:
 
-```c
+---
+
+## 🩸 BloodHound-python Collection Cheat Sheet
+
+> Use `bloodhound-python` to enumerate Active Directory objects and relationships for analysis in BloodHound. Supports password, hash, or Kerberos ticket-based auth.
+
+---
+
+### 🔐 Password Authentication
+
+```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>' -ns <RHOST> -c all --zip
+```
+
+* `-gc`: Domain for global catalog resolution (can be omitted if using `--disable-autogc`)
+* `-ns`: DNS server IP (typically the DC)
+* `--zip`: Output in BloodHound-compatible ZIP format
+
+```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> -c all --zip
+```
+
+* `-dc`: Specifies a domain controller directly
+
+```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
+```
+
+* `--dns-tcp`: Use TCP for DNS lookups (helpful when UDP fails)
+* `-no-pass`: Avoids password prompt if not needed
+
+```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
 ```
+
+---
+
+### 🎟️ Kerberos Ticket Authentication (TGT in ccache)
+
+```bash
+KRB5CCNAME=ryan.naylor.ccache faketime 'now + 8 hours' bloodhound-python -k -u ryan.naylor -d voleur.htb -c All -ns 10.10.11.76 --disable-autogc
+```
+
+* `-k`: Use Kerberos auth from current ticket cache
+* `KRB5CCNAME`: Set to your `.ccache` file path if not using the default
+* `faketime`: Simulates future time to align with ticket validity
+* `--disable-autogc`: Skips global catalog lookups (avoids false warnings or delays)
+
+---
+
+### 🧠 Tips
+
+* Always match the DNS-resolvable name or IP used in TGT/SPN when using Kerberos auth.
+* Add DC hostnames to `/etc/hosts` if your DNS isn't resolving them.
+* Use `--ldaps` if LDAP over port 389 fails and 636 is available.
+* Confirm ticket presence with `klist`.
+
+---
+
+Let me know if you'd like a `README.md` version or to embed this in your GitBook or note system.
+
 
 #### bloodyAD
 
