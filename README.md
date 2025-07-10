@@ -4594,6 +4594,7 @@ bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -n
 
 ```bash
 KRB5CCNAME=user.name.ccache faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc
+faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc
 ```
 
 * `-k`: Use Kerberos auth from current ticket cache
@@ -4602,18 +4603,6 @@ KRB5CCNAME=user.name.ccache faketime 'now + 8 hours' bloodhound-python -k -u use
 * `--disable-autogc`: Skips global catalog lookups (avoids false warnings or delays)
 
 ---
-
-### 🧠 Tips
-
-* Always match the DNS-resolvable name or IP used in TGT/SPN when using Kerberos auth.
-* Add DC hostnames to `/etc/hosts` if your DNS isn't resolving them.
-* Use `--ldaps` if LDAP over port 389 fails and 636 is available.
-* Confirm ticket presence with `klist`.
-
----
-
-Let me know if you'd like a `README.md` version or to embed this in your GitBook or note system.
-
 
 #### bloodyAD
 
