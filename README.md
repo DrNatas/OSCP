@@ -4555,54 +4555,20 @@ Here’s a clean, OSCP-ready markdown version of your **BloodHound-python** note
 
 ---
 
-## 🩸 BloodHound-python Collection Cheat Sheet
+##### 🩸 BloodHound-python Collection Cheat Sheet
 
 > Use `bloodhound-python` to enumerate Active Directory objects and relationships for analysis in BloodHound. Supports password, hash, or Kerberos ticket-based auth.
 
----
-
-### 🔐 Password Authentication
-
 ```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>' -ns <RHOST> -c all --zip
-```
-
-* `-gc`: Domain for global catalog resolution (can be omitted if using `--disable-autogc`)
-* `-ns`: DNS server IP (typically the DC)
-* `--zip`: Output in BloodHound-compatible ZIP format
-
-```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> -c all --zip
-```
-
-* `-dc`: Specifies a domain controller directly
-
-```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
-```
-
-* `--dns-tcp`: Use TCP for DNS lookups (helpful when UDP fails)
-* `-no-pass`: Avoids password prompt if not needed
-
-```bash
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
-```
-
----
-
-### 🎟️ Kerberos Ticket Authentication (TGT in ccache)
-
-```bash
-KRB5CCNAME=user.name.ccache faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc
+KRB5CCNAME=user.name.ccache faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc // 🎟️ Kerberos Ticket Authentication (TGT in ccache)
 faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc
+faketime 'now + 7 hours' bloodhound-python -u <USERNAME> -p <PASSWORD> -d <DOMAIN> -dc <DOMAIN> -c all --disable-autogc
+
 ```
-
-* `-k`: Use Kerberos auth from current ticket cache
-* `KRB5CCNAME`: Set to your `.ccache` file path if not using the default
-* `faketime`: Simulates future time to align with ticket validity
-* `--disable-autogc`: Skips global catalog lookups (avoids false warnings or delays)
-
----
 
 #### bloodyAD
 
@@ -4611,7 +4577,6 @@ faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <I
 > https://github.com/CravateRouge/bloodyAD/wiki/Access-Control
 
 ```c
-faketime 'now + 7 hours' bloodhound-python -u <USERNAME> -p <PASSWORD> -d <DOMAIN> -dc <DOMAIN> -c all --disable-autogc
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type user                       // Get all users of the domain
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type computer                   // Get all computers of the domain
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type container                  // Get all containers of the domain
