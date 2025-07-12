@@ -4552,10 +4552,6 @@ docker run -itd -p 7687:7687 -p 7474:7474 --env NEO4J_AUTH=neo4j/<PASSWORD> -v $
 ALTER USER neo4j SET PASSWORD '<PASSWORD>'
 ```
 
-Here’s a clean, OSCP-ready markdown version of your **BloodHound-python** notes, with added context for clarity:
-
----
-
 ##### 🩸 BloodHound-python Collection Cheat Sheet
 
 > Use `bloodhound-python` to enumerate Active Directory objects and relationships for analysis in BloodHound. Supports password, hash, or Kerberos ticket-based auth.
