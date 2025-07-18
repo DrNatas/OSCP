@@ -74,6 +74,7 @@ Thank you for reading.
         - [Nmap](#nmap)
         - [Port Scanning](#port-scanning)
         - [snmpwalk](#snmpwalk)
+        - [DNS](#dns)
     - [Web Application Analysis](#web-application-analysis-1)
         - [Burp Suite](#burp-suite)
         - [cadaver](#cadaver)
@@ -1508,6 +1509,48 @@ $ smbmap -u jsmith -p password1 -d workgroup -H 192.168.0.1
 $ smbmap -u jsmith -p 'aad3b435b51404eeaad3b435b51404ee:da76f2c4c96028b7a6111aef4a50a94d' -H 172.16.0.20
 $ smbmap -u 'apadmin' -p 'asdf1234!' -d ACME -Hh 10.1.3.30 -x 'net group "Domain Admins" /domain'
 ```
+
+#### DNS Enumeration
+
+## Active Directory Domain Controller SRV Record Lookup
+
+### Querying LDAP Domain Controllers via DNS
+
+To enumerate domain controllers for an AD domain, query the special SRV record using `dig`:
+
+```sh
+dig @<DNS_SERVER_IP> _ldap._tcp.dc._msdcs.<AD_DOMAIN> SRV +short
+```
+
+**Example:**
+
+```sh
+dig @10.10.11.60 _ldap._tcp.dc._msdcs.frizz.htb SRV +short
+```
+
+#### Output Example
+
+```
+0 100 389 frizzdc.frizz.htb.
+```
+
+**Breakdown:**
+
+* **0** – Priority (lower = higher preference)
+* **100** – Weight (used for load balancing among same-priority records)
+* **389** – Port for LDAP service
+* **frizzdc.frizz.htb.** – Hostname of the domain controller
+
+#### What this means
+
+This SRV record tells you which host(s) are providing the LDAP service (port 389) for the Active Directory domain, which is a key step in identifying DCs and enumerating further AD information.
+
+---
+
+**Reference:** Useful for AD enumeration and lateral movement in internal network assessments.
+
+---
+
 
 ### Web Application Analysis
 
