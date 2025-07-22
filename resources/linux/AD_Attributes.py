@@ -6,7 +6,7 @@ LDAP Account Investigator (Optimized Version)
 import argparse
 import os
 from datetime import datetime, timedelta
-from ldap3 import Server, Connection, NTLM, SYNC
+from ldap3 import Server, Connection, NTLM, SYNC, SASL, GSSAPI
 from ldap3.core.exceptions import LDAPBindError, LDAPSocketOpenError
 
 # Credential loader
@@ -100,6 +100,7 @@ attribute_labels = {
 # Argument parsing
 parser = argparse.ArgumentParser(description='LDAP Account Investigator')
 parser.add_argument('-u', '--username', required=True, help='Username to investigate')
+parser.add_argument('--auth', choices=['NTLM', 'KERBEROS'], default='NTLM', help='Authentication method: NTLM or KERBEROS')
 args = parser.parse_args()
 
 creds = {}
@@ -109,7 +110,12 @@ try:
     creds = get_credentials()
     ad_user = f"{creds['domain']}\\{creds['username']}"
     server = Server(creds['domain'], get_info=None) # No need for server info on bind, speed up server object creation
-    conn = Connection(server, user=ad_user, password=creds['password'], authentication=NTLM, client_strategy=SYNC) # Explicitly set SYNC for clarity
+    
+    if args.auth == 'NTLM':
+        conn = Connection(server, user=ad_user, password=creds['password'], authentication=NTLM, client_strategy=SYNC)
+    else:
+        # For Kerberos, user and password are not needed if you have a valid TGT in your Kerberos ticket cache
+        conn = Connection(server, authentication=SASL, sasl_mechanism=GSSAPI, client_strategy=SYNC)
 
     if not conn.bind():
         # More specific error if bind fails
@@ -192,6 +198,6 @@ finally:
     if conn:
         try:
             conn.unbind()
-            # print("LDAP connection unbound.") # Uncomment for debugging
+            print("LDAP connection unbound.") # Uncomment for debugging
         except Exception as e:
             print(f"Error during LDAP unbind: {e}")
