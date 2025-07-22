@@ -4741,7 +4741,7 @@ enum4linux-ng -A <RHOST>
 ```c
 evil-winrm -i <RHOST> -u <USERNAME> -p <PASSWORD>                                                               # Basic Evil-WinRM session using username and password
 evil-winrm -i <RHOST> -c /PATH/TO/CERTIFICATE/<CERT>.crt -k /PATH/TO/PRIVATE/KEY/<KEY>.key -u <USERNAME> -S     # Auth with client cert/key over SSL
-evil-winrm -i <RHOST> -r <REALM>                                                                                # Specify Kerberos realm/domain
+evil-winrm -i <RHOST> -r <REALM>                                                                                # Specify Kerberos realm/domain with loaded ccache
 ```
 
 #### Impacket
