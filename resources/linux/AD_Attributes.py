@@ -13,7 +13,7 @@ from ldap3.core.exceptions import LDAPBindError, LDAPSocketOpenError
 def get_credentials():
     home = os.path.expanduser("~")
     credentials = {}
-    secrets_file_path = f".secrets"             # Needs 3 rows, domain=<REALM>, username=<USER>, password=<PASS>
+    secrets_file_path = f"secrets"             # Needs 3 rows, domain=<REALM>, username=<USER>, password=<PASS>
     if not os.path.exists(secrets_file_path):
         raise FileNotFoundError(f"Credential file not found at: {secrets_file_path}")
 
