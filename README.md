@@ -657,16 +657,25 @@ export KRB5CCNAME='realpath <FILE>.ccache'
 
 ```c
 /etc/krb5.conf                          // kerberos configuration file location
-echo 'PASSWORD' | kinit <USERNAME>       // creating ticket request
+// AD, a minimal config often works /etc/krb5.conf:
+[libdefaults]                   
+  default_realm = REALM.TLD
+  dns_lookup_kdc = true
+  dns_lookup_realm = true
+
+
+echo 'PASSWORD' | kinit <USERNAME>      // creating ticket request
+kinit username@REALM.TLD                                                  // username/password, get a TGT
 klist                                   // show available kerberos tickets
 kdestroy                                // delete cached kerberos tickets
 .k5login                                // resides kerberos principals for login (place in home directory)
 krb5.keytab                             // "key table" file for one or more principals
 kadmin                                  // kerberos administration console
 add_principal <EMAIL>                   // add a new user to a keytab file
-ksu                                     // executes a command with kerberos authentication
-klist -k /etc/krb5.keytab               // lists keytab file
-kadmin -p kadmin/<EMAIL> -k -t /etc/krb5.keytab   // enables editing of the keytab file
+ksu                                                                       // executes a command with kerberos authentication
+klist -k /etc/krb5.keytab                                                 // lists keytab file
+kadmin -p kadmin/<EMAIL> -k -t /etc/krb5.keytab                           // enables editing of the keytab file
+KRB5_CONFIG=/dev/null -V -S krbtgt/REALM.TLD@REALM.TLD username@REALM.TL  // Use a specific KDC (domain controller) without changing config
 ```
 
 ##### Ticket Conversion
