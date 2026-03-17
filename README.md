@@ -675,6 +675,7 @@ add_principal <EMAIL>                   // add a new user to a keytab file
 ksu                                                                       // executes a command with kerberos authentication
 klist -k /etc/krb5.keytab                                                 // lists keytab file
 kadmin -p kadmin/<EMAIL> -k -t /etc/krb5.keytab                           // enables editing of the keytab file
+
 KRB5_CONFIG=/dev/null -V -S krbtgt/REALM.TLD@REALM.TLD username@REALM.TL  // Use a specific KDC (domain controller) without changing config
 ```
 
@@ -1227,12 +1228,13 @@ sudo python3 -m http.server 80
 #### RDP
 
 ```c
-xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /cert-ignore
-xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /d:<DOMAIN> /cert-ignore
-xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /dynamic-resolution +clipboard
-xfreerdp /v:<RHOST> /u:<USERNAME> /d:<DOMAIN> /pth:'<HASH>' /dynamic-resolution +clipboard
-xfreerdp /v:<RHOST> /dynamic-resolution +clipboard /tls-seclevel:0 -sec-nla
-rdesktop <RHOST>
+xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /cert-ignore                                                  // Basic RDP
+xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /d:<DOMAIN> /cert-ignore                                      // Domain auth
+xfreerdp /v:<RHOST> /u:<USERNAME> /p:<PASSWORD> /dynamic-resolution +clipboard                                // Resize + clipboard
+xfreerdp /v:<RHOST> /u:<USERNAME> /d:<DOMAIN> /pth:'<HASH>' /dynamic-resolution +clipboard                    // Pass-the-Hash over RDP
+xfreerdp /v:<RHOST> /dynamic-resolution +clipboard /tls-seclevel:0 -sec-nla                                   // Legacy fallback, disable NLA
+xfreerdp3 /v:<RHOST> /u:<USERNAME> /d:<DOMAIN> /p:"<PASSWORD>" /4 /cert:ignore +clipboard /dynamic-resolution // Kerberos-flavored login FQDN/domain auth, force IPv4, ignore cert
+rdesktop <RHOST> // Old fallback client
 ```
 
 #### showmount
