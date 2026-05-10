@@ -340,9 +340,9 @@ shift + P           # start/stop logging
 ```bash
 sudo ntpdate <RHOST>
 sudo ntpdate -b -u <RHOST>
-sudo timedatectl set-timezone UTC
 while [ 1 ]; do sudo ntpdate <RHOST>;done    # continuous sync
 sudo net time -S <IP>
+sudo timedatectl set-ntp false && sudo net time set -S <NTP_IP>
 ```
 
 ---
