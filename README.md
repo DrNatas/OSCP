@@ -1,6 +1,6 @@
 # OSCP+ Cheat Sheet
 
-> **Exam Restrictions**: Automatic exploitation tools like `sqlmap` and LinPEAS auto-exploitation are prohibited. Always verify current guidelines before the exam.
+> **Exam Restrictions**: Automatic exploitation tools like `sqlmap` auto-exploitation are prohibited. Always verify current guidelines before the exam.
 > - [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide)
 > - [Proctored Exams](https://help.offsec.com/hc/en-us/sections/360008126631-Proctored-Exams)
 >
