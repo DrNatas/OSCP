@@ -20,6 +20,7 @@
   - [Basics](#basics)
     - [File Transfer](#file-transfer-1)
   - [Information Gathering](#information-gathering)
+    - [Common Ports & Protocols](#common-ports--protocols)
   - [Web Application Analysis](#web-application-analysis)
   - [Database Analysis](#database-analysis)
   - [Password Attacks](#password-attacks)
@@ -479,6 +480,47 @@ sudo nmap $TARGET -p 88 --script krb5-enum-users --script-args krb5-enum-users.r
 for p in {1..65535}; do nc -vn <RHOST> $p -w 1 -z & done 2> <FILE>.txt    # quick full TCP scan with netcat
 export ip=<RHOST>; for port in $(seq 1 65535); do timeout 0.01 bash -c "</dev/tcp/$ip/$port && echo The port $port is open" 2>/dev/null; done    # bash TCP port sweep
 ```
+
+#### Common Ports & Protocols
+
+| Category                    | Service             | Ports / Protocol                 |
+| --------------------------- | ------------------- | -------------------------------- |
+| ICMP                        | ICMP                | None (protocol only)             |
+| File Transfer               | FTP                 | TCP/20 (data), TCP/21 (control)  |
+| File Transfer               | SCP                 | TCP/22                           |
+| File Transfer               | TFTP                | UDP/69                           |
+| Remote Access               | SSH                 | TCP/22                           |
+| Remote Access               | Telnet              | TCP/23                           |
+| Remote Access               | RDP                 | TCP/3389                         |
+| Remote Access               | VNC                 | TCP/5900                         |
+| Email                       | SMTP                | TCP/25                           |
+| Email                       | POP3                | TCP/110                          |
+| Email                       | IMAP                | TCP/143                          |
+| Email                       | IMAPS (Secure IMAP) | TCP/993                          |
+| Email                       | POP3S (Secure POP3) | TCP/995                          |
+| Web Services                | HTTP                | TCP/80                           |
+| Web Services                | HTTPS               | TCP/443                          |
+| Web Services                | HTTP-Proxy          | TCP/8080                         |
+| Name and Directory Services | DNS                 | UDP/53, TCP/53                   |
+| Name and Directory Services | LDAP                | TCP/389                          |
+| Name and Directory Services | mDNS                | UDP/5353                         |
+| RPC and SMB                 | RPCbind (NFS)       | TCP/111, UDP/111                 |
+| RPC and SMB                 | Microsoft RPC       | TCP/135, UDP/135                 |
+| RPC and SMB                 | NetBIOS             | TCP/137-139, UDP/137-139         |
+| RPC and SMB                 | SMB                 | TCP/445                          |
+| Database Services           | MSSQL               | TCP/1433, UDP/1434               |
+| Database Services           | Oracle Database     | TCP/1521, TCP/1630               |
+| Database Services           | MySQL & MariaDB     | TCP/3306                         |
+| Database Services           | Postgres            | TCP/5432                         |
+| Database Services           | Informix            | TCP/9088, TCP/9089               |
+| Database Services           | SAP                 | TCP/3200, TCP/3300               |
+| Database Services           | IBM DB2             | TCP/50000, TCP/50001             |
+| VPN                         | PPTP                | TCP/1723                         |
+| Monitoring and Management   | Webmin              | TCP/10000                        |
+| Monitoring and Management   | SNMP                | UDP/161                          |
+| ICS Protocols               | Modbus              | TCP/502, UDP/502                 |
+| ICS Protocols               | DNP3                | TCP/20000, UDP/20000             |
+| ICS Protocols               | Ethernet/IP         | TCP/44818                        |
 
 #### DNS Enumeration
 
