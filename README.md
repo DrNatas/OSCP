@@ -613,6 +613,7 @@ ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-s
 ```bash
 feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt -t 100 -r --filter-status 403    # recursive directory brute force
 feroxbuster -u http://<RHOST> -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -H "Host: FUZZ.<RHOST>" -t 100    # virtual host brute force
+feroxbuster -u https://<RHOST> -k                                # ignore invalid TLS certificates
 ```
 
 #### Gobuster
