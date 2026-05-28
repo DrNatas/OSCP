@@ -79,15 +79,18 @@
 | Name | URL |
 | --- | --- |
 | BIND / dig / nslookup | https://www.isc.org/bind/ |
+| dnsx | https://github.com/projectdiscovery/dnsx |
 | enum4linux-ng | https://github.com/cddmp/enum4linux-ng |
 | ldapsearch / OpenLDAP | https://www.openldap.org/ |
 | memcached | https://memcached.org/ |
+| Naabu | https://github.com/projectdiscovery/naabu |
 | NBTscan | https://github.com/resurrecting-open-source-projects/nbtscan |
 | Net-SNMP / snmpwalk | https://www.net-snmp.org/ |
 | Nmap | https://github.com/nmap/nmap |
 | nikto | https://github.com/sullo/nikto |
 | smbmap | https://github.com/ShawnDEvans/smbmap |
 | Sparta | https://github.com/SECFORCE/sparta |
+| Subfinder | https://github.com/projectdiscovery/subfinder |
 
 ### Web Application Analysis
 
@@ -99,9 +102,11 @@
 | GitTools | https://github.com/internetwache/GitTools |
 | Gobuster | https://github.com/OJ/gobuster |
 | fpmvuln | https://github.com/hannob/fpmvuln |
+| httpx-toolkit | https://github.com/projectdiscovery/httpx |
 | JSON Web Tokens | https://jwt.io |
 | JWT_Tool | https://github.com/ticarpi/jwt_tool |
 | Leaky Paths | https://github.com/ayoubfathi/leaky-paths |
+| Nuclei | https://github.com/projectdiscovery/nuclei |
 | PayloadsAllTheThings | https://github.com/swisskyrepo/PayloadsAllTheThings |
 | PHP Filter Chain Generator | https://github.com/synacktiv/php_filter_chain_generator |
 | PHPGGC | https://github.com/ambionics/phpggc |
@@ -639,6 +644,26 @@ gobuster dns -d <DOMAIN> -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomai
 gobuster vhost -u <RHOST> -t 50 -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-110000.txt --append-domain    # brute force virtual hosts
 
 # Common extensions: txt,bak,php,html,js,asp,aspx
+```
+
+#### Nuclei / ProjectDiscovery
+
+```bash
+nuclei -target <RHOST> -as                                                                     # run automatic tech-detected scan against host or IP
+nuclei -target http://<RHOST.TLD> -as                                                          # run automatic tech-detected web scan
+nuclei -target http://<RHOST.TLD> -s medium,high,critical                                      # run higher-signal severity templates
+nuclei -target http://<RHOST.TLD> -tags exposure,misconfig,cve -o nuclei.txt                   # scan common OSCP-relevant tags and save output
+nuclei -list <URLS_FILE> -s high,critical -rl 25 -c 10 -o nuclei-high.txt                      # scan URL list with conservative rate and concurrency
+nuclei -list <URLS_FILE> -jsonl -o nuclei.jsonl                                                # save machine-readable findings
+nuclei -target http://<RHOST.TLD> -H "Cookie: <COOKIE>"                                        # scan authenticated app with session cookie
+nuclei -target http://<RHOST.TLD> -proxy http://127.0.0.1:8080                                 # route scan through Burp
+nuclei -ut                                                                                     # update nuclei templates
+nuclei -tl -tags cve,exposure,misconfig                                                        # list matching templates before scanning
+httpx-toolkit -l <HOSTS_FILE> -sc -title -td -server -fr -o <URLS_FILE>                        # probe hosts and fingerprint live HTTP services
+naabu -host <RHOST> -top-ports 1000 -silent | httpx-toolkit -silent -sc -title -td             # discover web services on common ports
+subfinder -d <DOMAIN> -silent | dnsx -silent -a -o <RESOLVED_FILE>                             # find and resolve subdomains
+subfinder -d <DOMAIN> -silent | httpx-toolkit -silent -sc -title -td -o <URLS_FILE>            # find live web subdomains for nuclei
+cat <URLS_FILE> | nuclei -as -s medium,high,critical -o nuclei.txt                             # scan probed URLs with tech detection
 ```
 
 #### wfuzz
