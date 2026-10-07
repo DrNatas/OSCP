@@ -4,13 +4,13 @@ description: Bug Bounty Hunter and security training materials
 tags: [academy, training, bug-bounty, security]
 ---
 
-# 🎓 Academy Training Materials
+#  Academy Training Materials
 
 > Hack the Box Academy courses and training materials integrated into your OSCP methodology.
 
 ---
 
-## 📚 Available Courses
+##  Available Courses
 
 ### Bug Bounty Hunter Track
 
@@ -25,7 +25,7 @@ Techniques for exploiting file upload vulnerabilities in web applications
 
 ---
 
-## 🔗 Connection to OSCP
+##  Connection to OSCP
 
 These academy materials complement your OSCP preparation by providing:
 - **Foundational Knowledge** — Core security concepts
@@ -34,7 +34,7 @@ These academy materials complement your OSCP preparation by providing:
 
 ---
 
-## 📖 How to Study
+##  How to Study
 
 1. **Start with Fundamentals** — Begin with Web Applications and Web Requests
 2. **Practice Techniques** — Implement methods in HTB machines
@@ -42,7 +42,7 @@ These academy materials complement your OSCP preparation by providing:
 
 ---
 
-## 🔄 Related Resources
+##  Related Resources
 
 - [[../00-Index|Main OSCP Index]]
 - [[../Writeups/00-Writeups-Index|HTB Writeups]]

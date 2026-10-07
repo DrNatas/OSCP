@@ -4,13 +4,13 @@ description: Three-phase approach to passing OSCP using this vault
 tags: [oscp, methodology, study-guide, planning]
 ---
 
-# 📋 OSCP Study Methodology
+#  OSCP Study Methodology
 
 > A structured three-phase approach to mastering penetration testing and passing the OSCP exam using this integrated vault.
 
 ---
 
-## 🎯 Overview
+##  Overview
 
 **Goal:** Pass the OSCP exam (35+ points out of 100)  
 **Timeline:** 3-9 months (depending on starting level)  
@@ -19,7 +19,7 @@ tags: [oscp, methodology, study-guide, planning]
 
 ---
 
-## 📚 PHASE 1: LEARN (Weeks 1-4)
+##  PHASE 1: LEARN (Weeks 1-4)
 
 ### Objective
 Build foundational knowledge of reconnaissance and exploitation techniques
@@ -72,7 +72,7 @@ Build foundational knowledge of reconnaissance and exploitation techniques
 
 ---
 
-## 🎮 PHASE 2: PRACTICE (Weeks 5-20)
+##  PHASE 2: PRACTICE (Weeks 5-20)
 
 ### Objective
 Develop exploitation skills through hands-on machine solving
@@ -129,33 +129,33 @@ Develop exploitation skills through hands-on machine solving
 
 ```
 1. RECON (30 min)
-   ├─ Nmap scan (all ports, all services)
-   ├─ Record findings in writeup
-   └─ Identify target services
+    Nmap scan (all ports, all services)
+    Record findings in writeup
+    Identify target services
 
 2. ENUMERATION (60-90 min)
-   ├─ Deep dive on each open port
-   ├─ Use appropriate [[Tools-Reference|tools]]
-   ├─ Fuzz parameters and endpoints
-   └─ Document all findings
+    Deep dive on each open port
+    Use appropriate [[Tools-Reference|tools]]
+    Fuzz parameters and endpoints
+    Document all findings
 
 3. EXPLOITATION (60-120 min)
-   ├─ Identify vulnerability path
-   ├─ Achieve initial access
-   ├─ Verify shell as specific user
-   └─ Document proof (id, whoami)
+    Identify vulnerability path
+    Achieve initial access
+    Verify shell as specific user
+    Document proof (id, whoami)
 
 4. POST-EXPLOITATION (30-60 min)
-   ├─ System enumeration (id, sudo -l, find SUID)
-   ├─ Identify privesc vector
-   ├─ Execute privilege escalation
-   └─ Capture proof (cat /root/root.txt)
+    System enumeration (id, sudo -l, find SUID)
+    Identify privesc vector
+    Execute privilege escalation
+    Capture proof (cat /root/root.txt)
 
 5. DOCUMENTATION (30 min)
-   ├─ Fill [[Writeup-Templates/Writeup-Template|template]]
-   ├─ Document complete attack chain
-   ├─ Link to techniques [[Exploitation/|used]]
-   └─ Record lessons learned
+    Fill [[Writeup-Templates/Writeup-Template|template]]
+    Document complete attack chain
+    Link to techniques [[Exploitation/|used]]
+    Record lessons learned
 ```
 
 ### Deliverables
@@ -168,7 +168,7 @@ Develop exploitation skills through hands-on machine solving
 
 ---
 
-## 🏆 PHASE 3: MASTER (Weeks 21-28)
+##  PHASE 3: MASTER (Weeks 21-28)
 
 ### Objective
 Prepare for exam conditions and master complex scenarios
@@ -239,29 +239,29 @@ Prepare for exam conditions and master complex scenarios
 
 ---
 
-## 📊 Success Metrics
+##  Success Metrics
 
 ### Phase 1 Completion
-✅ Understand reconnaissance workflow  
-✅ Know 5+ web vulnerability types  
-✅ Know 5+ privilege escalation vectors  
-✅ Can use [[Tools-Reference/00-Tools-Index|key tools]]  
+ Understand reconnaissance workflow  
+ Know 5+ web vulnerability types  
+ Know 5+ privilege escalation vectors  
+ Can use [[Tools-Reference/00-Tools-Index|key tools]]  
 
 ### Phase 2 Completion
-✅ Complete 14 machines with writeups  
-✅ Can exploit 25-point machines  
-✅ Understand AD attack chains  
-✅ Can write technical documentation  
+ Complete 14 machines with writeups  
+ Can exploit 25-point machines  
+ Understand AD attack chains  
+ Can write technical documentation  
 
 ### Phase 3 Completion (Ready for Exam)
-✅ Pass mock exam (≥35 points)  
-✅ No tool dependency anxiety  
-✅ Confident in manual exploitation  
-✅ Professional report quality  
+ Pass mock exam (≥35 points)  
+ No tool dependency anxiety  
+ Confident in manual exploitation  
+ Professional report quality  
 
 ---
 
-## 🔄 Daily Routine
+##  Daily Routine
 
 ### Learning Days (Phase 1)
 ```
@@ -285,7 +285,7 @@ Evening (2h):     Report writing & review
 
 ---
 
-## 🚀 Quick Reference: Machine Difficulty Progression
+##  Quick Reference: Machine Difficulty Progression
 
 ```
 BEGINNER
@@ -296,12 +296,12 @@ ADVANCED
   ↓ (Hard Machines: 1-6)
 MASTERY
   ↓ (Timed Labs)
-EXAM READY ✅
+EXAM READY 
 ```
 
 ---
 
-## 🎓 Tips for Success
+##  Tips for Success
 
 ### Enumeration
 - Always run full port scan (-p-) first
@@ -335,7 +335,7 @@ EXAM READY ✅
 
 ---
 
-## 🔗 Related Resources
+##  Related Resources
 
 - [[00-Index|Main OSCP Index]]
 - [[OSCP-Exam-Rules|Exam Rules & Restrictions]]

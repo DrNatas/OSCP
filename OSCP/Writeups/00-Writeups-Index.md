@@ -4,7 +4,7 @@ description: Complete collection of Hack the Box machine solutions with methodol
 tags: [writeups, htb, machines, oscp]
 ---
 
-# 📚 HTB Machine Writeups & Solutions
+#  HTB Machine Writeups & Solutions
 
 > A comprehensive collection of machine solutions demonstrating OSCP-relevant exploitation techniques.
 
@@ -13,7 +13,7 @@ tags: [writeups, htb, machines, oscp]
 
 ---
 
-## 🎯 Quick Navigation
+##  Quick Navigation
 
 ### By Difficulty Level
 
@@ -43,7 +43,7 @@ tags: [writeups, htb, machines, oscp]
 
 ---
 
-## 📋 All Machines
+##  All Machines
 
 | Machine | Difficulty | OS | Key Techniques |
 |---------|------------|----|----|
@@ -67,7 +67,7 @@ tags: [writeups, htb, machines, oscp]
 
 ---
 
-## 🔗 Connected Methodology
+##  Connected Methodology
 
 ### Enumeration Techniques Used
 - [[Enumeration/Web-Enumeration|Web Enumeration]] — DNS fuzzing, subdomain discovery, directory brute force
@@ -88,7 +88,7 @@ tags: [writeups, htb, machines, oscp]
 
 ---
 
-## 📊 Statistics
+##  Statistics
 
 - **Total Writeups:** 17
 - **Easy Machines:** 4
@@ -98,7 +98,7 @@ tags: [writeups, htb, machines, oscp]
 
 ---
 
-## 🎓 How to Use These Writeups
+##  How to Use These Writeups
 
 1. **For Learning:** Read through the writeups to understand exploitation methodology
 2. **For Practice:** Try solving machines yourself first, then compare with writeups
@@ -107,7 +107,7 @@ tags: [writeups, htb, machines, oscp]
 
 ---
 
-## 📝 Writeup Structure
+##  Writeup Structure
 
 Each machine writeup includes:
 - **Machine Information** — Name, difficulty, OS, IP
@@ -120,7 +120,7 @@ Each machine writeup includes:
 
 ---
 
-## 🔄 Related Resources
+##  Related Resources
 
 - [[00-Index|Main OSCP Index]]
 - [[Quick-Reference|Quick Reference Guide]]
@@ -131,4 +131,4 @@ Each machine writeup includes:
 
 **Last Sync:** 2026-10-07  
 **Repository:** OSCP-Preparation  
-**Status:** ✅ Complete & Organized
+**Status:**  Complete & Organized

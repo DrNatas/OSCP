@@ -1,17 +1,17 @@
-# 🚀 Quick Start Guide
+# Quick Start Guide
 
 ## Your OSCP Vault is Ready!
 
 You now have a complete, unified knowledge base for OSCP preparation with:
-- ✅ 17 fully documented HTB machine writeups
-- ✅ Academy training materials integrated
-- ✅ Comprehensive study methodology
-- ✅ Visual canvas diagram
-- ✅ All connected with wikilinks
+- [x] 17 fully documented HTB machine writeups
+- [x] Academy training materials integrated
+- [x] Comprehensive study methodology
+- [x] Visual canvas diagram
+- [x] All connected with wikilinks
 
 ---
 
-## 📍 Start Here
+## Start Here
 
 ### Option 1: Just Learning (Phase 1)
 1. Open `OSCP/00-Index.md`
@@ -33,7 +33,7 @@ You now have a complete, unified knowledge base for OSCP preparation with:
 
 ---
 
-## 📂 Essential Files
+## Essential Files
 
 | File | Purpose | When to Use |
 |------|---------|------------|
@@ -48,28 +48,28 @@ You now have a complete, unified knowledge base for OSCP preparation with:
 
 ---
 
-## 🎯 Your Study Path
+##  Your Study Path
 
 ```
 Week 1-4:  LEARN Techniques
-           └─→ Read Enumeration, Exploitation, Tools
+           → Read Enumeration, Exploitation, Tools
 
 Month 2-5: PRACTICE Machines
-           ├─→ Easy machines (LinkVortex, Certified, RustyKey, Nocturnal)
-           ├─→ Medium machines (Code, Support, Alert, Chemistry)
-           └─→ Document with template for each
+           → Easy machines (LinkVortex, Certified, RustyKey, Nocturnal)
+           → Medium machines (Code, Support, Alert, Chemistry)
+           → Document with template for each
 
 Month 6-8: MASTER Challenges
-           ├─→ Hard machines (6 hardest writeups)
-           ├─→ Timed practice (8 hours per machine)
-           └─→ Full report writing
+           → Hard machines (6 hardest writeups)
+           → Timed practice (8 hours per machine)
+           → Full report writing
 
-EXAM READY → Take OSCP! 🎯
+EXAM READY → Take OSCP! 
 ```
 
 ---
 
-## 💡 Pro Tips
+##  Pro Tips
 
 ### While Studying
 - Link techniques to machines: `[[Exploitation/Web/SQL-Injection]]`
@@ -84,15 +84,15 @@ EXAM READY → Take OSCP! 🎯
 4. **Update Template** → Fill writeup as you progress
 
 ### Before Exam
-- ✅ Review `OSCP-Exam-Rules.md`
-- ✅ Practice no-Metasploit challenges
-- ✅ Practice no-automation challenges  
-- ✅ Write 3 full professional reports
-- ✅ Do 1-2 timed labs (8 hours)
+-  Review `OSCP-Exam-Rules.md`
+-  Practice no-Metasploit challenges
+-  Practice no-automation challenges  
+-  Write 3 full professional reports
+-  Do 1-2 timed labs (8 hours)
 
 ---
 
-## 🔍 What's in Each Section
+##  What's in Each Section
 
 ### Enumeration/
 Reconnaissance and information gathering:
@@ -136,39 +136,39 @@ Ready-to-use exploits:
 
 ---
 
-## 🎮 Quick Machine Solving Checklist
+##  Quick Machine Solving Checklist
 
 ```
-□ Nmap scan (all ports, all services)
+ Nmap scan (all ports, all services)
   nmap -p- -sV -sC target.htb
 
-□ Record findings in writeup template
+ Record findings in writeup template
 
-□ Web enumeration (if applicable)
+ Web enumeration (if applicable)
   ffuf, Burp Suite, Nuclei, manual exploration
 
-□ Identify vulnerability path
+ Identify vulnerability path
 
-□ Exploit and gain shell (low priv)
+ Exploit and gain shell (low priv)
   echo proof of shell (whoami, id)
 
-□ Post-exploitation enumeration
+ Post-exploitation enumeration
   sudo -l, find SUID, cronjobs, kernel version
 
-□ Privilege escalation
+ Privilege escalation
 
-□ Capture flags
+ Capture flags
   cat /home/user/user.txt
   cat /root/root.txt
 
-□ Fill writeup template completely
+ Fill writeup template completely
 
-□ Link techniques used to writeup
+ Link techniques used to writeup
 ```
 
 ---
 
-## 📞 Stuck?
+##  Stuck?
 
 ### Can't Find Something?
 1. Use search in Obsidian (Cmd+P / Ctrl+P)
@@ -187,7 +187,7 @@ Ready-to-use exploits:
 
 ---
 
-## 🎓 Study Tips for Success
+##  Study Tips for Success
 
 ### Time Management
 - Allocate 8 hours per machine (like real exam)
@@ -209,33 +209,33 @@ Ready-to-use exploits:
 
 ---
 
-## ✨ Features You Now Have
+##  Features You Now Have
 
-### 🎯 Complete Methodology
+###  Complete Methodology
 - Week-by-week study plan
 - 3-phase progression (Learn → Practice → Master)
 - Success metrics for each phase
 - Daily routine templates
 
-### 🗺️ Visual Navigation
+###  Visual Navigation
 - Canvas diagram showing complete workflow
 - Interconnected technique nodes
 - Study phase visualization
 - Easy browsing
 
-### 📚 17 Real Examples
+###  17 Real Examples
 - Easy machines to build confidence
 - Medium machines for chaining
 - Hard machines for mastery
 - All with detailed writeups
 
-### 🔗 Smart Linking
+###  Smart Linking
 - Techniques link to machines using them
 - Machines link back to techniques
 - Tools referenced with commands
 - Cross-referenced templates
 
-### 🛠️ Reference Library
+###  Reference Library
 - 50+ tools documented
 - 100+ payloads ready
 - Technique checklists
@@ -243,7 +243,7 @@ Ready-to-use exploits:
 
 ---
 
-## 🚀 Next Action
+##  Next Action
 
 ### Right Now:
 1. Open Obsidian in `OSCP/` directory
@@ -265,7 +265,7 @@ Ready-to-use exploits:
 
 ---
 
-## 📊 Your Numbers
+##  Your Numbers
 
 | Metric | Value | Status |
 |--------|-------|--------|
@@ -274,18 +274,18 @@ Ready-to-use exploits:
 | Tools | 50+ | Ready to reference |
 | Templates | 3 | Ready to use |
 | Study Weeks | 28 | Ready to follow |
-| Confidence | 📈 | Will grow! |
+| Confidence |  | Will grow! |
 
 ---
 
-## 🎉 You're All Set!
+##  You're All Set!
 
 Everything you need is organized and ready. This isn't just a knowledge base—it's your personal OSCP bootcamp. Use it, learn from it, and let it guide you to passing the exam.
 
-**Your journey to OSCP starts now. Let's go! 🎯**
+**Your journey to OSCP starts now. Let's go! **
 
 ---
 
 *Created: 2026-10-07*  
 *Status: Ready for study*  
-*Good luck! 🚀*
+*Good luck! *
