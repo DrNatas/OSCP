@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(cat)",
+      "Bash(chmod +x /tmp/migrate_machines.sh)",
+      "Bash(/tmp/migrate_machines.sh)",
+      "Bash(cp *)",
+      "Bash(git push *)",
+      "Bash(git commit -m 'Consolidate Ember vault into OSCP: Integrate 17 HTB machines, Academy content, and create unified study methodology *)"
+    ]
+  }
+}

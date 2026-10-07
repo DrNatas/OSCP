@@ -79,6 +79,19 @@ Templates and examples for documenting machine solutions.
 - [[Writeup-Templates/Findings-Template|Findings Template]] — Organize vulnerabilities and exploitation paths
 - [[Writeup-Templates/Lessons-Learned|Lessons Learned Template]] — Reflect on techniques applied
 
+### [🎯 HTB Machine Writeups](Writeups/00-Writeups-Index.md)
+Complete collection of Hack the Box machine solutions with exploitation methodology.
+- **17 Complete Writeups** — Easy, Medium, Hard difficulty machines
+- **Enumeration Examples** — Real-world reconnaissance examples
+- **Exploitation Paths** — Step-by-step exploitation chains
+- **Lessons Learned** — Key insights from each machine
+
+### [🎓 Academy Training](Academy/00-Academy-Index.md)
+Integrated Hack the Box Academy courses for comprehensive security knowledge.
+- [[Academy/Bug-Bounty-Hunter/WEB-APPLICATIONS|Web Applications]]
+- [[Academy/Bug-Bounty-Hunter/WEB-REQUESTS|Web Requests]]
+- [[Academy/Bug-Bounty-Hunter/FILE-UPLOAD-ATTACKS|File Upload Attacks]]
+
 ### [💾 Payloads & Resources](Payloads/00-Payloads-Index.md)
 Pre-built payloads, reverse shells, and exploit code.
 - [[Payloads/Reverse-Shells|Reverse Shells]] — Bash, PowerShell, PHP, Python
