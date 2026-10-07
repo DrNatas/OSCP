@@ -124,30 +124,30 @@ All techniques organized by attack category and linked to real HTB examples.
 
 ```
 Found vulnerable web app?
-├─ SQL error visible? → SQLi
-├─ File upload field? → File Upload RCE
-├─ Can include files? → LFI
-├─ Template processing? → SSTI
-└─ XML parsing? → XXE
+ SQL error visible? → SQLi
+ File upload field? → File Upload RCE
+ Can include files? → LFI
+ Template processing? → SSTI
+ XML parsing? → XXE
 
 Got initial shell?
-├─ Run local enum checklist
-├─ Check sudo -l
-├─ Find SUID binaries
-├─ Check kernel version
-├─ Look for weak permissions
-└─ Check cron jobs
+ Run local enum checklist
+ Check sudo -l
+ Find SUID binaries
+ Check kernel version
+ Look for weak permissions
+ Check cron jobs
 
 Have credentials?
-├─ Try against other services
-├─ Check for reuse (ssh, rdp, smb)
-└─ Lateral movement
+ Try against other services
+ Check for reuse (ssh, rdp, smb)
+ Lateral movement
 
 On domain joined system?
-├─ Dump NTLM hashes
-├─ Look for cached credentials
-├─ Check for kerberoast-able users
-└─ Attempt DCSync if SYSTEM/DA
+ Dump NTLM hashes
+ Look for cached credentials
+ Check for kerberoast-able users
+ Attempt DCSync if SYSTEM/DA
 ```
 
 ## By OSCP Points Value
