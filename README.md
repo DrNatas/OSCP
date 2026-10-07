@@ -1,16 +1,57 @@
-# OSCP+ Cheat Sheet
+# 🎯 OSCP Knowledge Base
 
-> **Exam Restrictions**: Automatic exploitation tools like `sqlmap` auto-exploitation are prohibited. Always verify current guidelines before the exam.
-> - [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide)
-> - [Proctored Exams](https://help.offsec.com/hc/en-us/sections/360008126631-Proctored-Exams)
->
-> **OSCP / HTB Notes**:
-> - Keep evidence and commands clearly documented; avoid automation where exam policy forbids it.
-> - Verify manual exploitability and service versions before reporting.
-> - When pivoting, confirm internal DNS/service reachability and note all network paths.
-> - Capture every access method, note credential sources, and preserve payload context for reporting.
+> **Welcome!** This is a beautifully-organized Obsidian-compatible vault for OSCP preparation. Study techniques, document your progress, and build your personal penetration testing reference library.
+
+## 🚀 Quick Start
+
+**→ [Open 00-Index.md](00-Index.md) to navigate the vault**
+
+For Obsidian users: Open this folder as a vault → Use Cmd+P to search techniques → Enable Graph View to visualize connections
+
+### ⚠️ Exam Restrictions
+
+- ❌ Automatic exploitation tools (`sqlmap -dbs`, Metasploit auto-modules, Burp auto-scan)
+- ✅ Manual SQL injection, manual Metasploit, manual tool usage
+- Read **[OSCP-Exam-Rules.md](OSCP-Exam-Rules.md)** before your exam
 
 ---
+
+## 📚 Vault Structure
+
+```
+OSCP-Vault/
+├── 00-Index.md                     # Navigation hub
+├── OSCP-Exam-Rules.md             # Rules & restrictions
+├── Enumeration/                    # Information gathering
+│   ├── Web-Enumeration.md
+│   ├── Windows-Enumeration.md
+│   ├── Linux-Enumeration.md
+│   ├── Active-Directory.md
+│   └── Database-Enumeration.md
+├── Exploitation/                   # Attack techniques
+│   ├── Web/
+│   ├── Windows/
+│   └── Linux/
+├── Post-Exploitation/
+├── Writeup-Templates/             # Document your solutions
+├── Tools-Reference/
+├── Payloads/
+└── Writeups/                       # Add your HTB solutions here
+```
+
+---
+
+## 🎓 Study Paths
+
+- **Beginner**: [[Enumeration/Web-Enumeration|Web Enumeration]] → [[Exploitation/Web/SQL-Injection|SQLi]] → File Upload  
+- **Intermediate**: Windows → Linux → Active Directory  
+- **Advanced**: AD attacks → Lateral movement → Full chains
+
+---
+
+## Legacy Command Reference
+
+The original cheat sheet commands are now organized into technique notes:
 
 ## Table of Contents
 

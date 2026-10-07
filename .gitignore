@@ -1,1 +1,66 @@
 .vscode
+
+# Obsidian local settings (personalization, plugins, workspace state)
+.obsidian/workspace.json
+.obsidian/workspace
+.obsidian/cache
+.obsidian/plugins
+.obsidian/themes
+
+# Sensitive credentials and writeup drafts
+credentials.txt
+secrets.md
+**/private/
+**/admin-panel/
+**/password-lists/
+*.ccache
+*.kirbi
+*.hash
+*.dmp
+*.sam
+*.system
+
+# Machine-specific sensitive files
+Writeups/**/*-credentials.md
+Writeups/**/*-passwords.txt
+Writeups/**/*-keys/
+**/*-privesc-*.ps1
+
+# Temporary files
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+*~
+*.bak
+*.draft.md
+*.wip.md
+
+# Large binary files
+*.exe
+*.elf
+*.dll
+*.so
+*.bin
+*.iso
+
+# Keep notes, remove raw capture data
+*.pcap
+*.pcapng
+*.zip
+*.tar.gz
+*.7z
+*.rar
+
+# Metasploit workspace
+.msf4/
+loot/
+.msf-exploited/
+
+# Compiled artifacts (keep source, ignore binaries)
+**/*.o
+**/*.pyc
+**/__pycache__/
+*.class
+*.jar
