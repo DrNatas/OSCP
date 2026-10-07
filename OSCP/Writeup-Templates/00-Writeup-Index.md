@@ -4,7 +4,7 @@ description: Structure for documenting machine solutions and findings
 tags: [templates, writeup, oscp, documentation]
 ---
 
-# 📝 Writeup Templates & Examples
+#  Writeup Templates & Examples
 
 > Document your penetration tests, machine solutions, and findings using these templates. Good writeups reinforce learning and create a personal reference library.
 
@@ -12,10 +12,10 @@ tags: [templates, writeup, oscp, documentation]
 
 ## Why Document Everything?
 
-✅ **Learning retention** — Writing explains your thinking  
-✅ **Reference library** — Find similar techniques later  
-✅ **Proof of work** — Demonstrate methodology to others  
-✅ **OSCP requirement** — Official exam requires writeups of 3 machines  
+ **Learning retention** — Writing explains your thinking  
+ **Reference library** — Find similar techniques later  
+ **Proof of work** — Demonstrate methodology to others  
+ **OSCP requirement** — Official exam requires writeups of 3 machines  
 
 ---
 
@@ -66,7 +66,7 @@ Reflection on techniques used, mistakes made, and insights gained.
 
 ## Example Writeups (From Your Machines)
 
-### 👉 How to Add Your First Writeup
+###  How to Add Your First Writeup
 
 1. **Create a new folder**: `Writeups/<MACHINE-NAME>/`
 2. **Copy template**: Start with [[Writeup-Template]]
@@ -81,21 +81,21 @@ Once you solve your first machine, structure it like:
 
 ```
 Writeups/
-├── HTB-Retired/
-│   ├── Lame/
-│   │   ├── Lame-Writeup.md         # Main writeup
-│   │   ├── findings.md              # Enumeration data
-│   │   └── proof-of-exploitation/   # Screenshots
-│   ├── Blue/
-│   └── ...
-└── HTB-Active/
-    ├── <Current machine>/
-    └── ...
+ HTB-Retired/
+    Lame/
+       Lame-Writeup.md         # Main writeup
+       findings.md              # Enumeration data
+       proof-of-exploitation/   # Screenshots
+    Blue/
+    ...
+ HTB-Active/
+     <Current machine>/
+     ...
 ```
 
 ---
 
-## 📚 Recommended Study Workflow
+##  Recommended Study Workflow
 
 ### While Solving a Machine
 
@@ -114,9 +114,9 @@ Writeups/
 
 ---
 
-## 💡 Writeup Tips
+##  Writeup Tips
 
-### ✅ Do's
+###  Do's
 
 - **Clear structure** — Use headings, sections, code blocks
 - **Show your thinking** — Explain why you tried each technique
@@ -126,7 +126,7 @@ Writeups/
 - **Visual proof** — Screenshots of shells, flags, key output
 - **Lessons learned** — Reflection on what you learned
 
-### ❌ Don'ts
+###  Don'ts
 
 - Don't copy-paste the entire tool manual
 - Don't skip the "why" — focus on methodology
@@ -136,7 +136,7 @@ Writeups/
 
 ---
 
-## 🎯 Example Writeup (Skeleton)
+##  Example Writeup (Skeleton)
 
 ```markdown
 # HTB: <MACHINE-NAME>
@@ -205,7 +205,7 @@ Found SUID binary, exploited [[Exploitation/Linux/Privilege-Escalation#SUID-Abus
 
 ---
 
-## 🔗 Related Templates
+##  Related Templates
 
 - [[Writeup-Template|Full writeup template]]
 - [[Findings-Template|Findings template]]

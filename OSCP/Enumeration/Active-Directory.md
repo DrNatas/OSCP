@@ -6,7 +6,7 @@ difficulty: Intermediate
 tools: [ldapsearch, Kerbrute, PowerView, BloodHound, adPEAS]
 ---
 
-# 👑 Active Directory Enumeration
+#  Active Directory Enumeration
 
 > AD enumeration is critical for understanding the domain structure, finding weak configurations, and planning privilege escalation chains.
 
@@ -295,7 +295,7 @@ Common AD service accounts with weak/default passwords:
 
 ---
 
-## 📋 AD Enumeration Checklist
+##  AD Enumeration Checklist
 
 - [ ] Domain name and FQDN identified
 - [ ] Domain controllers located and fingerprinted
@@ -313,7 +313,7 @@ Common AD service accounts with weak/default passwords:
 
 ---
 
-## 🔗 Related Notes
+##  Related Notes
 
 - [[Exploitation/Windows/Active-Directory-Attacks|AD Attacks]]
 - [[Exploitation/Windows/Privilege-Escalation|Windows PrivEsc]]

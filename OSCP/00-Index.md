@@ -6,13 +6,13 @@ created: 2026-10-07
 updated: 2026-10-07
 ---
 
-# 🎯 OSCP Knowledge Base
+#  OSCP Knowledge Base
 
 > Your comprehensive penetration testing and OSCP preparation vault. Technique-focused, beautifully organized, and searchable across all attack surfaces.
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### For OSCP Exam Prep
 1. **Study Mode**: Browse [[Enumeration|Enumeration Techniques]] by target type
@@ -20,16 +20,16 @@ updated: 2026-10-07
 3. **Cheat Reference**: Search [[00-Index#Tools-by-Category|Tools by Category]] during practice
 
 ### Exam Restrictions Reminder
-> ⚠️ **IMPORTANT**: Automatic exploitation tools (e.g., `sqlmap` auto-exploitation) are **prohibited** in OSCP exams.
+>  **IMPORTANT**: Automatic exploitation tools (e.g., `sqlmap` auto-exploitation) are **prohibited** in OSCP exams.
 > - Always manually verify exploitability before reporting
 > - Document your methodology, not automation output
 > - See [[OSCP-Exam-Rules]] for current guidelines
 
 ---
 
-## 📚 Knowledge Base Structure
+##  Knowledge Base Structure
 
-### [🔍 Enumeration](Enumeration/00-Enumeration-Index.md)
+### [ Enumeration](Enumeration/00-Enumeration-Index.md)
 Reconnaissance and information gathering techniques by target type.
 - [[Enumeration/Web-Enumeration|Web Enumeration]] — Burp, ffuf, Nuclei, parameter discovery
 - [[Enumeration/Windows-Enumeration|Windows Enumeration]] — SMB, RPC, WMI enumeration
@@ -37,7 +37,7 @@ Reconnaissance and information gathering techniques by target type.
 - [[Enumeration/Active-Directory|Active Directory]] — LDAP, Kerberos, domain reconnaissance
 - [[Enumeration/Database-Enumeration|Databases]] — MySQL, MSSQL, PostgreSQL, MongoDB, Redis
 
-### [⚔️ Exploitation](Exploitation/00-Exploitation-Index.md)
+### [ Exploitation](Exploitation/00-Exploitation-Index.md)
 Attack techniques organized by vulnerability type and target platform.
 
 #### Web Application
@@ -58,14 +58,14 @@ Attack techniques organized by vulnerability type and target platform.
 - [[Exploitation/Linux/Privilege-Escalation|Linux PrivEsc]] — SUID, capabilities, wildcard abuse
 - [[Exploitation/Linux/Container-Escape|Container Escape]] — Docker, cgroup breakout
 
-### [🔧 Post-Exploitation](Post-Exploitation/00-Post-Exploitation-Index.md)
+### [ Post-Exploitation](Post-Exploitation/00-Post-Exploitation-Index.md)
 Credential harvesting, lateral movement, persistence mechanisms.
 - [[Post-Exploitation/Credential-Harvesting|Credential Harvesting]] — Mimikatz, lsassy, registry dumping
 - [[Post-Exploitation/Lateral-Movement|Lateral Movement]] — Pass-the-hash, Kerberos relaying
 - [[Post-Exploitation/Persistence|Persistence]] — Backdoors, scheduled tasks, registry keys
 - [[Post-Exploitation/Data-Exfiltration|Data Exfiltration]] — Covert channels, archiving
 
-### [🛠️ Tools Reference](Tools-Reference/00-Tools-Index.md)
+### [ Tools Reference](Tools-Reference/00-Tools-Index.md)
 Curated tool list with links, installation, and key commands.
 - [[Tools-Reference/Information-Gathering|Information Gathering]] — Nmap, enum4linux-ng, ldapsearch
 - [[Tools-Reference/Web-Fuzzing|Web Fuzzing]] — ffuf, feroxbuster, Burp Suite
@@ -73,26 +73,26 @@ Curated tool list with links, installation, and key commands.
 - [[Tools-Reference/Exploitation-Frameworks|Exploitation]] — Metasploit, Impacket, Evil-WinRM
 - [[Tools-Reference/Payloads|Payloads & Shells]] — msfvenom, reverse shells, one-liners
 
-### [📝 Writeup Templates](Writeup-Templates/00-Writeup-Index.md)
+### [ Writeup Templates](Writeup-Templates/00-Writeup-Index.md)
 Templates and examples for documenting machine solutions.
 - [[Writeup-Templates/Writeup-Template|Machine Writeup Template]] — Standard structure for documenting solutions
 - [[Writeup-Templates/Findings-Template|Findings Template]] — Organize vulnerabilities and exploitation paths
 - [[Writeup-Templates/Lessons-Learned|Lessons Learned Template]] — Reflect on techniques applied
 
-### [🎯 HTB Machine Writeups](Writeups/00-Writeups-Index.md)
+### [ HTB Machine Writeups](Writeups/00-Writeups-Index.md)
 Complete collection of Hack the Box machine solutions with exploitation methodology.
 - **17 Complete Writeups** — Easy, Medium, Hard difficulty machines
 - **Enumeration Examples** — Real-world reconnaissance examples
 - **Exploitation Paths** — Step-by-step exploitation chains
 - **Lessons Learned** — Key insights from each machine
 
-### [🎓 Academy Training](Academy/00-Academy-Index.md)
+### [ Academy Training](Academy/00-Academy-Index.md)
 Integrated Hack the Box Academy courses for comprehensive security knowledge.
 - [[Academy/Bug-Bounty-Hunter/WEB-APPLICATIONS|Web Applications]]
 - [[Academy/Bug-Bounty-Hunter/WEB-REQUESTS|Web Requests]]
 - [[Academy/Bug-Bounty-Hunter/FILE-UPLOAD-ATTACKS|File Upload Attacks]]
 
-### [💾 Payloads & Resources](Payloads/00-Payloads-Index.md)
+### [ Payloads & Resources](Payloads/00-Payloads-Index.md)
 Pre-built payloads, reverse shells, and exploit code.
 - [[Payloads/Reverse-Shells|Reverse Shells]] — Bash, PowerShell, PHP, Python
 - [[Payloads/Web-Payloads|Web Payloads]] — SQLi, LFI, XSS, SSTI examples
@@ -101,7 +101,7 @@ Pre-built payloads, reverse shells, and exploit code.
 
 ---
 
-## 🎓 Study Paths
+##  Study Paths
 
 ### Beginner Path (0-3 months)
 1. Start: [[Enumeration/Web-Enumeration|Web Enumeration]]
@@ -123,7 +123,7 @@ Pre-built payloads, reverse shells, and exploit code.
 
 ---
 
-## 🔗 How to Use This Vault
+##  How to Use This Vault
 
 ### In Obsidian
 - **Graph View**: Visualize connections between techniques and tools
@@ -143,7 +143,7 @@ Pre-built payloads, reverse shells, and exploit code.
 
 ---
 
-## 📊 Tags & Categories
+##  Tags & Categories
 
 All notes use consistent tags for filtering:
 - `#oscp` — OSCP exam relevant
@@ -156,7 +156,7 @@ All notes use consistent tags for filtering:
 
 ---
 
-## 🔄 Contributing & Updates
+##  Contributing & Updates
 
 This vault is designed to grow with your learning:
 1. **Add findings** from machines to Writeups
@@ -166,7 +166,7 @@ This vault is designed to grow with your learning:
 
 ---
 
-## 📖 Resources
+##  Resources
 
 - [OSCP Exam Guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide)
 - [HackTricks](https://book.hacktricks.xyz)

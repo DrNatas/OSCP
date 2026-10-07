@@ -6,7 +6,7 @@ difficulty: Beginner
 tools: [ffuf, Burp, httpx, Nuclei, nikto, WhatWeb]
 ---
 
-# 🌐 Web Application Enumeration
+#  Web Application Enumeration
 
 > Comprehensive reconnaissance of web services, technologies, and attack surfaces.
 
@@ -327,7 +327,7 @@ curl -s http://<RHOST>/wp-json/wp/v2/users | jq '.[] | .name, .slug'
 
 ---
 
-## 📋 Enumeration Checklist
+##  Enumeration Checklist
 
 - [ ] All HTTP/HTTPS ports identified and probed
 - [ ] Technology stack determined (framework, version, DB)
@@ -342,7 +342,7 @@ curl -s http://<RHOST>/wp-json/wp/v2/users | jq '.[] | .name, .slug'
 
 ---
 
-## 🔗 Related Notes
+##  Related Notes
 
 - [[Exploitation/Web/SQL-Injection|SQL Injection]]
 - [[Exploitation/Web/Local-File-Inclusion|LFI/RFI]]

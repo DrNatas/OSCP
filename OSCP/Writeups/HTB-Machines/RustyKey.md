@@ -1,5 +1,5 @@
 ```bash
-└─$ sudo nmap -Pn -T5 -sV -A -sC 10.10.11.75 -oX rustyKey_nmap
+$ sudo nmap -Pn -T5 -sV -A -sC 10.10.11.75 -oX rustyKey_nmap
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-07-15 18:51 PDT
 Nmap scan report for rustykey.htb (10.10.11.75)
 Host is up (0.078s latency).

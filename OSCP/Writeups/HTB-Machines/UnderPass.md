@@ -5,8 +5,8 @@ Difficulty: Easy
 ## Steps
 ### Recon
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ nmap -Pn -T5 --min-rate=1000 --open -sV underpass.htb 
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ nmap -Pn -T5 --min-rate=1000 --open -sV underpass.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-02 18:18 CST
 Nmap scan report for underpass.htb (10.10.11.48)
 Host is up (0.067s latency).
@@ -25,8 +25,8 @@ We can see that Apache is running.
 ### Exploit-Search
 There is default apache running, so I will need to see if that version has any specific exploits.
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ searchsploit apache
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ searchsploit apache
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
  Exploit Title                                                                                                                      |  Path
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
@@ -322,8 +322,8 @@ Shellcodes: No Results
 ```
 We are running version *2.4.52*, so *apache2* may be better:
 ```Bash
-─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ searchsploit apache2
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ searchsploit apache2
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
  Exploit Title                                                                                                                      |  Path
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
@@ -342,8 +342,8 @@ nuclei ut # update templates
 ```
 Now to run it on our target
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ nuclei -u http://underpass.htb
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ nuclei -u http://underpass.htb
 
                      __     _
    ____  __  _______/ /__  (_)
@@ -385,8 +385,8 @@ Now to run it on our target
 ---
 ### Prodding
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ curl -I http://underpass.htb/
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ curl -I http://underpass.htb/
 HTTP/1.1 200 OK
 Date: Fri, 03 Jan 2025 00:35:36 GMT
 Server: Apache/2.4.52 (Ubuntu)
@@ -398,15 +398,15 @@ Vary: Accept-Encoding
 Content-Type: text/html
 ```
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ curl -X OPTIONS http://underpass.htb/
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ curl -X OPTIONS http://underpass.htb/
 ```
 
 ---
 ### Enumeration
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
-└──╼ [★]$ gobuster vhost -u http://underpass.htb -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt 
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
+ []$ gobuster vhost -u http://underpass.htb -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt 
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -632,8 +632,8 @@ Finished
 All of them are 400 and tells us that there are likely no subdomains.
 
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~/smuggler]
-└──╼ [★]$ python3 smuggler.py -u http://underpass.htb
+[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~/smuggler]
+ []$ python3 smuggler.py -u http://underpass.htb
 
   ______                         _              
  / _____)                       | |             
@@ -793,8 +793,8 @@ All of them are 400 and tells us that there are likely no subdomains.
 I gave up trying to get a smuggle working and so I looked into thise [guide](https://thecybersecguru.com/ctf-walkthroughs/mastering-underpass-beginners-guide-from-hackthebox/).\
 They tell me that their are open UDP ports to look into, so I tried:
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-efkagecyrh]─[~]
-└──╼ [★]$ nmap -T5 --open -sS -sU -p- --min-rate=1500 underpass.htb -oN nmap-scan.txt
+[us-vip-3][10.10.14.3][gntsqid@htb-efkagecyrh][~]
+ []$ nmap -T5 --open -sS -sU -p- --min-rate=1500 underpass.htb -oN nmap-scan.txt
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-04 19:38 CST
 Warning: 10.10.11.48 giving up on port because retransmission cap hit (2).
 Nmap scan report for underpass.htb (10.10.11.48)
@@ -814,8 +814,8 @@ Nmap done: 1 IP address (1 host up) scanned in 149.83 seconds
 ### SNMP Walk
 Time to get started on looking into it:
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-efkagecyrh]─[~]
-└──╼ [★]$ snmpwalk -v 2c -c public underpass.htb
+[us-vip-3][10.10.14.3][gntsqid@htb-efkagecyrh][~]
+ []$ snmpwalk -v 2c -c public underpass.htb
 iso.3.6.1.2.1.1.1.0 = STRING: "Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64"
 iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
 iso.3.6.1.2.1.1.3.0 = Timeticks: (7868276) 21:51:22.76
@@ -873,8 +873,8 @@ steve@underpass.htb
 ### FFUF
 We want to do directory enumeration a bit differently this time:
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
-└──╼ [★]$ ffuf -u "http://underpass.htb/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
+[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
+ []$ ffuf -u "http://underpass.htb/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -1017,8 +1017,8 @@ According to the guide, I am supposed to find /app/operators/login.php hmmm
 >> I needed to go from this line in the smbwalk output: **iso.3.6.1.2.1.1.5.0 = STRING: "UnDerPass.htb is the only *daloradius* server in the basin!"**
 
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
-└──╼ [★]$ ffuf -u "http://underpass.htb/daloradius/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
+[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
+ []$ ffuf -u "http://underpass.htb/daloradius/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -1079,8 +1079,8 @@ Now we see *app*!\
 ![image](https://github.com/user-attachments/assets/2ef4b34a-bdf2-4f40-8839-f99d4417cfe4)\
 Huzzah! That's not a 404 we're looking at, so we are on the right track.
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
-└──╼ [★]$ ffuf -u "http://underpass.htb/daloradius/app/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
+[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
+ []$ ffuf -u "http://underpass.htb/daloradius/app/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -1178,8 +1178,8 @@ svcMosh:underwaterfriends
 ### User svcMosh
 We gained access!
 ```Bash
-┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
-└──╼ [★]$ ssh svcMosh@underpass.htb 
+[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
+ []$ ssh svcMosh@underpass.htb 
 The authenticity of host 'underpass.htb (10.10.11.48)' can't be established.
 ED25519 key fingerprint is SHA256:zrDqCvZoLSy6MxBOPcuEyN926YtFC94ZCJ5TWRS0VaM.
 This key is not known by any other names.

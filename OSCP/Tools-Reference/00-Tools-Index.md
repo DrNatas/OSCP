@@ -4,13 +4,13 @@ description: Curated tool list with links, installation, and key commands
 tags: [tools, reference, oscp]
 ---
 
-# 🛠️ Tools Reference
+#  Tools Reference
 
 > Essential tools for OSCP preparation, organized by category. Each tool includes installation, key commands, and gotchas.
 
 ---
 
-## 📋 By Category
+##  By Category
 
 ### [[Information-Gathering|Information Gathering Tools]]
 
@@ -116,7 +116,7 @@ Create custom shells and exploits.
 
 ---
 
-## 🔥 Top 10 Essential Tools for OSCP
+##  Top 10 Essential Tools for OSCP
 
 1. **Nmap** — Port scanning (indispensable)
 2. **ffuf** — Directory & parameter fuzzing
@@ -131,7 +131,7 @@ Create custom shells and exploits.
 
 ---
 
-## 💾 Installation Quickstart
+##  Installation Quickstart
 
 ### Kali Linux (Pre-installed)
 
@@ -160,35 +160,35 @@ wget https://github.com/BloodHoundAD/BloodHound/releases/download/4.3.1/BloodHou
 
 ---
 
-## ⚠️ Tool Gotchas
+##  Tool Gotchas
 
 ### Metasploit
 
-- ❌ Auto-exploit modules are NOT allowed
-- ✅ DO: Manual handler setup, set options, then `run`
-- ⚠️ Check which version (v5.x, v6.x) for reliable modules
+-  Auto-exploit modules are NOT allowed
+-  DO: Manual handler setup, set options, then `run`
+-  Check which version (v5.x, v6.x) for reliable modules
 
 ### sqlmap
 
-- ❌ Automatic DB dump (`-dbs --dump`) is NOT allowed
-- ✅ DO: Use `--wizard` for parameter detection, then manually test
-- ⚠️ Always manually verify SQL injection first
+-  Automatic DB dump (`-dbs --dump`) is NOT allowed
+-  DO: Use `--wizard` for parameter detection, then manually test
+-  Always manually verify SQL injection first
 
 ### Burp Suite
 
-- ❌ Active Scanner's "Exploit" feature is NOT allowed
-- ✅ DO: Manual testing, use Repeater, modify payloads manually
-- ⚠️ Passive scanner is fine
+-  Active Scanner's "Exploit" feature is NOT allowed
+-  DO: Manual testing, use Repeater, modify payloads manually
+-  Passive scanner is fine
 
 ### LinPEAS / WinPEAS
 
-- ✅ Running for enumeration is allowed
-- ❌ Auto-executing recommended exploits is NOT allowed
-- ⚠️ Manually verify each escalation vector before exploitation
+-  Running for enumeration is allowed
+-  Auto-executing recommended exploits is NOT allowed
+-  Manually verify each escalation vector before exploitation
 
 ---
 
-## 🔗 Installation Resources
+##  Installation Resources
 
 - **Kali Linux** (pre-configured): [kali.org](https://www.kali.org/)
 - **GitHub Security Tools**: [awesome-hacking](https://github.com/carpedm20/awesome-hacking)
@@ -198,7 +198,7 @@ wget https://github.com/BloodHoundAD/BloodHound/releases/download/4.3.1/BloodHou
 
 ---
 
-## 📚 Related
+##  Related
 
 - [[../Exploitation/00-Exploitation-Index|Exploitation Techniques]]
 - [[../Enumeration/00-Enumeration-Index|Enumeration Guide]]

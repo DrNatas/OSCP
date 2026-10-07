@@ -1,47 +1,47 @@
-# 🎯 OSCP Knowledge Base
+#  OSCP Knowledge Base
 
 > **Welcome!** This is a beautifully-organized Obsidian-compatible vault for OSCP preparation. Study techniques, document your progress, and build your personal penetration testing reference library.
 
-## 🚀 Quick Start
+##  Quick Start
 
 **→ [Open 00-Index.md](00-Index.md) to navigate the vault**
 
 For Obsidian users: Open this folder as a vault → Use Cmd+P to search techniques → Enable Graph View to visualize connections
 
-### ⚠️ Exam Restrictions
+###  Exam Restrictions
 
-- ❌ Automatic exploitation tools (`sqlmap -dbs`, Metasploit auto-modules, Burp auto-scan)
-- ✅ Manual SQL injection, manual Metasploit, manual tool usage
+-  Automatic exploitation tools (`sqlmap -dbs`, Metasploit auto-modules, Burp auto-scan)
+-  Manual SQL injection, manual Metasploit, manual tool usage
 - Read **[OSCP-Exam-Rules.md](OSCP-Exam-Rules.md)** before your exam
 
 ---
 
-## 📚 Vault Structure
+##  Vault Structure
 
 ```
 OSCP-Vault/
-├── 00-Index.md                     # Navigation hub
-├── OSCP-Exam-Rules.md             # Rules & restrictions
-├── Enumeration/                    # Information gathering
-│   ├── Web-Enumeration.md
-│   ├── Windows-Enumeration.md
-│   ├── Linux-Enumeration.md
-│   ├── Active-Directory.md
-│   └── Database-Enumeration.md
-├── Exploitation/                   # Attack techniques
-│   ├── Web/
-│   ├── Windows/
-│   └── Linux/
-├── Post-Exploitation/
-├── Writeup-Templates/             # Document your solutions
-├── Tools-Reference/
-├── Payloads/
-└── Writeups/                       # Add your HTB solutions here
+ 00-Index.md                     # Navigation hub
+ OSCP-Exam-Rules.md             # Rules & restrictions
+ Enumeration/                    # Information gathering
+    Web-Enumeration.md
+    Windows-Enumeration.md
+    Linux-Enumeration.md
+    Active-Directory.md
+    Database-Enumeration.md
+ Exploitation/                   # Attack techniques
+    Web/
+    Windows/
+    Linux/
+ Post-Exploitation/
+ Writeup-Templates/             # Document your solutions
+ Tools-Reference/
+ Payloads/
+ Writeups/                       # Add your HTB solutions here
 ```
 
 ---
 
-## 🎓 Study Paths
+##  Study Paths
 
 - **Beginner**: [[Enumeration/Web-Enumeration|Web Enumeration]] → [[Exploitation/Web/SQL-Injection|SQLi]] → File Upload  
 - **Intermediate**: Windows → Linux → Active Directory  
@@ -1907,18 +1907,18 @@ Kali prebuilt binaries: `/usr/share/ligolo-ng-common-binaries`
 
 ```text
 /usr/share/ligolo-ng-common-binaries
-├── ligolo-ng_agent_0.8.3_darwin_amd64
-├── ligolo-ng_agent_0.8.3_darwin_arm64
-├── ligolo-ng_agent_0.8.3_linux_amd64
-├── ligolo-ng_agent_0.8.3_linux_arm64
-├── ligolo-ng_agent_0.8.3_windows_amd64.exe
-├── ligolo-ng_agent_0.8.3_windows_arm64.exe
-├── ligolo-ng_proxy_0.8.3_darwin_amd64
-├── ligolo-ng_proxy_0.8.3_darwin_arm64
-├── ligolo-ng_proxy_0.8.3_linux_amd64
-├── ligolo-ng_proxy_0.8.3_linux_arm64
-├── ligolo-ng_proxy_0.8.3_windows_amd64.exe
-└── ligolo-ng_proxy_0.8.3_windows_arm64.exe
+ ligolo-ng_agent_0.8.3_darwin_amd64
+ ligolo-ng_agent_0.8.3_darwin_arm64
+ ligolo-ng_agent_0.8.3_linux_amd64
+ ligolo-ng_agent_0.8.3_linux_arm64
+ ligolo-ng_agent_0.8.3_windows_amd64.exe
+ ligolo-ng_agent_0.8.3_windows_arm64.exe
+ ligolo-ng_proxy_0.8.3_darwin_amd64
+ ligolo-ng_proxy_0.8.3_darwin_arm64
+ ligolo-ng_proxy_0.8.3_linux_amd64
+ ligolo-ng_proxy_0.8.3_linux_arm64
+ ligolo-ng_proxy_0.8.3_windows_amd64.exe
+ ligolo-ng_proxy_0.8.3_windows_arm64.exe
 ```
 
 #### Chisel

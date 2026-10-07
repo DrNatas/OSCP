@@ -4,13 +4,13 @@ description: Fast lookup for common commands and workflows
 tags: [reference, cheatsheet, oscp]
 ---
 
-# ⚡ Quick Reference Cheatsheet
+#  Quick Reference Cheatsheet
 
 > One-page lookup for the most common OSCP commands and workflows.
 
 ---
 
-## 🚀 Initial Access Workflow
+##  Initial Access Workflow
 
 ### 1. Port Scan
 ```bash
@@ -41,7 +41,7 @@ ldapsearch -x -h 10.10.10.1 -b "DC=domain,DC=local" "*" | grep sAMAccountName
 
 ---
 
-## 💻 Common Exploitations
+##  Common Exploitations
 
 ### SQL Injection
 ```sql
@@ -67,7 +67,7 @@ php://filter/convert.base64-encode/resource=index.php  # Read PHP
 
 ---
 
-## 🔑 Privilege Escalation
+##  Privilege Escalation
 
 ### Linux
 
@@ -105,7 +105,7 @@ reg query "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon"
 
 ---
 
-## 🔐 Credential Harvesting
+##  Credential Harvesting
 
 ### Linux
 
@@ -126,7 +126,7 @@ type $PROFILE\PSReadLine\ConsoleHost_history.txt
 
 ---
 
-## 🔄 Lateral Movement
+##  Lateral Movement
 
 ### SSH with Private Key
 ```bash
@@ -148,7 +148,7 @@ impacket-smbexec -hashes :<HASH> domain/user@target
 
 ---
 
-## 🐚 Reverse Shells
+##  Reverse Shells
 
 ### Bash (Most Common)
 ```bash
@@ -174,7 +174,7 @@ socat file:`tty`,raw,echo=0 TCP-LISTEN:4444
 
 ---
 
-## 📊 Hash Cracking
+##  Hash Cracking
 
 ```bash
 # Identify hash type
@@ -195,7 +195,7 @@ hashcat -m 13100 krb_hashes.txt wordlist.txt
 
 ---
 
-## 🎯 Common Services
+##  Common Services
 
 | Port | Service | Quick Enum | Default Creds |
 |------|---------|-----------|----------------|
@@ -215,7 +215,7 @@ hashcat -m 13100 krb_hashes.txt wordlist.txt
 
 ---
 
-## 📁 File Locations
+##  File Locations
 
 ### Linux
 ```
@@ -237,7 +237,7 @@ C:\inetpub\wwwroot\                     # Web root
 
 ---
 
-## 🔄 Persistence
+##  Persistence
 
 ### Linux (Cron)
 ```bash
@@ -253,16 +253,16 @@ Register-ScheduledTask -TaskName "WindowsUpdate" -Action $action -Trigger $trigg
 
 ---
 
-## 📸 Documentation Reminders
+##  Documentation Reminders
 
-✅ **Always capture:**
+ **Always capture:**
 - Initial shell (whoami, id, hostname)
 - Flag/proof of exploitation
 - Privilege escalation proof
 - Lateral movement evidence
 - Persistence mechanism (if applicable)
 
-✅ **Document:**
+ **Document:**
 - Every command used
 - Why you tried it (methodology, not just output)
 - What you learned
@@ -270,7 +270,7 @@ Register-ScheduledTask -TaskName "WindowsUpdate" -Action $action -Trigger $trigg
 
 ---
 
-## 🔗 Full References
+##  Full References
 
 - [[00-Index|Main Index]] — Complete navigation
 - [[Enumeration/00-Enumeration-Index|Enumeration Techniques]]

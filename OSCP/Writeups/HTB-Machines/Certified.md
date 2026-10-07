@@ -7,8 +7,8 @@ Difficulty: Medium
 
 ### Recon
 ```Bash
-┌─[us-vip-3]─[10.10.14.4]─[gntsqid@htb-gb4yn4fqt9]─[~]
-└──╼ [★]$ nmap -T5 --min-rate=1500 -Pn -p- -sV certified.htb 
+[us-vip-3][10.10.14.4][gntsqid@htb-gb4yn4fqt9][~]
+ []$ nmap -T5 --min-rate=1500 -Pn -p- -sV certified.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-08 17:02 CST
 Nmap scan report for certified.htb (10.10.11.41)
 Host is up (0.065s latency).
@@ -40,8 +40,8 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 118.54 seconds
 ```
 ```Bash
-┌─[us-vip-3]─[10.10.14.4]─[gntsqid@htb-gb4yn4fqt9]─[~]
-└──╼ [★]$ bloodhound-python --help
+[us-vip-3][10.10.14.4][gntsqid@htb-gb4yn4fqt9][~]
+ []$ bloodhound-python --help
 usage: bloodhound-python [-h] [-c COLLECTIONMETHOD] [-d DOMAIN] [-v] [-u USERNAME] [-p PASSWORD] [-k] [--hashes HASHES] [-no-pass] [-aesKey hex key]
                          [--auth-method {auto,ntlm,kerberos}] [-ns NAMESERVER] [--dns-tcp] [--dns-timeout DNS_TIMEOUT] [-dc HOST] [-gc HOST] [-w WORKERS]
                          [--exclude-dcs] [--disable-pooling] [--disable-autogc] [--zip] [--computerfile COMPUTERFILE] [--cachefile CACHEFILE] [--use-ldaps]

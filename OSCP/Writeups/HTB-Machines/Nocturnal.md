@@ -4,8 +4,8 @@ Another:
 
 ## RECON
 ```Bash
-┌─[us-vip-2]─[10.10.14.32]─[gntsqid@htb-dno3aw1bu3]─[~]
-└──╼ [★]$ nmap -T5 --min-rate=1500 --open nocturnal.htb
+[us-vip-2][10.10.14.32][gntsqid@htb-dno3aw1bu3][~]
+ []$ nmap -T5 --min-rate=1500 --open nocturnal.htb
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-21 15:31 CDT
 Nmap scan report for nocturnal.htb (10.10.11.64)
 Host is up (0.065s latency).
@@ -15,8 +15,8 @@ PORT   STATE SERVICE
 80/tcp open  http
 
 Nmap done: 1 IP address (1 host up) scanned in 0.93 seconds
-┌─[us-vip-2]─[10.10.14.32]─[gntsqid@htb-dno3aw1bu3]─[~]
-└──╼ [★]$ nmap -T5 --min-rate=1500 --open -sU nocturnal.htb
+[us-vip-2][10.10.14.32][gntsqid@htb-dno3aw1bu3][~]
+ []$ nmap -T5 --min-rate=1500 --open -sU nocturnal.htb
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-21 15:31 CDT
 Nmap scan report for nocturnal.htb (10.10.11.64)
 Host is up (0.092s latency).

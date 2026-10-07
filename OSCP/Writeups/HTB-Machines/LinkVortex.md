@@ -5,8 +5,8 @@ Difficulty: Easy
 ## Steps
 ### Recon
 ```Bash
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
-└──╼ [★]$ nmap -T5 -p- --min-rate=1500 -sV -Pn link.htb
+[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
+ []$ nmap -T5 -p- --min-rate=1500 -sV -Pn link.htb
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-13 18:25 CST
 Warning: 10.10.11.47 giving up on port because retransmission cap hit (2).
 Nmap scan report for link.htb (10.10.11.47)
@@ -40,8 +40,8 @@ quick UDP scan for sanity: nothing found.
 
 Running Nuclei:
 ```Bash
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
-└──╼ [★]$ nuclei -target http://10.10.11.47
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
+ []$ nuclei -target http://10.10.11.47
 
                      __     _
    ____  __  _______/ /__  (_)
@@ -67,8 +67,8 @@ Running Nuclei:
 ```
 FFUF:
 ```Bash
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
-└──╼ [★]$ ffuf -u http://linkvortex.htb -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.linkvortex.htb" -mc 200
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
+ []$ ffuf -u http://linkvortex.htb -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.linkvortex.htb" -mc 200
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -102,10 +102,10 @@ Going to use [git dumper](https://github.com/arthaud/git-dumper) for the next pa
 pip3 install git-dumper
 ```
 ```Bash
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
-└──╼ [★]$ mkdir git-dumper
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
-└──╼ [★]$ git-dumper http://dev.linkvortex.htb/.git ./git-dumper/
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
+ []$ mkdir git-dumper
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
+ []$ git-dumper http://dev.linkvortex.htb/.git ./git-dumper/
 [-] Testing http://dev.linkvortex.htb/.git/HEAD [200]
 [-] Testing http://dev.linkvortex.htb/.git/ [200]
 [-] Fetching .git recursively
@@ -152,20 +152,20 @@ pip3 install git-dumper
 Updated 5596 paths from the index
 ```
 ```Bash
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
-└──╼ [★]$ ls
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
+ []$ ls
 apps  Dockerfile.ghost  ghost  LICENSE  nx.json  package.json  PRIVACY.md  README.md  SECURITY.md  yarn.lock
 ```
 We see that *Ghost* is being used.
 ```Bash
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
-└──╼ [★]$ cat authentication.test.js|grep -i pass -B 1
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
+ []$ cat authentication.test.js|grep -i pass -B 1
 cat: authentication.test.js: No such file or directory
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
-└──╼ [★]$ find ./ -name "authentication.test.js"
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
+ []$ find ./ -name "authentication.test.js"
 ./ghost/core/test/regression/api/admin/authentication.test.js
-┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
-└──╼ [★]$ cat ./ghost/core/test/regression/api/admin/authentication.test.js | grep -i pass -B 1
+[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
+ []$ cat ./ghost/core/test/regression/api/admin/authentication.test.js | grep -i pass -B 1
             const email = 'test@example.com';
             const password = 'OctopiFociPilfer45';
 --

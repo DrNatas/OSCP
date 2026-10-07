@@ -67,21 +67,21 @@ no dice...
  ___  ___  __   __     __      __         __   ___
 |__  |__  |__) |__) | /  `    /  \ \_/ | |  \ |__
 |    |___ |  \ |  \ | \__,    \__/ / \ | |__/ |___
-by Ben "epi" Risher 🤓                 ver: 2.11.0
-───────────────────────────┬──────────────────────
- 🎯  Target Url            │ http://planning.htb
- 🚀  Threads               │ 100
- 📖  Wordlist              │ /usr/share/wordlists/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt
- 👌  Status Codes          │ All Status Codes!
- 💥  Timeout (secs)        │ 7
- 🦡  User-Agent            │ feroxbuster/2.11.0
- 🤯  Header                │ Host: FUZZ.planning.htb
- 🔎  Extract Links         │ true
- 🏁  HTTP methods          │ [GET]
- 🔃  Recursion Depth       │ 4
-───────────────────────────┴──────────────────────
- 🏁  Press [ENTER] to use the Scan Management Menu™
-──────────────────────────────────────────────────
+by Ben "epi" Risher                  ver: 2.11.0
+
+   Target Url             http://planning.htb
+   Threads                100
+   Wordlist               /usr/share/wordlists/seclists/Discovery/DNS/deepmagic.com-prefixes-top50000.txt
+   Status Codes           All Status Codes!
+   Timeout (secs)         7
+   User-Agent             feroxbuster/2.11.0
+   Header                 Host: FUZZ.planning.htb
+   Extract Links          true
+   HTTP methods           [GET]
+   Recursion Depth        4
+
+   Press [ENTER] to use the Scan Management Menu™
+
 ERR      GET       -1l       -1w       -1c http://planning.htb/robots.txt !=> http://planning.htb/robots.txt (too many redirects)
 301      GET        7l       12w      178c Auto-filtering found 404-like response and created new filter; toggle off with --dont-filter
 [####################] - 35s    49929/49929   0s      found:0       errors:1      

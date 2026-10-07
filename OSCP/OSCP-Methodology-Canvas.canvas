@@ -3,7 +3,7 @@
     {
       "id": "oscp-goal",
       "type": "text",
-      "text": "🎯 PASS OSCP EXAM",
+      "text": " PASS OSCP EXAM",
       "x": 0,
       "y": -400,
       "width": 250,
@@ -12,7 +12,7 @@
     {
       "id": "phase1",
       "type": "text",
-      "text": "📚 PHASE 1: LEARN\nEnumeration & Tools",
+      "text": " PHASE 1: LEARN\nEnumeration & Tools",
       "x": -500,
       "y": -200,
       "width": 200,
@@ -21,7 +21,7 @@
     {
       "id": "phase2",
       "type": "text",
-      "text": "🎯 PHASE 2: PRACTICE\nMachine Exploitation",
+      "text": " PHASE 2: PRACTICE\nMachine Exploitation",
       "x": 0,
       "y": -200,
       "width": 200,
@@ -30,7 +30,7 @@
     {
       "id": "phase3",
       "type": "text",
-      "text": "🏆 PHASE 3: MASTER\nTimed Challenges",
+      "text": " PHASE 3: MASTER\nTimed Challenges",
       "x": 500,
       "y": -200,
       "width": 200,
@@ -138,7 +138,7 @@
     {
       "id": "practice-htb",
       "type": "text",
-      "text": "🎮 PRACTICE\nHTB Easy → Medium → Hard",
+      "text": " PRACTICE\nHTB Easy → Medium → Hard",
       "x": 200,
       "y": 0,
       "width": 180,
@@ -165,7 +165,7 @@
     {
       "id": "pivot-ad",
       "type": "text",
-      "text": "🔄 MULTI-MACHINE\nPivoting & AD Chains",
+      "text": " MULTI-MACHINE\nPivoting & AD Chains",
       "x": 500,
       "y": 100,
       "width": 150,
@@ -174,7 +174,7 @@
     {
       "id": "timed-lab",
       "type": "text",
-      "text": "⏱️ TIMED LABS\n24hr Challenge Format",
+      "text": "⏱ TIMED LABS\n24hr Challenge Format",
       "x": 500,
       "y": 200,
       "width": 150,

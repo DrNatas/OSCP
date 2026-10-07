@@ -4,7 +4,7 @@ description: Reconnaissance and information gathering by target type
 tags: [enumeration, oscp, information-gathering]
 ---
 
-# 🔍 Enumeration Techniques
+#  Enumeration Techniques
 
 > Information gathering is the foundation of every successful penetration test. Thorough enumeration reduces exploitation time significantly.
 
@@ -20,7 +20,7 @@ tags: [enumeration, oscp, information-gathering]
 
 ---
 
-## [🌐 Web Enumeration](Web-Enumeration.md)
+## [ Web Enumeration](Web-Enumeration.md)
 
 Discover and fingerprint web services, technologies, and endpoints.
 
@@ -37,7 +37,7 @@ Discover and fingerprint web services, technologies, and endpoints.
 
 ---
 
-## [🪟 Windows Enumeration](Windows-Enumeration.md)
+## [ Windows Enumeration](Windows-Enumeration.md)
 
 Enumerate SMB, RPC, local users, groups, and system information.
 
@@ -54,7 +54,7 @@ Enumerate SMB, RPC, local users, groups, and system information.
 
 ---
 
-## [🐧 Linux Enumeration](Linux-Enumeration.md)
+## [ Linux Enumeration](Linux-Enumeration.md)
 
 Port scanning, service fingerprinting, and local system reconnaissance.
 
@@ -71,7 +71,7 @@ Port scanning, service fingerprinting, and local system reconnaissance.
 
 ---
 
-## [👑 Active Directory Enumeration](Active-Directory.md)
+## [ Active Directory Enumeration](Active-Directory.md)
 
 Domain reconnaissance, user/group enumeration, trust discovery, and ACL auditing.
 
@@ -88,7 +88,7 @@ Domain reconnaissance, user/group enumeration, trust discovery, and ACL auditing
 
 ---
 
-## [🗄️ Database Enumeration](Database-Enumeration.md)
+## [ Database Enumeration](Database-Enumeration.md)
 
 Connect to databases, discover schemas, extract credentials.
 
@@ -105,7 +105,7 @@ Connect to databases, discover schemas, extract credentials.
 
 ---
 
-## 🎯 Quick Reference: Common Ports
+##  Quick Reference: Common Ports
 
 | Service | Port | Protocol | Enumeration |
 |---------|------|----------|-------------|
@@ -129,7 +129,7 @@ Connect to databases, discover schemas, extract credentials.
 
 ---
 
-## 📋 Enumeration Workflow
+##  Enumeration Workflow
 
 ### Phase 1: Network Discovery
 ```
@@ -159,7 +159,7 @@ httpx -l <HOSTS> -sc -title -td   # Probe web services
 
 ---
 
-## ✅ Enumeration Checklist
+##  Enumeration Checklist
 
 - [ ] **All ports** enumerated (TCP -p-, UDP common)
 - [ ] **Service versions** identified
@@ -172,7 +172,7 @@ httpx -l <HOSTS> -sc -title -td   # Probe web services
 
 ---
 
-## 🔗 Related
+##  Related
 
 - [[Exploitation/00-Exploitation-Index|Exploitation Techniques]]
 - [[Tools-Reference/Information-Gathering|Tools Reference]]

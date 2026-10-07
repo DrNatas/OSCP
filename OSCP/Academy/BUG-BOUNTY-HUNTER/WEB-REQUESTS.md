@@ -89,8 +89,8 @@ When we use curl, we can add *-v* for verbose to see the request and response:
 curl domain.tld -v
 ```
 ```Bash
-┌─[us-academy-5]─[10.10.14.2]─[htb-ac-642405@htb-2gebgunznv]─[~]
-└──╼ [★]$ curl 83.136.252.206:42782/download.php -v
+[us-academy-5][10.10.14.2][htb-ac-642405@htb-2gebgunznv][~]
+ []$ curl 83.136.252.206:42782/download.php -v
 *   Trying 83.136.252.206:42782...
 * Connected to 83.136.252.206 (83.136.252.206) port 42782 (#0)
 > GET /download.php HTTP/1.1
