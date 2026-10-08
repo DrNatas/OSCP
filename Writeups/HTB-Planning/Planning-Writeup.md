@@ -89,14 +89,13 @@ ERR      GET       -1l       -1w       -1c http://planning.htb/robots.txt !=> ht
 ```
 
 
-
 > No clue how he did it, but Juan found using *ffuf* a Grafana subdomain
 >> now we can use the admin creds
-![image](https://github.com/user-attachments/assets/b9d8f4ff-283a-4054-a62c-56310b36e05b)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/b9d8f4ff-283a-4054-a62c-56310b36e05b) returned 404 during the image audit (2026-10-08).
+
 
 He then told me to use this: https://github.com/nollium/CVE-2024-9264
-
-
-
 
 

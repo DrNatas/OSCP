@@ -168,14 +168,27 @@ unzip ILSpy-linux-x64-Release.zip
 └──╼ [★]$ ./ILSpy 
 ```
 After unzipping and running:\
-![image](https://github.com/user-attachments/assets/65c7bb99-2184-4b9c-8316-bdafa9e476b9)\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/65c7bb99-2184-4b9c-8316-bdafa9e476b9) returned 404 during the image audit (2026-10-08).
+
+
 Load the file:\
-![image](https://github.com/user-attachments/assets/9b7c7b90-a705-4690-b601-99efc8b4574e)\
-![image](https://github.com/user-attachments/assets/5a922f32-9042-45cb-895d-8c5e9d95d369)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/9b7c7b90-a705-4690-b601-99efc8b4574e) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/5a922f32-9042-45cb-895d-8c5e9d95d369) returned 404 during the image audit (2026-10-08).
+
 
 We can see a few functions available to us.\
 One in particular seems promising and that is LdapQuery:\
-![image](https://github.com/user-attachments/assets/11ac2045-cbed-4a8c-b80a-92fbbd958ee1)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/11ac2045-cbed-4a8c-b80a-92fbbd958ee1) returned 404 during the image audit (2026-10-08).
+
+
 ```CS
 public LdapQuery()
 	{
@@ -191,7 +204,11 @@ public LdapQuery()
 ```
 We can see that it gets the password from *Protected* class.\
 Let us find it:\
-![image](https://github.com/user-attachments/assets/3c99597f-f135-48e6-878e-4a523e563857)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/3c99597f-f135-48e6-878e-4a523e563857) returned 404 during the image audit (2026-10-08).
+
+
 We get **0Nv32PTwgYjzg9/8j5TbmvPd3e7WhtWWyuPsyO76/Y+U193E**, but it is encoded!\
 Time to break it:
 ```Python
@@ -212,41 +229,5 @@ print(res)
 > **Which field in the LDAP data for the user named support stands out as potentially holding a password?**
 
 > ***TOOK A BREAK HERE***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

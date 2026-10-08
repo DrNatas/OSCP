@@ -63,7 +63,9 @@ SF:</body>\n</html>\n");
 After finding out port 5000 is running upnp, we can go to the site:\
 > https://chemistry:5000
 
-![image](https://github.com/user-attachments/assets/4826f9cc-59e4-4725-ab1a-daef61c79bef)
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/4826f9cc-59e4-4725-ab1a-daef61c79bef) returned 404 during the image audit (2026-10-08).
+
 
 We can register with a temporary account.\
 I used juice:banana for fun.
@@ -128,7 +130,11 @@ _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ().__class__.__mro__[1]
 _space_group_magn.number_BNS  62.448
 _space_group_magn.name_BNS  "P  n'  m  a'  "
 ```
-![image](https://github.com/user-attachments/assets/fcdce1ec-38dd-4a87-bf7a-3ab7c8f8cb2d)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/fcdce1ec-38dd-4a87-bf7a-3ab7c8f8cb2d) returned 404 during the image audit (2026-10-08).
+
+
 We get a shell!
 
 > If we were to use metasploit we need *reverse_shell_tcp* payload.
@@ -402,7 +408,10 @@ app@chemistry:~$
 ```
 
 I ran LinPEAS:
-![image](https://github.com/user-attachments/assets/59f41d88-7c90-4019-9010-92f36b18351c)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/59f41d88-7c90-4019-9010-92f36b18351c) returned 404 during the image audit (2026-10-08).
+
 
 ```Bash
 ╔══════════╣ Users with console
@@ -887,7 +896,6 @@ def exploit(url, file, dir):
             print("Respose: ")
             print(result.decode())
             break
-
 
 
 if __name__ == "__main__":

@@ -10,26 +10,6 @@ tools: [ldapsearch, Kerbrute, PowerView, BloodHound, adPEAS]
 
 > AD enumeration is critical for understanding the domain structure, finding weak configurations, and planning privilege escalation chains.
 
-## Quick Commands
-
-```bash
-# Discover naming contexts
-ldapsearch -x -h <RHOST> -s base namingcontexts
-
-# Anonymous user enumeration
-ldapsearch -x -h <RHOST> -b "DC=<DOMAIN>,DC=<TLD>" | grep userPrincipalName
-
-# Find LAPS passwords
-ldapsearch -x -h <RHOST> -b "DC=<DOMAIN>,DC=<TLD>" "(ms-MCS-AdmPwd=*)" ms-MCS-AdmPwd
-
-# Kerbrute user enumeration
-./kerbrute userenum -d <DOMAIN> --dc <RHOST> /usr/share/wordlists/users.txt
-
-# BloodHound ingestor (PowerShell)
-. .\SharpHound.ps1; Invoke-BloodHound -CollectionMethod All
-```
-
----
 
 ## 1. LDAP Enumeration
 
@@ -289,9 +269,9 @@ Common AD service accounts with weak/default passwords:
 | Unconstrained delegation | userAccountControl TRUSTED_FOR_DELEGATION | Privilege escalation |
 | Resource-based constrained delegation | msDS-AllowedToActOnBehalfOfOtherIdentity | Privilege escalation |
 | LAPS readable by domain users | ms-MCS-AdmPwd readable | Local admin access |
-| GMSA password readable | msds-ManagedPasswordInterval | Local admin access |
+| gMSA password readable | Rights to read `msDS-ManagedPassword` | Access as that gMSA; privileges depend on its memberships |
 | Certificate template abuse | Enrollable dangerous templates | Domain admin privesc |
-| PrintNightmare | Print Spooler enabled + SYSTEM RPC | RCE as SYSTEM |
+| Print Spooler lead | Service presence alone is insufficient; verify patch/configuration prerequisites | Depends on the confirmed vulnerability |
 
 ---
 
@@ -315,10 +295,10 @@ Common AD service accounts with weak/default passwords:
 
 ## 🔗 Related Notes
 
-- [[Exploitation/Windows/Active-Directory-Attacks|AD Attacks]]
-- [[Exploitation/Windows/Privilege-Escalation|Windows PrivEsc]]
-- [[Exploitation/Windows/NTLM-Relay|NTLM Relay]]
+- [AD Attacks](../Reference/Active-Directory.md)
+- [Windows PrivEsc](../Reference/Windows.md#windows-privilege-escalation)
+- [NTLM Relay](../Reference/Active-Directory.md#ad-cs-active-directory-certificate-services)
 
 ---
 
-**Status**: Complete | **Last Updated**: 2026-10-07
+**Reference note:** examples require target-specific prerequisites and tool-version checks.

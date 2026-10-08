@@ -128,7 +128,10 @@ INFO: Done in 00M 18S
 
 ---
 
-![I want to part of the group](/Images/puppy.htb/puppy-to-developers.png)
+
+> **Missing screenshot:** I want to part of the group. Original: `/Images/puppy.htb/puppy-to-developers.png`. Restore to `images/puppy-to-developers.png`.
+
+
 ### **Command:**
 
 ```bash
@@ -170,7 +173,10 @@ This confirms that the command successfully added `levi.james` as a member of th
 * **Why bloodyAD?** Lightweight, direct LDAP tool useful during post-exploitation or persistence phases when you have valid credentials and want to escalate privileges or modify group membership stealthily.
 
 ---
-![Look ma' I'm a developer!](/Images/puppy.htb/puppy-to-developers.png)
+
+
+> **Missing screenshot:** Look ma' I'm a developer!. Original: `/Images/puppy.htb/puppy-to-developers.png`. Restore to `images/puppy-to-developers.png`.
+
 
 ---
 
@@ -958,7 +964,8 @@ If the session does not open, check firewall rules, payload architecture, and en
 
 ---
 
-![Decrypting DPAPi](/Images/puppy.htb/puppy-dpapi.png)
+
+> **Missing screenshot:** Decrypting DPAPi. Original: `/Images/puppy.htb/puppy-dpapi.png`. Restore to `images/puppy-dpapi.png`.
 
 
 ```bash

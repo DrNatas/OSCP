@@ -668,7 +668,8 @@ Here's a Markdown version of the full table and notes extracted from your image 
 
 ---
 
-![Users](/Images/voleur/svc_ldap_to_restore_users.png)
+
+> **Missing screenshot:** Users. Original: `/Images/voleur/svc_ldap_to_restore_users.png`. Restore to `images/svc_ldap_to_restore_users.png`.
 
 
 ```bash
@@ -921,7 +922,9 @@ PS C:\Users\svc_winrm\Desktop> cat user.txt
 * Attempt privilege escalation methods.
 * Continue searching for sensitive data or further credentials.
 
-![svc_ldap to lacey miller](/Images/voleur/generic-write-lacey.png)
+
+> **Missing screenshot:** svc_ldap to lacey miller. Original: `/Images/voleur/generic-write-lacey.png`. Restore to `images/generic-write-lacey.png`.
+
 
 # AS-REP Roasting LACEY.MILLER
 You should use this command:

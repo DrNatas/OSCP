@@ -10,23 +10,6 @@ tools: [ffuf, Burp, httpx, Nuclei, nikto, WhatWeb]
 
 > Comprehensive reconnaissance of web services, technologies, and attack surfaces.
 
-## Quick Commands
-
-```bash
-# Discover live web services
-httpx -l <HOSTS> -sc -title -td -server -fr -o <URLS>
-
-# Probe with technology detection
-nuclei -target http://<RHOST> -as -s medium,high,critical
-
-# Enumerate directories
-ffuf -w /usr/share/wordlists/dirb/common.txt -u http://<RHOST>/FUZZ -mc 200,204,301,302,307,401
-
-# Fuzz parameters
-arjun -u http://<RHOST>/<PATH> -m GET
-```
-
----
 
 ## 1. Service Discovery & Fingerprinting
 
@@ -39,7 +22,7 @@ httpx -l hosts.txt -sc -title -td -server -o probed.txt
 # Options explained:
 # -sc   = status code
 # -title = page title
-# -td    = JARM fingerprint (SSL/TLS)
+# -td    = technology detection
 # -server = server header
 # -fr    = follow redirects
 ```
@@ -203,7 +186,9 @@ ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/common-backups.txt \
 
 ## 5. Vulnerability Scanning
 
-### Nuclei - Automated Vulnerability Detection
+### Nuclei — general lab reference
+
+This is general lab material, not part of the practice-exam workflow. See [exam restrictions](../OSCP-Exam-Rules.md); do not infer permission from its inclusion here.
 
 ```bash
 # Auto-detect technologies and scan
@@ -344,11 +329,11 @@ curl -s http://<RHOST>/wp-json/wp/v2/users | jq '.[] | .name, .slug'
 
 ## 🔗 Related Notes
 
-- [[Exploitation/Web/SQL-Injection|SQL Injection]]
-- [[Exploitation/Web/Local-File-Inclusion|LFI/RFI]]
-- [[Exploitation/Web/Cross-Site-Scripting|XSS]]
-- [[Exploitation/Web/File-Upload-Vulnerabilities|File Upload Bypasses]]
+- [SQL Injection](../Reference/Databases.md#sql-injection)
+- [LFI/RFI](../Reference/Web.md#local-file-inclusion-lfi)
+- [XSS](../Reference/Web.md#cross-site-scripting-xss)
+- [File Upload Bypasses](../../Exploitation/Web/Academy-Notes/FILE-UPLOAD-ATTACKS.md)
 
 ---
 
-**Status**: Complete | **Last Updated**: 2026-10-07
+**Reference note:** examples require target-specific prerequisites and tool-version checks.
