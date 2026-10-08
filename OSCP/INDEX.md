@@ -99,16 +99,48 @@ OSCP/
 └── resources/                     (External references)
 ```
 
+## Comprehensive References (New)
+
+### Master Reference Guides
+
+For complete, detailed techniques and commands:
+
+1. [[01-MASTER-REFERENCE|Master Reference]] - 500+ commands and techniques
+   - Network enumeration (all protocols)
+   - Service-specific techniques (21 protocols)
+   - Web exploitation (SQLi, file upload, LFI, SSTI, XSS)
+   - Linux & Windows privilege escalation
+   - AD attacks and Kerberos
+   - Post-exploitation and pivoting
+   - All tool command references
+
+2. [[02-ACTIVE-DIRECTORY-COMPLETE|Active Directory Complete]] - Full AD attack chain
+   - Reconnaissance and enumeration
+   - Credential acquisition paths
+   - Lateral movement techniques
+   - Domain controller compromise
+   - Golden/Silver ticket creation
+   - Common attack chains
+   - Detection evasion
+
+3. [[03-WINDOWS-EXPLOITATION|Windows Exploitation]] - Windows privesc and exploitation
+   - 12 privilege escalation vectors
+   - Service abuse techniques
+   - Token impersonation
+   - UAC bypass
+   - Credential theft
+   - Persistence mechanisms
+   - Decision trees
+
 ## Study Path Recommendation
 
 ### Week 1-4: Foundation
 
 1. Read [[OSCP-Exam-Rules|Exam Rules]]
 2. Read [[OSCP-Study-Methodology|Study Methodology]]
-3. Study each technique in [[Techniques/00-Techniques-Index|Techniques Index]]
-   - Start with [[Techniques/Enum-Checklist|Enumeration]]
-   - Then [[Techniques/SQL-Injection-Path|SQL Injection]]
-   - Then [[Techniques/Linux-Privesc-Checklist|Linux PrivEsc]]
+3. Use [[01-MASTER-REFERENCE|Master Reference]] to study techniques
+   - Read relevant sections for each attack type
+   - Copy commands and understand them
 4. Practice [[Tools-Reference/00-Tools-Index|Tools]] on your own test systems
 
 ### Week 5-20: Practice Machines
