@@ -383,9 +383,9 @@ bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAM
 
 # SET
 bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' set restore 'CN=<NAME>\0ADEL:<OBJECT_GUID>,CN=Deleted Objects,DC=<DOMAIN>,DC=<TLD>'    # restore deleted AD object; use exact tombstone DN
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'    # set AD user password
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> -f ACCOUNTDISABLE       # disable user account
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> -f ~ACCOUNTDISABLE      # enable user account
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'                                                     # set AD user password
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> -f ACCOUNTDISABLE                                                       # disable user account
+bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> remove uac <USERNAME> -f ACCOUNTDISABLE                                                    # enable user account
 ```
 
 ## AD DNS
