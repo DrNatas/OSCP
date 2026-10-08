@@ -16,7 +16,7 @@ tags: [template, findings, oscp]
 |-------|-------|
 | **Title** | Vulnerability Name |
 | **CVE** | CVE-XXXX-XXXXX (if applicable) |
-| **Type** | [[Exploitation/Web/SQL-Injection|SQL Injection]] / [[Exploitation/Windows/Privilege-Escalation|PrivEsc]] / etc. |
+| **Type** | [SQL Injection](../Reference/Databases.md#sql-injection) / [PrivEsc](../Reference/Windows.md#windows-privilege-escalation) / etc. |
 | **Severity** | Critical / High / Medium / Low |
 | **Status** | Verified / Exploited / Patched |
 | **Date Discovered** | YYYY-MM-DD |
@@ -76,7 +76,7 @@ What is the real-world impact to the organization?
 ### Prerequisites
 
 - [ ] Network access to [service]
-- [ ] [[Exploitation/...]] knowledge required
+- [ ] Exploitation/... knowledge required
 - [ ] Tools: [List tools needed]
 
 ### Step-by-Step Exploitation
@@ -173,8 +173,8 @@ How to test that the fix is effective?
 
 ### Tools & Resources
 
-- [[Tools-Reference/Tool-Name|Tool Name]] — Used for exploitation
-- [[Exploitation/Category/Technique|Technique Name]] — Related technique
+- Tool Name — Used for exploitation
+- Technique Name — Related technique
 
 ### External References
 
@@ -188,8 +188,8 @@ How to test that the fix is effective?
 
 Have you seen this pattern before? Link to related findings:
 
-- [[../../Writeup-Templates/Machine-1|Machine 1]] — Similar [[Exploitation/Web/SQL-Injection|SQLi]] vulnerability
-- [[../../Writeup-Templates/Machine-2|Machine 2]] — Different exploitation vector, same root cause
+- Machine 1 — Similar [SQLi](../Reference/Databases.md#sql-injection) vulnerability
+- Machine 2 — Different exploitation vector, same root cause
 
 ---
 

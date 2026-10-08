@@ -100,7 +100,10 @@ Web applications are divided into three of the OSI layers in a three-tier archit
 - Data: Works with application to determine data storage and flow
 
 Example:\
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/b353e2ff-17b3-43d4-acd8-efbad7a7b818) returned 404 during the image audit (2026-10-08).
+
 
 #### Microservices
 These act as independent components and usually do a singele task on their own.\
@@ -276,21 +279,5 @@ This is a bit more complex than alternatives and are difficult to create for lar
 #### REST
 *Representational State Transfer* is the go-to API type you may be familiar with.\
 It uses JSON instead of the more outdated XML and it our previosuly discussed GET, POST, etc..
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

