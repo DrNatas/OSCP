@@ -25,7 +25,7 @@ Not shown: 993 open|filtered udp ports (no-response), 7 closed udp ports (port-u
 
 Nmap done: 1 IP address (1 host up) scanned in 2.58 seconds
 ```
-![image](https://github.com/user-attachments/assets/9cf35bea-0246-4883-ac56-6514b230c0c4)
+[screenshot]
 
 made a login\
 user:password

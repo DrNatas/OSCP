@@ -283,27 +283,27 @@ bloodhound-python -u olivia -p 'ichliebedich' -d administrator.htb -c all -dc ad
 
 > FINALLY GOT BLOODHOUND TO WORK, AM USING PIHOLE AS DNS
 
-![image](https://github.com/user-attachments/assets/aa8a617c-df25-410f-a07e-4373e7416afd)
+[screenshot]
 
 Using *shortest path to domain admins*\
-![image](https://github.com/user-attachments/assets/7f3f9b70-1f43-49fa-9cee-efc031755ba1)\
-![image](https://github.com/user-attachments/assets/96911f0e-b8bb-4731-ab9a-42d35b4e25ca)
+[screenshot]\
+[screenshot]
 
 > tip: press *CTRL* to cycle through labels to see all
->> ![image](https://github.com/user-attachments/assets/67efca54-42e5-4760-aa3a-664d947db2b2)
+>> [screenshot]
 
 lets search for *group:Admin* and do shortest path to it\
-![image](https://github.com/user-attachments/assets/4b80c5f4-df20-40a0-aa2d-7c8cf1e1a953)
+[screenshot]
 
 > **IGNORE ABOVE**
 
 We want to do pathfinding from our user olivia to other users.\
 Let's check out Michael.\
 Enter Olivia's name in the search and do the little road icon for pathfinding followed by entering michael's name\
-![image](https://github.com/user-attachments/assets/afa8aebe-6a88-41a6-8bf9-e7c5ca3a62aa)
+[screenshot]
 
 We can right-click and see that Olivia has *GenericAll* rights to Michael:\
-![image](https://github.com/user-attachments/assets/44352fa7-c7a8-4e50-880e-3e2b2944006f)
+[screenshot]
 
 This means olivia can overwrite stuff on michael's account like say....a password...\
 Why care about this? **Michael has GenericAll to the *Domain Admins* group!**
@@ -376,8 +376,8 @@ Kerberos support for Dynamic Access Control on this device has been disabled.
 ```
 
 **Juan Suggests** I lok into the user Benjamin next:\
-![image](https://github.com/user-attachments/assets/50a71b4f-b486-4e77-8304-e0700a215355)\
-![image](https://github.com/user-attachments/assets/0d7e4603-d5c0-48ee-ba76-cdcf72f14df7)
+[screenshot]\
+[screenshot]
 
 > It would appear we want to FTP as him
 ```Bash
@@ -431,7 +431,7 @@ It is password safe, so lets continue:
 ```Bash
 sudo apt install pwsafe
 ```
-![image](https://github.com/user-attachments/assets/62a2606a-5408-4123-b1e9-6b4e549ff9d7)
+[screenshot]
 
 We don't know the password, so let's crack it!
 ```Bash
@@ -484,9 +484,9 @@ hashcat -m 5200 -a 0 Backup.psafe3 /usr/share/wordlists/rockyou.txt
 ```
 > My VM sucks at running hashcat, so taking Juan's loot
 >> Password is *tekieromucho*
->> ![image](https://github.com/user-attachments/assets/6f1649f5-58b2-40b7-9c96-1b64310b9957)
+>> [screenshot]
 
-![image](https://github.com/user-attachments/assets/c1745359-6681-4c9d-83d2-5e005a8233a8)![image](https://github.com/user-attachments/assets/1ec5c317-2feb-4cc9-9b37-09c55bb3444f)# 
+[screenshot][screenshot]# 
 
 Double click to get copy the passwords to clipboard:
 - alexander:UXLCI5iETUsIBoFVTj8yQFKoHjXmb
@@ -634,7 +634,7 @@ DC$:des-cbc-md5:f483547c4325492a
 ```
 Something something we have golden tickets?\
 remind me to ask Juan\
-![image](https://github.com/user-attachments/assets/edc5ac56-3eea-4614-8fd2-6142125eb998)\
+[screenshot]\
 it looks like the important line from above is: *krbtgt:502:aad3b435b51404eeaad3b435b51404ee:1181ba47d45fa2c76385a82409cbfaf6:::*
 
 We need *ticketer.py*. 

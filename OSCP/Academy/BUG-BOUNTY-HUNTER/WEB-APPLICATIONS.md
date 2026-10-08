@@ -100,7 +100,7 @@ Web applications are divided into three of the OSI layers in a three-tier archit
 - Data: Works with application to determine data storage and flow
 
 Example:\
-![image](https://github.com/user-attachments/assets/b353e2ff-17b3-43d4-acd8-efbad7a7b818)
+[screenshot]
 
 #### Microservices
 These act as independent components and usually do a singele task on their own.\

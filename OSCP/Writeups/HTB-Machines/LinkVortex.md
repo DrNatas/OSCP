@@ -36,7 +36,7 @@ Nmap done: 1 IP address (1 host up) scanned in 51.13 seconds
 ```
 quick UDP scan for sanity: nothing found.
 
-![image](https://github.com/user-attachments/assets/cb81c675-361f-4ffa-a6c5-100cb560bd92)
+[screenshot]
 
 Running Nuclei:
 ```Bash
@@ -95,7 +95,7 @@ dev                     [Status: 200, Size: 2538, Words: 670, Lines: 116, Durati
 :: Progress: [100000/100000] :: Job [1/1] :: 617 req/sec :: Duration: [0:02:43] :: Errors: 0 ::
 ```
 we can see as a result we have *dev.linkvortex.htb*\
-![image](https://github.com/user-attachments/assets/922226cb-b96e-45d6-91b5-848fa3aaba76)
+[screenshot]
 
 Going to use [git dumper](https://github.com/arthaud/git-dumper) for the next part:
 ```Bash
@@ -175,7 +175,7 @@ cat: authentication.test.js: No such file or directory
 We can see credentials *admin:OctopiFociPilfer45*
 
 Go to *http://linkvortex.htb/ghost/* and sign in with the above creds:\
-![image](https://github.com/user-attachments/assets/efaa1e81-862c-43f3-8db5-d1ae1c11afe5)
+[screenshot]
 
 
 

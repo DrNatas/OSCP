@@ -86,7 +86,7 @@ We can now *modify our request* or *manipulate the front-end code* (to be shown 
 ---
 ### Back-end Request Modification
 To start. let us see how our normal request looks using *Burpsuite*.\
-![image](https://github.com/user-attachments/assets/32c7435d-970c-477a-ae74-2c4e656cc080)
+[screenshot]
 
 It appears to be a standard HTTP request to */upload.php*.\
 We can see that it includes *filename=* as one of the headers in the request.\
@@ -95,7 +95,7 @@ We can easily modify this to be a *.php* file instead!
 
 ### Disabling Front-end Validation
 Going into the *Page Inspector* with (*CTRL+SHIFT+C*) and click the prfile image\
-![image](https://github.com/user-attachments/assets/d06b2432-fa92-42f7-b6dc-be3f6ac27270)
+[screenshot]
 
 > WE can see the following: *<input type="file" name="uploadFile" id="uploadFile" onchange="checkFile(this)" accept=".jpg,.jpeg,.png">*
 >> Notice the ***accept***

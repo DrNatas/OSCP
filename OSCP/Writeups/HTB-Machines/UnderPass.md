@@ -19,7 +19,7 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 7.92 seconds
 ```
-![image](https://github.com/user-attachments/assets/018e938a-87b9-44db-a2c6-b9738578513c)\
+[screenshot]\
 We can see that Apache is running.
 
 ### Exploit-Search
@@ -1076,7 +1076,7 @@ setup                   [Status: 301, Size: 325, Words: 20, Lines: 10, Duration:
 :: Progress: [37784/37784] :: Job [1/1] :: 602 req/sec :: Duration: [0:01:06] :: Errors: 0 ::
 ```
 Now we see *app*!\
-![image](https://github.com/user-attachments/assets/2ef4b34a-bdf2-4f40-8839-f99d4417cfe4)\
+[screenshot]\
 Huzzah! That's not a 404 we're looking at, so we are on the right track.
 ```Bash
 [us-vip-3][10.10.14.3][gntsqid@htb-9wmeajydlw][~]
@@ -1132,12 +1132,12 @@ users                   [Status: 301, Size: 329, Words: 20, Lines: 10, Duration:
 :: Progress: [37784/37784] :: Job [1/1] :: 598 req/sec :: Duration: [0:01:06] :: Errors: 0 ::
 ```
 mmm...we aren'ts seen operators with this wordlist...so before I cheat and try another one that i know has it, let me see what these resolve to.\
-![image](https://github.com/user-attachments/assets/93ce8dba-6bbb-4c64-98f1-d231893db818)\
-![image](https://github.com/user-attachments/assets/5396927d-f86b-4715-ac78-998e4cec3d5f)
+[screenshot]\
+[screenshot]
 > Hey-o! *users* does have a login!
 >> But that's for client-side...we still want the admin
 
-![image](https://github.com/user-attachments/assets/a46154f7-1818-4ddd-a833-1a12b31b5f62)\
+[screenshot]\
 I am just going to go ahead and go to it without doing the search so I can continue.
 
 ---
@@ -1151,19 +1151,19 @@ The default credentials are:
 administrator:radius
 ```
 Let's try them out:\
-![image](https://github.com/user-attachments/assets/7e6ac779-3e09-4499-af83-3b6a72b08f14)\
+[screenshot]\
 That's kind of weird...maybe it is broken or I should try something else like the SSH first.
 
 > CONFIRMED BROKEN:
 
 The page should have taken me here according to the guide:\
-![image](https://github.com/user-attachments/assets/f73ea259-87e9-4956-bc7d-6730f02b1a18)
+[screenshot]
 
 > Got it after a reset!\
-![image](https://github.com/user-attachments/assets/07c0da56-7603-49a1-a5bd-55d3097ad8e3)
+[screenshot]
 
 We found a user:\
-![image](https://github.com/user-attachments/assets/dcba0b9f-28d2-45cf-90a7-3441b31621b9)
+[screenshot]
 
 ```Bash
 svcMosh:412DD4759978ACFCC81DEAB01B382403
