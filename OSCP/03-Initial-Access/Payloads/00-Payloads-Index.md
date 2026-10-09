@@ -6,4 +6,4 @@
 - [Custom scripts](Custom-Scripts/README.md)
 - [Resource files](../../resources/)
 - [Exploit source files](../../exploits/)
-- [Metasploit restrictions](../../OSCP-Exam-Rules.md)
+- [Metasploit restrictions](../../../README.md#exam-rules)

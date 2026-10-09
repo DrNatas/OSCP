@@ -6,11 +6,11 @@ tags: [oscp, tools, reference, htb]
 
 # Tools
 
-For a timed run, use the [fast triage board](../00-FAST-TRIAGE.md) first; this page answers which tool to use after the technique is selected.
+For a timed run, use [fast triage](../../README.md#fast-triage) first; this page answers which tool to use after the technique is selected.
 
 - [Command reference by task](../Reference/00-Reference-Index.md)
 - [Tool project links](../Reference/Tools-Catalog.md)
-- [Exam restrictions](../OSCP-Exam-Rules.md)
+- [Exam restrictions](../../README.md#exam-rules)
 
 ## Tools in the HTB notes
 

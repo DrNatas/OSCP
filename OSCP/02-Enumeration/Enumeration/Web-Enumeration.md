@@ -188,7 +188,7 @@ ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/common-backups.txt \
 
 ### Nuclei — general lab reference
 
-This is general lab material, not part of the practice-exam workflow. See [exam restrictions](../../OSCP-Exam-Rules.md); do not infer permission from its inclusion here.
+This is general lab material, not part of the practice-exam workflow. See the [exam restrictions](../../../README.md#exam-rules); do not infer permission from its inclusion here.
 
 ```bash
 # Auto-detect technologies and scan

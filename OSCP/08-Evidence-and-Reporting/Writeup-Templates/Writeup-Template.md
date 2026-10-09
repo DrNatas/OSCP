@@ -76,6 +76,6 @@ Add images only after saving them beside this note. Example syntax: `![Initial a
 - What to check sooner next time:
 - Remaining uncertainty:
 
-[Practice workflow](../../Practice-Exam-Methodology.md) · [Evidence checklist](../README.md)
+[Practice workflow](../../../README.md#practice-exam-workflow) · [Evidence checklist](../README.md)
 
 When copying this template to another folder, update the two navigation links above relative to the new note.

@@ -1,8 +1,8 @@
 # Additional lab topics
 
-[Practice methodology](../Practice-Exam-Methodology.md) · [Reference index](00-Reference-Index.md)
+[Practice methodology](../../README.md#practice-exam-workflow) · [Reference index](00-Reference-Index.md)
 
-Commands preserved from the original reference. Replace angle-bracket placeholders before running; check your installed tool’s help for version-specific options. This collection includes general lab material; inclusion does not establish exam permission. See [exam rules](../OSCP-Exam-Rules.md).
+Commands preserved from the original reference. Replace angle-bracket placeholders before running; check your installed tool’s help for version-specific options. This collection includes general lab material; inclusion does not establish exam permission. See [exam rules](../../README.md#exam-rules).
 
 ## Virtualization & Hypervisor Attacks
 

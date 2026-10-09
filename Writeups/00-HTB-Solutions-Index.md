@@ -66,4 +66,4 @@ These notes are preserved in `Writeups/HTB-Machines/` so no historical work is l
 3. Compare only after the attempt or timebox ends.
 4. Extract one reusable lesson into the matching [technique note](../OSCP/00-TECHNIQUE-INDEX.md).
 
-[OSCP guide](../OSCP/README.md) · [Practice workflow](../OSCP/Practice-Exam-Methodology.md) · [Machine template](../OSCP/08-Evidence-and-Reporting/Writeup-Templates/Writeup-Template.md) · [Screenshot status](../OSCP/Image-Audit.md)
+[OSCP guide](../OSCP/README.md) · [Practice workflow](../README.md#practice-exam-workflow) · [Machine template](../OSCP/08-Evidence-and-Reporting/Writeup-Templates/Writeup-Template.md) · [Screenshot status](../OSCP/Image-Audit.md)

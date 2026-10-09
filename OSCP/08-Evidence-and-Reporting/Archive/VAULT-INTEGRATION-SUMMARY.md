@@ -171,7 +171,7 @@ Open `00-Index.md` for the main navigation hub
 `OSCP-Study-Methodology.md` → Phase 2: Practice → [[Writeups/00-HTB-Solutions-Index|Select Easy Machine]]
 
 ####  Reference Path
-`00-FAST-TRIAGE.md` → [[OSCP/Tools-Reference/00-Tools-Index|Tools]] → [[OSCP/03-Initial-Access/Payloads/00-Payloads-Index|Payloads]]
+README.md fast triage section → [[OSCP/Tools-Reference/00-Tools-Index|Tools]] → [[OSCP/03-Initial-Access/Payloads/00-Payloads-Index|Payloads]]
 
 ### 3. **While Solving Machines**
 - Use [[OSCP/08-Evidence-and-Reporting/Writeup-Templates/Writeup-Template|template]] to document your work
@@ -180,7 +180,7 @@ Open `00-Index.md` for the main navigation hub
 - Compare with writeups: `[[Writeups/HTB-Machines/LinkVortex|LinkVortex writeup]]`
 
 ### 4. **Before Exam**
-- Review [[OSCP/OSCP-Exam-Rules|Exam Rules]]
+- Review the [repository README exam rules](../../../README.md#exam-rules)
 - Study [[OSCP/OSCP-Study-Methodology|Methodology]] Phase 3
 - Practice with timed challenges
 - Use [[OSCP/OSCP-Methodology-Canvas|Canvas]] for visual reference

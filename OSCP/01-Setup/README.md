@@ -25,4 +25,4 @@ script -q -a session.log
 
 Use `DOMAIN`, `DC_IP`, and `DC_FQDN` in domain notes. Record the exact hostname separately from its IP; virtual hosts, TLS, and Kerberos can depend on names.
 
-References: [tmux, transfers, and shells](../Reference/Access-and-Transfers.md), [exam rules](../OSCP-Exam-Rules.md).
+References: [tmux, transfers, and shells](../Reference/Access-and-Transfers.md), [exam rules](../../README.md#exam-rules).

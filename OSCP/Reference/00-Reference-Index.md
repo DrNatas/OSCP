@@ -1,6 +1,6 @@
 # Command reference
 
-Use the [practice methodology](../Practice-Exam-Methodology.md) to choose the next action. These topic pages hold the detailed commands from the former README.
+Use the [practice methodology](../../README.md#practice-exam-workflow) to choose the next action. These topic pages hold detailed command syntax.
 
 - [Tool catalog](Tools-Catalog.md)
 - [Shell access and file transfers](Access-and-Transfers.md)

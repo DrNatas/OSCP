@@ -1,6 +1,6 @@
 # 8. Evidence and reporting
 
-[Main guide](../README.md) · [Machine template](Writeup-Templates/Writeup-Template.md) · [Exam rules](../OSCP-Exam-Rules.md)
+[Main guide](../README.md) · [Machine template](Writeup-Templates/Writeup-Template.md) · [Exam rules](../../README.md#exam-rules)
 
 Use the [HTB writeup index](../../Writeups/00-HTB-Solutions-Index.md) to compare attack chains, and add reusable lessons to the relevant [technique note](../00-TECHNIQUE-INDEX.md) instead of copying them into another general reference.
 
@@ -8,7 +8,7 @@ Use the [HTB writeup index](../../Writeups/00-HTB-Solutions-Index.md) to compare
 
 Save the access conditions, command, result, and screenshot for each identity transition. Use descriptive local filenames such as `images/01-initial-access.png` and `images/02-privilege-escalation.png` beside the target note.
 
-For exam-style proof, show the proof file at its original path in an interactive target shell together with the target IP. Submit proof through the control panel before the exam ends. See the [official guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide) and the [rules summary](../OSCP-Exam-Rules.md).
+For exam-style proof, show the proof file at its original path in an interactive target shell together with the target IP. Submit proof through the control panel before the exam ends. See the [official guide](https://help.offsec.com/hc/en-us/articles/360040165632-OSCP-Exam-Guide) and the [rules summary](../../README.md#exam-rules).
 
 Capture Linux context:
 

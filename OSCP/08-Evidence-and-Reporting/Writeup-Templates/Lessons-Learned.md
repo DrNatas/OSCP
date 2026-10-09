@@ -10,4 +10,4 @@
 - Evidence or screenshot improvement:
 - Next practice objective:
 
-[Methodology](../../Practice-Exam-Methodology.md)
+[Methodology](../../../README.md#practice-exam-workflow)

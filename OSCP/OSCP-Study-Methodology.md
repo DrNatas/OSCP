@@ -14,10 +14,12 @@ tags: [oscp, methodology, study-guide, planning]
 
 ##  Overview
 
-**Goal:** Pass the OSCP exam (35+ points out of 100)  
+**Goal:** Prepare for the current OSCP+ exam (70 points out of 100 to pass)
 **Timeline:** 3-9 months (depending on starting level)  
-**Format:** Exam = 2x 25-point machines + 1x 20-point machine  
-**Time Limit:** 24 hours  
+**Format:** Three standalone targets worth 20 points each and one three-machine Active Directory set worth 40 points
+**Time Limit:** 23 hours and 45 minutes for the exam, followed by 24 hours for report submission
+
+For the current rules, proof requirements, and report format, use the [repository README](../README.md#exam-rules) and the linked official guide. This study plan is for pacing and review.
 
 ---
 
@@ -178,9 +180,9 @@ Prepare for exam conditions and master complex scenarios
 ### Preparation Tasks
 
 #### Week 21: Exam Rules & Restrictions
-1. **Read:** [[OSCP/OSCP-Exam-Rules|Exam Rules]]
+1. **Read:** [Exam rules](../README.md#exam-rules)
    - No automatic SQLi tools in exam
-   - No Metasploit (except 1x in 24 hours)
+   - Metasploit modules and Meterpreter are restricted to one target
    - Manual exploitation required
    - Proper report documentation mandatory
 
@@ -192,7 +194,7 @@ Prepare for exam conditions and master complex scenarios
 #### Week 22-23: Timed Challenges
 1. **Self-Challenge:**
    - Pick 3 random hard machines
-   - Set timer for 8 hours
+   - Set a timebox that fits the chosen practice machines
    - Solve without looking at writeups
    - Mimic exam pressure
 
@@ -220,9 +222,9 @@ Prepare for exam conditions and master complex scenarios
    - Study your "Lessons Learned" from machines
 
 2. **Mock Exam:**
-   - 24-hour timed challenge
-   - 2x 25-point + 1x 20-point format
-   - Target: 35+ points
+   - 23-hour-45-minute timed assessment, with report submission practiced within the following 24 hours
+   - Use the current three-standalone plus Active Directory exam structure
+   - Target: 70 points under the current scoring model
    - Full report writing
 
 3. **Report Writing:**
@@ -232,7 +234,7 @@ Prepare for exam conditions and master complex scenarios
    - Timeline of all actions
 
 ### Deliverables
-- [ ] Pass mock exam (≥35 points)
+- [ ] Pass mock exam (≥70 points under the current scoring model)
 - [ ] Complete 1 machine WITHOUT Metasploit
 - [ ] Complete 1 machine WITHOUT automatic tools
 - [ ] Professional report format practiced
@@ -251,12 +253,12 @@ Prepare for exam conditions and master complex scenarios
 
 ### Phase 2 Completion
  Complete 14 machines with writeups  
- Can exploit 25-point machines  
+ Can work both standalone targets and multi-machine Active Directory sets
  Understand AD attack chains  
  Can write technical documentation  
 
 ### Phase 3 Completion (Ready for Exam)
- Pass mock exam (≥35 points)  
+ Pass mock exam (≥70 points under the current scoring model)
  No tool dependency anxiety  
  Confident in manual exploitation  
  Professional report quality  
@@ -324,8 +326,8 @@ EXAM READY
 - Understand WHY each technique works
 
 ### Time Management
-- Allocate 8 hours per machine in mock exam
-- Save Metasploit use for hardest machine
+- Allocate time according to the assigned objectives and point values
+- If using Metasploit or Meterpreter, choose one target before using restricted modules or payloads
 - Don't waste time on dead ends (move on after 30 min)
 - Keep running timer to track pace
 
@@ -340,7 +342,7 @@ EXAM READY
 ##  Related Resources
 
 - [[OSCP/README|Main OSCP Guide]]
-- [[OSCP/OSCP-Exam-Rules|Exam Rules & Restrictions]]
+- [Exam Rules & Restrictions](../README.md#exam-rules)
    - [[Writeups/00-HTB-Solutions-Index|All HTB Machines]]
 - [[OSCP/03-Initial-Access/Academy/00-Academy-Index|Academy Materials]]
 - [[OSCP/OSCP-Methodology-Canvas|Methodology Canvas (Visual)]]

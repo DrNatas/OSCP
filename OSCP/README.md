@@ -35,7 +35,7 @@ A banner, scanner result, credential, BloodHound edge, or CVE match is not succe
 
 ## How to use this repository
 
-1. Start with the [fast triage board](00-FAST-TRIAGE.md) when working under time pressure.
+1. Start with [fast triage](../README.md#fast-triage) when working under time pressure.
 2. Use the phase table below to choose the next phase and checkpoint.
 3. Use the [technique index](00-TECHNIQUE-INDEX.md) after an observation identifies an attack pattern.
 4. Use the [reference index](Reference/00-Reference-Index.md) for command syntax after choosing the technique.
@@ -123,10 +123,8 @@ Use the [writeup template](08-Evidence-and-Reporting/Writeup-Templates/Writeup-T
 
 ## Supporting entry points
 
-- [Fast triage](00-FAST-TRIAGE.md)
-- [Practice exam workflow](Practice-Exam-Methodology.md)
-- [Fast triage](00-FAST-TRIAGE.md)
-- [Exam rules and official guide](OSCP-Exam-Rules.md)
+- [Repository exam rules](../README.md#exam-rules)
+- [Repository practice exam workflow](../README.md#practice-exam-workflow)
 - [Image audit](Image-Audit.md)
 
 The large consolidated references remain available in the [evidence archive](08-Evidence-and-Reporting/Archive/). They are not the primary study path because their content overlaps the phase, technique, and reference pages above.
