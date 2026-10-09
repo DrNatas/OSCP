@@ -1,291 +1,47 @@
 {
-  "nodes": [
-    {
-      "id": "oscp-goal",
-      "type": "text",
-      "text": " PASS OSCP EXAM",
-      "x": 0,
-      "y": -400,
-      "width": 250,
-      "height": 60
-    },
-    {
-      "id": "phase1",
-      "type": "text",
-      "text": " PHASE 1: LEARN\nEnumeration & Tools",
-      "x": -500,
-      "y": -200,
-      "width": 200,
-      "height": 80
-    },
-    {
-      "id": "phase2",
-      "type": "text",
-      "text": " PHASE 2: PRACTICE\nMachine Exploitation",
-      "x": 0,
-      "y": -200,
-      "width": 200,
-      "height": 80
-    },
-    {
-      "id": "phase3",
-      "type": "text",
-      "text": " PHASE 3: MASTER\nTimed Challenges",
-      "x": 500,
-      "y": -200,
-      "width": 200,
-      "height": 80
-    },
-    {
-      "id": "enum-web",
-      "type": "file",
-      "file": "Enumeration/Web-Enumeration",
-      "x": -700,
-      "y": 0,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "enum-active-dir",
-      "type": "file",
-      "file": "Enumeration/Active-Directory",
-      "x": -700,
-      "y": 80,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "enum-linux",
-      "type": "file",
-      "file": "Enumeration/Linux-Enumeration",
-      "x": -700,
-      "y": 160,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "enum-windows",
-      "type": "file",
-      "file": "Enumeration/Windows-Enumeration",
-      "x": -700,
-      "y": 240,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "exploit-web",
-      "type": "file",
-      "file": "Exploitation/Web/SQL-Injection",
-      "x": -400,
-      "y": 0,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "exploit-rce",
-      "type": "file",
-      "file": "Exploitation/Web/File-Upload-Vulnerabilities",
-      "x": -400,
-      "y": 80,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "exploit-privesc-linux",
-      "type": "file",
-      "file": "Exploitation/Linux/Privilege-Escalation",
-      "x": -400,
-      "y": 160,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "exploit-privesc-windows",
-      "type": "file",
-      "file": "Exploitation/Windows/Privilege-Escalation",
-      "x": -400,
-      "y": 240,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "tools-ref",
-      "type": "file",
-      "file": "Tools-Reference/00-Tools-Index",
-      "x": -100,
-      "y": 0,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "machines-easy",
-      "type": "file",
-      "file": "Writeups/00-Writeups-Index",
-      "x": -100,
-      "y": 100,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "post-exploit",
-      "type": "file",
-      "file": "Post-Exploitation/00-Post-Exploitation-Index",
-      "x": -100,
-      "y": 200,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "practice-htb",
-      "type": "text",
-      "text": " PRACTICE\nHTB Easy → Medium → Hard",
-      "x": 200,
-      "y": 0,
-      "width": 180,
-      "height": 80
-    },
-    {
-      "id": "document",
-      "type": "file",
-      "file": "Writeup-Templates/Writeup-Template",
-      "x": 200,
-      "y": 120,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "exam-rules",
-      "type": "file",
-      "file": "OSCP-Exam-Rules",
-      "x": 500,
-      "y": 0,
-      "width": 150,
-      "height": 60
-    },
-    {
-      "id": "pivot-ad",
-      "type": "text",
-      "text": " MULTI-MACHINE\nPivoting & AD Chains",
-      "x": 500,
-      "y": 100,
-      "width": 150,
-      "height": 80
-    },
-    {
-      "id": "timed-lab",
-      "type": "text",
-      "text": "⏱ TIMED LABS\n24hr Challenge Format",
-      "x": 500,
-      "y": 200,
-      "width": 150,
-      "height": 80
-    }
-  ],
-  "edges": [
-    {
-      "id": "goal-phase1",
-      "fromNode": "oscp-goal",
-      "toNode": "phase1"
-    },
-    {
-      "id": "goal-phase2",
-      "fromNode": "oscp-goal",
-      "toNode": "phase2"
-    },
-    {
-      "id": "goal-phase3",
-      "fromNode": "oscp-goal",
-      "toNode": "phase3"
-    },
-    {
-      "id": "phase1-enum-web",
-      "fromNode": "phase1",
-      "toNode": "enum-web"
-    },
-    {
-      "id": "phase1-enum-ad",
-      "fromNode": "phase1",
-      "toNode": "enum-active-dir"
-    },
-    {
-      "id": "phase1-enum-linux",
-      "fromNode": "phase1",
-      "toNode": "enum-linux"
-    },
-    {
-      "id": "phase1-enum-windows",
-      "fromNode": "phase1",
-      "toNode": "enum-windows"
-    },
-    {
-      "id": "enum-exploit-web",
-      "fromNode": "enum-web",
-      "toNode": "exploit-web"
-    },
-    {
-      "id": "enum-exploit-rce",
-      "fromNode": "enum-web",
-      "toNode": "exploit-rce"
-    },
-    {
-      "id": "enum-exploit-privesc",
-      "fromNode": "enum-linux",
-      "toNode": "exploit-privesc-linux"
-    },
-    {
-      "id": "enum-exploit-privesc-win",
-      "fromNode": "enum-windows",
-      "toNode": "exploit-privesc-windows"
-    },
-    {
-      "id": "phase1-tools",
-      "fromNode": "phase1",
-      "toNode": "tools-ref"
-    },
-    {
-      "id": "phase2-machines",
-      "fromNode": "phase2",
-      "toNode": "practice-htb"
-    },
-    {
-      "id": "machines-writeups",
-      "fromNode": "practice-htb",
-      "toNode": "machines-easy"
-    },
-    {
-      "id": "machines-document",
-      "fromNode": "practice-htb",
-      "toNode": "document"
-    },
-    {
-      "id": "machines-post-exploit",
-      "fromNode": "practice-htb",
-      "toNode": "post-exploit"
-    },
-    {
-      "id": "phase3-exam",
-      "fromNode": "phase3",
-      "toNode": "exam-rules"
-    },
-    {
-      "id": "phase3-pivot",
-      "fromNode": "phase3",
-      "toNode": "pivot-ad"
-    },
-    {
-      "id": "phase3-timed",
-      "fromNode": "phase3",
-      "toNode": "timed-lab"
-    },
-    {
-      "id": "exploit-web-practice",
-      "fromNode": "exploit-web",
-      "toNode": "practice-htb"
-    },
-    {
-      "id": "tools-practice",
-      "fromNode": "tools-ref",
-      "toNode": "practice-htb"
-    }
-  ]
+	"nodes":[
+		{"id":"oscp-goal","type":"text","text":" PASS OSCP EXAM","x":0,"y":-400,"width":250,"height":60},
+		{"id":"phase1","type":"text","text":" PHASE 1: LEARN\nEnumeration & Tools","x":-500,"y":-200,"width":200,"height":80},
+		{"id":"phase2","type":"text","text":" PHASE 2: PRACTICE\nMachine Exploitation","x":0,"y":-200,"width":200,"height":80},
+		{"id":"phase3","type":"text","text":" PHASE 3: MASTER\nTimed Challenges","x":500,"y":-200,"width":200,"height":80},
+		{"id":"enum-web","type":"file","file":"Enumeration/Web-Enumeration","x":-700,"y":0,"width":150,"height":60},
+		{"id":"enum-active-dir","type":"file","file":"Enumeration/Active-Directory","x":-700,"y":80,"width":150,"height":60},
+		{"id":"enum-linux","type":"file","file":"Enumeration/Linux-Enumeration","x":-700,"y":160,"width":150,"height":60},
+		{"id":"enum-windows","type":"file","file":"Enumeration/Windows-Enumeration","x":-700,"y":240,"width":150,"height":60},
+		{"id":"exploit-web","type":"file","file":"Exploitation/Web/SQL-Injection","x":-400,"y":0,"width":150,"height":60},
+		{"id":"exploit-rce","type":"file","file":"Exploitation/Web/File-Upload-Vulnerabilities","x":-400,"y":80,"width":150,"height":60},
+		{"id":"exploit-privesc-linux","type":"file","file":"Exploitation/Linux/Privilege-Escalation","x":-400,"y":160,"width":150,"height":60},
+		{"id":"exploit-privesc-windows","type":"file","file":"Exploitation/Windows/Privilege-Escalation","x":-400,"y":240,"width":150,"height":60},
+		{"id":"tools-ref","type":"file","file":"Tools-Reference/00-Tools-Index","x":-100,"y":0,"width":150,"height":60},
+		{"id":"machines-easy","type":"file","file":"Writeups/00-HTB-Solutions-Index","x":-100,"y":100,"width":150,"height":60},
+		{"id":"post-exploit","type":"file","file":"Post-Exploitation/00-Post-Exploitation-Index","x":-100,"y":200,"width":150,"height":60},
+		{"id":"practice-htb","type":"text","text":" PRACTICE\nHTB Easy → Medium → Hard","x":200,"y":0,"width":180,"height":80},
+		{"id":"document","type":"file","file":"Writeup-Templates/Writeup-Template","x":200,"y":120,"width":150,"height":60},
+		{"id":"exam-rules","type":"file","file":"OSCP-Exam-Rules","x":500,"y":0,"width":150,"height":60},
+		{"id":"pivot-ad","type":"text","text":" MULTI-MACHINE\nPivoting & AD Chains","x":500,"y":100,"width":150,"height":80},
+		{"id":"timed-lab","type":"text","text":"⏱ TIMED LABS\n24hr Challenge Format","x":500,"y":200,"width":150,"height":80}
+	],
+	"edges":[
+		{"id":"goal-phase1","fromNode":"oscp-goal","toNode":"phase1","fromSide":"bottom","toSide":"top"},
+		{"id":"goal-phase2","fromNode":"oscp-goal","toNode":"phase2","fromSide":"bottom","toSide":"top"},
+		{"id":"goal-phase3","fromNode":"oscp-goal","toNode":"phase3","fromSide":"bottom","toSide":"top"},
+		{"id":"phase1-enum-web","fromNode":"phase1","toNode":"enum-web","fromSide":"bottom","toSide":"top"},
+		{"id":"phase1-enum-ad","fromNode":"phase1","toNode":"enum-active-dir","fromSide":"bottom","toSide":"top"},
+		{"id":"phase1-enum-linux","fromNode":"phase1","toNode":"enum-linux","fromSide":"bottom","toSide":"top"},
+		{"id":"phase1-enum-windows","fromNode":"phase1","toNode":"enum-windows","fromSide":"bottom","toSide":"top"},
+		{"id":"enum-exploit-web","fromNode":"enum-web","toNode":"exploit-web","fromSide":"right","toSide":"left"},
+		{"id":"enum-exploit-rce","fromNode":"enum-web","toNode":"exploit-rce","fromSide":"right","toSide":"left"},
+		{"id":"enum-exploit-privesc","fromNode":"enum-linux","toNode":"exploit-privesc-linux","fromSide":"right","toSide":"left"},
+		{"id":"enum-exploit-privesc-win","fromNode":"enum-windows","toNode":"exploit-privesc-windows","fromSide":"right","toSide":"left"},
+		{"id":"phase1-tools","fromNode":"phase1","toNode":"tools-ref","fromSide":"bottom","toSide":"top"},
+		{"id":"phase2-machines","fromNode":"phase2","toNode":"practice-htb","fromSide":"bottom","toSide":"top"},
+		{"id":"machines-writeups","fromNode":"practice-htb","toNode":"machines-easy","fromSide":"left","toSide":"right"},
+		{"id":"machines-document","fromNode":"practice-htb","toNode":"document","fromSide":"bottom","toSide":"top"},
+		{"id":"machines-post-exploit","fromNode":"practice-htb","toNode":"post-exploit","fromSide":"bottom","toSide":"top"},
+		{"id":"phase3-exam","fromNode":"phase3","toNode":"exam-rules","fromSide":"bottom","toSide":"top"},
+		{"id":"phase3-pivot","fromNode":"phase3","toNode":"pivot-ad","fromSide":"bottom","toSide":"top"},
+		{"id":"phase3-timed","fromNode":"phase3","toNode":"timed-lab","fromSide":"bottom","toSide":"top"},
+		{"id":"exploit-web-practice","fromNode":"exploit-web","toNode":"practice-htb","fromSide":"right","toSide":"left"},
+		{"id":"tools-practice","fromNode":"tools-ref","toNode":"practice-htb","fromSide":"right","toSide":"left"}
+	]
 }

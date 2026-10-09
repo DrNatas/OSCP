@@ -2,18 +2,20 @@
 
 Work one evidence-backed hypothesis at a time. For each attempt record **observation → hypothesis → command → result → next step**. Re-enumerate whenever your identity, permissions, credentials, or network reach changes.
 
+This is the session workflow. Use the [main guide](README.md) for branch selection, [technique notes](00-TECHNIQUE-INDEX.md) for reusable attack patterns, and [HTB writeups](../Writeups/00-HTB-Solutions-Index.md) as worked examples.
+
 ## Run order
 
 | Phase | What to do | Checkpoint before moving on |
 | --- | --- | --- |
-| [1. Setup](Methodology/01-Setup.md) | Prepare scope, notes, targets, and evidence folders | Each target has a working note and known IP |
-| [2. Enumeration](Methodology/02-Enumeration.md) | Map ports, names, applications, and accessible data | Each service has a result and a next action |
-| [3. Initial access](Methodology/03-Initial-Access.md) | Validate a specific weakness and obtain a usable session | Record identity, host, access path, and evidence |
-| [4. Linux escalation](Methodology/04-Linux-Escalation.md) | Follow permissions, configuration, and credentials | Demonstrate the new privilege level |
-| [5. Windows escalation](Methodology/05-Windows-Escalation.md) | Follow token rights, services, tasks, and credentials | Demonstrate the new privilege level |
-| [6. Active Directory](Methodology/06-Active-Directory.md) | Map identities, access, and object permissions | Record each identity transition and prerequisite |
-| [7. Pivoting](Methodology/07-Pivoting.md) | Reach internal services through an existing foothold | Confirm the route and one known service |
-| [8. Evidence and reporting](Methodology/08-Evidence-and-Reporting.md) | Save proof and explain the reproducible chain | Evidence and commands agree with the result |
+| [1. Setup](01-Setup/README.md) | Prepare scope, notes, targets, and evidence folders | Each target has a working note and known IP |
+| [2. Enumeration](02-Enumeration/README.md) | Map ports, names, applications, and accessible data | Each service has a result and a next action |
+| [3. Initial access](03-Initial-Access/README.md) | Validate a specific weakness and obtain a usable session | Record identity, host, access path, and evidence |
+| [4. Linux escalation](04-Linux-Escalation/README.md) | Follow permissions, configuration, and credentials | Demonstrate the new privilege level |
+| [5. Windows escalation](05-Windows-Escalation/README.md) | Follow token rights, services, tasks, and credentials | Demonstrate the new privilege level |
+| [6. Active Directory](06-Active-Directory/README.md) | Map identities, access, and object permissions | Record each identity transition and prerequisite |
+| [7. Pivoting](07-Pivoting/README.md) | Reach internal services through an existing foothold | Confirm the route and one known service |
+| [8. Evidence and reporting](08-Evidence-and-Reporting/README.md) | Save proof and explain the reproducible chain | Evidence and commands agree with the result |
 
 Start with the AD phase when the exercise supplies domain credentials. Enumeration and evidence collection continue throughout every phase.
 
@@ -42,4 +44,4 @@ Copy this table into the practice session note. Track only evidence-backed progr
 - [ ] Screenshots render from relative local paths.
 - [ ] The report can be followed from the initial access conditions.
 
-Use the [quick checklist](Quick-Reference.md) during a run and the [command reference](Reference/00-Reference-Index.md) for syntax. Review [exam rules](OSCP-Exam-Rules.md) before simulating exam conditions; historical writeups may use different tools.
+Use the [fast triage board](00-FAST-TRIAGE.md) during a run and the [command reference](Reference/00-Reference-Index.md) for syntax. Review [exam rules](OSCP-Exam-Rules.md) before simulating exam conditions; historical writeups may use different tools.

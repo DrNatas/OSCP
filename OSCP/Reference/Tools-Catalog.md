@@ -1,8 +1,24 @@
+---
+title: OSCP Tool Catalog
+type: tool-catalog
+tags: [oscp, tools, catalog, reference, htb]
+---
+
 # Tool catalog
 
 [Practice methodology](../Practice-Exam-Methodology.md) · [Reference index](00-Reference-Index.md)
 
 Commands preserved from the original reference. Replace angle-bracket placeholders before running; check your installed tool’s help for version-specific options.
+
+## Worked HTB examples
+
+| Tool | Example note | Technique context |
+| --- | --- | --- |
+| BloodHound / bloodyAD | [NanoCorp](../../Writeups/HTB-Machines/NanoCorp-Writeup.md) | `AddSelf` plus `ForceChangePassword` |
+| Certipy-AD | [Logging](../../Writeups/HTB-Machines/Logging-Writeup.md) | Shadow Credentials and ADCS enrollment |
+| Ligolo-ng | [Pirate](../../Writeups/HTB-Machines/Pirate-Writeup.md) | Routed pivot to an internal subnet |
+| Responder | [NanoCorp](../../Writeups/HTB-Machines/NanoCorp-Writeup.md) | `.library-ms` NetNTLMv2 capture |
+| Volatility | [Checkpoint](../../Writeups/HTB-Machines/Checkpoint-Writeup.md) | Memory-image hash extraction |
 
 
 ## Basics & Pivoting

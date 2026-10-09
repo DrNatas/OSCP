@@ -16,6 +16,6 @@ Use the [practice methodology](../Practice-Exam-Methodology.md) to choose the ne
 - [Additional lab topics](Additional-Lab-Topics.md)
 - [CVE and local privilege escalation reference](CVE-Reference.md)
 - [Payloads and reverse shells](Shells.md)
-- [Evidence and reporting](../Methodology/08-Evidence-and-Reporting.md)
+- [Evidence and reporting](../08-Evidence-and-Reporting/README.md)
 
 Additional lab topics and historical exploits are background references, not a default practice-exam checklist.

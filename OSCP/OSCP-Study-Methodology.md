@@ -8,6 +8,8 @@ tags: [oscp, methodology, study-guide, planning]
 
 > A structured three-phase approach to mastering penetration testing and passing the OSCP exam using this integrated vault.
 
+> Navigation note: use the [main guide](README.md) for the current assessment workflow and the [technique index](00-TECHNIQUE-INDEX.md) for reusable attack patterns. This study-plan page is for pacing and review, not a second command reference.
+
 ---
 
 ##  Overview
@@ -27,33 +29,33 @@ Build foundational knowledge of reconnaissance and exploitation techniques
 ### Study Path
 
 #### Week 1-2: Enumeration Fundamentals
-1. **Read:** [[Enumeration/Web-Enumeration|Web Enumeration]]
+1. **Read:** [[OSCP/02-Enumeration/Enumeration/Web-Enumeration|Web Enumeration]]
    - DNS enumeration (nslookup, dig, fierce)
    - Directory scanning (ffuf, feroxbuster)
    - Service fingerprinting (nmap, Nuclei)
    
-2. **Read:** [[Enumeration/Linux-Enumeration|Linux Enumeration]]
+2. **Read:** [[OSCP/04-Linux-Escalation/README|Linux Enumeration and escalation]]
    - Port scanning methodology
    - Service detection
    - Common ports and services
 
-3. **Reference:** [[Tools-Reference/00-Tools-Index|Tools Index]]
+3. **Reference:** [[OSCP/Tools-Reference/00-Tools-Index|Tools Index]]
    - Bookmark key tools
    - Understand tools available
    - Check installation requirements
 
 #### Week 3-4: Basic Exploitation
-1. **Study:** [[Exploitation/Web/SQL-Injection|SQL Injection]]
+1. **Study:** [[OSCP/03-Initial-Access/Techniques/Web/SQL-Injection-Path|SQL Injection]]
    - Union-based SQLi
    - Blind SQLi
    - Time-based detection
 
-2. **Study:** [[Exploitation/Web/File-Upload-Vulnerabilities|File Upload Attacks]]
+2. **Study:** [[OSCP/03-Initial-Access/Techniques/Web/03-File-Upload-and-Execution|File Upload Attacks]]
    - File type bypass techniques
    - Shell upload methodology
    - Extension bypass tricks
 
-3. **Study:** [[Exploitation/Linux/Privilege-Escalation|Linux PrivEsc]]
+3. **Study:** [[OSCP/04-Linux-Escalation/Techniques/Linux/04-Linux-Privilege-Escalation|Linux PrivEsc]]
    - SUID binaries abuse
    - Sudo misconfiguration
    - Kernel exploits
@@ -66,9 +68,9 @@ Build foundational knowledge of reconnaissance and exploitation techniques
 - [ ] Have tools installed and tested
 
 ### Resources
-- [[Tools-Reference/Information-Gathering|Information Gathering Tools]]
-- [[Tools-Reference/Web-Fuzzing|Web Fuzzing Tools]]
-- [[Payloads/Reverse-Shells|Reverse Shell Payloads]]
+- [[OSCP/Tools-Reference/00-Tools-Index|Information Gathering Tools]]
+- [[OSCP/Tools-Reference/00-Tools-Index|Web Fuzzing Tools]]
+- [[OSCP/Reference/Shells|Reverse Shell Payloads]]
 
 ---
 
@@ -90,7 +92,7 @@ Develop exploitation skills through hands-on machine solving
 
 2. **For Each Machine:**
    - [ ] Attempt without looking at writeup
-   - [ ] Document findings using [[Writeup-Templates/Writeup-Template|template]]
+   - [ ] Document findings using [[OSCP/08-Evidence-and-Reporting/Writeup-Templates/Writeup-Template|template]]
    - [ ] Compare your approach with provided writeup
    - [ ] Note techniques used and lessons learned
 
@@ -104,9 +106,9 @@ Develop exploitation skills through hands-on machine solving
    - [[Writeups/HTB-Machines/Chemistry|Chemistry]]
 
 2. **New Techniques:**
-   - Study [[Exploitation/Web/Server-Side-Template-Injection|SSTI]]
-   - Study [[Exploitation/Web/Remote-Code-Execution|RCE Methods]]
-   - Study [[Post-Exploitation/00-Post-Exploitation-Index|Post-Exploitation]]
+   - Study [[OSCP/03-Initial-Access/Techniques/Web/02-Web-Discovery-and-Access-Control|SSTI entry points]]
+   - Study [[OSCP/03-Initial-Access/Techniques/Web/02-Web-Discovery-and-Access-Control|RCE methods]]
+   - Study [[OSCP/07-Pivoting/Post-Exploitation/00-Post-Exploitation-Index|Post-Exploitation]]
 
 #### Stage 3: Hard Machines (Weeks 15-20)
 **Goal:** Master complex exploitation and AD attacks
@@ -120,10 +122,10 @@ Develop exploitation skills through hands-on machine solving
    - [[Writeups/HTB-Machines/Sightless|Sightless]]
 
 2. **Advanced Topics:**
-   - [[Enumeration/Active-Directory|Active Directory Enumeration]]
-   - [[Exploitation/Windows/Active-Directory-Attacks|AD Attacks]]
-   - [[Post-Exploitation/Lateral-Movement|Lateral Movement]]
-   - [[Exploitation/Windows/NTLM-Relay|NTLM Relay]]
+   - [[OSCP/02-Enumeration/Enumeration/Active-Directory|Active Directory Enumeration]]
+   - [[OSCP/06-Active-Directory/Techniques/Active-Directory/06-AD-Identity-and-ACL-Abuse|AD Attacks]]
+   - [[OSCP/07-Pivoting/Techniques/Cross-Platform/08-Pivoting-and-Lateral-Movement|Lateral Movement]]
+   - [[OSCP/Reference/Active-Directory|NTLM Relay]]
 
 ### Methodology: How to Solve Each Machine
 
@@ -135,7 +137,7 @@ Develop exploitation skills through hands-on machine solving
 
 2. ENUMERATION (60-90 min)
     Deep dive on each open port
-    Use appropriate [[Tools-Reference|tools]]
+    Use appropriate [[OSCP/Tools-Reference/00-Tools-Index|tools]]
     Fuzz parameters and endpoints
     Document all findings
 
@@ -152,9 +154,9 @@ Develop exploitation skills through hands-on machine solving
     Capture proof (cat /root/root.txt)
 
 5. DOCUMENTATION (30 min)
-    Fill [[Writeup-Templates/Writeup-Template|template]]
+    Fill [[OSCP/08-Evidence-and-Reporting/Writeup-Templates/Writeup-Template|template]]
     Document complete attack chain
-    Link to techniques [[Exploitation/|used]]
+    Link to techniques [[OSCP/00-TECHNIQUE-INDEX|used]]
     Record lessons learned
 ```
 
@@ -176,7 +178,7 @@ Prepare for exam conditions and master complex scenarios
 ### Preparation Tasks
 
 #### Week 21: Exam Rules & Restrictions
-1. **Read:** [[OSCP-Exam-Rules|Exam Rules]]
+1. **Read:** [[OSCP/OSCP-Exam-Rules|Exam Rules]]
    - No automatic SQLi tools in exam
    - No Metasploit (except 1x in 24 hours)
    - Manual exploitation required
@@ -207,13 +209,13 @@ Prepare for exam conditions and master complex scenarios
    - Practice persistence mechanisms
 
 2. **Windows PrivEsc Deep Dive:**
-   - [[Exploitation/Windows/Privilege-Escalation|Windows PrivEsc]]
-   - [[Exploitation/Windows/Active-Directory-Attacks|AD Attacks]]
-   - [[Post-Exploitation/Credential-Harvesting|Credential Harvesting]]
+   - [[OSCP/05-Windows-Escalation/Techniques/Windows/05-Windows-Privilege-Escalation|Windows PrivEsc]]
+   - [[OSCP/06-Active-Directory/Techniques/Active-Directory/06-AD-Identity-and-ACL-Abuse|AD Attacks]]
+   - [[OSCP/Reference/Credentials|Credential Harvesting]]
 
 #### Week 26-28: Final Prep
 1. **Review Phase:**
-   - Re-read [[Enumeration/Web-Enumeration|enumeration techniques]]
+   - Re-read [[OSCP/02-Enumeration/Enumeration/Web-Enumeration|enumeration techniques]]
    - Review your hardest writeups
    - Study your "Lessons Learned" from machines
 
@@ -245,7 +247,7 @@ Prepare for exam conditions and master complex scenarios
  Understand reconnaissance workflow  
  Know 5+ web vulnerability types  
  Know 5+ privilege escalation vectors  
- Can use [[Tools-Reference/00-Tools-Index|key tools]]  
+ Can use [[OSCP/Tools-Reference/00-Tools-Index|key tools]]
 
 ### Phase 2 Completion
  Complete 14 machines with writeups  
@@ -265,7 +267,7 @@ Prepare for exam conditions and master complex scenarios
 
 ### Learning Days (Phase 1)
 ```
-Morning (2h):     Read [[Enumeration|technique]] + take notes
+Morning (2h):     Read [[OSCP/00-TECHNIQUE-INDEX|technique]] + take notes
 Afternoon (2h):   Set up tools & practice commands
 Evening (1h):     Review and link to vault
 ```
@@ -318,7 +320,7 @@ EXAM READY
 ### Privilege Escalation
 - Enumerate fully before attempting PrivEsc
 - Check: sudo -l, SUID binaries, writable files, cron jobs
-- Use [[Tools-Reference/Privilege-Escalation|PrivEsc tools]]
+- Use [[OSCP/Tools-Reference/00-Tools-Index|PrivEsc tools]]
 - Understand WHY each technique works
 
 ### Time Management
@@ -337,11 +339,11 @@ EXAM READY
 
 ##  Related Resources
 
-- [[00-Index|Main OSCP Index]]
-- [[OSCP-Exam-Rules|Exam Rules & Restrictions]]
-- [[Writeups/00-Writeups-Index|All HTB Machines]]
-- [[Academy/00-Academy-Index|Academy Materials]]
-- [[OSCP-Methodology-Canvas|Methodology Canvas (Visual)]]
+- [[OSCP/README|Main OSCP Guide]]
+- [[OSCP/OSCP-Exam-Rules|Exam Rules & Restrictions]]
+   - [[Writeups/00-HTB-Solutions-Index|All HTB Machines]]
+- [[OSCP/03-Initial-Access/Academy/00-Academy-Index|Academy Materials]]
+- [[OSCP/OSCP-Methodology-Canvas|Methodology Canvas (Visual)]]
 
 ---
 

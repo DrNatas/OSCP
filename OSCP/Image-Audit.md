@@ -15,15 +15,15 @@ Nine distinct files are absent from the checkout. They were also not found in re
 
 | Note | Original reference | Restore destination relative to note |
 | --- | --- | --- |
-| [Voleur-Writeup](../Writeups/HTB-Voleur/Voleur-Writeup.md) | `/Images/voleur/svc_ldap_to_restore_users.png` | `images/svc_ldap_to_restore_users.png` |
-| [Voleur-Writeup](../Writeups/HTB-Voleur/Voleur-Writeup.md) | `/Images/voleur/generic-write-lacey.png` | `images/generic-write-lacey.png` |
-| [TombWatcher-Writeup](../Writeups/HTB-TombWatcher/TombWatcher-Writeup.md) | `/Images//TombWatcher.png` | `images/TombWatcher.png` |
-| [TombWatcher-Writeup](../Writeups/HTB-TombWatcher/TombWatcher-Writeup.md) | `/Images/alfred-tombwatcher.png` | `images/alfred-tombwatcher.png` |
-| [TombWatcher-Writeup](../Writeups/HTB-TombWatcher/TombWatcher-Writeup.md) | `/Images/WriteSPN.png` | `images/WriteSPN.png` |
-| [TombWatcher-Writeup](../Writeups/HTB-TombWatcher/TombWatcher-Writeup.md) | `Images/infra-to-ansible.png` | `images/infra-to-ansible.png` |
-| [TombWatcher-Writeup](../Writeups/HTB-TombWatcher/TombWatcher-Writeup.md) | `/Images/sam-to-john.png` | `images/sam-to-john.png` |
-| [Puppy-Writeup](../Writeups/HTB-Puppy/Puppy-Writeup.md) | `/Images/puppy.htb/puppy-to-developers.png` | `images/puppy-to-developers.png` |
-| [Puppy-Writeup](../Writeups/HTB-Puppy/Puppy-Writeup.md) | `/Images/puppy.htb/puppy-dpapi.png` | `images/puppy-dpapi.png` |
+| [Voleur](../Writeups/HTB-Machines/Voleur.md) | `/Images/voleur/svc_ldap_to_restore_users.png` | `images/svc_ldap_to_restore_users.png` |
+| [Voleur](../Writeups/HTB-Machines/Voleur.md) | `/Images/voleur/generic-write-lacey.png` | `images/generic-write-lacey.png` |
+| [TombWatcher](../Writeups/HTB-Machines/TombWatcher.md) | `/Images//TombWatcher.png` | `images/TombWatcher.png` |
+| [TombWatcher](../Writeups/HTB-Machines/TombWatcher.md) | `/Images/alfred-tombwatcher.png` | `images/alfred-tombwatcher.png` |
+| [TombWatcher](../Writeups/HTB-Machines/TombWatcher.md) | `/Images/WriteSPN.png` | `images/WriteSPN.png` |
+| [TombWatcher](../Writeups/HTB-Machines/TombWatcher.md) | `Images/infra-to-ansible.png` | `images/infra-to-ansible.png` |
+| [TombWatcher](../Writeups/HTB-Machines/TombWatcher.md) | `/Images/sam-to-john.png` | `images/sam-to-john.png` |
+| [Puppy](../Writeups/HTB-Machines/Puppy.md) | `/Images/puppy.htb/puppy-to-developers.png` | `images/puppy-to-developers.png` |
+| [Puppy](../Writeups/HTB-Machines/Puppy.md) | `/Images/puppy.htb/puppy-dpapi.png` | `images/puppy-dpapi.png` |
 
 ## Unavailable remote attachments
 
@@ -31,18 +31,18 @@ All 62 unique GitHub attachment URLs returned HTTP 404 to the download request. 
 
 | Note | Unavailable image placements |
 | --- | --- |
-| [FILE-UPLOAD-ATTACKS](../Exploitation/Web/Academy-Notes/FILE-UPLOAD-ATTACKS.md) | 2 |
-| [WEB-APPLICATIONS](../Exploitation/Web/Academy-Notes/WEB-APPLICATIONS.md) | 1 |
-| [Administrator-Writeup](../Writeups/HTB-Administrator/Administrator-Writeup.md) | 14 |
-| [Alert-Writeup](../Writeups/HTB-Alert/Alert-Writeup.md) | 9 |
-| [Chemistry-Writeup](../Writeups/HTB-Chemistry/Chemistry-Writeup.md) | 3 |
-| [Code-Writeup](../Writeups/HTB-Code/Code-Writeup.md) | 3 |
-| [LinkVortex-Writeup](../Writeups/HTB-LinkVortex/LinkVortex-Writeup.md) | 3 |
-| [Nocturnal-Writeup](../Writeups/HTB-Nocturnal/Nocturnal-Writeup.md) | 1 |
-| [Planning-Writeup](../Writeups/HTB-Planning/Planning-Writeup.md) | 1 |
-| [Sightless-Writeup](../Writeups/HTB-Sightless/Sightless-Writeup.md) | 11 |
-| [Support-Writeup](../Writeups/HTB-Support/Support-Writeup.md) | 5 |
-| [UnderPass-Writeup](../Writeups/HTB-UnderPass/UnderPass-Writeup.md) | 9 |
+| [FILE-UPLOAD-ATTACKS](03-Initial-Access/Academy/BUG-BOUNTY-HUNTER/FILE-UPLOAD-ATTACKS.md) | 2 |
+| [WEB-APPLICATIONS](03-Initial-Access/Academy/BUG-BOUNTY-HUNTER/WEB-APPLICATIONS.md) | 1 |
+| [Administrator](../Writeups/HTB-Machines/Administrator.md) | 14 |
+| [Alert](../Writeups/HTB-Machines/Alert.md) | 9 |
+| [Chemistry](../Writeups/HTB-Machines/Chemistry.md) | 3 |
+| [Code](../Writeups/HTB-Machines/Code.md) | 3 |
+| [LinkVortex](../Writeups/HTB-Machines/LinkVortex.md) | 3 |
+| [Nocturnal](../Writeups/HTB-Machines/Nocturnal.md) | 1 |
+| [Planning](../Writeups/HTB-Machines/Planning.md) | 1 |
+| [Sightless](../Writeups/HTB-Machines/Sightless.md) | 11 |
+| [Support](../Writeups/HTB-Machines/Support.md) | 5 |
+| [UnderPass](../Writeups/HTB-Machines/UnderPass.md) | 9 |
 
 ## Reconnected screenshots
 
