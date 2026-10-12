@@ -16,13 +16,13 @@ tags: [oscp, techniques, windows, privilege-escalation]
 
 ## High-value patterns
 
-| Pattern | Required chain |
-| --- | --- |
-| DLL search/load hijack | Privileged loader, attacker-writable search location, correct DLL architecture/exports, and a trigger |
-| Scheduled task abuse | Useful execution account, writable action/dependency, and achievable trigger |
-| Service path/configuration abuse | Writable executable or argument, service restart/control, and privileged service identity |
-| MSI repair or installer abuse | Repair path reachable as the current user, writable artifact/configuration, and SYSTEM execution behavior |
-| Credential reuse or token impersonation | Secret belongs to a relevant account and that account has the needed logon or object rights |
+| Pattern                                 | Required chain                                                                                            |
+| --------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| DLL search/load hijack                  | Privileged loader, attacker-writable search location, correct DLL architecture/exports, and a trigger     |
+| Scheduled task abuse                    | Useful execution account, writable action/dependency, and achievable trigger                              |
+| Service path/configuration abuse        | Writable executable or argument, service restart/control, and privileged service identity                 |
+| MSI repair or installer abuse           | Repair path reachable as the current user, writable artifact/configuration, and SYSTEM execution behavior |
+| Credential reuse or token impersonation | Secret belongs to a relevant account and that account has the needed logon or object rights               |
 
 Use [Windows reference](../../../Reference/Windows.md) for command syntax and [AD phase](../../../06-Active-Directory/README.md) when directory permissions are part of the chain.
 
